@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mike Cheel Docs</title>
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <style>
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #333333;
+            --card-bg: #f8fafc;
+            --card-border: #e2e8f0;
+            --accent-color: #4f46e5;
+            --accent-hover: #4338ca;
+            --shadow: rgba(0, 0, 0, 0.1);
+            --shadow-hover: rgba(0, 0, 0, 0.15);
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #0f172a;
+            --text-color: #e2e8f0;
+            --card-bg: #1e293b;
+            --card-border: #334155;
+            --accent-color: #6366f1;
+            --accent-hover: #8b5cf6;
+            --shadow: rgba(0, 0, 0, 0.3);
+            --shadow-hover: rgba(0, 0, 0, 0.4);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            min-height: 100vh;
+            padding: 2rem;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* Glassmorphism Style */
+        [data-style="glassmorphism"] {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        [data-style="glassmorphism"] .container {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: 20px;
+        }
+
+        [data-style="glassmorphism"][data-theme="dark"] .container {
+            background: rgba(15, 23, 42, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        [data-style="glassmorphism"] .link-item {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+        }
+
+        [data-style="glassmorphism"][data-theme="dark"] .link-item {
+            background: rgba(30, 41, 59, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Neumorphism Style */
+        [data-style="neumorphism"] {
+            background: #e0e5ec;
+        }
+
+        [data-style="neumorphism"][data-theme="dark"] {
+            background: #2d3748;
+        }
+
+        [data-style="neumorphism"] .container {
+            background: #e0e5ec;
+            box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff;
+            border-radius: 20px;
+        }
+
+        [data-style="neumorphism"][data-theme="dark"] .container {
+            background: #2d3748;
+            box-shadow: 20px 20px 60px #1a202c, -20px -20px 60px #404c5a;
+        }
+
+        [data-style="neumorphism"] .link-item {
+            background: #e0e5ec;
+            box-shadow: inset 5px 5px 10px #bebebe, inset -5px -5px 10px #ffffff;
+            border: none;
+            border-radius: 15px;
+        }
+
+        [data-style="neumorphism"] .link-item:hover {
+            box-shadow: 5px 5px 10px #bebebe, -5px -5px 10px #ffffff;
+            transform: translateY(-1px);
+        }
+
+        [data-style="neumorphism"][data-theme="dark"] .link-item {
+            background: #2d3748;
+            box-shadow: inset 5px 5px 10px #1a202c, inset -5px -5px 10px #404c5a;
+        }
+
+        [data-style="neumorphism"][data-theme="dark"] .link-item:hover {
+            box-shadow: 5px 5px 10px #1a202c, -5px -5px 10px #404c5a;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .header {
+            text-align: left;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.8;
+        }
+
+        .controls {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .style-selector {
+            background: var(--card-bg);
+            border: 2px solid var(--card-border);
+            border-radius: 8px;
+            padding: 0.5rem;
+            color: var(--text-color);
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .style-selector:hover {
+            border-color: var(--accent-color);
+        }
+
+        .style-selector option {
+            background: var(--card-bg);
+            color: var(--text-color);
+        }
+
+        .theme-toggle {
+            background: var(--card-bg);
+            border: 2px solid var(--card-border);
+            border-radius: 50px;
+            width: 60px;
+            height: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            padding: 2px;
+        }
+
+        .theme-toggle:hover {
+            border-color: var(--accent-color);
+        }
+
+        .theme-toggle-slider {
+            width: 24px;
+            height: 24px;
+            background: var(--accent-color);
+            border-radius: 50%;
+            transition: transform 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            color: white;
+        }
+
+        [data-theme="dark"] .theme-toggle-slider {
+            transform: translateX(28px);
+        }
+
+        .links-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .link-item {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            box-shadow: 0 2px 4px var(--shadow);
+        }
+
+        .link-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px var(--shadow-hover);
+            border-color: var(--accent-color);
+        }
+
+        .link-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .link-description {
+            color: var(--text-color);
+            opacity: 0.8;
+            font-size: 1rem;
+        }
+
+        .external-icon {
+            font-size: 1rem;
+            opacity: 0.6;
+            transition: opacity 0.3s ease;
+        }
+
+        .link-item:hover .external-icon {
+            opacity: 1;
+        }
+
+        .footer {
+            margin-top: 4rem;
+            text-align: center;
+            opacity: 0.6;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .controls {
+                position: relative;
+                justify-content: center;
+                margin: 1rem auto 0;
+                flex-wrap: wrap;
+            }
+            
+            .link-item {
+                padding: 1rem;
+            }
+
+            .container {
+                padding: 1rem;
+            }
+        }
+
+        /* Glassmorphism specific adjustments */
+        [data-style="glassmorphism"] .style-selector,
+        [data-style="glassmorphism"] .theme-toggle {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        [data-style="glassmorphism"][data-theme="dark"] .style-selector,
+        [data-style="glassmorphism"][data-theme="dark"] .theme-toggle {
+            background: rgba(30, 41, 59, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* Neumorphism specific adjustments */
+        [data-style="neumorphism"] .style-selector,
+        [data-style="neumorphism"] .theme-toggle {
+            background: #e0e5ec;
+            box-shadow: inset 3px 3px 6px #bebebe, inset -3px -3px 6px #ffffff;
+            border: none;
+        }
+
+        [data-style="neumorphism"][data-theme="dark"] .style-selector,
+        [data-style="neumorphism"][data-theme="dark"] .theme-toggle {
+            background: #2d3748;
+            box-shadow: inset 3px 3px 6px #1a202c, inset -3px -3px 6px #404c5a;
+        }
+    </style>
+</head>
+<body data-theme="light" data-style="default">
+    <div class="container">
+        <header class="header">
+            <div class="controls">
+                <select class="style-selector" id="styleSelector">
+                    <option value="default">Default</option>
+                    <option value="glassmorphism">Glassmorphism</option>
+                    <option value="neumorphism">Neumorphism</option>
+                </select>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <div class="theme-toggle-slider">☀️</div>
+                </button>
+            </div>
+            <h1>Mike Cheel Docs</h1>
+            <p>Documentation and resource links</p>
+        </header>
+
+        <main class="links-container">
+            <a href="federalists_report_full.html" class="link-item">
+                <div class="link-title">
+                    Federalists, a Stronger Union, and the Ratification Fight (1787–1790)
+                    <span class="external-icon">↗</span>
+                </div>
+                <div class="link-description">
+                    A print-friendly timeline documenting how prominent Federalists advocated for strong central government and used political maneuvering to secure ratification, with Anti-Federalist responses and primary source citations.
+                </div>
+            </a>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2025 Mike Cheel Docs</p>
+        </footer>
+    </div>
+
+    <script>
+        const themeToggle = document.getElementById('themeToggle');
+        const styleSelector = document.getElementById('styleSelector');
+        const body = document.body;
+        const slider = themeToggle.querySelector('.theme-toggle-slider');
+
+        // Load saved preferences or default values
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        const savedStyle = localStorage.getItem('style') || 'default';
+        
+        body.setAttribute('data-theme', savedTheme);
+        body.setAttribute('data-style', savedStyle);
+        styleSelector.value = savedStyle;
+        updateToggleIcon(savedTheme);
+
+        // Theme toggle functionality
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            
+            body.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateToggleIcon(newTheme);
+        });
+
+        // Style selector functionality
+        styleSelector.addEventListener('change', (e) => {
+            const newStyle = e.target.value;
+            body.setAttribute('data-style', newStyle);
+            localStorage.setItem('style', newStyle);
+        });
+
+        function updateToggleIcon(theme) {
+            // Show sun when light mode (click to go to dark)
+            // Show moon when dark mode (click to go to light)
+            slider.textContent = theme === 'light' ? '☀️' : '🌙';
+        }
+
+        // Add smooth transitions when styles change
+        document.addEventListener('DOMContentLoaded', () => {
+            body.style.transition = 'background-color 0.3s ease, color 0.3s ease';
+        });
+    </script>
+</body>
+</html>
