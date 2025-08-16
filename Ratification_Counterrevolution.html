@@ -393,81 +393,169 @@ hr.sep { border:none; height:1px; background: var(--border); margin: 12px 0; }
         }
 
         @media print {
+          @page {
+            margin: 0.75in;
+            size: letter;
+          }
+          
+          * {
+            -webkit-print-color-adjust: exact !important;
+            color-adjust: exact !important;
+          }
+          
+          body { 
+            background: white !important; 
+            color: black !important;
+            line-height: 1.3;
+            font-size: 10pt;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+          }
+          
           .navbar { 
             position: static;
-            border-bottom: 2px solid #333;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
+            border-bottom: 1px solid #333;
+            padding: 8px 0;
+            margin-bottom: 15px;
+            page-break-after: avoid;
           }
+          
           .navbar button[onclick*="print"], 
           .navbar button[onclick*="downloadPDF"] {
             display: none !important;
           }
-          .tl-item { 
-            page-break-inside: avoid; 
-            break-inside: avoid;
-            margin-bottom: 25px;
-            padding: 15px;
+          
+          .navbar-left, .navbar-right {
+            display: inline-block;
+            vertical-align: top;
           }
+          
+          .nav-buttons {
+            display: none;
+          }
+          
+          .navbar-divider { display: none !important; }
+          
+          .brand {
+            font-size: 14pt;
+            font-weight: bold;
+            margin: 0;
+          }
+          
+          .container {
+            max-width: none;
+            padding: 0;
+            margin: 0;
+          }
+          
           .section { 
             page-break-inside: avoid;
             break-inside: avoid;
-            margin-bottom: 35px;
-            padding: 20px;
-          }
-          .card { 
-            page-break-inside: avoid;
-            break-inside: avoid;
-            margin-bottom: 20px;
-            padding: 15px;
-          }
-          .tl-body {
-            page-break-inside: avoid;
-            break-inside: avoid;
-            padding-top: 10px;
-          }
-          .tl-row {
-            page-break-inside: avoid;
-            break-inside: avoid;
-            margin-bottom: 8px;
-          }
-          .grid {
-            page-break-inside: auto;
-          }
-          h1, h2, h3 {
-            page-break-after: avoid;
-            break-after: avoid;
-            page-break-before: auto;
-            break-before: auto;
-          }
-          .back-to-top { display: none !important; }
-          .navbar-divider { display: none !important; }
-          body { 
-            background: white !important; 
-            color: black !important;
-            line-height: 1.5;
-            font-size: 12pt;
-          }
-          .section, .card, .tl-item { 
+            margin-bottom: 15px;
+            padding: 12px;
             background: white !important; 
             border: 1px solid #333 !important;
             box-shadow: none !important;
           }
-          .navbar-left, .navbar-right {
-            display: flex;
-            align-items: center;
-            gap: 10px;
+          
+          .section h1, .section h2, .section h3 {
+            page-break-after: avoid;
+            break-after: avoid;
+            margin-top: 0;
+            margin-bottom: 8px;
           }
-          .nav-buttons {
-            display: none;
+          
+          .tl-item { 
+            page-break-inside: avoid; 
+            break-inside: avoid;
+            margin-bottom: 10px;
+            padding: 8px;
+            background: white !important; 
+            border: 1px solid #666 !important;
+            box-shadow: none !important;
           }
+          
+          .tl-item summary {
+            font-weight: bold;
+            margin-bottom: 5px;
+          }
+          
+          .tl-body {
+            page-break-inside: avoid;
+            break-inside: avoid;
+            padding-top: 5px;
+          }
+          
+          .tl-row {
+            page-break-inside: avoid;
+            break-inside: avoid;
+            margin-bottom: 4px;
+            display: block;
+          }
+          
+          .tl-row .lbl {
+            font-weight: bold;
+            display: inline-block;
+            width: 140px;
+            vertical-align: top;
+          }
+          
+          .tl-row .val {
+            display: inline-block;
+            width: calc(100% - 150px);
+            vertical-align: top;
+          }
+          
+          .card { 
+            page-break-inside: avoid;
+            break-inside: avoid;
+            margin-bottom: 10px;
+            padding: 8px;
+            background: white !important; 
+            border: 1px solid #666 !important;
+            box-shadow: none !important;
+          }
+          
+          .grid {
+            display: block;
+          }
+          
+          .grid .card {
+            display: block;
+            width: 100%;
+            margin-bottom: 8px;
+          }
+          
+          .back-to-top { display: none !important; }
+          
           a { 
             color: #0066cc !important;
             text-decoration: underline;
           }
-          .brand {
-            font-size: 18pt;
-            font-weight: bold;
+          
+          .tl-links, .links {
+            font-size: 9pt;
+            margin-top: 5px;
+          }
+          
+          details[open] {
+            page-break-inside: avoid;
+            break-inside: avoid;
+          }
+          
+          /* Force compact layout */
+          h1 { font-size: 16pt; margin: 0 0 8px 0; }
+          h2 { font-size: 14pt; margin: 0 0 6px 0; }
+          h3 { font-size: 12pt; margin: 0 0 4px 0; }
+          
+          p, div, li {
+            margin-bottom: 4px;
+          }
+          
+          ul, ol {
+            margin: 5px 0;
+            padding-left: 20px;
           }
         }
 </style>
@@ -605,46 +693,94 @@ function generatePDF() {
     // Remove any remaining interactive elements
     content.querySelectorAll('.back-to-top, button, .navbar').forEach(el => el.remove());
     
-    // Create temporary container with proper styling
+    // Create temporary container with print-optimized styling
     const tempDiv = document.createElement('div');
     tempDiv.appendChild(content);
     tempDiv.style.cssText = `
       position: absolute;
       left: -9999px;
       width: 800px;
-      padding: 20px;
+      padding: 15px;
       background: white;
       color: black;
       font-family: Arial, sans-serif;
-      font-size: 12pt;
-      line-height: 1.4;
+      font-size: 10pt;
+      line-height: 1.3;
     `;
+    
+    // Apply print-style formatting to content
+    const sections = tempDiv.querySelectorAll('.section');
+    sections.forEach(section => {
+      section.style.cssText = `
+        margin-bottom: 12px;
+        padding: 10px;
+        border: 1px solid #333;
+        background: white;
+        page-break-inside: avoid;
+      `;
+    });
+    
+    const tlItems = tempDiv.querySelectorAll('.tl-item');
+    tlItems.forEach(item => {
+      item.style.cssText = `
+        margin-bottom: 8px;
+        padding: 6px;
+        border: 1px solid #666;
+        background: white;
+        page-break-inside: avoid;
+      `;
+    });
+    
+    const cards = tempDiv.querySelectorAll('.card');
+    cards.forEach(card => {
+      card.style.cssText = `
+        margin-bottom: 8px;
+        padding: 6px;
+        border: 1px solid #666;
+        background: white;
+        page-break-inside: avoid;
+        display: block;
+        width: 100%;
+      `;
+    });
+    
+    // Force open all details elements for PDF
+    const details = tempDiv.querySelectorAll('details');
+    details.forEach(detail => {
+      detail.setAttribute('open', 'open');
+    });
+    
     document.body.appendChild(tempDiv);
     
-    // Use html2canvas directly first, then jsPDF
+    // Use html2canvas with better settings for PDF
     html2canvas(tempDiv, {
-      scale: 1,
+      scale: 2,
       useCORS: true,
       allowTaint: true,
       backgroundColor: '#ffffff',
       width: 800,
-      height: tempDiv.scrollHeight
+      height: tempDiv.scrollHeight,
+      logging: false,
+      scrollX: 0,
+      scrollY: 0,
+      foreignObjectRendering: true
     }).then(canvas => {
-      const imgData = canvas.toDataURL('image/png');
+      const imgData = canvas.toDataURL('image/jpeg', 0.85);
       const imgWidth = 190; // A4 width in mm minus margins
-      const pageHeight = 277; // A4 height in mm minus margins
+      const pageHeight = 267; // A4 height in mm minus margins (reduced to prevent cutoff)
       const imgHeight = (canvas.height * imgWidth) / canvas.width;
       let heightLeft = imgHeight;
-      let position = 10;
+      let position = 15; // Start position with margin
       
-      // Add image to PDF, handle multiple pages
-      doc.addImage(imgData, 'PNG', 10, position, imgWidth, imgHeight);
+      // Add first page
+      doc.addImage(imgData, 'JPEG', 10, position, imgWidth, imgHeight);
       heightLeft -= pageHeight;
       
+      // Add subsequent pages if needed
       while (heightLeft >= 0) {
-        position = heightLeft - imgHeight + 10;
+        position = heightLeft - imgHeight + 15; // Adjust for margin
         doc.addPage();
-        doc.addImage(imgData, 'PNG', 10, position, imgWidth, imgHeight);
+        doc.addImage(imgData, 'JPEG', 10, position, imgWidth, imgHeight);
         heightLeft -= pageHeight;
       }
       
@@ -1008,7 +1144,7 @@ function generatePDF() {
   </section>
 
   <footer style="text-align: center; color: var(--muted); font-size: 14px; margin-top: 40px; padding: 20px; border-top: 1px solid var(--border);">
-    Last updated: August 16, 2025 at 4:05 PM EDT
+    Last updated: August 16, 2025 at 4:15 PM EDT
   </footer>
 </div>
 
