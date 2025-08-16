@@ -472,6 +472,7 @@ hr.sep { border:none; height:1px; background: var(--border); margin: 12px 0; }
         }
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script>
 function gotoSection(id) {
   document.getElementById(id).scrollIntoView({behavior:'smooth', block:'start'});
@@ -551,14 +552,37 @@ function downloadPDF() {
   if (printBtn) printBtn.style.display = 'none';
   if (downloadBtn) downloadBtn.style.display = 'none';
   
-  // Add jsPDF library if not already loaded
-  if (typeof window.jspdf === 'undefined') {
-    const script = document.createElement('script');
-    script.src = 'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js';
-    script.onload = function() {
+  // Check if both libraries are loaded
+  if (typeof window.jspdf === 'undefined' || typeof html2canvas === 'undefined') {
+    let scriptsToLoad = 0;
+    let scriptsLoaded = 0;
+    
+    function checkAndGenerate() {
+      scriptsLoaded++;
+      if (scriptsLoaded >= scriptsToLoad) {
+        generatePDF();
+      }
+    }
+    
+    if (typeof window.jspdf === 'undefined') {
+      scriptsToLoad++;
+      const jsPDFScript = document.createElement('script');
+      jsPDFScript.src = 'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js';
+      jsPDFScript.onload = checkAndGenerate;
+      document.head.appendChild(jsPDFScript);
+    }
+    
+    if (typeof html2canvas === 'undefined') {
+      scriptsToLoad++;
+      const html2canvasScript = document.createElement('script');
+      html2canvasScript.src = 'https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js';
+      html2canvasScript.onload = checkAndGenerate;
+      document.head.appendChild(html2canvasScript);
+    }
+    
+    if (scriptsToLoad === 0) {
       generatePDF();
-    };
-    document.head.appendChild(script);
+    }
   } else {
     generatePDF();
   }
@@ -569,55 +593,87 @@ function generatePDF() {
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF('p', 'mm', 'a4');
     
-    // Clone the entire page content
-    const originalContent = document.documentElement.cloneNode(true);
+    // Get the container content
+    const container = document.querySelector('.container');
+    if (!container) {
+      throw new Error('Container not found');
+    }
     
-    // Remove interactive elements from clone
-    originalContent.querySelectorAll('.back-to-top, button[onclick*="print"], button[onclick*="downloadPDF"], .navbar-divider, .nav-buttons').forEach(el => el.remove());
+    // Clone and prepare content
+    const content = container.cloneNode(true);
     
-    // Force light theme for PDF and clean styling
-    originalContent.querySelector('body').setAttribute('data-theme', 'light');
-    originalContent.querySelector('body').setAttribute('data-style', 'default');
+    // Remove any remaining interactive elements
+    content.querySelectorAll('.back-to-top, button, .navbar').forEach(el => el.remove());
     
-    // Create a temporary container
+    // Create temporary container with proper styling
     const tempDiv = document.createElement('div');
-    tempDiv.innerHTML = originalContent.querySelector('body').innerHTML;
-    tempDiv.style.position = 'absolute';
-    tempDiv.style.left = '-9999px';
-    tempDiv.style.width = '210mm';
-    tempDiv.style.padding = '20px';
-    tempDiv.style.background = 'white';
-    tempDiv.style.color = 'black';
-    tempDiv.style.fontSize = '12pt';
-    tempDiv.style.lineHeight = '1.5';
+    tempDiv.appendChild(content);
+    tempDiv.style.cssText = `
+      position: absolute;
+      left: -9999px;
+      width: 800px;
+      padding: 20px;
+      background: white;
+      color: black;
+      font-family: Arial, sans-serif;
+      font-size: 12pt;
+      line-height: 1.4;
+    `;
     document.body.appendChild(tempDiv);
     
-    // Generate PDF with improved settings
-    doc.html(tempDiv, {
-      callback: function(doc) {
-        doc.save('Ratification_Counterrevolution.pdf');
-        document.body.removeChild(tempDiv);
-        
-        // Restore print/download buttons
-        const printBtn = document.querySelector('button[onclick*="print"]');
-        const downloadBtn = document.querySelector('button[onclick*="downloadPDF"]');
-        if (printBtn) printBtn.style.display = '';
-        if (downloadBtn) downloadBtn.style.display = '';
-      },
-      x: 15,
-      y: 15,
-      width: 180,
-      windowWidth: 800,
-      html2canvas: {
-        scale: 0.6,
-        useCORS: true,
-        letterRendering: true,
-        allowTaint: true
+    // Use html2canvas directly first, then jsPDF
+    html2canvas(tempDiv, {
+      scale: 1,
+      useCORS: true,
+      allowTaint: true,
+      backgroundColor: '#ffffff',
+      width: 800,
+      height: tempDiv.scrollHeight
+    }).then(canvas => {
+      const imgData = canvas.toDataURL('image/png');
+      const imgWidth = 190; // A4 width in mm minus margins
+      const pageHeight = 277; // A4 height in mm minus margins
+      const imgHeight = (canvas.height * imgWidth) / canvas.width;
+      let heightLeft = imgHeight;
+      let position = 10;
+      
+      // Add image to PDF, handle multiple pages
+      doc.addImage(imgData, 'PNG', 10, position, imgWidth, imgHeight);
+      heightLeft -= pageHeight;
+      
+      while (heightLeft >= 0) {
+        position = heightLeft - imgHeight + 10;
+        doc.addPage();
+        doc.addImage(imgData, 'PNG', 10, position, imgWidth, imgHeight);
+        heightLeft -= pageHeight;
       }
+      
+      doc.save('Ratification_Counterrevolution.pdf');
+      document.body.removeChild(tempDiv);
+      
+      // Restore buttons
+      const printBtn = document.querySelector('button[onclick*="print"]');
+      const downloadBtn = document.querySelector('button[onclick*="downloadPDF"]');
+      if (printBtn) printBtn.style.display = '';
+      if (downloadBtn) downloadBtn.style.display = '';
+      
+    }).catch(error => {
+      console.error('Canvas generation failed:', error);
+      document.body.removeChild(tempDiv);
+      
+      // Fallback: suggest using print instead
+      alert('PDF generation failed. Please use the Print button and save as PDF from your browser.');
+      
+      // Restore buttons
+      const printBtn = document.querySelector('button[onclick*="print"]');
+      const downloadBtn = document.querySelector('button[onclick*="downloadPDF"]');
+      if (printBtn) printBtn.style.display = '';
+      if (downloadBtn) downloadBtn.style.display = '';
     });
+    
   } catch (error) {
     console.error('PDF generation failed:', error);
-    alert('PDF generation failed. Please try again or use the print function.');
+    alert('PDF generation failed. Please use the Print button and save as PDF from your browser.');
     
     // Restore buttons on error
     const printBtn = document.querySelector('button[onclick*="print"]');
@@ -952,7 +1008,7 @@ function generatePDF() {
   </section>
 
   <footer style="text-align: center; color: var(--muted); font-size: 14px; margin-top: 40px; padding: 20px; border-top: 1px solid var(--border);">
-    Last updated: August 16, 2025 at 3:59 PM EDT
+    Last updated: August 16, 2025 at 4:05 PM EDT
   </footer>
 </div>
 
