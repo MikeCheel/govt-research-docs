@@ -393,25 +393,43 @@ hr.sep { border:none; height:1px; background: var(--border); margin: 12px 0; }
         }
 
         @media print {
-          .navbar { position: static; }
+          .navbar { 
+            position: static;
+            border-bottom: 2px solid #333;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+          }
+          .navbar button[onclick*="print"], 
+          .navbar button[onclick*="downloadPDF"] {
+            display: none !important;
+          }
           .tl-item { 
             page-break-inside: avoid; 
             break-inside: avoid;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
+            padding: 15px;
           }
           .section { 
             page-break-inside: avoid;
             break-inside: avoid;
-            margin-bottom: 30px;
+            margin-bottom: 35px;
+            padding: 20px;
           }
           .card { 
             page-break-inside: avoid;
             break-inside: avoid;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
+            padding: 15px;
           }
           .tl-body {
             page-break-inside: avoid;
             break-inside: avoid;
+            padding-top: 10px;
+          }
+          .tl-row {
+            page-break-inside: avoid;
+            break-inside: avoid;
+            margin-bottom: 8px;
           }
           .grid {
             page-break-inside: auto;
@@ -419,19 +437,38 @@ hr.sep { border:none; height:1px; background: var(--border); margin: 12px 0; }
           h1, h2, h3 {
             page-break-after: avoid;
             break-after: avoid;
+            page-break-before: auto;
+            break-before: auto;
           }
           .back-to-top { display: none !important; }
+          .navbar-divider { display: none !important; }
           body { 
             background: white !important; 
             color: black !important;
-            line-height: 1.4;
+            line-height: 1.5;
+            font-size: 12pt;
           }
           .section, .card, .tl-item { 
             background: white !important; 
-            border: 1px solid #ccc !important;
+            border: 1px solid #333 !important;
             box-shadow: none !important;
           }
-          a { color: #0066cc !important; }
+          .navbar-left, .navbar-right {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+          }
+          .nav-buttons {
+            display: none;
+          }
+          a { 
+            color: #0066cc !important;
+            text-decoration: underline;
+          }
+          .brand {
+            font-size: 18pt;
+            font-weight: bold;
+          }
         }
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
@@ -508,8 +545,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // PDF Download function
 function downloadPDF() {
+  // Hide print/download buttons during generation
+  const printBtn = document.querySelector('button[onclick*="print"]');
+  const downloadBtn = document.querySelector('button[onclick*="downloadPDF"]');
+  if (printBtn) printBtn.style.display = 'none';
+  if (downloadBtn) downloadBtn.style.display = 'none';
+  
   // Add jsPDF library if not already loaded
-  if (typeof jsPDF === 'undefined') {
+  if (typeof window.jspdf === 'undefined') {
     const script = document.createElement('script');
     script.src = 'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js';
     script.onload = function() {
@@ -522,41 +565,66 @@ function downloadPDF() {
 }
 
 function generatePDF() {
-  const { jsPDF } = window.jspdf;
-  const doc = new jsPDF();
-  
-  // Get the current theme and style
-  const theme = document.body.getAttribute('data-theme') || 'light';
-  const style = document.body.getAttribute('data-style') || 'default';
-  
-  // Clone the content and apply current styles
-  const content = document.querySelector('.container').cloneNode(true);
-  
-  // Remove interactive elements
-  content.querySelectorAll('.navbar, .back-to-top').forEach(el => el.remove());
-  
-  // Create a temporary container with current styles
-  const tempDiv = document.createElement('div');
-  tempDiv.setAttribute('data-theme', theme);
-  tempDiv.setAttribute('data-style', style);
-  tempDiv.style.position = 'absolute';
-  tempDiv.style.left = '-9999px';
-  tempDiv.style.width = '210mm';
-  tempDiv.style.padding = '20px';
-  tempDiv.appendChild(content);
-  document.body.appendChild(tempDiv);
-  
-  // Generate PDF with current styling
-  doc.html(tempDiv, {
-    callback: function(doc) {
-      doc.save('Ratification_Counterrevolution.pdf');
-      document.body.removeChild(tempDiv);
-    },
-    x: 10,
-    y: 10,
-    width: 190,
-    windowWidth: 800
-  });
+  try {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF('p', 'mm', 'a4');
+    
+    // Clone the entire page content
+    const originalContent = document.documentElement.cloneNode(true);
+    
+    // Remove interactive elements from clone
+    originalContent.querySelectorAll('.back-to-top, button[onclick*="print"], button[onclick*="downloadPDF"], .navbar-divider, .nav-buttons').forEach(el => el.remove());
+    
+    // Force light theme for PDF and clean styling
+    originalContent.querySelector('body').setAttribute('data-theme', 'light');
+    originalContent.querySelector('body').setAttribute('data-style', 'default');
+    
+    // Create a temporary container
+    const tempDiv = document.createElement('div');
+    tempDiv.innerHTML = originalContent.querySelector('body').innerHTML;
+    tempDiv.style.position = 'absolute';
+    tempDiv.style.left = '-9999px';
+    tempDiv.style.width = '210mm';
+    tempDiv.style.padding = '20px';
+    tempDiv.style.background = 'white';
+    tempDiv.style.color = 'black';
+    tempDiv.style.fontSize = '12pt';
+    tempDiv.style.lineHeight = '1.5';
+    document.body.appendChild(tempDiv);
+    
+    // Generate PDF with improved settings
+    doc.html(tempDiv, {
+      callback: function(doc) {
+        doc.save('Ratification_Counterrevolution.pdf');
+        document.body.removeChild(tempDiv);
+        
+        // Restore print/download buttons
+        const printBtn = document.querySelector('button[onclick*="print"]');
+        const downloadBtn = document.querySelector('button[onclick*="downloadPDF"]');
+        if (printBtn) printBtn.style.display = '';
+        if (downloadBtn) downloadBtn.style.display = '';
+      },
+      x: 15,
+      y: 15,
+      width: 180,
+      windowWidth: 800,
+      html2canvas: {
+        scale: 0.6,
+        useCORS: true,
+        letterRendering: true,
+        allowTaint: true
+      }
+    });
+  } catch (error) {
+    console.error('PDF generation failed:', error);
+    alert('PDF generation failed. Please try again or use the print function.');
+    
+    // Restore buttons on error
+    const printBtn = document.querySelector('button[onclick*="print"]');
+    const downloadBtn = document.querySelector('button[onclick*="downloadPDF"]');
+    if (printBtn) printBtn.style.display = '';
+    if (downloadBtn) downloadBtn.style.display = '';
+  }
 }
 </script>
 </head>
@@ -884,7 +952,7 @@ function generatePDF() {
   </section>
 
   <footer style="text-align: center; color: var(--muted); font-size: 14px; margin-top: 40px; padding: 20px; border-top: 1px solid var(--border);">
-    Last updated: August 16, 2025 at 3:35 PM EDT
+    Last updated: August 16, 2025 at 3:59 PM EDT
   </footer>
 </div>
 
