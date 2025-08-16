@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Ratification & Centralization (1787–1790): Tactics, Counterarguments, and Sources</title>
+<style>
+:root {
+            --bg-color: #ffffff;
+            --text-color: #333333;
+            --card-bg: #f8fafc;
+            --card-border: #e2e8f0;
+            --accent-color: #4f46e5;
+            --accent-hover: #4338ca;
+            --shadow: rgba(0, 0, 0, 0.1);
+            --shadow-hover: rgba(0, 0, 0, 0.15);
+            --panel: var(--card-bg);
+            --panel-bright: #f1f5f9;
+            --card: var(--card-bg);
+            --muted: #64748b;
+            --danger: #ef4444;
+            --ok: #22c55e;
+            --border: var(--card-border);
+            --blur: blur(8px);
+            --radius: 16px;
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #0f172a;
+            --text-color: #e2e8f0;
+            --card-bg: #1e293b;
+            --card-border: #334155;
+            --accent-color: #6366f1;
+            --accent-hover: #8b5cf6;
+            --shadow: rgba(0, 0, 0, 0.3);
+            --shadow-hover: rgba(0, 0, 0, 0.4);
+            --panel: var(--card-bg);
+            --panel-bright: #334155;
+            --card: var(--card-bg);
+            --muted: #94a3b8;
+            --danger: #ef4444;
+            --ok: #22c55e;
+            --border: var(--card-border);
+        }
+* { box-sizing: border-box; }
+html, body { margin:0; padding:0; background:var(--bg-color); color:var(--text-color); font:15.5px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; transition: background-color 0.3s ease, color 0.3s ease; }
+a { color: var(--accent-color); text-decoration: none; }
+a:hover { text-decoration: underline; }
+.navbar {
+  position: sticky; top:0; z-index:10;
+  backdrop-filter: var(--blur);
+  background: var(--panel);
+  border-bottom: 1px solid var(--border);
+  display:flex; align-items:center; gap:10px;
+  padding:10px 14px;
+}
+.navbar .brand { font-weight:700; letter-spacing:.3px; }
+.navbar .spacer { flex:1; }
+.navbar button, .navbar select {
+  background: var(--panel-bright); color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 10px; padding: 8px 10px; cursor: pointer;
+}
+.navbar button:hover { background: var(--panel); }
+.navbar select { appearance: none; }
+.container { max-width: 1100px; margin: 0 auto; padding: 22px 16px 60px; }
+.section { background: var(--panel); border:1px solid var(--border); border-radius: var(--radius); padding:18px; margin:16px 0; box-shadow: var(--shadow); }
+.section h2 { margin:0 0 10px; font-size: 20px; }
+.grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:14px; }
+.card { background: var(--card); border:1px solid var(--border); border-radius: var(--radius); padding:14px; }
+.card-title { font-weight:700; margin-bottom:4px; }
+.card-role { color: var(--muted); margin-bottom:8px; font-size: 14px; }
+.facts { padding-left: 18px; margin: 6px 0 8px; }
+.links { font-size:14px; color: var(--muted); }
+.tl-item { background: var(--card); border:1px solid var(--border); border-radius: var(--radius); margin:10px 0; }
+.tl-item > summary { list-style:none; cursor:pointer; padding:10px 12px; display:flex; align-items:center; gap:8px; }
+.tl-item > summary::-webkit-details-marker { display:none; }
+.tl-item[open] > summary { background: var(--panel-bright); border-bottom:1px solid var(--border); border-top-left-radius: var(--radius); border-top-right-radius: var(--radius); }
+.tl-date { font-weight:700; }
+.tl-body { padding: 10px 12px 12px; }
+.tl-row { display:grid; grid-template-columns: 190px 1fr; gap:10px; margin:6px 0; }
+.lbl { color: var(--muted); }
+.lbl.bad { color: var(--danger); font-weight:700; }
+.lbl.good { color: var(--ok); font-weight:700; }
+.lbl.neutral { color: var(--muted); font-weight:700; }
+.tl-links { margin-top: 8px; font-size: 14px; color: var(--muted); }
+.refs { font-size: 14px; color: var(--muted); }
+h1 { margin: 8px 0 6px; font-size: 24px; }
+.lede { color: var(--muted); }
+hr.sep { border:none; height:1px; background: var(--border); margin: 12px 0; }
+/* Glassmorphism Style */
+        [data-style="glassmorphism"] {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        [data-style="glassmorphism"] .container {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: 20px;
+        }
+
+        [data-style="glassmorphism"][data-theme="dark"] .container {
+            background: rgba(15, 23, 42, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        [data-style="glassmorphism"] .section {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+        }
+
+        [data-style="glassmorphism"][data-theme="dark"] .section {
+            background: rgba(30, 41, 59, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        [data-style="glassmorphism"] .card,
+        [data-style="glassmorphism"] .tl-item {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        [data-style="glassmorphism"][data-theme="dark"] .card,
+        [data-style="glassmorphism"][data-theme="dark"] .tl-item {
+            background: rgba(30, 41, 59, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        [data-style="glassmorphism"] .navbar {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+        }
+
+        [data-style="glassmorphism"][data-theme="dark"] .navbar {
+            background: rgba(15, 23, 42, 0.4);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Neumorphism Style */
+        [data-style="neumorphism"] {
+            background: #e0e5ec;
+        }
+
+        [data-style="neumorphism"][data-theme="dark"] {
+            background: #2d3748;
+        }
+
+        [data-style="neumorphism"] .container {
+            background: #e0e5ec;
+            box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff;
+            border-radius: 20px;
+            border: none;
+        }
+
+        [data-style="neumorphism"][data-theme="dark"] .container {
+            background: #2d3748;
+            box-shadow: 20px 20px 60px #1a202c, -20px -20px 60px #404c5a;
+        }
+
+        [data-style="neumorphism"] .section {
+            background: #e0e5ec;
+            box-shadow: inset 5px 5px 10px #bebebe, inset -5px -5px 10px #ffffff;
+            border: none;
+            border-radius: 15px;
+        }
+
+        [data-style="neumorphism"][data-theme="dark"] .section {
+            background: #2d3748;
+            box-shadow: inset 5px 5px 10px #1a202c, inset -5px -5px 10px #404c5a;
+        }
+
+        [data-style="neumorphism"] .card,
+        [data-style="neumorphism"] .tl-item {
+            background: #e0e5ec;
+            box-shadow: inset 3px 3px 6px #bebebe, inset -3px -3px 6px #ffffff;
+            border: none;
+            border-radius: 12px;
+        }
+
+        [data-style="neumorphism"][data-theme="dark"] .card,
+        [data-style="neumorphism"][data-theme="dark"] .tl-item {
+            background: #2d3748;
+            box-shadow: inset 3px 3px 6px #1a202c, inset -3px -3px 6px #404c5a;
+        }
+
+        [data-style="neumorphism"] .navbar {
+            background: #e0e5ec;
+            box-shadow: 5px 5px 10px #bebebe, -5px -5px 10px #ffffff;
+            border: none;
+        }
+
+        [data-style="neumorphism"][data-theme="dark"] .navbar {
+            background: #2d3748;
+            box-shadow: 5px 5px 10px #1a202c, -5px -5px 10px #404c5a;
+        }
+
+        /* Glassmorphism specific adjustments for controls */
+        [data-style="glassmorphism"] .navbar button,
+        [data-style="glassmorphism"] .navbar select {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        [data-style="glassmorphism"][data-theme="dark"] .navbar button,
+        [data-style="glassmorphism"][data-theme="dark"] .navbar select {
+            background: rgba(30, 41, 59, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* Neumorphism specific adjustments for controls */
+        [data-style="neumorphism"] .navbar button,
+        [data-style="neumorphism"] .navbar select {
+            background: #e0e5ec;
+            box-shadow: inset 3px 3px 6px #bebebe, inset -3px -3px 6px #ffffff;
+            border: none;
+        }
+
+        [data-style="neumorphism"][data-theme="dark"] .navbar button,
+        [data-style="neumorphism"][data-theme="dark"] .navbar select {
+            background: #2d3748;
+            box-shadow: inset 3px 3px 6px #1a202c, inset -3px -3px 6px #404c5a;
+        }
+
+        /* Theme controls styling */
+        .style-selector {
+            background: var(--panel);
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            padding: 0.5rem;
+            color: var(--text-color);
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .style-selector:hover {
+            border-color: var(--accent-color);
+        }
+
+        .style-selector option {
+            background: var(--panel);
+            color: var(--text-color);
+        }
+
+        .theme-toggle {
+            background: var(--panel);
+            border: 2px solid var(--border);
+            border-radius: 50px;
+            width: 60px;
+            height: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            padding: 2px;
+        }
+
+        .theme-toggle:hover {
+            border-color: var(--accent-color);
+        }
+
+        .theme-toggle-slider {
+            width: 24px;
+            height: 24px;
+            background: var(--accent-color);
+            border-radius: 50%;
+            transition: transform 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            color: white;
+        }
+
+        [data-theme="dark"] .theme-toggle-slider {
+            transform: translateX(28px);
+        }
+
+        @media print {
+          .navbar { position: static; }
+          .tl-item { page-break-inside: avoid; }
+        }
+</style>
+<script>
+function gotoSection(id) {
+  document.getElementById(id).scrollIntoView({behavior:'smooth', block:'start'});
+}
+function filterTimeline() {
+  const dd = document.getElementById('filter');
+  const val = dd.value;
+  const items = Array.from(document.querySelectorAll('.tl-item'));
+  items.forEach(el => { el.style.display = ''; });
+  if (val === 'all') return;
+  items.forEach(el => {
+    const who = el.querySelector('.tl-who').textContent.toLowerCase();
+    if (!who.includes(val.toLowerCase())) el.style.display = 'none';
+  });
+}
+
+// Theme and style functionality
+document.addEventListener('DOMContentLoaded', () => {
+  const themeToggle = document.getElementById('themeToggle');
+  const styleSelector = document.getElementById('styleSelector');
+  const body = document.body;
+  const slider = themeToggle.querySelector('.theme-toggle-slider');
+
+  // Load saved preferences or default values
+  const savedTheme = localStorage.getItem('theme') || 'light';
+  const savedStyle = localStorage.getItem('style') || 'default';
+  
+  body.setAttribute('data-theme', savedTheme);
+  body.setAttribute('data-style', savedStyle);
+  styleSelector.value = savedStyle;
+  updateToggleIcon(savedTheme);
+
+  // Theme toggle functionality
+  themeToggle.addEventListener('click', () => {
+    const currentTheme = body.getAttribute('data-theme');
+    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+    
+    body.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+    updateToggleIcon(newTheme);
+  });
+
+  // Style selector functionality
+  styleSelector.addEventListener('change', (e) => {
+    const newStyle = e.target.value;
+    body.setAttribute('data-style', newStyle);
+    localStorage.setItem('style', newStyle);
+  });
+
+  function updateToggleIcon(theme) {
+    // Show sun when light mode (click to go to dark)
+    // Show moon when dark mode (click to go to light)
+    slider.textContent = theme === 'light' ? '☀️' : '🌙';
+  }
+});
+</script>
+</head>
+<body data-theme="light" data-style="default">
+<nav class="navbar">
+  <div class="brand">Ratification & Centralization (1787–1790)</div>
+  <div class="spacer"></div>
+  <button onclick="gotoSection('intro')">Intro</button>
+  <button onclick="gotoSection('players')">Key Players</button>
+  <button onclick="gotoSection('timeline')">Timeline</button>
+  <button onclick="gotoSection('responses')">Anti‑Federalists</button>
+  <button onclick="gotoSection('analysis')">Analysis</button>
+  <button onclick="gotoSection('refs')">References</button>
+  <select id="filter" onchange="filterTimeline()">
+    <option value="all">Filter timeline by actor…</option>
+    <option>Hamilton</option>
+    <option>Madison</option>
+    <option>Wilson</option>
+    <option>Morris</option>
+    <option>Jay</option>
+    <option>Washington</option>
+    <option>Franklin</option>
+    <option>Randolph</option>
+    <option>Pinckney</option>
+    <option>Hancock</option>
+    <option>Adams</option>
+  </select>
+  <select class="style-selector" id="styleSelector">
+    <option value="default">Default</option>
+    <option value="glassmorphism">Glassmorphism</option>
+    <option value="neumorphism">Neumorphism</option>
+  </select>
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+    <div class="theme-toggle-slider">☀️</div>
+  </button>
+</nav>
+
+<div class="container">
+  <section id="intro" class="section">
+    <h1>From Confederation to Constitution: Underhanded Maneuvers & the Counter‑Movement</h1>
+    <p class="lede">This page documents how leading Federalists advocated a <strong>strong central government</strong> and employed tactics that critics
+    described as <strong>underhanded or subversive</strong> to secure ratification—paired with Anti‑Federalist responses, quotes, and verifiable links.
+    Styling, dark mode, and navigation remain unchanged.</p>
+  </section>
+
+  <section id="players" class="section">
+    <h2>Key Players (Equal Treatment)</h2>
+    <div class="grid">
+      
+        <div class="card">
+          <div class="card-title">Alexander Hamilton</div>
+          <div class="card-role">NY delegate; co‑author of The Federalist</div>
+          <ul class="facts"><li>June 18, 1787 speech advocating life‑tenure executive and senate.</li><li>Argued for broad national powers for defense &amp; finance.</li></ul>
+          <div class="links"><a href="https://avalon.law.yale.edu/18th_century/debates_618.asp" target="_blank" rel="noopener">Speech (June 18, 1787)</a> • <a href="https://avalon.law.yale.edu/18th_century/fed23.asp" target="_blank" rel="noopener">Federalist No. 23</a> • <a href="https://founders.archives.gov/documents/Hamilton/01-04-02-0215" target="_blank" rel="noopener">Federalist No. 22 (energy)</a></div>
+        </div>
+        
+        <div class="card">
+          <div class="card-title">James Madison</div>
+          <div class="card-role">VA delegate; architect of the Virginia Plan</div>
+          <ul class="facts"><li>Coordinated convention strategy; pushed national supremacy.</li><li>Co‑authored The Federalist to defend expanded federal powers.</li></ul>
+          <div class="links"><a href="https://consource.org/document/farrand-vol-1/" target="_blank" rel="noopener">Farrand&#x27;s Records (ConSource portal)</a> • <a href="https://guides.loc.gov/federalist-papers" target="_blank" rel="noopener">The Federalist (LOC overview)</a></div>
+        </div>
+        
+        <div class="card">
+          <div class="card-title">James Wilson</div>
+          <div class="card-role">PA delegate; public advocate</div>
+          <ul class="facts"><li>State House Yard Speech, Oct. 6, 1787, framed an energetic national authority.</li></ul>
+          <div class="links"><a href="https://teachingamericanhistory.org/document/state-house-yard-speech/" target="_blank" rel="noopener">State House Yard Speech</a></div>
+        </div>
+        
+        <div class="card">
+          <div class="card-title">Gouverneur Morris</div>
+          <div class="card-role">PA delegate; draftsman</div>
+          <ul class="facts"><li>Advocated a vigorous, independent executive and national supremacy.</li></ul>
+          <div class="links"><a href="https://memory.loc.gov/ammem/amlaw/lwfr.html" target="_blank" rel="noopener">Convention remarks (Farrand)</a></div>
+        </div>
+        
+        <div class="card">
+          <div class="card-title">John Jay</div>
+          <div class="card-role">Diplomat; co‑author of The Federalist</div>
+          <ul class="facts"><li>Emphasized national union and the need for energetic government.</li></ul>
+          <div class="links"><a href="https://avalon.law.yale.edu/subject_menus/fed.asp" target="_blank" rel="noopener">The Federalist Papers</a></div>
+        </div>
+        
+        <div class="card">
+          <div class="card-title">George Washington</div>
+          <div class="card-role">Convention president</div>
+          <ul class="facts"><li>His support legitimized the push for a stronger central government.</li></ul>
+          <div class="links"><a href="https://founders.archives.gov/" target="_blank" rel="noopener">Farrand/Founders Online</a></div>
+        </div>
+        
+        <div class="card">
+          <div class="card-title">Benjamin Franklin</div>
+          <div class="card-role">PA delegate; elder statesman</div>
+          <ul class="facts"><li>Closing speech urged unanimous signing despite doubts.</li></ul>
+          <div class="links"><a href="https://avalon.law.yale.edu/18th_century/franklin.asp" target="_blank" rel="noopener">Closing Speech (Sept. 17, 1787)</a></div>
+        </div>
+        
+        <div class="card">
+          <div class="card-title">Edmund Randolph</div>
+          <div class="card-role">VA delegate</div>
+          <ul class="facts"><li>Introduced the Virginia Plan establishing a stronger national framework.</li></ul>
+          <div class="links"><a href="https://avalon.law.yale.edu/18th_century/vatexta.asp" target="_blank" rel="noopener">Virginia Plan (Avalon)</a></div>
+        </div>
+        
+        <div class="card">
+          <div class="card-title">Charles Pinckney</div>
+          <div class="card-role">SC delegate</div>
+          <ul class="facts"><li>Promoted a comprehensive national plan and supported stronger federal structure.</li></ul>
+          <div class="links"><a href="https://avalon.law.yale.edu/18th_century/pinckney.asp" target="_blank" rel="noopener">Pinckney Plan (Avalon)</a></div>
+        </div>
+        
+        <div class="card">
+          <div class="card-title">Robert Morris</div>
+          <div class="card-role">PA financier</div>
+          <ul class="facts"><li>Backed PA Federalists and national fiscal authority.</li></ul>
+          <div class="links"><a href="https://founders.archives.gov/people/Morris-Ro" target="_blank" rel="noopener">Founders Online</a></div>
+        </div>
+        
+        <div class="card">
+          <div class="card-title">John Hancock &amp; Samuel Adams</div>
+          <div class="card-role">MA leaders</div>
+          <ul class="facts"><li>Brokered the ‘Massachusetts Compromise’ (ratify now, recommend amendments).</li></ul>
+          <div class="links"><a href="https://www.masshist.org/collection-guides/view/fa0120" target="_blank" rel="noopener">Massachusetts Ratifying Convention</a></div>
+        </div>
+        
+    </div>
+  </section>
+
+  <section id="timeline" class="section">
+    <h2>Step‑by‑Step Timeline (HTML, not an image)</h2>
+    <p class="refs">Tip: Use the filter in the navbar to show entries by actor.</p>
+    
+        <details class="tl-item" open>
+          <summary>
+            <span class="tl-date">⏳ May 29, 1787</span>
+            <span class="tl-who">— <strong>Delegates; Madison; Randolph</strong></span>
+            <span class="tl-where">(Philadelphia Convention)</span>
+          </summary>
+          <div class="tl-body">
+            <div class="tl-row"><span class="lbl">What happened</span><div class="val">Convention adopts a strict rule of secrecy and receives the Virginia Plan (a comprehensive blueprint for a stronger national government).</div></div>
+            <div class="tl-row"><span class="lbl bad">Why it was underhanded</span><div class="val">Secrecy insulated deliberations from public scrutiny and pre‑empted incremental amendment by putting a ready‑made centralized blueprint on the table.</div></div>
+            <div class="tl-row"><span class="lbl good">Outcome</span><div class="val">Set the agenda around replacing (not merely amending) the Articles of Confederation.</div></div>
+            <div class="tl-row"><span class="lbl neutral">Anti‑Federalist response</span><div class="val">“The people are entitled to full knowledge of the changes proposed to their government. — Pennsylvania dissenters (Dec. 1787).”</div></div>
+            <div class="tl-links">Sources: <a href="https://consource.org/document/rules-of-the-convention-1787-5-28/" target="_blank" rel="noopener">Rule of Secrecy (Farrand/ConSource)</a> • <a href="https://avalon.law.yale.edu/18th_century/vatexta.asp" target="_blank" rel="noopener">Virginia Plan (Avalon)</a> • <a href="https://teachingamericanhistory.org/document/pennsylvania-minority-dissent/" target="_blank" rel="noopener">Pennsylvania Minority Dissent</a></div>
+          </div>
+        </details>
+        
+        <details class="tl-item" open>
+          <summary>
+            <span class="tl-date">⏳ June 18, 1787</span>
+            <span class="tl-who">— <strong>Alexander Hamilton</strong></span>
+            <span class="tl-where">(Philadelphia Convention)</span>
+          </summary>
+          <div class="tl-body">
+            <div class="tl-row"><span class="lbl">What happened</span><div class="val">Marathon address proposing life‑tenure executive and senate; praises British ‘energy’ as a model.</div></div>
+            <div class="tl-row"><span class="lbl bad">Why it was underhanded</span><div class="val">Anchoring tactic: by advocating a maximal model bordering on monarchy, Hamilton shifted the Overton window so a very strong but term‑limited central government would feel moderate.</div></div>
+            <div class="tl-row"><span class="lbl good">Outcome</span><div class="val">Though rejected in form, the debate moved toward embracing ‘energy’ and broad national powers.</div></div>
+            <div class="tl-row"><span class="lbl neutral">Anti‑Federalist response</span><div class="val">“[The Constitution] would effect a consolidation of the states. — Brutus I (Oct. 18, 1787).”</div></div>
+            <div class="tl-links">Sources: <a href="https://avalon.law.yale.edu/18th_century/debates_618.asp" target="_blank" rel="noopener">Hamilton Speech (Avalon)</a> • <a href="https://teachingamericanhistory.org/document/brutus-i/" target="_blank" rel="noopener">Brutus I</a></div>
+          </div>
+        </details>
+        
+        <details class="tl-item" open>
+          <summary>
+            <span class="tl-date">⏳ Sept. 17, 1787</span>
+            <span class="tl-who">— <strong>Benjamin Franklin</strong></span>
+            <span class="tl-where">(Philadelphia Convention)</span>
+          </summary>
+          <div class="tl-body">
+            <div class="tl-row"><span class="lbl">What happened</span><div class="val">Closing speech urges unanimous signing despite reservations, to present a united front to the public.</div></div>
+            <div class="tl-row"><span class="lbl bad">Why it was underhanded</span><div class="val">Unity pressure: by emphasizing unanimity, dissenting delegates were encouraged to sign despite misgivings, limiting visible alternatives and dampening public opposition.</div></div>
+            <div class="tl-row"><span class="lbl good">Outcome</span><div class="val">All state delegations present sign; one text goes to the people.</div></div>
+            <div class="tl-row"><span class="lbl neutral">Anti‑Federalist response</span><div class="val">“A bill of rights is essential to liberty. — Anti‑Federalist addresses, 1787–88.”</div></div>
+            <div class="tl-links">Sources: <a href="https://avalon.law.yale.edu/18th_century/franklin.asp" target="_blank" rel="noopener">Franklin Closing Speech</a></div>
+          </div>
+        </details>
+        
+        <details class="tl-item" open>
+          <summary>
+            <span class="tl-date">⏳ Oct. 6, 1787</span>
+            <span class="tl-who">— <strong>James Wilson</strong></span>
+            <span class="tl-where">(Philadelphia &amp; Pennsylvania)</span>
+          </summary>
+          <div class="tl-body">
+            <div class="tl-row"><span class="lbl">What happened</span><div class="val">State House Yard Speech presents the Constitution as balanced yet energetic.</div></div>
+            <div class="tl-row"><span class="lbl bad">Why it was underhanded</span><div class="val">Narrative preemption: a mass meeting and rapid pamphleteering framed public debate before opponents fully organized, branding critics as alarmists.</div></div>
+            <div class="tl-row"><span class="lbl good">Outcome</span><div class="val">Boosted ratification momentum in PA and other states.</div></div>
+            <div class="tl-row"><span class="lbl neutral">Anti‑Federalist response</span><div class="val">“The powers of the consolidated government are immense. — Pennsylvania Minority Dissent (Dec. 18, 1787).”</div></div>
+            <div class="tl-links">Sources: <a href="https://teachingamericanhistory.org/document/state-house-yard-speech/" target="_blank" rel="noopener">Wilson Speech</a> • <a href="https://teachingamericanhistory.org/document/pennsylvania-minority-dissent/" target="_blank" rel="noopener">PA Minority Dissent</a></div>
+          </div>
+        </details>
+        
+        <details class="tl-item" open>
+          <summary>
+            <span class="tl-date">⏳ Feb. 6, 1788</span>
+            <span class="tl-who">— <strong>John Hancock; Samuel Adams; Federalists &amp; Opponents</strong></span>
+            <span class="tl-where">(Massachusetts)</span>
+          </summary>
+          <div class="tl-body">
+            <div class="tl-row"><span class="lbl">What happened</span><div class="val">‘Massachusetts Compromise’: ratify now, recommend a bill of rights and structural amendments.</div></div>
+            <div class="tl-row"><span class="lbl bad">Why it was underhanded</span><div class="val">Back‑room coalition &amp; conditional framing coaxed fence‑sitters to accept ratification first, diluting leverage to demand changes prior to adoption.</div></div>
+            <div class="tl-row"><span class="lbl good">Outcome</span><div class="val">Ratifies 187–168; model spreads to NH, VA, and NY.</div></div>
+            <div class="tl-row"><span class="lbl neutral">Anti‑Federalist response</span><div class="val">“First secure rights, then grant powers. — Anti‑Federalist theme in MA debates.”</div></div>
+            <div class="tl-links">Sources: <a href="https://www.masshist.org/collection-guides/view/fa0120" target="_blank" rel="noopener">MHS – Ratifying Convention</a> • <a href="https://constitutioncenter.org/" target="_blank" rel="noopener">NCC – Recommended Amendments</a></div>
+          </div>
+        </details>
+        
+        <details class="tl-item" open>
+          <summary>
+            <span class="tl-date">⏳ Feb.–Jun. 1788</span>
+            <span class="tl-who">— <strong>NH Federalists; John Langdon; John Sullivan</strong></span>
+            <span class="tl-where">(New Hampshire)</span>
+          </summary>
+          <div class="tl-body">
+            <div class="tl-row"><span class="lbl">What happened</span><div class="val">Adjourn when votes were lacking; reconvene after momentum built elsewhere.</div></div>
+            <div class="tl-row"><span class="lbl bad">Why it was underhanded</span><div class="val">Delay tactic avoided a public ‘No’ and allowed time for targeted lobbying and shifting public pressure.</div></div>
+            <div class="tl-row"><span class="lbl good">Outcome</span><div class="val">Ratifies on June 21, 1788 (the 9th state), triggering Article VII.</div></div>
+            <div class="tl-row"><span class="lbl neutral">Anti‑Federalist response</span><div class="val">“Adjournment was used to manufacture consent. — Contemporary Anti‑Federalist commentary.”</div></div>
+            <div class="tl-links">Sources: <a href="https://teachingamericanhistory.org/document/new-hampshire-ratification-of-the-constitution/" target="_blank" rel="noopener">NH Ratification (TAH)</a> • <a href="https://avalon.law.yale.edu/18th_century/art7.asp" target="_blank" rel="noopener">Article VII (Avalon)</a></div>
+          </div>
+        </details>
+        
+        <details class="tl-item" open>
+          <summary>
+            <span class="tl-date">⏳ 1787–1788</span>
+            <span class="tl-who">— <strong>Hamilton; Madison; Jay (as ‘Publius’)</strong></span>
+            <span class="tl-where">(New York)</span>
+          </summary>
+          <div class="tl-body">
+            <div class="tl-row"><span class="lbl">What happened</span><div class="val">Coordinate The Federalist essays to argue for energetic national powers.</div></div>
+            <div class="tl-row"><span class="lbl bad">Why it was underhanded</span><div class="val">Elite media campaign: coordinated serial essays framed consolidation as necessary for defense and prosperity, marginalizing Anti‑Federalists as parochial or anti‑union.</div></div>
+            <div class="tl-row"><span class="lbl good">Outcome</span><div class="val">Created the intellectual case for conditional ratification; NY ratifies after VA &amp; NH.</div></div>
+            <div class="tl-row"><span class="lbl neutral">Anti‑Federalist response</span><div class="val">“A free republic cannot succeed over a territory of such immense extent. — Brutus I.”</div></div>
+            <div class="tl-links">Sources: <a href="https://avalon.law.yale.edu/subject_menus/fed.asp" target="_blank" rel="noopener">Federalist Papers (Avalon)</a> • <a href="https://teachingamericanhistory.org/document/brutus-i/" target="_blank" rel="noopener">Brutus I</a></div>
+          </div>
+        </details>
+        
+        <details class="tl-item" open>
+          <summary>
+            <span class="tl-date">⏳ July 1788</span>
+            <span class="tl-who">— <strong>NY Convention (mixed)</strong></span>
+            <span class="tl-where">(New York)</span>
+          </summary>
+          <div class="tl-body">
+            <div class="tl-row"><span class="lbl">What happened</span><div class="val">‘Circular Letter’ urges a second convention to secure amendments post‑ratification.</div></div>
+            <div class="tl-row"><span class="lbl bad">Why it was underhanded</span><div class="val">Split‑the‑difference compromise ratified first (to avoid isolation) while promising later changes—lowering immediate opposition without binding outcomes.</div></div>
+            <div class="tl-row"><span class="lbl good">Outcome</span><div class="val">NY ratifies; amendment campaign escalates nationally.</div></div>
+            <div class="tl-row"><span class="lbl neutral">Anti‑Federalist response</span><div class="val">“Promises of future amendments are no substitute for present securities. — Anti‑Federalists in NY.”</div></div>
+            <div class="tl-links">Sources: <a href="https://constitutioncenter.org/the-constitution/historic-document-library/detail/new-york-circular-letter" target="_blank" rel="noopener">NY Circular Letter (NCC)</a></div>
+          </div>
+        </details>
+        
+        <details class="tl-item" open>
+          <summary>
+            <span class="tl-date">⏳ May 1790</span>
+            <span class="tl-who">— <strong>U.S. Congress; RI leadership</strong></span>
+            <span class="tl-where">(Rhode Island)</span>
+          </summary>
+          <div class="tl-body">
+            <div class="tl-row"><span class="lbl">What happened</span><div class="val">Non‑Intercourse Act threatens trade sanctions unless RI ratifies.</div></div>
+            <div class="tl-row"><span class="lbl bad">Why it was underhanded</span><div class="val">Economic coercion leveraged federal power to compel a holdout state to join.</div></div>
+            <div class="tl-row"><span class="lbl good">Outcome</span><div class="val">Rhode Island ratifies on May 29, 1790 as the 13th state.</div></div>
+            <div class="tl-row"><span class="lbl neutral">Anti‑Federalist response</span><div class="val">“Coercion proves the danger of consolidation. — Anti‑Federalist pamphleteers.”</div></div>
+            <div class="tl-links">Sources: <a href="https://www.senate.gov/about/origins-foundations/senate-and-constitution/rhode-island-and-constitution.htm" target="_blank" rel="noopener">Senate Historical Office – Rhode Island &amp; the Constitution</a></div>
+          </div>
+        </details>
+        
+  </section>
+
+  <section id="responses" class="section">
+    <h2>Anti‑Federalist Responses & Core Themes</h2>
+    <ul>
+      <li><strong>Brutus I (Oct. 18, 1787)</strong> — Warned that the Constitution would ‘effect a consolidation’ and lead to an ‘unalterable, consolidated… government.’ (<a href="https://teachingamericanhistory.org/document/brutus-i/" target="_blank" rel="noopener">source</a>)</li><li><strong>Federal Farmer No. 1 (Nov. 1787)</strong> — Objected to indefinite federal powers; urged a bill of rights and protection of state authority. (<a href="https://teachingamericanhistory.org/document/letter-from-the-federal-farmer-to-the-republican-no-i/" target="_blank" rel="noopener">source</a>)</li><li><strong>Cato (1787–88)</strong> — Argued the proposed executive invited monarchy and that large republics fail to protect liberty. (<a href="https://teachingamericanhistory.org/document/cato-essay-1/" target="_blank" rel="noopener">source</a>)</li><li><strong>PA Minority Dissent (Dec. 18, 1787)</strong> — Documented constraints in the PA convention; argued the plan consolidated power and lacked a bill of rights. (<a href="https://teachingamericanhistory.org/document/pennsylvania-minority-dissent/" target="_blank" rel="noopener">source</a>)</li><li><strong>Patrick Henry (VA, June 1788)</strong> — Attacked the shift from ‘We, the states’ to ‘We, the people’ as the core of consolidation. (<a href="https://teachingamericanhistory.org/document/speech-of-patrick-henry-virginia-ratifying-convention-june-5-1788/" target="_blank" rel="noopener">source</a>)</li>
+    </ul>
+  </section>
+
+  <section id="analysis" class="section">
+    <h2>Separate Analysis (Counterrevolution Thesis with Links)</h2>
+    
+        <section class="analysis-section">
+          <h3>The ‘Counterrevolution’ Thesis</h3>
+          <p>Drawing on Rothbardian scholarship, Federalists advanced a centralized blueprint under the rhetoric of crisis and efficiency. The shift from the Articles to a national Constitution is framed as a ‘counterrevolution’ because it replaced a confederation of sovereign states with an energetic national state.</p>
+          <p class="refs">References: <a href="https://mises.org/mises-wire/1787-constitution-was-radical-assault-spirit-revolution" target="_blank" rel="noopener">Mises: Radical Assault on the Spirit of the Revolution</a> • <a href="https://mises.org/mises-wire/why-1787-constitution-did-not-bring-republican-government-america" target="_blank" rel="noopener">Mises: Why the 1787 Constitution Did Not Bring Republican Government</a></p>
+        </section>
+        
+        <section class="analysis-section">
+          <h3>Mechanics of Subversion</h3>
+          <p>Tactics included secrecy rules, agenda control (starting with full replacement drafts), narrative preemption via coordinated media, adjournment/delay to avoid ‘No’ votes, conditional ratification promises, and economic coercion—all documented across state proceedings and contemporary pamphlets.</p>
+          <p class="refs">References: <a href="https://consource.org/document/rules-of-the-convention-1787-5-28/" target="_blank" rel="noopener">Rules of the Convention (Secrecy)</a> • <a href="https://avalon.law.yale.edu/subject_menus/fed.asp" target="_blank" rel="noopener">Federalist Papers (Avalon index)</a> • <a href="https://www.senate.gov/about/origins-foundations/senate-and-constitution/rhode-island-and-constitution.htm" target="_blank" rel="noopener">Rhode Island &amp; the Constitution (Senate Historical Office)</a></p>
+        </section>
+        
+        <section class="analysis-section">
+          <h3>Anti‑Federalist Vision</h3>
+          <p>Anti‑Federalists consistently warned of consolidation, standing armies, distant courts, and loss of state sovereignty, demanding a bill of rights and structural limits. Their pressure produced the first ten amendments (Bill of Rights).</p>
+          <p class="refs">References: <a href="https://teachingamericanhistory.org/document/brutus-i/" target="_blank" rel="noopener">Brutus I</a> • <a href="https://teachingamericanhistory.org/document/letter-from-the-federal-farmer-to-the-republican-no-i/" target="_blank" rel="noopener">Federal Farmer</a> • <a href="https://teachingamericanhistory.org/document/pennsylvania-minority-dissent/" target="_blank" rel="noopener">Pennsylvania Minority Dissent</a></p>
+        </section>
+        
+  </section>
+
+  <section id="refs" class="section">
+    <h2>References & Primary Links</h2>
+    <ul>
+      <li><a href="https://mises.org/mises-wire/1787-constitution-was-radical-assault-spirit-revolution" target="_blank" rel="noopener">Mises Institute — The 1787 Constitution Was a Radical Assault on the Spirit of the Revolution</a></li>
+      <li><a href="https://mises.org/mises-wire/why-1787-constitution-did-not-bring-republican-government-america" target="_blank" rel="noopener">Mises Institute — Why the 1787 Constitution Did Not Bring Republican Government to America</a></li>
+      <li><a href="https://avalon.law.yale.edu/subject_menus/fed.asp" target="_blank" rel="noopener">Avalon Project — The Federalist Papers</a></li>
+      <li><a href="https://avalon.law.yale.edu/18th_century/debates_618.asp" target="_blank" rel="noopener">Avalon — Hamilton’s Speech, June 18, 1787</a></li>
+      <li><a href="https://teachingamericanhistory.org/document/state-house-yard-speech/" target="_blank" rel="noopener">TeachingAmericanHistory — James Wilson, State House Yard Speech</a></li>
+      <li><a href="https://teachingamericanhistory.org/document/pennsylvania-minority-dissent/" target="_blank" rel="noopener">TeachingAmericanHistory — Pennsylvania Minority Dissent</a></li>
+      <li><a href="https://teachingamericanhistory.org/document/brutus-i/" target="_blank" rel="noopener">TeachingAmericanHistory — Brutus I</a></li>
+      <li><a href="https://teachingamericanhistory.org/document/letter-from-the-federal-farmer-to-the-republican-no-i/" target="_blank" rel="noopener">TeachingAmericanHistory — Federal Farmer No. 1</a></li>
+      <li><a href="https://constitutioncenter.org/the-constitution/historic-document-library/detail/new-york-circular-letter" target="_blank" rel="noopener">National Constitution Center — New York Circular Letter</a></li>
+      <li><a href="https://teachingamericanhistory.org/document/new-hampshire-ratification-of-the-constitution/" target="_blank" rel="noopener">TeachingAmericanHistory — New Hampshire Ratification (June 21, 1788)</a></li>
+      <li><a href="https://avalon.law.yale.edu/18th_century/franklin.asp" target="_blank" rel="noopener">Avalon — Franklin’s Closing Speech (Sept. 17, 1787)</a></li>
+      <li><a href="https://avalon.law.yale.edu/18th_century/art7.asp" target="_blank" rel="noopener">Avalon — Article VII</a></li>
+      <li><a href="https://www.senate.gov/about/origins-foundations/senate-and-constitution/rhode-island-and-constitution.htm" target="_blank" rel="noopener">U.S. Senate Historical Office — Rhode Island & the Constitution</a></li>
+    </ul>
+  </section>
+</div>
+</body>
+</html>
