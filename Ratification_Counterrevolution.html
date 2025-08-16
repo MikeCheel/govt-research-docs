@@ -52,23 +52,88 @@ a:hover { text-decoration: underline; }
   backdrop-filter: var(--blur);
   background: var(--panel);
   border-bottom: 1px solid var(--border);
-  display:flex; align-items:center; gap:10px;
+  display:flex; align-items:center; justify-content:space-between;
   padding:10px 14px;
+  gap: 20px;
 }
-.navbar .brand { font-weight:700; letter-spacing:.3px; }
-.navbar .spacer { flex:1; }
+.navbar-left {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex: 1;
+}
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.nav-buttons {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.navbar .brand { 
+  font-weight:700; 
+  letter-spacing:.3px; 
+  white-space: nowrap;
+  min-width: fit-content;
+}
 .navbar button, .navbar select {
   background: var(--panel-bright); color: var(--text);
   border: 1px solid var(--border);
   border-radius: 10px; padding: 8px 10px; cursor: pointer;
+  white-space: nowrap;
 }
 .navbar button:hover { background: var(--panel); }
 .navbar select { appearance: none; }
 .navbar-divider {
-  width: 1px;
-  height: 24px;
+  width: 2px;
+  height: 30px;
   background: var(--border);
-  margin: 0 4px;
+  border-radius: 1px;
+  flex-shrink: 0;
+}
+
+@media (max-width: 1024px) {
+  .navbar {
+    flex-direction: column;
+    gap: 10px;
+    padding: 12px 14px;
+  }
+  .navbar-left {
+    width: 100%;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .navbar-right {
+    width: 100%;
+    justify-content: center;
+  }
+  .nav-buttons {
+    justify-content: center;
+    width: 100%;
+  }
+  .navbar-divider {
+    width: 80%;
+    height: 1px;
+    align-self: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-buttons {
+    flex-direction: column;
+    gap: 6px;
+  }
+  .navbar-right {
+    flex-direction: column;
+    gap: 8px;
+  }
+  .navbar button, .navbar select {
+    padding: 10px 12px;
+    font-size: 14px;
+  }
 }
 .container { max-width: 1100px; margin: 0 auto; padding: 22px 16px 60px; }
 .section { background: var(--panel); border:1px solid var(--border); border-radius: var(--radius); padding:18px; margin:16px 0; box-shadow: var(--shadow); }
@@ -329,10 +394,43 @@ hr.sep { border:none; height:1px; background: var(--border); margin: 12px 0; }
 
         @media print {
           .navbar { position: static; }
-          .tl-item { page-break-inside: avoid; }
+          .tl-item { 
+            page-break-inside: avoid; 
+            break-inside: avoid;
+            margin-bottom: 20px;
+          }
+          .section { 
+            page-break-inside: avoid;
+            break-inside: avoid;
+            margin-bottom: 30px;
+          }
+          .card { 
+            page-break-inside: avoid;
+            break-inside: avoid;
+            margin-bottom: 15px;
+          }
+          .tl-body {
+            page-break-inside: avoid;
+            break-inside: avoid;
+          }
+          .grid {
+            page-break-inside: auto;
+          }
+          h1, h2, h3 {
+            page-break-after: avoid;
+            break-after: avoid;
+          }
           .back-to-top { display: none !important; }
-          body { background: white !important; color: black !important; }
-          .section, .card, .tl-item { background: white !important; border: 1px solid #ccc !important; }
+          body { 
+            background: white !important; 
+            color: black !important;
+            line-height: 1.4;
+          }
+          .section, .card, .tl-item { 
+            background: white !important; 
+            border: 1px solid #ccc !important;
+            box-shadow: none !important;
+          }
           a { color: #0066cc !important; }
         }
 </style>
@@ -464,39 +562,44 @@ function generatePDF() {
 </head>
 <body data-theme="light" data-style="default">
 <nav class="navbar">
-  <div class="brand">Ratification & Centralization (1787–1790)</div>
-  <div class="spacer"></div>
-  <select class="style-selector" id="styleSelector">
-    <option value="default">Default</option>
-    <option value="glassmorphism">Glassmorphism</option>
-    <option value="neumorphism">Neumorphism</option>
-  </select>
-  <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-    <div class="theme-toggle-slider">☀️</div>
-  </button>
-  <button onclick="window.print()">🖨️ Print</button>
-  <button onclick="downloadPDF()">📄 Download PDF</button>
+  <div class="navbar-left">
+    <div class="brand">Ratification & Centralization (1787–1790)</div>
+    <div class="nav-buttons">
+      <button onclick="gotoSection('intro')">Intro</button>
+      <button onclick="gotoSection('players')">Key Players</button>
+      <button onclick="gotoSection('timeline')">Timeline</button>
+      <button onclick="gotoSection('responses')">Anti‑Federalists</button>
+      <button onclick="gotoSection('analysis')">Analysis</button>
+      <button onclick="gotoSection('refs')">References</button>
+      <select id="filter" onchange="filterTimeline()">
+        <option value="all">Filter timeline by actor…</option>
+        <option>Hamilton</option>
+        <option>Madison</option>
+        <option>Wilson</option>
+        <option>Morris</option>
+        <option>Jay</option>
+        <option>Washington</option>
+        <option>Franklin</option>
+        <option>Randolph</option>
+        <option>Pinckney</option>
+        <option>Hancock</option>
+        <option>Adams</option>
+      </select>
+    </div>
+  </div>
   <div class="navbar-divider"></div>
-  <button onclick="gotoSection('intro')">Intro</button>
-  <button onclick="gotoSection('players')">Key Players</button>
-  <button onclick="gotoSection('timeline')">Timeline</button>
-  <button onclick="gotoSection('responses')">Anti‑Federalists</button>
-  <button onclick="gotoSection('analysis')">Analysis</button>
-  <button onclick="gotoSection('refs')">References</button>
-  <select id="filter" onchange="filterTimeline()">
-    <option value="all">Filter timeline by actor…</option>
-    <option>Hamilton</option>
-    <option>Madison</option>
-    <option>Wilson</option>
-    <option>Morris</option>
-    <option>Jay</option>
-    <option>Washington</option>
-    <option>Franklin</option>
-    <option>Randolph</option>
-    <option>Pinckney</option>
-    <option>Hancock</option>
-    <option>Adams</option>
-  </select>
+  <div class="navbar-right">
+    <select class="style-selector" id="styleSelector">
+      <option value="default">Default</option>
+      <option value="glassmorphism">Glassmorphism</option>
+      <option value="neumorphism">Neumorphism</option>
+    </select>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+      <div class="theme-toggle-slider">☀️</div>
+    </button>
+    <button onclick="window.print()">🖨️ Print</button>
+    <button onclick="downloadPDF()">📄 Download PDF</button>
+  </div>
 </nav>
 
 <div class="container">
@@ -781,7 +884,7 @@ function generatePDF() {
   </section>
 
   <footer style="text-align: center; color: var(--muted); font-size: 14px; margin-top: 40px; padding: 20px; border-top: 1px solid var(--border);">
-    Last updated: August 16, 2025 at 3:13 PM EST
+    Last updated: August 16, 2025 at 3:30 PM EDT
   </footer>
 </div>
 
