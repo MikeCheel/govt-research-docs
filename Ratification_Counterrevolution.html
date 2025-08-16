@@ -324,8 +324,13 @@ hr.sep { border:none; height:1px; background: var(--border); margin: 12px 0; }
         @media print {
           .navbar { position: static; }
           .tl-item { page-break-inside: avoid; }
+          .back-to-top { display: none !important; }
+          body { background: white !important; color: black !important; }
+          .section, .card, .tl-item { background: white !important; border: 1px solid #ccc !important; }
+          a { color: #0066cc !important; }
         }
 </style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script>
 function gotoSection(id) {
   document.getElementById(id).scrollIntoView({behavior:'smooth', block:'start'});
@@ -399,7 +404,55 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // PDF Download function
 function downloadPDF() {
-  window.print();
+  // Add jsPDF library if not already loaded
+  if (typeof jsPDF === 'undefined') {
+    const script = document.createElement('script');
+    script.src = 'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js';
+    script.onload = function() {
+      generatePDF();
+    };
+    document.head.appendChild(script);
+  } else {
+    generatePDF();
+  }
+}
+
+function generatePDF() {
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF();
+  
+  // Get the current theme and style
+  const theme = document.body.getAttribute('data-theme') || 'light';
+  const style = document.body.getAttribute('data-style') || 'default';
+  
+  // Clone the content and apply current styles
+  const content = document.querySelector('.container').cloneNode(true);
+  
+  // Remove interactive elements
+  content.querySelectorAll('.navbar, .back-to-top').forEach(el => el.remove());
+  
+  // Create a temporary container with current styles
+  const tempDiv = document.createElement('div');
+  tempDiv.setAttribute('data-theme', theme);
+  tempDiv.setAttribute('data-style', style);
+  tempDiv.style.position = 'absolute';
+  tempDiv.style.left = '-9999px';
+  tempDiv.style.width = '210mm';
+  tempDiv.style.padding = '20px';
+  tempDiv.appendChild(content);
+  document.body.appendChild(tempDiv);
+  
+  // Generate PDF with current styling
+  doc.html(tempDiv, {
+    callback: function(doc) {
+      doc.save('Ratification_Counterrevolution.pdf');
+      document.body.removeChild(tempDiv);
+    },
+    x: 10,
+    y: 10,
+    width: 190,
+    windowWidth: 800
+  });
 }
 </script>
 </head>
@@ -721,7 +774,7 @@ function downloadPDF() {
   </section>
 
   <footer style="text-align: center; color: var(--muted); font-size: 14px; margin-top: 40px; padding: 20px; border-top: 1px solid var(--border);">
-    Last updated: August 16, 2025 at 3:54 PM EST
+    Last updated: August 16, 2025 at 11:54 AM EST
   </footer>
 </div>
 
