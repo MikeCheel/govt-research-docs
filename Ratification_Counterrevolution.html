@@ -80,13 +80,22 @@ a:hover { text-decoration: underline; }
   min-width: fit-content;
 }
 .navbar button, .navbar select {
-  background: var(--panel-bright); color: var(--text);
+  background: var(--panel-bright); 
+  color: var(--text-color);
   border: 1px solid var(--border);
-  border-radius: 10px; padding: 8px 10px; cursor: pointer;
+  border-radius: 10px; 
+  padding: 8px 10px; 
+  cursor: pointer;
   white-space: nowrap;
 }
 .navbar button:hover { background: var(--panel); }
-.navbar select { appearance: none; }
+.navbar select { 
+  appearance: none; 
+}
+.navbar select option {
+  background: var(--panel-bright);
+  color: var(--text-color);
+}
 .navbar-divider {
   width: 2px;
   height: 30px;
@@ -95,7 +104,7 @@ a:hover { text-decoration: underline; }
   flex-shrink: 0;
 }
 
-/* Hamburger menu styles */
+/* Hamburger menu styles - hidden by default (desktop) */
 .hamburger-menu {
   display: none;
   flex-direction: column;
@@ -162,18 +171,27 @@ a:hover { text-decoration: underline; }
     overflow: visible;
   }
   
+  /* Position hamburger menu on the right side on mobile */
+  .hamburger-menu {
+    display: flex;
+    order: 3;
+    margin-left: auto;
+  }
+  
   .navbar-left {
     display: flex;
     align-items: center;
     gap: 15px;
     flex: 1;
+    order: 1;
   }
   
   .navbar-right {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    flex: 0 0 auto;
+    display: none;
+  }
+  
+  .navbar-divider {
+    display: none;
   }
   
   .nav-buttons {
@@ -248,13 +266,6 @@ a:hover { text-decoration: underline; }
     display: none;
   }
   
-  .hamburger-menu {
-    display: flex;
-  }
-  
-  .navbar-divider {
-    display: none;
-  }
 }
 
 @media (max-width: 768px) {
@@ -440,6 +451,16 @@ hr.sep { border:none; height:1px; background: var(--border); margin: 12px 0; }
             border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
+        [data-style="glassmorphism"] .navbar select option {
+            background: rgba(255, 255, 255, 0.9);
+            color: #333;
+        }
+
+        [data-style="glassmorphism"][data-theme="dark"] .navbar select option {
+            background: rgba(30, 41, 59, 0.9);
+            color: #e2e8f0;
+        }
+
         /* Neumorphism specific adjustments for controls */
         [data-style="neumorphism"] .navbar button,
         [data-style="neumorphism"] .navbar select {
@@ -452,6 +473,16 @@ hr.sep { border:none; height:1px; background: var(--border); margin: 12px 0; }
         [data-style="neumorphism"][data-theme="dark"] .navbar select {
             background: #2d3748;
             box-shadow: inset 3px 3px 6px #1a202c, inset -3px -3px 6px #404c5a;
+        }
+
+        [data-style="neumorphism"] .navbar select option {
+            background: #e0e5ec;
+            color: #333;
+        }
+
+        [data-style="neumorphism"][data-theme="dark"] .navbar select option {
+            background: #2d3748;
+            color: #e2e8f0;
         }
 
         /* Back to top button */
@@ -559,13 +590,12 @@ hr.sep { border:none; height:1px; background: var(--border); margin: 12px 0; }
           }
           
           body { 
-            background: white !important; 
-            color: black !important;
             line-height: 1.3;
             font-size: 10pt;
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
+            /* Preserve current theme colors for print */
           }
           
           .navbar { 
@@ -576,8 +606,11 @@ hr.sep { border:none; height:1px; background: var(--border); margin: 12px 0; }
             page-break-after: avoid;
           }
           
-          .navbar button[onclick*="print"], 
-          .navbar button[onclick*="downloadPDF"] {
+          .navbar button, 
+          .hamburger-menu,
+          .navbar select,
+          .theme-toggle,
+          .back-to-top {
             display: none !important;
           }
           
@@ -605,12 +638,9 @@ hr.sep { border:none; height:1px; background: var(--border); margin: 12px 0; }
           }
           
           .section { 
-            page-break-inside: avoid;
-            break-inside: avoid;
-            margin-bottom: 15px;
-            padding: 12px;
-            background: white !important; 
-            border: 1px solid #333 !important;
+            break-inside: auto;
+            margin-bottom: 12px;
+            padding: 10px;
             box-shadow: none !important;
           }
           
@@ -618,16 +648,15 @@ hr.sep { border:none; height:1px; background: var(--border); margin: 12px 0; }
             page-break-after: avoid;
             break-after: avoid;
             margin-top: 0;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
+            orphans: 3;
+            widows: 3;
           }
           
           .tl-item { 
-            page-break-inside: avoid; 
-            break-inside: avoid;
-            margin-bottom: 10px;
-            padding: 8px;
-            background: white !important; 
-            border: 1px solid #666 !important;
+            break-inside: avoid; 
+            margin-bottom: 8px;
+            padding: 6px;
             box-shadow: none !important;
           }
           
@@ -637,15 +666,13 @@ hr.sep { border:none; height:1px; background: var(--border); margin: 12px 0; }
           }
           
           .tl-body {
-            page-break-inside: avoid;
-            break-inside: avoid;
-            padding-top: 5px;
+            break-inside: auto;
+            padding-top: 4px;
           }
           
           .tl-row {
-            page-break-inside: avoid;
-            break-inside: avoid;
-            margin-bottom: 4px;
+            break-inside: auto;
+            margin-bottom: 3px;
             display: block;
           }
           
@@ -663,12 +690,9 @@ hr.sep { border:none; height:1px; background: var(--border); margin: 12px 0; }
           }
           
           .card { 
-            page-break-inside: avoid;
             break-inside: avoid;
-            margin-bottom: 10px;
-            padding: 8px;
-            background: white !important; 
-            border: 1px solid #666 !important;
+            margin-bottom: 6px;
+            padding: 6px;
             box-shadow: none !important;
           }
           
@@ -679,7 +703,7 @@ hr.sep { border:none; height:1px; background: var(--border); margin: 12px 0; }
           .grid .card {
             display: block;
             width: 100%;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
           }
           
           .back-to-top { display: none !important; }
@@ -700,17 +724,34 @@ hr.sep { border:none; height:1px; background: var(--border); margin: 12px 0; }
           }
           
           /* Force compact layout */
-          h1 { font-size: 16pt; margin: 0 0 8px 0; }
-          h2 { font-size: 14pt; margin: 0 0 6px 0; }
-          h3 { font-size: 12pt; margin: 0 0 4px 0; }
+          h1 { font-size: 16pt; margin: 0 0 6px 0; }
+          h2 { font-size: 14pt; margin: 0 0 4px 0; }
+          h3 { font-size: 12pt; margin: 0 0 3px 0; }
           
           p, div, li {
-            margin-bottom: 4px;
+            margin-bottom: 3px;
+            orphans: 2;
+            widows: 2;
           }
           
           ul, ol {
-            margin: 5px 0;
-            padding-left: 20px;
+            margin: 3px 0;
+            padding-left: 18px;
+          }
+          
+          /* Reduce spacing in timeline items */
+          .tl-links, .links {
+            font-size: 9pt;
+            margin-top: 3px;
+          }
+          
+          /* Better page flow */
+          details {
+            break-inside: auto;
+          }
+          
+          details[open] {
+            break-inside: auto;
           }
         }
 </style>
@@ -860,203 +901,13 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-// PDF Download function
-function downloadPDF() {
-  // Hide print/download buttons during generation
-  const printBtn = document.querySelector('button[onclick*="print"]');
-  const downloadBtn = document.querySelector('button[onclick*="downloadPDF"]');
-  if (printBtn) printBtn.style.display = 'none';
-  if (downloadBtn) downloadBtn.style.display = 'none';
-  
-  // Check if both libraries are loaded
-  if (typeof window.jspdf === 'undefined' || typeof html2canvas === 'undefined') {
-    let scriptsToLoad = 0;
-    let scriptsLoaded = 0;
-    
-    function checkAndGenerate() {
-      scriptsLoaded++;
-      if (scriptsLoaded >= scriptsToLoad) {
-        generatePDF();
-      }
-    }
-    
-    if (typeof window.jspdf === 'undefined') {
-      scriptsToLoad++;
-      const jsPDFScript = document.createElement('script');
-      jsPDFScript.src = 'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js';
-      jsPDFScript.onload = checkAndGenerate;
-      document.head.appendChild(jsPDFScript);
-    }
-    
-    if (typeof html2canvas === 'undefined') {
-      scriptsToLoad++;
-      const html2canvasScript = document.createElement('script');
-      html2canvasScript.src = 'https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js';
-      html2canvasScript.onload = checkAndGenerate;
-      document.head.appendChild(html2canvasScript);
-    }
-    
-    if (scriptsToLoad === 0) {
-      generatePDF();
-    }
-  } else {
-    generatePDF();
-  }
-}
 
-function generatePDF() {
-  try {
-    const { jsPDF } = window.jspdf;
-    const doc = new jsPDF('p', 'mm', 'a4');
-    
-    // Get the container content
-    const container = document.querySelector('.container');
-    if (!container) {
-      throw new Error('Container not found');
-    }
-    
-    // Clone and prepare content
-    const content = container.cloneNode(true);
-    
-    // Remove any remaining interactive elements
-    content.querySelectorAll('.back-to-top, button, .navbar').forEach(el => el.remove());
-    
-    // Create temporary container with print-optimized styling
-    const tempDiv = document.createElement('div');
-    tempDiv.appendChild(content);
-    tempDiv.style.cssText = `
-      position: absolute;
-      left: -9999px;
-      width: 800px;
-      padding: 15px;
-      background: white;
-      color: black;
-      font-family: Arial, sans-serif;
-      font-size: 10pt;
-      line-height: 1.3;
-    `;
-    
-    // Apply print-style formatting to content
-    const sections = tempDiv.querySelectorAll('.section');
-    sections.forEach(section => {
-      section.style.cssText = `
-        margin-bottom: 12px;
-        padding: 10px;
-        border: 1px solid #333;
-        background: white;
-        page-break-inside: avoid;
-      `;
-    });
-    
-    const tlItems = tempDiv.querySelectorAll('.tl-item');
-    tlItems.forEach(item => {
-      item.style.cssText = `
-        margin-bottom: 8px;
-        padding: 6px;
-        border: 1px solid #666;
-        background: white;
-        page-break-inside: avoid;
-      `;
-    });
-    
-    const cards = tempDiv.querySelectorAll('.card');
-    cards.forEach(card => {
-      card.style.cssText = `
-        margin-bottom: 8px;
-        padding: 6px;
-        border: 1px solid #666;
-        background: white;
-        page-break-inside: avoid;
-        display: block;
-        width: 100%;
-      `;
-    });
-    
-    // Force open all details elements for PDF
-    const details = tempDiv.querySelectorAll('details');
-    details.forEach(detail => {
-      detail.setAttribute('open', 'open');
-    });
-    
-    document.body.appendChild(tempDiv);
-    
-    // Use html2canvas with better settings for PDF
-    html2canvas(tempDiv, {
-      scale: 2,
-      useCORS: true,
-      allowTaint: true,
-      backgroundColor: '#ffffff',
-      width: 800,
-      height: tempDiv.scrollHeight,
-      logging: false,
-      scrollX: 0,
-      scrollY: 0,
-      foreignObjectRendering: true
-    }).then(canvas => {
-      const imgData = canvas.toDataURL('image/jpeg', 0.85);
-      const imgWidth = 190; // A4 width in mm minus margins
-      const pageHeight = 267; // A4 height in mm minus margins (reduced to prevent cutoff)
-      const imgHeight = (canvas.height * imgWidth) / canvas.width;
-      let heightLeft = imgHeight;
-      let position = 15; // Start position with margin
-      
-      // Add first page
-      doc.addImage(imgData, 'JPEG', 10, position, imgWidth, imgHeight);
-      heightLeft -= pageHeight;
-      
-      // Add subsequent pages if needed
-      while (heightLeft >= 0) {
-        position = heightLeft - imgHeight + 15; // Adjust for margin
-        doc.addPage();
-        doc.addImage(imgData, 'JPEG', 10, position, imgWidth, imgHeight);
-        heightLeft -= pageHeight;
-      }
-      
-      doc.save('Ratification_Counterrevolution.pdf');
-      document.body.removeChild(tempDiv);
-      
-      // Restore buttons
-      const printBtn = document.querySelector('button[onclick*="print"]');
-      const downloadBtn = document.querySelector('button[onclick*="downloadPDF"]');
-      if (printBtn) printBtn.style.display = '';
-      if (downloadBtn) downloadBtn.style.display = '';
-      
-    }).catch(error => {
-      console.error('Canvas generation failed:', error);
-      document.body.removeChild(tempDiv);
-      
-      // Fallback: suggest using print instead
-      alert('PDF generation failed. Please use the Print button and save as PDF from your browser.');
-      
-      // Restore buttons
-      const printBtn = document.querySelector('button[onclick*="print"]');
-      const downloadBtn = document.querySelector('button[onclick*="downloadPDF"]');
-      if (printBtn) printBtn.style.display = '';
-      if (downloadBtn) downloadBtn.style.display = '';
-    });
-    
-  } catch (error) {
-    console.error('PDF generation failed:', error);
-    alert('PDF generation failed. Please use the Print button and save as PDF from your browser.');
-    
-    // Restore buttons on error
-    const printBtn = document.querySelector('button[onclick*="print"]');
-    const downloadBtn = document.querySelector('button[onclick*="downloadPDF"]');
-    if (printBtn) printBtn.style.display = '';
-    if (downloadBtn) downloadBtn.style.display = '';
-  }
-}
 </script>
 </head>
 <body data-theme="light" data-style="default">
 <nav class="navbar">
   <div class="navbar-left">
     <div class="brand">Ratification & Centralization (1787–1790)</div>
-    <button class="hamburger-menu" id="hamburgerMenu" aria-label="Toggle navigation menu">
-      <span class="hamburger-line"></span>
-      <span class="hamburger-line"></span>
-      <span class="hamburger-line"></span>
-    </button>
     <div class="nav-buttons" id="navButtons">
       <button onclick="gotoSection('intro')">Intro</button>
       <button onclick="gotoSection('players')">Key Players</button>
@@ -1080,7 +931,6 @@ function generatePDF() {
       </select>
       <div class="mobile-actions">
         <button onclick="window.print()">🖨️ Print</button>
-        <button onclick="downloadPDF()">📄 Download PDF</button>
       </div>
       <div class="mobile-theme-controls">
         <select class="style-selector" id="styleSelector">
@@ -1094,6 +944,11 @@ function generatePDF() {
       </div>
     </div>
   </div>
+  <button class="hamburger-menu" id="hamburgerMenu" aria-label="Toggle navigation menu">
+    <span class="hamburger-line"></span>
+    <span class="hamburger-line"></span>
+    <span class="hamburger-line"></span>
+  </button>
   <div class="navbar-divider"></div>
   <div class="navbar-right">
     <div class="desktop-theme-controls">
@@ -1108,7 +963,6 @@ function generatePDF() {
     </div>
     <div class="desktop-actions">
       <button onclick="window.print()">🖨️ Print</button>
-      <button onclick="downloadPDF()">📄 Download PDF</button>
     </div>
   </div>
 </nav>
@@ -1395,7 +1249,7 @@ function generatePDF() {
   </section>
 
   <footer style="text-align: center; color: var(--muted); font-size: 14px; margin-top: 40px; padding: 20px; border-top: 1px solid var(--border);">
-    Last updated: August 17, 2025 at 8:24 AM EST
+    Last updated: August 17, 2025 at 9:58 AM EST
   </footer>
 </div>
 
