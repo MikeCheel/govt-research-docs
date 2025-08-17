@@ -95,28 +95,163 @@ a:hover { text-decoration: underline; }
   flex-shrink: 0;
 }
 
+/* Hamburger menu styles */
+.hamburger-menu {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  background: var(--panel-bright);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  cursor: pointer;
+  padding: 8px;
+  transition: all 0.3s ease;
+}
+
+.hamburger-line {
+  width: 20px;
+  height: 2px;
+  background: var(--text-color);
+  margin: 2px 0;
+  transition: all 0.3s ease;
+  border-radius: 1px;
+}
+
+.hamburger-menu.active .hamburger-line:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger-menu.active .hamburger-line:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger-menu.active .hamburger-line:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -6px);
+}
+
+.mobile-actions {
+  display: none;
+}
+
+.mobile-theme-controls {
+  display: none;
+}
+
+.desktop-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.desktop-theme-controls {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
 @media (max-width: 1024px) {
   .navbar {
     flex-direction: row;
-    flex-wrap: wrap;
-    gap: 8px;
-    padding: 10px 14px;
-    max-height: 20vh;
-    overflow-y: auto;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 14px;
+    height: auto;
+    max-height: none;
+    overflow: visible;
   }
+  
   .navbar-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
     flex: 1;
-    min-width: 200px;
   }
+  
   .navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
     flex: 0 0 auto;
-    gap: 8px;
   }
+  
   .nav-buttons {
-    justify-content: flex-start;
-    flex-wrap: wrap;
-    gap: 6px;
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-top: none;
+    border-radius: 0 0 var(--radius) var(--radius);
+    box-shadow: var(--shadow);
+    z-index: 1000;
+    flex-direction: column;
+    gap: 8px;
+    padding: 16px;
   }
+  
+  .nav-buttons.show {
+    display: flex;
+  }
+  
+  .nav-buttons button:not(.theme-toggle),
+  .nav-buttons select:not(.style-selector) {
+    width: 100%;
+    text-align: left;
+    justify-content: flex-start;
+  }
+  
+  .mobile-actions {
+    display: flex;
+    gap: 8px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+    margin-top: 8px;
+  }
+  
+  .mobile-actions button {
+    flex: 1;
+  }
+  
+  .mobile-theme-controls {
+    display: flex;
+    gap: 8px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+    margin-top: 8px;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .mobile-theme-controls .style-selector {
+    flex: 1;
+    max-width: 150px;
+    width: auto !important;
+    text-align: center;
+  }
+  
+  .mobile-theme-controls .theme-toggle {
+    width: 60px !important;
+    height: 30px !important;
+    flex: 0 0 auto;
+    padding: 2px !important;
+  }
+  
+  .desktop-actions {
+    display: none;
+  }
+  
+  .desktop-theme-controls {
+    display: none;
+  }
+  
+  .hamburger-menu {
+    display: flex;
+  }
+  
   .navbar-divider {
     display: none;
   }
@@ -124,21 +259,35 @@ a:hover { text-decoration: underline; }
 
 @media (max-width: 768px) {
   .navbar {
-    max-height: 15vh;
-    padding: 8px 14px;
+    padding: 10px 12px;
   }
+  
   .navbar-left {
-    min-width: 150px;
+    gap: 12px;
   }
-  .nav-buttons {
-    gap: 4px;
-  }
+  
   .navbar-right {
-    gap: 6px;
+    gap: 8px;
   }
-  .navbar button, .navbar select {
-    padding: 6px 8px;
-    font-size: 13px;
+  
+  .brand {
+    font-size: 14px;
+    line-height: 1.2;
+  }
+  
+  .style-selector,
+  .theme-toggle {
+    transform: scale(0.95);
+  }
+  
+  .navbar-right {
+    display: flex !important;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .nav-buttons {
+    padding: 12px;
   }
 }
 .container { max-width: 1100px; margin: 0 auto; padding: 22px 16px 60px; }
@@ -585,10 +734,14 @@ function filterTimeline() {
 
 // Theme and style functionality
 document.addEventListener('DOMContentLoaded', () => {
-  const themeToggle = document.getElementById('themeToggle');
-  const styleSelector = document.getElementById('styleSelector');
+  const mobileThemeToggle = document.getElementById('themeToggle');
+  const desktopThemeToggle = document.getElementById('desktopThemeToggle');
+  const mobileStyleSelector = document.getElementById('styleSelector');
+  const desktopStyleSelector = document.getElementById('desktopStyleSelector');
   const body = document.body;
-  const slider = themeToggle.querySelector('.theme-toggle-slider');
+  
+  const mobileSlider = mobileThemeToggle?.querySelector('.theme-toggle-slider');
+  const desktopSlider = desktopThemeToggle?.querySelector('.theme-toggle-slider');
 
   // Load saved preferences or default values
   const savedTheme = localStorage.getItem('theme') || 'light';
@@ -596,31 +749,100 @@ document.addEventListener('DOMContentLoaded', () => {
   
   body.setAttribute('data-theme', savedTheme);
   body.setAttribute('data-style', savedStyle);
-  styleSelector.value = savedStyle;
+  
+  if (mobileStyleSelector) mobileStyleSelector.value = savedStyle;
+  if (desktopStyleSelector) desktopStyleSelector.value = savedStyle;
+  
   updateToggleIcon(savedTheme);
 
-  // Theme toggle functionality
-  themeToggle.addEventListener('click', () => {
+  function updateToggleIcon(theme) {
+    const icon = theme === 'light' ? '☀️' : '🌙';
+    if (mobileSlider) mobileSlider.textContent = icon;
+    if (desktopSlider) desktopSlider.textContent = icon;
+  }
+
+  function toggleTheme() {
     const currentTheme = body.getAttribute('data-theme');
     const newTheme = currentTheme === 'light' ? 'dark' : 'light';
     
     body.setAttribute('data-theme', newTheme);
     localStorage.setItem('theme', newTheme);
     updateToggleIcon(newTheme);
-  });
+  }
 
-  // Style selector functionality
-  styleSelector.addEventListener('change', (e) => {
-    const newStyle = e.target.value;
+  function changeStyle(newStyle) {
     body.setAttribute('data-style', newStyle);
     localStorage.setItem('style', newStyle);
+    // Sync both selectors
+    if (mobileStyleSelector) mobileStyleSelector.value = newStyle;
+    if (desktopStyleSelector) desktopStyleSelector.value = newStyle;
+  }
+
+  // Theme toggle functionality for both mobile and desktop
+  if (mobileThemeToggle) {
+    mobileThemeToggle.addEventListener('click', toggleTheme);
+  }
+  if (desktopThemeToggle) {
+    desktopThemeToggle.addEventListener('click', toggleTheme);
+  }
+
+  // Style selector functionality for both mobile and desktop
+  if (mobileStyleSelector) {
+    mobileStyleSelector.addEventListener('change', (e) => changeStyle(e.target.value));
+  }
+  if (desktopStyleSelector) {
+    desktopStyleSelector.addEventListener('change', (e) => changeStyle(e.target.value));
+  }
+
+  // Hamburger menu functionality
+  const hamburgerMenu = document.getElementById('hamburgerMenu');
+  const navButtons = document.getElementById('navButtons');
+  
+  hamburgerMenu.addEventListener('click', () => {
+    hamburgerMenu.classList.toggle('active');
+    navButtons.classList.toggle('show');
   });
 
-  function updateToggleIcon(theme) {
-    // Show sun when light mode (click to go to dark)
-    // Show moon when dark mode (click to go to light)
-    slider.textContent = theme === 'light' ? '☀️' : '🌙';
+  // Close mobile menu when clicking on a navigation item (but not style selector)
+  const navItems = navButtons.querySelectorAll('button[onclick]');
+  navItems.forEach(item => {
+    item.addEventListener('click', () => {
+      if (window.innerWidth <= 1024) {
+        hamburgerMenu.classList.remove('active');
+        navButtons.classList.remove('show');
+      }
+    });
+  });
+  
+  // Close menu only on timeline filter change, not style selector
+  const timelineFilter = navButtons.querySelector('select#filter');
+  if (timelineFilter) {
+    timelineFilter.addEventListener('change', () => {
+      if (window.innerWidth <= 1024) {
+        hamburgerMenu.classList.remove('active');
+        navButtons.classList.remove('show');
+      }
+    });
   }
+
+  // Close mobile menu when clicking outside
+  document.addEventListener('click', (e) => {
+    if (window.innerWidth <= 1024 && 
+        !hamburgerMenu.contains(e.target) && 
+        !navButtons.contains(e.target) && 
+        navButtons.classList.contains('show')) {
+      hamburgerMenu.classList.remove('active');
+      navButtons.classList.remove('show');
+    }
+  });
+
+  // Close mobile menu on window resize
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 1024) {
+      hamburgerMenu.classList.remove('active');
+      navButtons.classList.remove('show');
+    }
+  });
 
   // Back to top functionality
   const backToTopButton = document.getElementById('backToTop');
@@ -830,7 +1052,12 @@ function generatePDF() {
 <nav class="navbar">
   <div class="navbar-left">
     <div class="brand">Ratification & Centralization (1787–1790)</div>
-    <div class="nav-buttons">
+    <button class="hamburger-menu" id="hamburgerMenu" aria-label="Toggle navigation menu">
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+    </button>
+    <div class="nav-buttons" id="navButtons">
       <button onclick="gotoSection('intro')">Intro</button>
       <button onclick="gotoSection('players')">Key Players</button>
       <button onclick="gotoSection('timeline')">Timeline</button>
@@ -851,20 +1078,38 @@ function generatePDF() {
         <option>Hancock</option>
         <option>Adams</option>
       </select>
+      <div class="mobile-actions">
+        <button onclick="window.print()">🖨️ Print</button>
+        <button onclick="downloadPDF()">📄 Download PDF</button>
+      </div>
+      <div class="mobile-theme-controls">
+        <select class="style-selector" id="styleSelector">
+          <option value="default">Default</option>
+          <option value="glassmorphism">Glassmorphism</option>
+          <option value="neumorphism">Neumorphism</option>
+        </select>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+          <div class="theme-toggle-slider">☀️</div>
+        </button>
+      </div>
     </div>
   </div>
   <div class="navbar-divider"></div>
   <div class="navbar-right">
-    <select class="style-selector" id="styleSelector">
-      <option value="default">Default</option>
-      <option value="glassmorphism">Glassmorphism</option>
-      <option value="neumorphism">Neumorphism</option>
-    </select>
-    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-      <div class="theme-toggle-slider">☀️</div>
-    </button>
-    <button onclick="window.print()">🖨️ Print</button>
-    <button onclick="downloadPDF()">📄 Download PDF</button>
+    <div class="desktop-theme-controls">
+      <select class="style-selector" id="desktopStyleSelector">
+        <option value="default">Default</option>
+        <option value="glassmorphism">Glassmorphism</option>
+        <option value="neumorphism">Neumorphism</option>
+      </select>
+      <button class="theme-toggle" id="desktopThemeToggle" aria-label="Toggle theme">
+        <div class="theme-toggle-slider">☀️</div>
+      </button>
+    </div>
+    <div class="desktop-actions">
+      <button onclick="window.print()">🖨️ Print</button>
+      <button onclick="downloadPDF()">📄 Download PDF</button>
+    </div>
   </div>
 </nav>
 
@@ -1150,7 +1395,7 @@ function generatePDF() {
   </section>
 
   <footer style="text-align: center; color: var(--muted); font-size: 14px; margin-top: 40px; padding: 20px; border-top: 1px solid var(--border);">
-    Last updated: August 16, 2025 at 4:15 PM EDT
+    Last updated: August 17, 2025 at 8:24 AM EST
   </footer>
 </div>
 
