@@ -768,7 +768,9 @@ function filterTimeline() {
   items.forEach(el => { el.style.display = ''; });
   if (val === 'all') return;
   items.forEach(el => {
-    const who = el.querySelector('.tl-who').textContent.toLowerCase();
+    const whoElement = el.querySelector('.tl-who');
+    if (!whoElement) return; // Skip items without .tl-who element
+    const who = whoElement.textContent.toLowerCase();
     if (!who.includes(val.toLowerCase())) el.style.display = 'none';
   });
 }
