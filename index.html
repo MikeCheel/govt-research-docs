@@ -260,13 +260,42 @@
             font-size: 0.9rem;
         }
 
+        @media (max-width: 1024px) {
+            .controls {
+                position: relative;
+                justify-content: center;
+                margin: 1rem auto 0;
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+            
+            .header {
+                text-align: center;
+            }
+            
+            .header h1 {
+                font-size: 2.2rem;
+            }
+        }
+
         @media (max-width: 768px) {
             body {
                 padding: 1rem;
             }
             
+            .container {
+                padding: 1rem;
+            }
+            
             .header h1 {
-                font-size: 2rem;
+                font-size: 1.8rem;
+                line-height: 1.2;
+                margin-bottom: 0.8rem;
+            }
+            
+            .header p {
+                font-size: 1rem;
+                margin-bottom: 1rem;
             }
             
             .controls {
@@ -274,14 +303,87 @@
                 justify-content: center;
                 margin: 1rem auto 0;
                 flex-wrap: wrap;
+                gap: 8px;
+            }
+            
+            .style-selector,
+            .theme-toggle {
+                transform: scale(0.9);
             }
             
             .link-item {
                 padding: 1rem;
+                margin: 0.8rem 0;
             }
+            
+            .link-title {
+                font-size: 1.1rem;
+                line-height: 1.3;
+                margin-bottom: 0.6rem;
+            }
+            
+            .link-description {
+                font-size: 0.9rem;
+                line-height: 1.4;
+            }
+            
+            .footer {
+                margin-top: 2rem;
+                padding: 15px;
+            }
+            
+            .footer p {
+                font-size: 0.8rem;
+            }
+        }
 
+        @media (max-width: 480px) {
+            body {
+                padding: 0.8rem;
+            }
+            
             .container {
-                padding: 1rem;
+                padding: 0.8rem;
+            }
+            
+            .header h1 {
+                font-size: 1.5rem;
+                line-height: 1.2;
+            }
+            
+            .header p {
+                font-size: 0.9rem;
+            }
+            
+            .controls {
+                flex-direction: column;
+                align-items: center;
+                gap: 12px;
+                margin: 1.5rem auto 0;
+            }
+            
+            .style-selector {
+                width: 160px;
+            }
+            
+            .link-item {
+                padding: 0.8rem;
+                margin: 0.6rem 0;
+                border-radius: 10px;
+            }
+            
+            .link-title {
+                font-size: 1rem;
+                line-height: 1.3;
+            }
+            
+            .link-description {
+                font-size: 0.85rem;
+                line-height: 1.4;
+            }
+            
+            .external-icon {
+                font-size: 0.9rem;
             }
         }
 
@@ -339,6 +441,26 @@
                 </div>
                 <div class="link-description">
                     A comprehensive timeline documenting how Federalists employed various tactics to secure ratification of the Constitution, featuring Anti-Federalist responses, analysis of the "counterrevolution" thesis, and verifiable primary source citations.
+                </div>
+            </a>
+            
+            <a href="US_Constitutional_Subversion.html" class="link-item">
+                <div class="link-title">
+                    History of US Constitutional Subversion: Presidential, Congressional, and Judicial Overreach
+                    <span class="external-icon">↗</span>
+                </div>
+                <div class="link-description">
+                    Comprehensive timeline of constitutional violations from Washington to Biden, including secret programs, imperial interventions, domestic surveillance, Lincoln's Civil War violations, and systematic government overreach with verifiable sources.
+                </div>
+            </a>
+            
+            <a href="DUI_Prevention_Analysis.html" class="link-item">
+                <div class="link-title">
+                    Cost-Effectiveness Analysis: Rideshare-Based DUI Prevention Program
+                    <span class="external-icon">↗</span>
+                </div>
+                <div class="link-description">
+                    A detailed analysis of a rideshare program to prevent drunk driving, examining cost structures, fairness of DUI laws, and the economic impact of enforcement. Includes scenarios for private market solutions and government subsidies.
                 </div>
             </a>
         </main>

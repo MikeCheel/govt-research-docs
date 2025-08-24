@@ -1,0 +1,2326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="icon" href="data:,">
+<title>History of US Constitutional Subversion: Presidential, Congressional, and Judicial Overreach</title>
+<style>
+:root {
+            --bg-color: #ffffff;
+            --text-color: #333333;
+            --card-bg: #f8fafc;
+            --card-border: #e2e8f0;
+            --accent-color: #4f46e5;
+            --accent-hover: #4338ca;
+            --shadow: rgba(0, 0, 0, 0.1);
+            --shadow-hover: rgba(0, 0, 0, 0.15);
+            --panel: var(--card-bg);
+            --panel-bright: #f1f5f9;
+            --card: var(--card-bg);
+            --muted: #64748b;
+            --danger: #ef4444;
+            --ok: #22c55e;
+            --border: var(--card-border);
+            --blur: blur(8px);
+            --radius: 16px;
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #0f172a;
+            --text-color: #e2e8f0;
+            --card-bg: #1e293b;
+            --card-border: #334155;
+            --accent-color: #6366f1;
+            --accent-hover: #8b5cf6;
+            --shadow: rgba(0, 0, 0, 0.3);
+            --shadow-hover: rgba(0, 0, 0, 0.4);
+            --panel: var(--card-bg);
+            --panel-bright: #334155;
+            --card: var(--card-bg);
+            --muted: #94a3b8;
+            --danger: #ef4444;
+            --ok: #22c55e;
+            --border: var(--card-border);
+        }
+* { box-sizing: border-box; }
+html, body { margin:0; padding:0; background:var(--bg-color); color:var(--text-color); font:15.5px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; transition: background-color 0.3s ease, color 0.3s ease; }
+a { color: var(--accent-color); text-decoration: none; }
+a:hover { text-decoration: underline; }
+.navbar {
+  position: sticky; top:0; z-index:10;
+  backdrop-filter: var(--blur);
+  background: var(--panel);
+  border-bottom: 1px solid var(--border);
+  display:flex; align-items:center; justify-content:space-between;
+  padding:10px 14px;
+  gap: 20px;
+}
+.navbar-left {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex: 1;
+}
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.nav-buttons {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.navbar .brand { 
+  font-weight:700; 
+  letter-spacing:.3px; 
+  white-space: nowrap;
+  min-width: fit-content;
+}
+.navbar button, .navbar select {
+  background: var(--panel-bright); 
+  color: var(--text-color);
+  border: 1px solid var(--border);
+  border-radius: 10px; 
+  padding: 8px 10px; 
+  cursor: pointer;
+  white-space: nowrap;
+}
+.navbar button:hover { background: var(--panel); }
+.navbar select { 
+  appearance: none; 
+}
+.navbar select option {
+  background: var(--panel-bright);
+  color: var(--text-color);
+}
+.navbar-divider {
+  width: 2px;
+  height: 30px;
+  background: var(--border);
+  border-radius: 1px;
+  flex-shrink: 0;
+}
+
+/* Hamburger menu styles - hidden by default (desktop) */
+.hamburger-menu {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  background: var(--panel-bright);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  cursor: pointer;
+  padding: 8px;
+  transition: all 0.3s ease;
+}
+
+.hamburger-line {
+  width: 20px;
+  height: 2px;
+  background: var(--text-color);
+  margin: 2px 0;
+  transition: all 0.3s ease;
+  border-radius: 1px;
+}
+
+.hamburger-menu.active .hamburger-line:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger-menu.active .hamburger-line:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger-menu.active .hamburger-line:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -6px);
+}
+
+.mobile-actions {
+  display: none;
+}
+
+.mobile-theme-controls {
+  display: none;
+}
+
+.desktop-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.desktop-theme-controls {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+@media (max-width: 1024px) {
+  .navbar {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 14px;
+    height: auto;
+    max-height: none;
+    overflow: visible;
+  }
+  
+  /* Position hamburger menu on the right side on mobile */
+  .hamburger-menu {
+    display: flex;
+    order: 3;
+    margin-left: auto;
+  }
+  
+  .navbar-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex: 1;
+    order: 1;
+  }
+  
+  .navbar-right {
+    display: none;
+  }
+  
+  .navbar-divider {
+    display: none;
+  }
+  
+  .nav-buttons {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-top: none;
+    border-radius: 0 0 var(--radius) var(--radius);
+    box-shadow: var(--shadow);
+    z-index: 1000;
+    flex-direction: column;
+    gap: 8px;
+    padding: 16px;
+  }
+  
+  .nav-buttons.show {
+    display: flex;
+  }
+  
+  .nav-buttons button:not(.theme-toggle),
+  .nav-buttons select:not(.style-selector) {
+    width: 100%;
+    text-align: left;
+    justify-content: flex-start;
+  }
+  
+  .mobile-actions {
+    display: flex;
+    gap: 8px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+    margin-top: 8px;
+  }
+  
+  .mobile-actions button {
+    flex: 1;
+  }
+  
+  .mobile-theme-controls {
+    display: flex;
+    gap: 8px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+    margin-top: 8px;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .mobile-theme-controls .style-selector {
+    flex: 1;
+    max-width: 150px;
+    width: auto !important;
+    text-align: center;
+  }
+  
+  .mobile-theme-controls .theme-toggle {
+    width: 60px !important;
+    height: 30px !important;
+    flex: 0 0 auto;
+    padding: 2px !important;
+  }
+  
+  .desktop-actions {
+    display: none;
+  }
+  
+  .desktop-theme-controls {
+    display: none;
+  }
+  
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 10px 12px;
+  }
+  
+  .navbar-left {
+    gap: 12px;
+  }
+  
+  .navbar-right {
+    gap: 8px;
+  }
+  
+  .brand {
+    font-size: 14px;
+    line-height: 1.2;
+  }
+  
+  .style-selector,
+  .theme-toggle {
+    transform: scale(0.95);
+  }
+  
+  .navbar-right {
+    display: flex !important;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .nav-buttons {
+    padding: 12px;
+  }
+}
+.container { max-width: 1100px; margin: 0 auto; padding: 22px 16px 60px; }
+.section { background: var(--panel); border:1px solid var(--border); border-radius: var(--radius); padding:18px; margin:16px 0; box-shadow: var(--shadow); }
+.section h2 { margin:0 0 10px; font-size: 20px; }
+.grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:14px; }
+.card { background: var(--card); border:1px solid var(--border); border-radius: var(--radius); padding:14px; }
+.card-title { font-weight:700; margin-bottom:4px; }
+.card-role { color: var(--muted); margin-bottom:8px; font-size: 14px; }
+.facts { padding-left: 18px; margin: 6px 0 8px; }
+.links { font-size:14px; color: var(--muted); }
+.tl-item { background: var(--card); border:1px solid var(--border); border-radius: var(--radius); margin:10px 0; }
+.tl-item > summary { list-style:none; cursor:pointer; padding:10px 12px; display:flex; align-items:center; gap:8px; }
+.tl-item > summary::-webkit-details-marker { display:none; }
+.tl-item[open] > summary { background: var(--panel-bright); border-bottom:1px solid var(--border); border-top-left-radius: var(--radius); border-top-right-radius: var(--radius); }
+.tl-date { font-weight:700; }
+.tl-body { padding: 10px 12px 12px; }
+.tl-row { display:grid; grid-template-columns: 190px 1fr; gap:10px; margin:6px 0; }
+.lbl { color: var(--muted); }
+.lbl.bad { color: var(--danger); font-weight:700; }
+.lbl.good { color: var(--ok); font-weight:700; }
+.lbl.neutral { color: var(--muted); font-weight:700; }
+.tl-links { margin-top: 8px; font-size: 14px; color: var(--muted); }
+.refs { font-size: 14px; color: var(--muted); }
+h1 { margin: 8px 0 6px; font-size: 24px; }
+.lede { color: var(--muted); }
+hr.sep { border:none; height:1px; background: var(--border); margin: 12px 0; }
+/* Glassmorphism Style */
+        [data-style="glassmorphism"] {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        [data-style="glassmorphism"] .container {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: 20px;
+        }
+
+        [data-style="glassmorphism"][data-theme="dark"] .container {
+            background: rgba(15, 23, 42, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        [data-style="glassmorphism"] .section {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+        }
+
+        [data-style="glassmorphism"][data-theme="dark"] .section {
+            background: rgba(30, 41, 59, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        [data-style="glassmorphism"] .card,
+        [data-style="glassmorphism"] .tl-item {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        [data-style="glassmorphism"][data-theme="dark"] .card,
+        [data-style="glassmorphism"][data-theme="dark"] .tl-item {
+            background: rgba(30, 41, 59, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        [data-style="glassmorphism"] .navbar {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+        }
+
+        [data-style="glassmorphism"][data-theme="dark"] .navbar {
+            background: rgba(15, 23, 42, 0.4);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Neumorphism Style */
+        [data-style="neumorphism"] {
+            background: #e0e5ec;
+        }
+
+        [data-style="neumorphism"][data-theme="dark"] {
+            background: #2d3748;
+        }
+
+        [data-style="neumorphism"] .container {
+            background: #e0e5ec;
+            box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff;
+            border-radius: 20px;
+            border: none;
+        }
+
+        [data-style="neumorphism"][data-theme="dark"] .container {
+            background: #2d3748;
+            box-shadow: 20px 20px 60px #1a202c, -20px -20px 60px #404c5a;
+        }
+
+        [data-style="neumorphism"] .section {
+            background: #e0e5ec;
+            box-shadow: inset 5px 5px 10px #bebebe, inset -5px -5px 10px #ffffff;
+            border: none;
+            border-radius: 15px;
+        }
+
+        [data-style="neumorphism"][data-theme="dark"] .section {
+            background: #2d3748;
+            box-shadow: inset 5px 5px 10px #1a202c, inset -5px -5px 10px #404c5a;
+        }
+
+        [data-style="neumorphism"] .card,
+        [data-style="neumorphism"] .tl-item {
+            background: #e0e5ec;
+            box-shadow: inset 3px 3px 6px #bebebe, inset -3px -3px 6px #ffffff;
+            border: none;
+            border-radius: 12px;
+        }
+
+        [data-style="neumorphism"][data-theme="dark"] .card,
+        [data-style="neumorphism"][data-theme="dark"] .tl-item {
+            background: #2d3748;
+            box-shadow: inset 3px 3px 6px #1a202c, inset -3px -3px 6px #404c5a;
+        }
+
+        [data-style="neumorphism"] .navbar {
+            background: #e0e5ec;
+            box-shadow: 5px 5px 10px #bebebe, -5px -5px 10px #ffffff;
+            border: none;
+        }
+
+        [data-style="neumorphism"][data-theme="dark"] .navbar {
+            background: #2d3748;
+            box-shadow: 5px 5px 10px #1a202c, -5px -5px 10px #404c5a;
+        }
+
+        /* Glassmorphism specific adjustments for controls */
+        [data-style="glassmorphism"] .navbar button,
+        [data-style="glassmorphism"] .navbar select {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        [data-style="glassmorphism"][data-theme="dark"] .navbar button,
+        [data-style="glassmorphism"][data-theme="dark"] .navbar select {
+            background: rgba(30, 41, 59, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        [data-style="glassmorphism"] .navbar select option {
+            background: rgba(255, 255, 255, 0.9);
+            color: #333;
+        }
+
+        [data-style="glassmorphism"][data-theme="dark"] .navbar select option {
+            background: rgba(30, 41, 59, 0.9);
+            color: #e2e8f0;
+        }
+
+        /* Neumorphism specific adjustments for controls */
+        [data-style="neumorphism"] .navbar button,
+        [data-style="neumorphism"] .navbar select {
+            background: #e0e5ec;
+            box-shadow: inset 3px 3px 6px #bebebe, inset -3px -3px 6px #ffffff;
+            border: none;
+        }
+
+        [data-style="neumorphism"][data-theme="dark"] .navbar button,
+        [data-style="neumorphism"][data-theme="dark"] .navbar select {
+            background: #2d3748;
+            box-shadow: inset 3px 3px 6px #1a202c, inset -3px -3px 6px #404c5a;
+        }
+
+        [data-style="neumorphism"] .navbar select option {
+            background: #e0e5ec;
+            color: #333;
+        }
+
+        [data-style="neumorphism"][data-theme="dark"] .navbar select option {
+            background: #2d3748;
+            color: #e2e8f0;
+        }
+
+        /* Back to top button */
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            font-size: 20px;
+            display: none;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .back-to-top:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+        }
+
+        .back-to-top.show {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .back-to-top {
+                width: 45px;
+                height: 45px;
+                font-size: 18px;
+                bottom: 15px;
+                right: 15px;
+            }
+        }
+
+        /* Theme controls styling */
+        .style-selector {
+            background: var(--panel);
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            padding: 0.5rem;
+            color: var(--text-color);
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .style-selector:hover {
+            border-color: var(--accent-color);
+        }
+
+        .style-selector option {
+            background: var(--panel);
+            color: var(--text-color);
+        }
+
+        .theme-toggle {
+            background: var(--panel);
+            border: 2px solid var(--border);
+            border-radius: 50px;
+            width: 60px;
+            height: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            padding: 2px;
+        }
+
+        .theme-toggle:hover {
+            border-color: var(--accent-color);
+        }
+
+        .theme-toggle-slider {
+            width: 24px;
+            height: 24px;
+            background: var(--accent-color);
+            border-radius: 50%;
+            transition: transform 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            color: white;
+        }
+
+        [data-theme="dark"] .theme-toggle-slider {
+            transform: translateX(28px);
+        }
+
+        @media print {
+          @page {
+            margin: 0.75in;
+            size: letter;
+          }
+          
+          * {
+            -webkit-print-color-adjust: exact !important;
+            color-adjust: exact !important;
+          }
+          
+          body { 
+            line-height: 1.3;
+            font-size: 10pt;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+          }
+          
+          .navbar { 
+            position: static;
+            border-bottom: 1px solid #333;
+            padding: 8px 0;
+            margin-bottom: 15px;
+            page-break-after: avoid;
+          }
+          
+          .navbar button, 
+          .hamburger-menu,
+          .navbar select,
+          .theme-toggle,
+          .back-to-top {
+            display: none !important;
+          }
+          
+          .navbar-left, .navbar-right {
+            display: inline-block;
+            vertical-align: top;
+          }
+          
+          .nav-buttons {
+            display: none;
+          }
+          
+          .navbar-divider { display: none !important; }
+          
+          .brand {
+            font-size: 14pt;
+            font-weight: bold;
+            margin: 0;
+          }
+          
+          .container {
+            max-width: none;
+            padding: 0;
+            margin: 0;
+          }
+          
+          .section { 
+            break-inside: auto;
+            margin-bottom: 12px;
+            padding: 10px;
+            box-shadow: none !important;
+          }
+          
+          .section h1, .section h2, .section h3 {
+            page-break-after: avoid;
+            break-after: avoid;
+            margin-top: 0;
+            margin-bottom: 6px;
+            orphans: 3;
+            widows: 3;
+          }
+          
+          .tl-item { 
+            break-inside: avoid; 
+            margin-bottom: 8px;
+            padding: 6px;
+            box-shadow: none !important;
+          }
+          
+          .tl-item summary {
+            font-weight: bold;
+            margin-bottom: 5px;
+          }
+          
+          .tl-body {
+            break-inside: auto;
+            padding-top: 4px;
+          }
+          
+          .tl-row {
+            break-inside: auto;
+            margin-bottom: 3px;
+            display: block;
+          }
+          
+          .tl-row .lbl {
+            font-weight: bold;
+            display: inline-block;
+            width: 140px;
+            vertical-align: top;
+          }
+          
+          .tl-row .val {
+            display: inline-block;
+            width: calc(100% - 150px);
+            vertical-align: top;
+          }
+          
+          .card { 
+            break-inside: avoid;
+            margin-bottom: 6px;
+            padding: 6px;
+            box-shadow: none !important;
+          }
+          
+          .grid {
+            display: block;
+          }
+          
+          .grid .card {
+            display: block;
+            width: 100%;
+            margin-bottom: 6px;
+          }
+          
+          .back-to-top { display: none !important; }
+          
+          a { 
+            color: #0066cc !important;
+            text-decoration: underline;
+          }
+          
+          .tl-links, .links {
+            font-size: 9pt;
+            margin-top: 5px;
+          }
+          
+          details[open] {
+            page-break-inside: avoid;
+            break-inside: avoid;
+          }
+          
+          /* Force compact layout */
+          h1 { font-size: 16pt; margin: 0 0 6px 0; }
+          h2 { font-size: 14pt; margin: 0 0 4px 0; }
+          h3 { font-size: 12pt; margin: 0 0 3px 0; }
+          
+          p, div, li {
+            margin-bottom: 3px;
+            orphans: 2;
+            widows: 2;
+          }
+          
+          ul, ol {
+            margin: 3px 0;
+            padding-left: 18px;
+          }
+          
+          .tl-links, .links {
+            font-size: 9pt;
+            margin-top: 3px;
+          }
+          
+          details {
+            break-inside: auto;
+          }
+          
+          details[open] {
+            break-inside: auto;
+          }
+        }
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script>
+function gotoSection(id) {
+  document.getElementById(id).scrollIntoView({behavior:'smooth', block:'start'});
+}
+function filterTimeline() {
+  const dd = document.getElementById('filter');
+  const val = dd.value;
+  const items = Array.from(document.querySelectorAll('.tl-item'));
+  items.forEach(el => { el.style.display = ''; });
+  if (val === 'all') return;
+  items.forEach(el => {
+    const whoElement = el.querySelector('.tl-who');
+    if (!whoElement) return;
+    const who = whoElement.textContent.toLowerCase();
+    if (!who.includes(val.toLowerCase())) el.style.display = 'none';
+  });
+}
+
+// Theme and style functionality
+document.addEventListener('DOMContentLoaded', () => {
+  const mobileThemeToggle = document.getElementById('themeToggle');
+  const desktopThemeToggle = document.getElementById('desktopThemeToggle');
+  const mobileStyleSelector = document.getElementById('styleSelector');
+  const desktopStyleSelector = document.getElementById('desktopStyleSelector');
+  const body = document.body;
+  
+  const mobileSlider = mobileThemeToggle?.querySelector('.theme-toggle-slider');
+  const desktopSlider = desktopThemeToggle?.querySelector('.theme-toggle-slider');
+
+  // Load saved preferences or default values
+  const savedTheme = localStorage.getItem('theme') || 'light';
+  const savedStyle = localStorage.getItem('style') || 'default';
+  
+  body.setAttribute('data-theme', savedTheme);
+  body.setAttribute('data-style', savedStyle);
+  
+  if (mobileStyleSelector) mobileStyleSelector.value = savedStyle;
+  if (desktopStyleSelector) desktopStyleSelector.value = savedStyle;
+  
+  updateToggleIcon(savedTheme);
+
+  function updateToggleIcon(theme) {
+    const icon = theme === 'light' ? '☀️' : '🌙';
+    if (mobileSlider) mobileSlider.textContent = icon;
+    if (desktopSlider) desktopSlider.textContent = icon;
+  }
+
+  function toggleTheme() {
+    const currentTheme = body.getAttribute('data-theme');
+    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+    
+    body.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+    updateToggleIcon(newTheme);
+  }
+
+  function changeStyle(newStyle) {
+    body.setAttribute('data-style', newStyle);
+    localStorage.setItem('style', newStyle);
+    // Sync both selectors
+    if (mobileStyleSelector) mobileStyleSelector.value = newStyle;
+    if (desktopStyleSelector) desktopStyleSelector.value = newStyle;
+  }
+
+  // Theme toggle functionality for both mobile and desktop
+  if (mobileThemeToggle) {
+    mobileThemeToggle.addEventListener('click', toggleTheme);
+  }
+  if (desktopThemeToggle) {
+    desktopThemeToggle.addEventListener('click', toggleTheme);
+  }
+
+  // Style selector functionality for both mobile and desktop
+  if (mobileStyleSelector) {
+    mobileStyleSelector.addEventListener('change', (e) => changeStyle(e.target.value));
+  }
+  if (desktopStyleSelector) {
+    desktopStyleSelector.addEventListener('change', (e) => changeStyle(e.target.value));
+  }
+
+  // Hamburger menu functionality
+  const hamburgerMenu = document.getElementById('hamburgerMenu');
+  const navButtons = document.getElementById('navButtons');
+  
+  hamburgerMenu.addEventListener('click', () => {
+    hamburgerMenu.classList.toggle('active');
+    navButtons.classList.toggle('show');
+  });
+
+  // Close mobile menu when clicking on a navigation item
+  const navItems = navButtons.querySelectorAll('button[onclick]');
+  navItems.forEach(item => {
+    item.addEventListener('click', () => {
+      if (window.innerWidth <= 1024) {
+        hamburgerMenu.classList.remove('active');
+        navButtons.classList.remove('show');
+      }
+    });
+  });
+
+  // Close menu only on timeline filter change
+  const timelineFilter = navButtons.querySelector('select#filter');
+  if (timelineFilter) {
+    timelineFilter.addEventListener('change', () => {
+      if (window.innerWidth <= 1024) {
+        hamburgerMenu.classList.remove('active');
+        navButtons.classList.remove('show');
+      }
+    });
+  }
+
+  // Close mobile menu when clicking outside
+  document.addEventListener('click', (e) => {
+    if (window.innerWidth <= 1024 && 
+        !hamburgerMenu.contains(e.target) && 
+        !navButtons.contains(e.target) && 
+        navButtons.classList.contains('show')) {
+      hamburgerMenu.classList.remove('active');
+      navButtons.classList.remove('show');
+    }
+  });
+
+  // Close mobile menu on window resize
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 1024) {
+      hamburgerMenu.classList.remove('active');
+      navButtons.classList.remove('show');
+    }
+  });
+
+  // Back to top functionality
+  const backToTopButton = document.getElementById('backToTop');
+  
+  window.addEventListener('scroll', () => {
+    if (window.pageYOffset > 300) {
+      backToTopButton.classList.add('show');
+    } else {
+      backToTopButton.classList.remove('show');
+    }
+  });
+
+  backToTopButton.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+});
+
+</script>
+</head>
+<body data-theme="light" data-style="default">
+<nav class="navbar">
+  <div class="navbar-left">
+    <div class="brand">US Constitutional Subversion</div>
+    <div class="nav-buttons" id="navButtons">
+      <button onclick="gotoSection('intro')">Introduction</button>
+      <button onclick="gotoSection('timeline')">Timeline</button>
+      <button onclick="gotoSection('presidents')">Presidential Overreach</button>
+      <button onclick="gotoSection('congress')">Congressional Malfeasance</button>
+      <button onclick="gotoSection('scotus')">Supreme Court</button>
+      <button onclick="gotoSection('programs')">Secret Programs</button>
+      <button onclick="gotoSection('imperialism')">Imperialism</button>
+      <button onclick="gotoSection('federal-reserve')">Federal Reserve</button>
+      <button onclick="gotoSection('corporatism')">Corporatism</button>
+      <button onclick="gotoSection('analysis')">Analysis</button>
+      <button onclick="gotoSection('references')">References</button>
+      <select id="filter" onchange="filterTimeline()">
+        <option value="all">Filter by actor...</option>
+        <option>Washington</option>
+        <option>Adams</option>
+        <option>Jefferson</option>
+        <option>Madison</option>
+        <option>Jackson</option>
+        <option>Polk</option>
+        <option>Lincoln</option>
+        <option>Johnson</option>
+        <option>McKinley</option>
+        <option>T Roosevelt</option>
+        <option>Wilson</option>
+        <option>Roosevelt</option>
+        <option>Truman</option>
+        <option>Kennedy</option>
+        <option>Johnson</option>
+        <option>Nixon</option>
+        <option>Ford</option>
+        <option>Carter</option>
+        <option>Reagan</option>
+        <option>Bush</option>
+        <option>Clinton</option>
+        <option>Obama</option>
+        <option>Trump</option>
+        <option>Biden</option>
+        <option>Federal Reserve</option>
+        <option>Treasury</option>
+      </select>
+      <div class="mobile-actions">
+        <button onclick="window.print()">🖨️ Print</button>
+      </div>
+      <div class="mobile-theme-controls">
+        <select class="style-selector" id="styleSelector">
+          <option value="default">Default</option>
+          <option value="glassmorphism">Glassmorphism</option>
+          <option value="neumorphism">Neumorphism</option>
+        </select>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+          <div class="theme-toggle-slider">☀️</div>
+        </button>
+      </div>
+    </div>
+  </div>
+  <button class="hamburger-menu" id="hamburgerMenu" aria-label="Toggle navigation menu">
+    <span class="hamburger-line"></span>
+    <span class="hamburger-line"></span>
+    <span class="hamburger-line"></span>
+  </button>
+  <div class="navbar-divider"></div>
+  <div class="navbar-right">
+    <div class="desktop-theme-controls">
+      <select class="style-selector" id="desktopStyleSelector">
+        <option value="default">Default</option>
+        <option value="glassmorphism">Glassmorphism</option>
+        <option value="neumorphism">Neumorphism</option>
+      </select>
+      <button class="theme-toggle" id="desktopThemeToggle" aria-label="Toggle theme">
+        <div class="theme-toggle-slider">☀️</div>
+      </button>
+    </div>
+    <div class="desktop-actions">
+      <button onclick="window.print()">🖨️ Print</button>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <section id="intro" class="section">
+    <h1>History of US Constitutional Subversion: Presidential, Congressional, and Judicial Overreach</h1>
+    <p class="lede">This comprehensive timeline documents constitutional violations, illegal acts, and systematic subversion by all three branches of government from the founding era to present day. Includes secret programs, imperial interventions, domestic surveillance, and judicial malfeasance with verifiable primary sources.</p>
+  </section>
+
+  <section id="timeline" class="section">
+    <h2>Chronological Timeline of Constitutional Violations</h2>
+    <p class="refs">Use the filter above to show entries by specific actors or administrations.</p>
+
+    <details class="tl-item" open>
+      <summary>
+        <span class="tl-date">⚖️ 1794</span>
+        <span class="tl-who">— <strong>George Washington</strong></span>
+        <span class="tl-where">(Whiskey Rebellion)</span>
+      </summary>
+      <div class="tl-body">
+        <div class="tl-row"><span class="lbl bad">Constitutional violation</span><div class="val">Used federal military force against domestic protesters without Congressional declaration, establishing precedent for executive use of force against citizens.</div></div>
+        <div class="tl-row"><span class="lbl">Context</span><div class="val">Western Pennsylvania farmers resisted federal excise tax on whiskey. Washington led 13,000 federal troops to suppress resistance.</div></div>
+        <div class="tl-row"><span class="lbl neutral">Legal argument</span><div class="val">Violated state sovereignty and due process by using military force against civilians before exhausting judicial remedies.</div></div>
+        <div class="tl-links">Sources: <a href="https://www.archives.gov/founding-docs/constitution-transcript" target="_blank">Constitution</a> • <a href="https://www.mountvernon.org/library/digitalhistory/digital-encyclopedia/article/whiskey-rebellion/" target="_blank">Mount Vernon</a></div>
+      </div>
+    </details>
+
+    <details class="tl-item" open>
+      <summary>
+        <span class="tl-date">⚖️ 1798</span>
+        <span class="tl-who">— <strong>John Adams / Congress</strong></span>
+        <span class="tl-where">(Alien & Sedition Acts)</span>
+      </summary>
+      <div class="tl-body">
+        <div class="tl-row"><span class="lbl bad">Constitutional violation</span><div class="val">Alien and Sedition Acts directly violated First Amendment free speech and due process rights.</div></div>
+        <div class="tl-row"><span class="lbl">What happened</span><div class="val">Sedition Act criminalized criticism of government; Alien Acts authorized deportation without trial.</div></div>
+        <div class="tl-row"><span class="lbl neutral">Opposition response</span><div class="val">Virginia and Kentucky Resolutions (Jefferson/Madison) declared acts unconstitutional and asserted state nullification.</div></div>
+        <div class="tl-links">Sources: <a href="https://www.archives.gov/milestone-documents/alien-and-sedition-acts" target="_blank">National Archives</a> • <a href="https://avalon.law.yale.edu/18th_century/virres.asp" target="_blank">Virginia Resolution</a></div>
+      </div>
+    </details>
+
+    <details class="tl-item" open>
+      <summary>
+        <span class="tl-date">⚖️ 1801</span>
+        <span class="tl-who">— <strong>Thomas Jefferson</strong></span>
+        <span class="tl-where">(Barbary Wars)</span>
+      </summary>
+      <div class="tl-body">
+        <div class="tl-row"><span class="lbl bad">Constitutional violation</span><div class="val">Conducted military operations against Tripoli without Congressional declaration of war, setting precedent for undeclared wars.</div></div>
+        <div class="tl-row"><span class="lbl">What happened</span><div class="val">Sent naval forces to Mediterranean to fight Barbary pirates; expanded conflict without Congressional authorization.</div></div>
+        <div class="tl-row"><span class="lbl neutral">Precedent set</span><div class="val">Established executive power to wage undeclared wars, later used to justify hundreds of military interventions.</div></div>
+        <div class="tl-links">Sources: <a href="https://history.navy.mil/browse-by-topic/wars-conflicts-and-operations/wars-with-barbary-powers.html" target="_blank">Naval History - Barbary Wars</a></div>
+      </div>
+    </details>
+
+    <details class="tl-item" open>
+      <summary>
+        <span class="tl-date">⚖️ 1803</span>
+        <span class="tl-who">— <strong>Thomas Jefferson</strong></span>
+        <span class="tl-where">(Louisiana Purchase)</span>
+      </summary>
+      <div class="tl-body">
+        <div class="tl-row"><span class="lbl bad">Constitutional violation</span><div class="val">Exceeded constitutional authority by purchasing territory without explicit constitutional power or Congressional authorization.</div></div>
+        <div class="tl-row"><span class="lbl">Jefferson's doubts</span><div class="val">Jefferson himself acknowledged the purchase was "beyond the Constitution" and considered seeking an amendment.</div></div>
+        <div class="tl-row"><span class="lbl neutral">Precedent set</span><div class="val">Established executive power to expand federal territory and debt without clear constitutional authority.</div></div>
+        <div class="tl-links">Sources: <a href="https://www.loc.gov/rr/program/bib/ourdocs/Louisiana.html" target="_blank">Library of Congress</a> • <a href="https://founders.archives.gov/documents/Jefferson/01-41-02-0139" target="_blank">Jefferson Letter</a></div>
+      </div>
+    </details>
+
+    <details class="tl-item" open>
+      <summary>
+        <span class="tl-date">⚖️ 1832</span>
+        <span class="tl-who">— <strong>Andrew Jackson</strong></span>
+        <span class="tl-where">(Bank War & Indian Removal)</span>
+      </summary>
+      <div class="tl-body">
+        <div class="tl-row"><span class="lbl bad">Constitutional violations</span><div class="val">Destroyed National Bank through executive action; ignored Supreme Court ruling on Cherokee Nation rights.</div></div>
+        <div class="tl-row"><span class="lbl">Bank destruction</span><div class="val">Removed federal deposits from Bank of the United States, triggering economic panic; claimed bank was unconstitutional despite McCulloch v. Maryland.</div></div>
+        <div class="tl-row"><span class="lbl">Indian Removal</span><div class="val">Enforced Indian Removal Act despite Worcester v. Georgia ruling protecting Cherokee sovereignty. "John Marshall has made his decision; now let him enforce it."</div></div>
+        <div class="tl-row"><span class="lbl neutral">Impact</span><div class="val">Trail of Tears killed 4,000+ Cherokee; established precedent for executive defiance of Supreme Court.</div></div>
+        <div class="tl-links">Sources: <a href="https://supreme.justia.com/cases/federal/us/31/515/" target="_blank">Worcester v. Georgia</a> • <a href="https://www.archives.gov/milestone-documents/indian-removal-act" target="_blank">Indian Removal Act</a></div>
+      </div>
+    </details>
+
+    <details class="tl-item" open>
+      <summary>
+        <span class="tl-date">⚖️ 1845-1848</span>
+        <span class="tl-who">— <strong>James K. Polk</strong></span>
+        <span class="tl-where">(Mexican-American War)</span>
+      </summary>
+      <div class="tl-body">
+        <div class="tl-row"><span class="lbl bad">Constitutional violation</span><div class="val">Provoked war with Mexico through troop deployment, then claimed Mexico "invaded" US territory to justify war declaration.</div></div>
+        <div class="tl-row"><span class="lbl">What happened</span><div class="val">Sent troops to disputed Texas-Mexico border; when Mexico attacked, claimed unprovoked aggression to get Congressional war declaration.</div></div>
+        <div class="tl-row"><span class="lbl">Congressional opposition</span><div class="val">Abraham Lincoln (then House member) introduced "Spot Resolutions" demanding proof of Mexican aggression on US soil.</div></div>
+        <div class="tl-row"><span class="lbl neutral">Result</span><div class="val">Acquired California, New Mexico, Arizona, Nevada, Utah, and parts of Colorado - largest territorial expansion since Louisiana Purchase.</div></div>
+        <div class="tl-links">Sources: <a href="https://www.loc.gov/rr/hispanic/1898/intro.html" target="_blank">Library of Congress - Mexican War</a> • <a href="https://memory.loc.gov/ammem/today/feb02.html" target="_blank">Treaty of Guadalupe Hidalgo</a></div>
+      </div>
+    </details>
+
+    <details class="tl-item" open>
+      <summary>
+        <span class="tl-date">⚖️ 1861-1865</span>
+        <span class="tl-who">— <strong>Abraham Lincoln</strong></span>
+        <span class="tl-where">(Civil War Violations)</span>
+      </summary>
+      <div class="tl-body">
+        <div class="tl-row"><span class="lbl bad">Constitutional violations</span><div class="val">Multiple violations: suspended habeas corpus without Congressional approval, imposed martial law, censored press, created military tribunals for civilians.</div></div>
+        <div class="tl-row"><span class="lbl">Specific actions</span><div class="val">Arrested newspaper editors, detained civilians without trial (13,000+ arrests), blockaded Southern ports without war declaration.</div></div>
+        <div class="tl-row"><span class="lbl neutral">Supreme Court response</span><div class="val">Ex parte Merryman (1861) declared Lincoln's habeas suspension unconstitutional; Lincoln ignored ruling.</div></div>
+        <div class="tl-links">Sources: <a href="https://supreme.justia.com/cases/federal/us/71/2/" target="_blank">Ex parte Milligan</a> • <a href="https://www.archives.gov/milestone-documents/emancipation-proclamation" target="_blank">National Archives</a></div>
+      </div>
+    </details>
+
+    <details class="tl-item" open>
+      <summary>
+        <span class="tl-date">⚖️ 1898</span>
+        <span class="tl-who">— <strong>William McKinley</strong></span>
+        <span class="tl-where">(Spanish-American War)</span>
+      </summary>
+      <div class="tl-body">
+        <div class="tl-row"><span class="lbl bad">Constitutional violation</span><div class="val">Used USS Maine explosion (likely accidental) as pretext for war; acquired overseas empire without constitutional authority for territorial governance.</div></div>
+        <div class="tl-row"><span class="lbl">Imperial expansion</span><div class="val">Acquired Philippines, Guam, Puerto Rico; ruled territories without constitutional protections for inhabitants.</div></div>
+        <div class="tl-row"><span class="lbl">Philippine War</span><div class="val">3-year war against Filipino independence fighters; 200,000+ civilian deaths; torture and concentration camps used.</div></div>
+        <div class="tl-row"><span class="lbl neutral">Constitutional questions</span><div class="val">Insular Cases (1901) created doctrine that Constitution doesn't fully apply to territories, enabling colonial rule.</div></div>
+        <div class="tl-links">Sources: <a href="https://www.archives.gov/milestone-documents/treaty-of-paris" target="_blank">Treaty of Paris</a> • <a href="https://supreme.justia.com/cases/federal/us/182/1/" target="_blank">Insular Cases</a></div>
+      </div>
+    </details>
+
+    <details class="tl-item" open>
+      <summary>
+        <span class="tl-date">💰 1913</span>
+        <span class="tl-who">— <strong>Wilson/Congress</strong></span>
+        <span class="tl-where">(Federal Reserve Act)</span>
+      </summary>
+      <div class="tl-body">
+        <div class="tl-row"><span class="lbl bad">Constitutional violation</span><div class="val">Delegated Congress's constitutional power to "coin money and regulate value" to private banking cartel without constitutional amendment.</div></div>
+        <div class="tl-row"><span class="lbl">What happened</span><div class="val">Created Federal Reserve System giving private banks control over money supply, interest rates, and credit creation.</div></div>
+        <div class="tl-row"><span class="lbl">Deception</span><div class="val">Passed during Christmas recess when opponents were absent; marketed as "Federal" when privately owned.</div></div>
+        <div class="tl-row"><span class="lbl neutral">Immediate impact</span><div class="val">Enabled massive WWI financing through money printing rather than direct taxation.</div></div>
+        <div class="tl-links">Sources: <a href="https://www.federalreserve.gov/aboutthefed/fract.htm" target="_blank">Federal Reserve Act</a> • <a href="https://www.congress.gov/bill/63rd-congress/house-bill/7837" target="_blank">H.R. 7837 (1913)</a></div>
+      </div>
+    </details>
+
+    <details class="tl-item" open>
+      <summary>
+        <span class="tl-date">⚖️ 1918-1921</span>
+        <span class="tl-who">— <strong>Woodrow Wilson</strong></span>
+        <span class="tl-where">(WWI Violations)</span>
+      </summary>
+      <div class="tl-body">
+        <div class="tl-row"><span class="lbl bad">Constitutional violations</span><div class="val">Espionage Act (1917) and Sedition Act (1918) criminalized anti-war speech; Palmer Raids violated 4th Amendment.</div></div>
+        <div class="tl-row"><span class="lbl">What happened</span><div class="val">Prosecuted 2,000+ people for anti-war speech; deported thousands without due process; created propaganda agency (CPI).</div></div>
+        <div class="tl-row"><span class="lbl neutral">Scale of suppression</span><div class="val">Banned books, censored mail, imprisoned socialist leader Eugene Debs for anti-war speech.</div></div>
+        <div class="tl-links">Sources: <a href="https://www.archives.gov/milestone-documents/espionage-act" target="_blank">Espionage Act</a> • <a href="https://www.law.cornell.edu/supremecourt/text/249/47" target="_blank">Schenck v. US</a></div>
+      </div>
+    </details>
+
+    <details class="tl-item" open>
+      <summary>
+        <span class="tl-date">⚖️ 1942-1945</span>
+        <span class="tl-who">— <strong>Franklin D. Roosevelt</strong></span>
+        <span class="tl-where">(Japanese Internment)</span>
+      </summary>
+      <div class="tl-body">
+        <div class="tl-row"><span class="lbl bad">Constitutional violation</span><div class="val">Executive Order 9066 violated 5th and 14th Amendment equal protection and due process rights of 120,000 Japanese Americans.</div></div>
+        <div class="tl-row"><span class="lbl">What happened</span><div class="val">Forcibly relocated and detained American citizens without trial, charges, or evidence of wrongdoing based solely on ethnicity.</div></div>
+        <div class="tl-row"><span class="lbl neutral">Supreme Court complicity</span><div class="val">Korematsu v. US (1944) upheld internment; later overturned as "gravely wrong" and based on "racial prejudice."</div></div>
+        <div class="tl-links">Sources: <a href="https://www.archives.gov/milestone-documents/executive-order-9066" target="_blank">Executive Order 9066</a> • <a href="https://supreme.justia.com/cases/federal/us/323/214/" target="_blank">Korematsu v. US</a></div>
+      </div>
+    </details>
+
+    <details class="tl-item" open>
+      <summary>
+        <span class="tl-date">💰 1933-1971</span>
+        <span class="tl-who">— <strong>Roosevelt/Nixon</strong></span>
+        <span class="tl-where">(Gold Standard Destruction)</span>
+      </summary>
+      <div class="tl-body">
+        <div class="tl-row"><span class="lbl bad">Constitutional violation</span><div class="val">FDR confiscated private gold (1933), Nixon ended gold standard (1971), enabling unlimited money printing without constitutional basis.</div></div>
+        <div class="tl-row"><span class="lbl">Gold confiscation</span><div class="val">Executive Order 6102 criminalized gold ownership; citizens forced to sell gold to government at $20.67/oz, then devalued to $35/oz.</div></div>
+        <div class="tl-row"><span class="lbl">Bretton Woods end</span><div class="val">Nixon closed gold window (1971), breaking international agreements and enabling fiat currency system.</div></div>
+        <div class="tl-row"><span class="lbl neutral">Purchasing power impact</span><div class="val">Dollar lost 96% of purchasing power since 1913; acceleration after 1971 gold standard end.</div></div>
+        <div class="tl-links">Sources: <a href="https://www.archives.gov/milestone-documents/executive-order-6102" target="_blank">Executive Order 6102</a> • <a href="https://www.nixonfoundation.org/2011/08/nixons-new-economic-policy/" target="_blank">Nixon Shock (1971)</a></div>
+      </div>
+    </details>
+
+    <details class="tl-item" open>
+      <summary>
+        <span class="tl-date">⚖️ 1950s-1970s</span>
+        <span class="tl-who">— <strong>CIA/FBI</strong></span>
+        <span class="tl-where">(COINTELPRO/MKUltra)</span>
+      </summary>
+      <div class="tl-body">
+        <div class="tl-row"><span class="lbl bad">Constitutional violations</span><div class="val">Systematic surveillance, infiltration, and disruption of domestic groups; illegal human experimentation without consent.</div></div>
+        <div class="tl-row"><span class="lbl">COINTELPRO operations</span><div class="val">FBI infiltrated civil rights groups, antiwar activists, and political organizations; conducted "black bag jobs" and character assassination.</div></div>
+        <div class="tl-row"><span class="lbl">MKUltra program</span><div class="val">CIA conducted mind control experiments on unwitting subjects using LSD and torture techniques.</div></div>
+        <div class="tl-links">Sources: <a href="https://vault.fbi.gov/cointel-pro" target="_blank">FBI Vault - COINTELPRO</a> • <a href="https://www.cia.gov/readingroom/collection/family-jewels" target="_blank">CIA Family Jewels</a></div>
+      </div>
+    </details>
+
+    <details class="tl-item" open>
+      <summary>
+        <span class="tl-date">⚖️ 1964-1975</span>
+        <span class="tl-who">— <strong>Johnson/Nixon</strong></span>
+        <span class="tl-where">(Vietnam War)</span>
+      </summary>
+      <div class="tl-body">
+        <div class="tl-row"><span class="lbl bad">Constitutional violation</span><div class="val">Conducted undeclared war without Congressional authorization; Pentagon Papers revealed systematic lying to Congress and public.</div></div>
+        <div class="tl-row"><span class="lbl">Gulf of Tonkin deception</span><div class="val">Johnson used false flag incident to justify escalation; NSA documents later revealed attacks were fabricated.</div></div>
+        <div class="tl-row"><span class="lbl">Cambodia bombing</span><div class="val">Nixon secretly bombed neutral Cambodia without Congressional knowledge or approval, violating international law.</div></div>
+        <div class="tl-links">Sources: <a href="https://www.archives.gov/milestone-documents/tonkin-gulf-resolution" target="_blank">Gulf of Tonkin Resolution</a> • <a href="https://www.archives.gov/milestone-documents/pentagon-papers" target="_blank">Pentagon Papers</a></div>
+      </div>
+    </details>
+
+    <details class="tl-item" open>
+      <summary>
+        <span class="tl-date">⚖️ 1961-1963</span>
+        <span class="tl-who">— <strong>John F. Kennedy</strong></span>
+        <span class="tl-where">(Bay of Pigs & Cuba Operations)</span>
+      </summary>
+      <div class="tl-body">
+        <div class="tl-row"><span class="lbl bad">Constitutional violation</span><div class="val">Authorized CIA invasion of Cuba without Congressional approval; conducted covert operations against sovereign nation.</div></div>
+        <div class="tl-row"><span class="lbl">What happened</span><div class="val">Bay of Pigs invasion (1961) failed; Operation Mongoose continued sabotage and assassination attempts against Castro.</div></div>
+        <div class="tl-row"><span class="lbl">Secret programs</span><div class="val">Approved Operation Northwoods planning (false flag attacks on Americans to justify Cuba invasion) but ultimately rejected implementation.</div></div>
+        <div class="tl-row"><span class="lbl neutral">Steel seizure</span><div class="val">Threatened to seize steel industry during 1962 dispute but backed down after business pressure.</div></div>
+        <div class="tl-links">Sources: <a href="https://nsarchive2.gwu.edu/news/20010430/" target="_blank">Operation Northwoods Documents</a> • <a href="https://www.cia.gov/readingroom/docs/DOC_0001451843.pdf" target="_blank">Bay of Pigs CIA Report</a></div>
+      </div>
+    </details>
+
+    <details class="tl-item" open>
+      <summary>
+        <span class="tl-date">⚖️ 1972-1974</span>
+        <span class="tl-who">— <strong>Richard Nixon</strong></span>
+        <span class="tl-where">(Watergate/Abuse of Power)</span>
+      </summary>
+      <div class="tl-body">
+        <div class="tl-row"><span class="lbl bad">Constitutional violations</span><div class="val">Obstruction of justice, abuse of power, violation of citizens' rights through illegal surveillance and break-ins.</div></div>
+        <div class="tl-row"><span class="lbl">What happened</span><div class="val">Authorized break-in of Democratic headquarters, covered up crimes, used federal agencies to harass political opponents.</div></div>
+        <div class="tl-row"><span class="lbl neutral">Result</span><div class="val">First president to resign; Supreme Court ruled executive privilege cannot override judicial subpoenas (US v. Nixon).</div></div>
+        <div class="tl-links">Sources: <a href="https://supreme.justia.com/cases/federal/us/418/683/" target="_blank">United States v. Nixon</a> • <a href="https://www.archives.gov/milestone-documents/watergate-articles-of-impeachment" target="_blank">Articles of Impeachment</a></div>
+      </div>
+    </details>
+
+    <details class="tl-item" open>
+      <summary>
+        <span class="tl-date">⚖️ 1974-1977</span>
+        <span class="tl-who">— <strong>Gerald Ford</strong></span>
+        <span class="tl-where">(Nixon Pardon & CIA Operations)</span>
+      </summary>
+      <div class="tl-body">
+        <div class="tl-row"><span class="lbl bad">Constitutional violations</span><div class="val">Pardoned Nixon before charges filed, obstructing justice; continued illegal CIA domestic surveillance programs.</div></div>
+        <div class="tl-row"><span class="lbl">Nixon pardon</span><div class="val">Unconditional pardon prevented criminal prosecution, undermining rule of law and equal justice under law.</div></div>
+        <div class="tl-row"><span class="lbl">CIA oversight</span><div class="val">Church Committee revelations occurred during Ford presidency; tried to limit investigation scope and protect intelligence community.</div></div>
+        <div class="tl-links">Sources: <a href="https://www.archives.gov/milestone-documents/nixon-pardon" target="_blank">Nixon Pardon Proclamation</a> • <a href="https://www.intelligence.senate.gov/sites/default/files/94465.pdf" target="_blank">Church Committee Report</a></div>
+      </div>
+    </details>
+
+    <details class="tl-item" open>
+      <summary>
+        <span class="tl-date">⚖️ 1977-1981</span>
+        <span class="tl-who">— <strong>Jimmy Carter</strong></span>
+        <span class="tl-where">(FISA Court & Covert Operations)</span>
+      </summary>
+      <div class="tl-body">
+        <div class="tl-row"><span class="lbl bad">Constitutional violation</span><div class="val">Created secret FISA Court system for warrantless surveillance; continued CIA covert operations worldwide.</div></div>
+        <div class="tl-row"><span class="lbl">FISA Act (1978)</span><div class="val">Established secret court to approve surveillance warrants, creating parallel legal system outside normal constitutional protections.</div></div>
+        <div class="tl-row"><span class="lbl">Covert operations</span><div class="val">Armed Afghan mujahideen against Soviet Union; supported death squads in El Salvador; backed Indonesian genocide in East Timor.</div></div>
+        <div class="tl-row"><span class="lbl neutral">Financial surveillance</span><div class="val">Created FinCEN (1990, but laid groundwork) for comprehensive financial surveillance of Americans.</div></div>
+        <div class="tl-links">Sources: <a href="https://www.archives.gov/milestone-documents/foreign-intelligence-surveillance-act" target="_blank">FISA Act</a> • <a href="https://nsarchive2.gwu.edu/briefing-book/afghanistan/2016-08-24/cold-war-flashpoints-afghanistan-1979-1989" target="_blank">Afghanistan Documents</a></div>
+      </div>
+    </details>
+
+    <details class="tl-item" open>
+      <summary>
+        <span class="tl-date">⚖️ 1980s</span>
+        <span class="tl-who">— <strong>Ronald Reagan</strong></span>
+        <span class="tl-where">(Iran-Contra Scandal)</span>
+      </summary>
+      <div class="tl-body">
+        <div class="tl-row"><span class="lbl bad">Constitutional violation</span><div class="val">Circumvented Congressional ban on funding Contras; conducted secret arms sales to Iran without Congressional notification.</div></div>
+        <div class="tl-row"><span class="lbl">What happened</span><div class="val">Administration sold weapons to Iran, used proceeds to fund Nicaraguan rebels despite Boland Amendment prohibition.</div></div>
+        <div class="tl-row"><span class="lbl neutral">Cover-up</span><div class="val">Shredded documents, lied to Congress; 14 officials indicted, many pardoned by Bush Sr.</div></div>
+        <div class="tl-links">Sources: <a href="https://www.brown.edu/Research/Understanding_the_Iran_Contra_Affair/" target="_blank">Iran-Contra Report</a> • <a href="https://nsarchive2.gwu.edu/NSAEBB/NSAEBB2/" target="_blank">National Security Archive</a></div>
+      </div>
+    </details>
+
+    <details class="tl-item" open>
+      <summary>
+        <span class="tl-date">⚖️ 1993-2001</span>
+        <span class="tl-who">— <strong>Bill Clinton</strong></span>
+        <span class="tl-where">(Bosnia, Iraq, & Domestic Surveillance)</span>
+      </summary>
+      <div class="tl-body">
+        <div class="tl-row"><span class="lbl bad">Constitutional violations</span><div class="val">Bombed Yugoslavia without Congressional approval; maintained Iraq no-fly zones and sanctions; expanded domestic surveillance capabilities.</div></div>
+        <div class="tl-row"><span class="lbl">Yugoslav intervention</span><div class="val">78-day NATO bombing campaign (1999) without Congressional authorization; claimed humanitarian intervention authority.</div></div>
+        <div class="tl-row"><span class="lbl">Iraq enforcement</span><div class="val">Operation Desert Fox (1998) - four days of bombing during impeachment proceedings without Congressional approval.</div></div>
+        <div class="tl-row"><span class="lbl">Surveillance expansion</span><div class="val">Antiterrorism Act (1996) expanded surveillance powers; Communications Assistance for Law Enforcement Act (1994) required telecom backdoors.</div></div>
+        <div class="tl-row"><span class="lbl neutral">Financial deregulation</span><div class="val">Repealed Glass-Steagall Act (1999), enabling "too big to fail" banks that required 2008 bailouts.</div></div>
+        <div class="tl-links">Sources: <a href="https://www.nato.int/cps/en/natohq/topics_49212.htm" target="_blank">NATO Kosovo Campaign</a> • <a href="https://www.congress.gov/bill/104th-congress/house-bill/3610" target="_blank">Antiterrorism Act 1996</a></div>
+      </div>
+    </details>
+
+    <details class="tl-item" open>
+      <summary>
+        <span class="tl-date">💰 2008-Present</span>
+        <span class="tl-who">— <strong>Federal Reserve/Treasury</strong></span>
+        <span class="tl-where">(Financial Crisis Bailouts & QE)</span>
+      </summary>
+      <div class="tl-body">
+        <div class="tl-row"><span class="lbl bad">Constitutional violation</span><div class="val">Created trillions in new money without Congressional appropriation; bailed out private companies violating equal protection and property rights.</div></div>
+        <div class="tl-row"><span class="lbl">What happened</span><div class="val">$16+ trillion in secret bailouts to banks (2008); $4+ trillion in QE money printing (2008-2014, 2020-2022); purchased corporate bonds and mortgages.</div></div>
+        <div class="tl-row"><span class="lbl">Cronyism</span><div class="val">"Too big to fail" banks received bailouts while homeowners faced foreclosure; Fed Chair Ben Bernanke joined hedge fund after tenure.</div></div>
+        <div class="tl-row"><span class="lbl neutral">Economic impact</span><div class="val">Wealth inequality soared; asset bubbles created; savers punished with zero interest rates for over a decade.</div></div>
+        <div class="tl-links">Sources: <a href="https://www.gao.gov/assets/gao-11-696.pdf" target="_blank">GAO Audit of Fed</a> • <a href="https://www.federalreserve.gov/monetarypolicy/bst_recenttrends.htm" target="_blank">Fed Balance Sheet</a></div>
+      </div>
+    </details>
+
+    <details class="tl-item" open>
+      <summary>
+        <span class="tl-date">⚖️ 2001-Present</span>
+        <span class="tl-who">— <strong>Bush/Obama/Trump/Biden</strong></span>
+        <span class="tl-where">(War on Terror Violations)</span>
+      </summary>
+      <div class="tl-body">
+        <div class="tl-row"><span class="lbl bad">Constitutional violations</span><div class="val">Patriot Act surveillance, indefinite detention without trial, torture, targeted killings of US citizens, mass NSA surveillance.</div></div>
+        <div class="tl-row"><span class="lbl">Bush era</span><div class="val">Guantanamo detention, warrantless surveillance, torture program, signing statements to ignore laws.</div></div>
+        <div class="tl-row"><span class="lbl">Obama expansion</span><div class="val">Assassinated US citizens via drone (Anwar al-Awlaki), expanded surveillance, prosecuted more whistleblowers than all previous presidents.</div></div>
+        <div class="tl-row"><span class="lbl">NSA surveillance</span><div class="val">Snowden revelations showed mass collection of phone metadata, internet communications of all Americans without warrants.</div></div>
+        <div class="tl-links">Sources: <a href="https://www.eff.org/issues/national-security-agency-nsa" target="_blank">EFF NSA Documents</a> • <a href="https://www.aclu.org/issues/national-security/detention/indefinite-detention" target="_blank">ACLU Detention</a></div>
+      </div>
+    </details>
+  </section>
+
+  <section id="presidents" class="section">
+    <h2>Presidential Overreach by Administration</h2>
+    <div class="grid">
+      <div class="card">
+        <div class="card-title">George Washington (1789-1797)</div>
+        <div class="card-role">First Constitutional Violations</div>
+        <ul class="facts">
+          <li><strong>Whiskey Rebellion (1794)</strong>: Used military against domestic protesters</li>
+          <li><strong>Neutrality Proclamation</strong>: Asserted foreign policy powers not in Constitution</li>
+          <li><strong>Jay Treaty</strong>: Made treaty without Senate consultation</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-title">John Adams (1797-1801)</div>
+        <div class="card-role">Alien & Sedition Acts</div>
+        <ul class="facts">
+          <li><strong>Sedition Act enforcement</strong>: Prosecuted 25 for criticizing government</li>
+          <li><strong>Alien Acts</strong>: Authorized deportation without trial</li>
+          <li><strong>Quasi-War with France</strong>: Naval war without Congressional declaration</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Thomas Jefferson (1801-1809)</div>
+        <div class="card-role">Louisiana Purchase & Barbary Wars</div>
+        <ul class="facts">
+          <li><strong>Louisiana Purchase</strong>: Exceeded constitutional authority</li>
+          <li><strong>Barbary Wars</strong>: Military action without war declaration</li>
+          <li><strong>Embargo Act (1807)</strong>: Economic warfare against Britain/France</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-title">James Madison (1809-1817)</div>
+        <div class="card-role">War of 1812</div>
+        <ul class="facts">
+          <li><strong>War of 1812</strong>: Poorly justified war declaration</li>
+          <li><strong>National bank</strong>: Initially opposed, later supported Second Bank</li>
+          <li><strong>Internal improvements</strong>: Federal funding for roads, canals</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Andrew Jackson (1829-1837)</div>
+        <div class="card-role">Bank War & Indian Removal</div>
+        <ul class="facts">
+          <li><strong>Bank destruction</strong>: Destroyed National Bank via executive action</li>
+          <li><strong>Indian Removal</strong>: Ignored Supreme Court, enforced Trail of Tears</li>
+          <li><strong>Nullification Crisis</strong>: Threatened military force against South Carolina</li>
+          <li><strong>Specie Circular</strong>: Required gold/silver for land purchases</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-title">James K. Polk (1845-1849)</div>
+        <div class="card-role">Mexican-American War</div>
+        <ul class="facts">
+          <li><strong>War provocation</strong>: Deployed troops to provoke Mexican attack</li>
+          <li><strong>Territorial expansion</strong>: Acquired 1/3 of current US territory</li>
+          <li><strong>Executive secrecy</strong>: Concealed war plans from Congress</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Abraham Lincoln (1861-1865)</div>
+        <div class="card-role">Wartime Constitutional Suspension</div>
+        <ul class="facts">
+          <li><strong>Habeas Corpus</strong>: Suspended without Congressional approval</li>
+          <li><strong>13,000+ arrests</strong>: Civilians detained without charges</li>
+          <li><strong>Press censorship</strong>: Shut down newspapers, arrested editors</li>
+          <li><strong>Military tribunals</strong>: Tried civilians in military courts</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Andrew Johnson (1865-1869)</div>
+        <div class="card-role">Reconstruction Defiance</div>
+        <ul class="facts">
+          <li><strong>Reconstruction opposition</strong>: Obstructed Congressional Reconstruction</li>
+          <li><strong>Tenure of Office violation</strong>: Fired Secretary of War Stanton</li>
+          <li><strong>Impeachment</strong>: First president impeached (acquitted by 1 vote)</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-title">William McKinley (1897-1901)</div>
+        <div class="card-role">Imperial Expansion</div>
+        <ul class="facts">
+          <li><strong>Spanish-American War</strong>: Used Maine explosion as war pretext</li>
+          <li><strong>Philippine War</strong>: 3-year colonial war, 200,000+ deaths</li>
+          <li><strong>Territorial rule</strong>: Governed territories without constitutional protections</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Theodore Roosevelt (1901-1909)</div>
+        <div class="card-role">Progressive Expansion</div>
+        <ul class="facts">
+          <li><strong>Panama Canal</strong>: Fomented revolution to acquire canal zone</li>
+          <li><strong>Roosevelt Corollary</strong>: Claimed hemispheric police powers</li>
+          <li><strong>Antitrust enforcement</strong>: Expanded federal regulatory power</li>
+          <li><strong>Conservation</strong>: Created national monuments via executive order</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Woodrow Wilson (1913-1921)</div>
+        <div class="card-role">WWI & Federal Reserve</div>
+        <ul class="facts">
+          <li><strong>Federal Reserve Act</strong>: Delegated monetary powers to private banks</li>
+          <li><strong>WWI entry</strong>: "Make world safe for democracy" imperial mission</li>
+          <li><strong>Espionage/Sedition Acts</strong>: Criminalized anti-war speech</li>
+          <li><strong>Palmer Raids</strong>: Mass arrests of radicals and immigrants</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-title">John F. Kennedy (1961-1963)</div>
+        <div class="card-role">Cold War Interventions</div>
+        <ul class="facts">
+          <li><strong>Bay of Pigs</strong>: CIA invasion of Cuba without Congressional approval</li>
+          <li><strong>Operation Mongoose</strong>: Assassination attempts against Castro</li>
+          <li><strong>Vietnam escalation</strong>: Increased advisors from 600 to 16,000</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Gerald Ford (1974-1977)</div>
+        <div class="card-role">Nixon Pardon & CIA Protection</div>
+        <ul class="facts">
+          <li><strong>Nixon pardon</strong>: Prevented criminal prosecution, undermined rule of law</li>
+          <li><strong>CIA protection</strong>: Limited Church Committee investigations</li>
+          <li><strong>Mayaguez incident</strong>: Military action without Congressional approval</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Jimmy Carter (1977-1981)</div>
+        <div class="card-role">FISA Court & Covert Operations</div>
+        <ul class="facts">
+          <li><strong>FISA Court</strong>: Created secret surveillance court system</li>
+          <li><strong>Afghanistan</strong>: Armed mujahideen against Soviet Union</li>
+          <li><strong>El Salvador</strong>: Supported death squads against leftist rebels</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Bill Clinton (1993-2001)</div>
+        <div class="card-role">Humanitarian Interventions</div>
+        <ul class="facts">
+          <li><strong>Kosovo bombing</strong>: 78-day campaign without Congressional approval</li>
+          <li><strong>Iraq bombing</strong>: Operation Desert Fox during impeachment</li>
+          <li><strong>Surveillance expansion</strong>: Antiterrorism Act, CALEA backdoors</li>
+          <li><strong>Glass-Steagall repeal</strong>: Enabled "too big to fail" banks</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Franklin D. Roosevelt (1933-1945)</div>
+        <div class="card-role">New Deal & WWII Overreach</div>
+        <ul class="facts">
+          <li><strong>Court packing</strong>: Attempted to expand Supreme Court</li>
+          <li><strong>Japanese internment</strong>: 120,000 citizens detained without trial</li>
+          <li><strong>Gold confiscation</strong>: Seized private gold holdings</li>
+          <li><strong>4 terms</strong>: Broke Washington's precedent</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Harry Truman (1945-1953)</div>
+        <div class="card-role">Cold War Powers</div>
+        <ul class="facts">
+          <li><strong>Korean War</strong>: Undeclared war without Congressional approval</li>
+          <li><strong>Steel seizure</strong>: Seized private industry (ruled unconstitutional)</li>
+          <li><strong>NATO</strong>: Military alliance without treaty ratification</li>
+          <li><strong>National security state</strong>: Created CIA, NSC</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Lyndon Johnson (1963-1969)</div>
+        <div class="card-role">Vietnam Escalation</div>
+        <ul class="facts">
+          <li><strong>Gulf of Tonkin</strong>: False flag to justify war escalation</li>
+          <li><strong>Secret bombing</strong>: Laos and Cambodia without Congressional knowledge</li>
+          <li><strong>Pentagon Papers</strong>: Systematic deception revealed</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Richard Nixon (1969-1974)</div>
+        <div class="card-role">Imperial Presidency</div>
+        <ul class="facts">
+          <li><strong>Watergate</strong>: Obstruction of justice, abuse of power</li>
+          <li><strong>Cambodia bombing</strong>: Secret war without Congressional approval</li>
+          <li><strong>Enemies List</strong>: Used federal agencies against opponents</li>
+          <li><strong>Impoundment</strong>: Refused to spend Congressional appropriations</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-title">George W. Bush (2001-2009)</div>
+        <div class="card-role">War on Terror</div>
+        <ul class="facts">
+          <li><strong>Patriot Act</strong>: Mass surveillance without warrants</li>
+          <li><strong>Torture program</strong>: Enhanced interrogation techniques</li>
+          <li><strong>Signing statements</strong>: 1,200+ statements ignoring laws</li>
+          <li><strong>Indefinite detention</strong>: Guantanamo without trial</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Barack Obama (2009-2017)</div>
+        <div class="card-role">Drone Program Expansion</div>
+        <ul class="facts">
+          <li><strong>Targeted killings</strong>: Assassinated US citizens without trial</li>
+          <li><strong>Libya intervention</strong>: Military action without Congressional approval</li>
+          <li><strong>NSA surveillance</strong>: Expanded warrantless surveillance programs</li>
+          <li><strong>Whistleblower persecution</strong>: Prosecuted more than all predecessors</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="congress" class="section">
+    <h2>Congressional Malfeasance and Constitutional Violations</h2>
+    <div class="grid">
+      <div class="card">
+        <div class="card-title">Alien & Sedition Acts (1798)</div>
+        <div class="card-role">First Amendment Violation</div>
+        <ul class="facts">
+          <li><strong>Sedition Act</strong>: Criminalized criticism of government</li>
+          <li><strong>Partisan enforcement</strong>: Only prosecuted opposition party members</li>
+          <li><strong>25 arrests</strong>: Including newspaper editors and congressmen</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Espionage Act (1917)</div>
+        <div class="card-role">Wartime Censorship</div>
+        <ul class="facts">
+          <li><strong>2,000+ prosecutions</strong>: Anti-war speech criminalized</li>
+          <li><strong>Eugene Debs</strong>: Socialist leader imprisoned for speech</li>
+          <li><strong>Still active</strong>: Used against Snowden, Assange, others</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-title">McCarran Act (1950)</div>
+        <div class="card-role">Communist Registration</div>
+        <ul class="facts">
+          <li><strong>Registration requirement</strong>: Communist Party members must register</li>
+          <li><strong>Detention camps</strong>: Authorized for "internal security emergencies"</li>
+          <li><strong>Guilt by association</strong>: Violated due process and free association</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-title">USA PATRIOT Act (2001)</div>
+        <div class="card-role">Surveillance State</div>
+        <ul class="facts">
+          <li><strong>45 days</strong>: Rushed through with minimal debate</li>
+          <li><strong>Fourth Amendment</strong>: Warrantless surveillance expansion</li>
+          <li><strong>National Security Letters</strong>: Secret subpoenas without court review</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-title">FISA Amendments (2008)</div>
+        <div class="card-role">Retroactive Immunity</div>
+        <ul class="facts">
+          <li><strong>Telecom immunity</strong>: Retroactively legalized illegal surveillance</li>
+          <li><strong>Warrantless wiretapping</strong>: Expanded NSA collection powers</li>
+          <li><strong>FISA Court</strong>: Rubber stamp approval (99.97% approval rate)</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Authorization for Use of Military Force (2001)</div>
+        <div class="card-role">Blank Check for War</div>
+        <ul class="facts">
+          <li><strong>Open-ended authority</strong>: No geographic or time limits</li>
+          <li><strong>20+ years</strong>: Used to justify conflicts globally</li>
+          <li><strong>Congressional abdication</strong>: Avoided war declarations</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="scotus" class="section">
+    <h2>Supreme Court Constitutional Subversion</h2>
+    <div class="grid">
+      <div class="card">
+        <div class="card-title">Marbury v. Madison (1803)</div>
+        <div class="card-role">Judicial Supremacy</div>
+        <ul class="facts">
+          <li><strong>Judicial review</strong>: Court claimed power not in Constitution</li>
+          <li><strong>Constitutional interpretation</strong>: Made Court final arbiter</li>
+          <li><strong>Power grab</strong>: Expanded judicial power over other branches</li>
+        </ul>
+        <div class="links"><a href="https://supreme.justia.com/cases/federal/us/5/137/" target="_blank">Marbury v. Madison</a></div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">McCulloch v. Maryland (1819)</div>
+        <div class="card-role">Implied Powers Expansion</div>
+        <ul class="facts">
+          <li><strong>Necessary and Proper</strong>: Vastly expanded federal power through loose construction</li>
+          <li><strong>National bank</strong>: Upheld federal corporation despite no enumerated power</li>
+          <li><strong>State taxation</strong>: "Power to tax is power to destroy" - federal supremacy</li>
+          <li><strong>Precedent</strong>: Enabled unlimited federal power expansion</li>
+        </ul>
+        <div class="links"><a href="https://supreme.justia.com/cases/federal/us/17/316/" target="_blank">McCulloch v. Maryland</a></div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Dred Scott v. Sandford (1857)</div>
+        <div class="card-role">Racist Jurisprudence</div>
+        <ul class="facts">
+          <li><strong>Black citizenship</strong>: Ruled African Americans cannot be citizens</li>
+          <li><strong>Property rights</strong>: Declared slaves as property, not persons</li>
+          <li><strong>Congressional power</strong>: Struck down Missouri Compromise</li>
+        </ul>
+        <div class="links"><a href="https://supreme.justia.com/cases/federal/us/60/393/" target="_blank">Dred Scott Decision</a></div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Slaughter-House Cases (1873)</div>
+        <div class="card-role">14th Amendment Gutting</div>
+        <ul class="facts">
+          <li><strong>Privileges or Immunities</strong>: Rendered clause meaningless</li>
+          <li><strong>Corporate monopoly</strong>: Upheld state-granted monopoly power</li>
+          <li><strong>Individual rights</strong>: Limited federal protection of citizens</li>
+        </ul>
+        <div class="links"><a href="https://supreme.justia.com/cases/federal/us/83/36/" target="_blank">Slaughter-House Cases</a></div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Plessy v. Ferguson (1896)</div>
+        <div class="card-role">Separate but Equal</div>
+        <ul class="facts">
+          <li><strong>Racial segregation</strong>: "Separate but equal" doctrine for 58 years</li>
+          <li><strong>Equal protection</strong>: Gutted 14th Amendment equal protection clause</li>
+          <li><strong>Jim Crow</strong>: Legal foundation for Southern apartheid system</li>
+        </ul>
+        <div class="links"><a href="https://supreme.justia.com/cases/federal/us/163/537/" target="_blank">Plessy v. Ferguson</a></div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Schenck v. US (1919)</div>
+        <div class="card-role">Speech Suppression</div>
+        <ul class="facts">
+          <li><strong>Clear and present danger</strong>: Created exception to First Amendment</li>
+          <li><strong>Anti-war speech</strong>: Criminalized opposition to WWI</li>
+          <li><strong>Wartime precedent</strong>: Established government power to censor</li>
+        </ul>
+        <div class="links"><a href="https://supreme.justia.com/cases/federal/us/249/47/" target="_blank">Schenck v. US</a></div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Wickard v. Filburn (1942)</div>
+        <div class="card-role">Commerce Clause Expansion</div>
+        <ul class="facts">
+          <li><strong>Growing wheat</strong>: Regulated farmer's personal consumption</li>
+          <li><strong>Interstate commerce</strong>: Expanded beyond recognition</li>
+          <li><strong>Federal power</strong>: Justified unlimited Congressional authority</li>
+        </ul>
+        <div class="links"><a href="https://supreme.justia.com/cases/federal/us/317/111/" target="_blank">Wickard v. Filburn</a></div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Korematsu v. US (1944)</div>
+        <div class="card-role">Wartime Racism</div>
+        <ul class="facts">
+          <li><strong>Japanese internment</strong>: Upheld racist detention program</li>
+          <li><strong>Military necessity</strong>: Deferred to executive without evidence</li>
+          <li><strong>Equal protection</strong>: Ignored 14th Amendment violations</li>
+        </ul>
+        <div class="links"><a href="https://supreme.justia.com/cases/federal/us/323/214/" target="_blank">Korematsu v. US</a></div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Youngstown v. Sawyer (1952)</div>
+        <div class="card-role">Rare Presidential Rejection</div>
+        <ul class="facts">
+          <li><strong>Steel seizure</strong>: Struck down Truman's steel industry takeover</li>
+          <li><strong>Executive limits</strong>: Rare case limiting presidential power</li>
+          <li><strong>War powers</strong>: Executive cannot seize private property without Congressional approval</li>
+        </ul>
+        <div class="links"><a href="https://supreme.justia.com/cases/federal/us/343/579/" target="_blank">Youngstown v. Sawyer</a></div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Heart of Atlanta Motel v. US (1964)</div>
+        <div class="card-role">Commerce Clause Abuse</div>
+        <ul class="facts">
+          <li><strong>Civil Rights Act</strong>: Used Commerce Clause rather than 14th Amendment</li>
+          <li><strong>Private business</strong>: Federal control over private property</li>
+          <li><strong>Good ends, bad means</strong>: Expanded federal power through constitutional distortion</li>
+        </ul>
+        <div class="links"><a href="https://supreme.justia.com/cases/federal/us/379/241/" target="_blank">Heart of Atlanta Motel v. US</a></div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Roe v. Wade (1973)</div>
+        <div class="card-role">Judicial Legislation</div>
+        <ul class="facts">
+          <li><strong>Privacy right</strong>: Created constitutional right from "penumbras"</li>
+          <li><strong>Legislative function</strong>: Court imposed detailed regulatory scheme</li>
+          <li><strong>State power</strong>: Struck down democratically-enacted laws</li>
+          <li><strong>Overturned 2022</strong>: Dobbs v. Jackson returned issue to states</li>
+        </ul>
+        <div class="links"><a href="https://supreme.justia.com/cases/federal/us/410/113/" target="_blank">Roe v. Wade</a></div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Kelo v. New London (2005)</div>
+        <div class="card-role">Property Rights Violation</div>
+        <ul class="facts">
+          <li><strong>Eminent domain</strong>: Expanded to private development</li>
+          <li><strong>Public use</strong>: Redefined as "public benefit"</li>
+          <li><strong>Corporate welfare</strong>: Enabled seizure for private profit</li>
+        </ul>
+        <div class="links"><a href="https://supreme.justia.com/cases/federal/us/545/469/" target="_blank">Kelo v. New London</a></div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">NFIB v. Sebelius (2012)</div>
+        <div class="card-role">Obamacare Taxation Dodge</div>
+        <ul class="facts">
+          <li><strong>Individual mandate</strong>: Ruled penalty is actually a "tax"</li>
+          <li><strong>Commerce Clause</strong>: Rejected commerce power but upheld via taxation</li>
+          <li><strong>Constitutional gymnastics</strong>: Rewrote law to save it</li>
+        </ul>
+        <div class="links"><a href="https://supreme.justia.com/cases/federal/us/567/519/" target="_blank">NFIB v. Sebelius</a></div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Citizens United v. FEC (2010)</div>
+        <div class="card-role">Corporate Speech Rights</div>
+        <ul class="facts">
+          <li><strong>Corporate personhood</strong>: Extended First Amendment to corporations</li>
+          <li><strong>Political spending</strong>: Unlimited corporate election spending</li>
+          <li><strong>Regulatory capture</strong>: Enhanced corporate political influence</li>
+        </ul>
+        <div class="links"><a href="https://supreme.justia.com/cases/federal/us/558/310/" target="_blank">Citizens United v. FEC</a></div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Department of Homeland Security v. Regents (2020)</div>
+        <div class="card-role">Administrative State Protection</div>
+        <ul class="facts">
+          <li><strong>DACA</strong>: Protected Obama's unconstitutional executive amnesty</li>
+          <li><strong>Procedural grounds</strong>: Blocked Trump reversal on technical grounds</li>
+          <li><strong>Executive power</strong>: Presidents can create programs successors cannot easily end</li>
+        </ul>
+        <div class="links"><a href="https://supreme.justia.com/cases/federal/us/591/18-587/" target="_blank">DHS v. Regents</a></div>
+      </div>
+    </div>
+  </section>
+
+      <div class="card">
+        <div class="card-title">Korematsu v. US (1944)</div>
+        <div class="card-role">Wartime Racism</div>
+        <ul class="facts">
+          <li><strong>Japanese internment</strong>: Upheld racist detention program</li>
+          <li><strong>Military necessity</strong>: Deferred to executive without evidence</li>
+          <li><strong>Equal protection</strong>: Ignored 14th Amendment violations</li>
+        </ul>
+        <div class="links"><a href="https://supreme.justia.com/cases/federal/us/323/214/" target="_blank">Korematsu v. US</a></div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Schenck v. US (1919)</div>
+        <div class="card-role">Speech Suppression</div>
+        <ul class="facts">
+          <li><strong>Clear and present danger</strong>: Created exception to First Amendment</li>
+          <li><strong>Anti-war speech</strong>: Criminalized opposition to WWI</li>
+          <li><strong>Wartime precedent</strong>: Established government power to censor</li>
+        </ul>
+        <div class="links"><a href="https://supreme.justia.com/cases/federal/us/249/47/" target="_blank">Schenck v. US</a></div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Wickard v. Filburn (1942)</div>
+        <div class="card-role">Commerce Clause Expansion</div>
+        <ul class="facts">
+          <li><strong>Growing wheat</strong>: Regulated farmer's personal consumption</li>
+          <li><strong>Interstate commerce</strong>: Expanded beyond recognition</li>
+          <li><strong>Federal power</strong>: Justified unlimited Congressional authority</li>
+        </ul>
+        <div class="links"><a href="https://supreme.justia.com/cases/federal/us/317/111/" target="_blank">Wickard v. Filburn</a></div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Kelo v. New London (2005)</div>
+        <div class="card-role">Property Rights Violation</div>
+        <ul class="facts">
+          <li><strong>Eminent domain</strong>: Expanded to private development</li>
+          <li><strong>Public use</strong>: Redefined as "public benefit"</li>
+          <li><strong>Corporate welfare</strong>: Enabled seizure for private profit</li>
+        </ul>
+        <div class="links"><a href="https://supreme.justia.com/cases/federal/us/545/469/" target="_blank">Kelo v. New London</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="programs" class="section">
+    <h2>Secret Government Programs Against Citizens</h2>
+    <div class="grid">
+      <div class="card">
+        <div class="card-title">COINTELPRO (1956-1971)</div>
+        <div class="card-role">FBI Domestic Surveillance</div>
+        <ul class="facts">
+          <li><strong>Target groups</strong>: Civil rights, antiwar, communist organizations</li>
+          <li><strong>Tactics</strong>: Infiltration, harassment, character assassination</li>
+          <li><strong>Martin Luther King</strong>: Subjected to extensive surveillance and harassment</li>
+          <li><strong>Black Panthers</strong>: 38 members killed, leaders imprisoned</li>
+        </ul>
+        <div class="links"><a href="https://vault.fbi.gov/cointel-pro" target="_blank">FBI COINTELPRO Files</a></div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">MKUltra (1953-1973)</div>
+        <div class="card-role">CIA Mind Control</div>
+        <ul class="facts">
+          <li><strong>LSD experiments</strong>: Drugged subjects without consent</li>
+          <li><strong>Torture techniques</strong>: Developed enhanced interrogation</li>
+          <li><strong>Universities involved</strong>: 80+ institutions participated</li>
+          <li><strong>Frank Olson</strong>: CIA scientist died after covert LSD dosing</li>
+        </ul>
+        <div class="links"><a href="https://www.cia.gov/readingroom/collection/family-jewels" target="_blank">CIA Family Jewels</a></div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Operation Northwoods (1962)</div>
+        <div class="card-role">False Flag Planning</div>
+        <ul class="facts">
+          <li><strong>False flag attacks</strong>: Planned attacks on US civilians</li>
+          <li><strong>Cuba justification</strong>: To justify invasion of Cuba</li>
+          <li><strong>JFK rejection</strong>: Kennedy rejected the proposal</li>
+          <li><strong>Declassified 1997</strong>: Revealed extent of military planning</li>
+        </ul>
+        <div class="links"><a href="https://nsarchive2.gwu.edu/news/20010430/" target="_blank">Operation Northwoods Documents</a></div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">NSA Surveillance (2001-Present)</div>
+        <div class="card-role">Mass Data Collection</div>
+        <ul class="facts">
+          <li><strong>PRISM</strong>: Direct access to tech company servers</li>
+          <li><strong>Phone metadata</strong>: Collected all American phone records</li>
+          <li><strong>Internet surveillance</strong>: Monitored email, web browsing</li>
+          <li><strong>Snowden revelations</strong>: Exposed extent of domestic spying</li>
+        </ul>
+        <div class="links"><a href="https://www.eff.org/issues/national-security-agency-nsa" target="_blank">EFF NSA Documents</a></div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Tuskegee Syphilis Study (1932-1972)</div>
+        <div class="card-role">Medical Experimentation</div>
+        <ul class="facts">
+          <li><strong>399 black men</strong>: Studied without informed consent</li>
+          <li><strong>Untreated syphilis</strong>: Withheld penicillin treatment</li>
+          <li><strong>40 years</strong>: Continued despite available cure</li>
+          <li><strong>Whistleblower</strong>: Ended by Peter Buxtun's leak to press</li>
+        </ul>
+        <div class="links"><a href="https://www.cdc.gov/tuskegee/timeline.htm" target="_blank">CDC Tuskegee Timeline</a></div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">CHAOS Program (1967-1974)</div>
+        <div class="card-role">CIA Domestic Spying</div>
+        <ul class="facts">
+          <li><strong>Anti-war movement</strong>: Infiltrated domestic protests</li>
+          <li><strong>Student surveillance</strong>: Monitored college campuses</li>
+          <li><strong>300,000 files</strong>: Maintained on American citizens</li>
+          <li><strong>Church Committee</strong>: Exposed illegal domestic operations</li>
+        </ul>
+        <div class="links"><a href="https://www.cia.gov/readingroom/docs/DOC_0000135742.pdf" target="_blank">CHAOS Program Documents</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="federal-reserve" class="section">
+    <h2>Federal Reserve: Monetary System Subversion</h2>
+    <div class="grid">
+      <div class="card">
+        <div class="card-title">Creation & Constitutional Issues (1913)</div>
+        <div class="card-role">Delegation of Monetary Power</div>
+        <ul class="facts">
+          <li><strong>Constitutional violation</strong>: Article I, Section 8 gives Congress power to "coin money, regulate the value thereof"</li>
+          <li><strong>Private ownership</strong>: Regional Fed banks owned by member banks, not government</li>
+          <li><strong>Deceptive passage</strong>: Voted during Christmas recess, opponents absent</li>
+          <li><strong>Jekyll Island</strong>: Secret 1910 meeting of bankers designed the system</li>
+        </ul>
+        <div class="links"><a href="https://www.federalreserve.gov/aboutthefed/fract.htm" target="_blank">Federal Reserve Act</a> • <a href="https://fraser.stlouisfed.org/files/docs/historical/aldrich/aldrich_1910plan.pdf" target="_blank">Aldrich Plan</a></div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Purchasing Power Destruction</div>
+        <div class="card-role">Currency Debasement Since 1913</div>
+        <ul class="facts">
+          <li><strong>96% loss</strong>: Dollar lost 96% of purchasing power since Fed creation</li>
+          <li><strong>Acceleration post-1971</strong>: Nixon's gold standard end increased inflation</li>
+          <li><strong>Hidden taxation</strong>: Inflation transfers wealth from savers to debtors/government</li>
+          <li><strong>Cantillon Effect</strong>: First recipients of new money benefit at expense of last recipients</li>
+        </ul>
+        <div class="links"><a href="https://www.bls.gov/data/inflation_calculator.htm" target="_blank">CPI Inflation Calculator</a> • <a href="https://wtfhappenedin1971.com/" target="_blank">WTF Happened in 1971?</a></div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">War Financing</div>
+        <div class="card-role">Enabling the Warfare State</div>
+        <ul class="facts">
+          <li><strong>WWI financing</strong>: Fed created $25 billion (2,500% money supply increase) 1914-1920</li>
+          <li><strong>WWII bonds</strong>: Fed purchased government bonds, monetizing war debt</li>
+          <li><strong>Vietnam War</strong>: Guns and butter policy led to 1970s stagflation</li>
+          <li><strong>Endless wars</strong>: Fed financing enables wars without direct taxation pain</li>
+        </ul>
+        <div class="links"><a href="https://fraser.stlouisfed.org/title/economic-impact-american-civil-war-475" target="_blank">War Financing History</a></div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Welfare State Enablement</div>
+        <div class="card-role">Monetizing Government Spending</div>
+        <ul class="facts">
+          <li><strong>New Deal programs</strong>: Fed purchased Treasury bonds to fund spending</li>
+          <li><strong>Great Society</strong>: Monetary expansion enabled massive social programs</li>
+          <li><strong>Modern deficits</strong>: Fed as buyer of last resort for Treasury debt</li>
+          <li><strong>Debt monetization</strong>: $31+ trillion national debt enabled by Fed purchases</li>
+        </ul>
+        <div class="links"><a href="https://www.treasurydirect.gov/NP/debt/current" target="_blank">National Debt Clock</a></div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">2008 Financial Crisis Bailouts</div>
+        <div class="card-role">"Too Big to Fail" Cronyism</div>
+        <ul class="facts">
+          <li><strong>$16.1 trillion</strong>: Secret bailouts revealed by GAO audit (2011)</li>
+          <li><strong>Bank favoritism</strong>: Goldman Sachs, JPMorgan, Citigroup received largest amounts</li>
+          <li><strong>Moral hazard</strong>: Socialized losses, privatized profits</li>
+          <li><strong>Homeowner abandonment</strong>: Banks bailed out while foreclosures soared</li>
+        </ul>
+        <div class="links"><a href="https://www.gao.gov/assets/gao-11-696.pdf" target="_blank">GAO Fed Audit</a></div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Quantitative Easing (2008-Present)</div>
+        <div class="card-role">Wealth Transfer to Financial Elite</div>
+        <ul class="facts">
+          <li><strong>$4.7 trillion</strong>: Fed balance sheet expansion through bond purchases</li>
+          <li><strong>Asset bubbles</strong>: Stock market, real estate, bond prices artificially inflated</li>
+          <li><strong>Inequality explosion</strong>: Wealth gap reached highest levels since 1920s</li>
+          <li><strong>Zombie companies</strong>: Low rates kept inefficient businesses alive</li>
+        </ul>
+        <div class="links"><a href="https://www.federalreserve.gov/monetarypolicy/bst_recenttrends.htm" target="_blank">Fed Balance Sheet</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="corporatism" class="section">
+    <h2>Government-Corporate Cronyism</h2>
+    <div class="grid">
+      <div class="card">
+        <div class="card-title">Revolving Door</div>
+        <div class="card-role">Government-Wall Street Pipeline</div>
+        <ul class="facts">
+          <li><strong>Treasury Secretaries</strong>: Rubin (Goldman→Treasury→Citigroup), Paulson (Goldman→Treasury), Geithner (Fed→Treasury→Private Equity)</li>
+          <li><strong>Fed Chairs</strong>: Bernanke (Fed→Pimco/Citadel), Yellen (Fed→Brookings/Treasury)</li>
+          <li><strong>Regulatory capture</strong>: Industry executives regulate former employers</li>
+          <li><strong>Goldman Sachs</strong>: "Government Sachs" - extraordinary alumni network in government</li>
+        </ul>
+        <div class="links"><a href="https://www.opensecrets.org/revolving/top.php" target="_blank">Revolving Door Database</a></div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Corporate Bailouts History</div>
+        <div class="card-role">Socializing Losses</div>
+        <ul class="facts">
+          <li><strong>Chrysler (1979)</strong>: $1.5 billion government-backed loans</li>
+          <li><strong>S&L Crisis (1989)</strong>: $500 billion taxpayer-funded Resolution Trust Corp</li>
+          <li><strong>LTCM (1998)</strong>: Fed organized $3.6 billion private bailout</li>
+          <li><strong>Airlines post-9/11</strong>: $15 billion bailout and loan guarantees</li>
+          <li><strong>GM/Chrysler (2008)</strong>: $80 billion auto industry bailout</li>
+        </ul>
+        <div class="links"><a href="https://projects.propublica.org/bailout/" target="_blank">Bailout Tracker</a></div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Regulatory Capture</div>
+        <div class="card-role">Industry Controls Regulators</div>
+        <ul class="facts">
+          <li><strong>FDA</strong>: 65% of budget funded by pharmaceutical companies through user fees</li>
+          <li><strong>SEC</strong>: Revolving door with Wall Street law firms and investment banks</li>
+          <li><strong>FCC</strong>: Former telecom executives regulate communications industry</li>
+          <li><strong>CFTC</strong>: Commodity futures regulators from derivatives industry</li>
+        </ul>
+        <div class="links"><a href="https://www.citizen.org/article/regulatory-capture/" target="_blank">Public Citizen Report</a></div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Military-Industrial Complex</div>
+        <div class="card-role">War Profiteering</div>
+        <ul class="facts">
+          <li><strong>Defense contractors</strong>: Lockheed Martin, Boeing, Raytheon control Pentagon spending</li>
+          <li><strong>Revolving door</strong>: Defense officials become contractors, contractors become officials</li>
+          <li><strong>Cost-plus contracts</strong>: Contractors guaranteed profits regardless of performance</li>
+          <li><strong>Endless wars</strong>: Military contractors profit from prolonged conflicts</li>
+        </ul>
+        <div class="links"><a href="https://www.opensecrets.org/federal-lobbying/industries/summary?cycle=2022&id=D" target="_blank">Defense Lobbying</a></div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Big Tech Government Partnership</div>
+        <div class="card-role">Surveillance-Industrial Complex</div>
+        <ul class="facts">
+          <li><strong>NSA cooperation</strong>: Google, Facebook, Microsoft provided data through PRISM</li>
+          <li><strong>CIA investment</strong>: In-Q-Tel invested in Palantir, Google, Facebook early stages</li>
+          <li><strong>Censorship partnership</strong>: Government requests social media censorship</li>
+          <li><strong>Data sharing</strong>: Tech companies share user data with intelligence agencies</li>
+        </ul>
+        <div class="links"><a href="https://www.eff.org/issues/national-security-agency-nsa" target="_blank">EFF NSA Documents</a></div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Pharmaceutical-Government Complex</div>
+        <div class="card-role">Medical Authoritarianism</div>
+        <ul class="facts">
+          <li><strong>FDA funding</strong>: Majority funded by drug companies through user fees</li>
+          <li><strong>NIH partnerships</strong>: Public research benefits private pharmaceutical profits</li>
+          <li><strong>Patent monopolies</strong>: Government-granted monopolies inflate drug prices</li>
+          <li><strong>Regulatory capture</strong>: FDA officials become pharmaceutical executives</li>
+        </ul>
+        <div class="links"><a href="https://www.fda.gov/about-fda/fda-basics/fact-sheet-fda-glance" target="_blank">FDA Funding Sources</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="imperialism" class="section">
+    <h2>US Imperialism and Foreign Interventions</h2>
+    <div class="grid">
+      <div class="card">
+        <div class="card-title">Spanish-American War (1898)</div>
+        <div class="card-role">Imperial Expansion</div>
+        <ul class="facts">
+          <li><strong>USS Maine</strong>: False flag pretext for war</li>
+          <li><strong>Philippines colonization</strong>: 3-year war, 200,000+ civilians killed</li>
+          <li><strong>Manifest Destiny</strong>: Justified racial subjugation</li>
+        </ul>
+        <div class="links"><a href="https://www.archives.gov/milestone-documents/treaty-of-paris" target="_blank">Treaty of Paris</a></div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Latin American Interventions (1900-1930s)</div>
+        <div class="card-role">Banana Republic Era</div>
+        <ul class="facts">
+          <li><strong>30+ interventions</strong>: Mexico, Nicaragua, Haiti, Dominican Republic</li>
+          <li><strong>United Fruit Company</strong>: Corporate-backed regime changes</li>
+          <li><strong>Marine occupations</strong>: Long-term military control</li>
+        </ul>
+        <div class="links"><a href="https://history.state.gov/milestones/1899-1913/roosevelt-and-monroe-doctrine" target="_blank">Roosevelt Corollary</a></div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Iran Coup (1953)</div>
+        <div class="card-role">CIA Operation Ajax</div>
+        <ul class="facts">
+          <li><strong>Mohammad Mossadegh</strong>: Overthrew democratically elected PM</li>
+          <li><strong>Oil nationalization</strong>: Restored British/US oil control</li>
+          <li><strong>Shah dictatorship</strong>: Installed brutal monarchy</li>
+        </ul>
+        <div class="links"><a href="https://nsarchive2.gwu.edu/NSAEBB/NSAEBB435/" target="_blank">CIA Iran Documents</a></div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Guatemala Coup (1954)</div>
+        <div class="card-role">Operation PBSuccess</div>
+        <ul class="facts">
+          <li><strong>Jacobo Árbenz</strong>: Overthrew reformist president</li>
+          <li><strong>Land reform</strong>: Threatened United Fruit Company profits</li>
+          <li><strong>36-year civil war</strong>: 200,000+ killed in aftermath</li>
+        </ul>
+        <div class="links"><a href="https://nsarchive2.gwu.edu/NSAEBB/NSAEBB4/" target="_blank">Guatemala Coup Documents</a></div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Chile Coup (1973)</div>
+        <div class="card-role">Operation Track II</div>
+        <ul class="facts">
+          <li><strong>Salvador Allende</strong>: Overthrew socialist president</li>
+          <li><strong>$8 million</strong>: CIA funding for destabilization</li>
+          <li><strong>Pinochet dictatorship</strong>: 17-year reign, 3,000+ killed</li>
+        </ul>
+        <div class="links"><a href="https://nsarchive2.gwu.edu/NSAEBB/NSAEBB8/nsaebb8i.htm" target="_blank">Chile Coup Documents</a></div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Iraq Wars (1991, 2003)</div>
+        <div class="card-role">Resource Wars</div>
+        <ul class="facts">
+          <li><strong>WMD lies</strong>: False intelligence to justify 2003 invasion</li>
+          <li><strong>1 million+ deaths</strong>: Combined casualties from wars and sanctions</li>
+          <li><strong>Oil control</strong>: Secured energy resources for US/allies</li>
+        </ul>
+        <div class="links"><a href="https://www.archives.gov/milestone-documents/authorization-for-use-of-military-force-against-iraq-resolution-of-2002" target="_blank">Iraq War Authorization</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="analysis" class="section">
+    <h2>Analysis: Patterns of Constitutional Subversion</h2>
+    
+    <div class="card">
+      <div class="card-title">Emergency Powers Ratchet</div>
+      <p>Each crisis (war, depression, terrorism) expands government power, which never fully returns to pre-crisis levels. Constitutional violations become normalized and institutionalized.</p>
+      <p><strong>Pattern</strong>: Crisis → Expanded Powers → Partial Rollback → New Baseline → Next Crisis</p>
+      <p><strong>Federal Reserve Role</strong>: Monetary expansion during crises enables unlimited government spending without direct taxation, removing fiscal constraints on power expansion.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Bipartisan Nature of Subversion</div>
+      <p>Constitutional violations occur under both Democratic and Republican administrations. The imperial presidency, surveillance state, and military-industrial complex transcend partisan politics.</p>
+      <p><strong>Examples</strong>: Bush surveillance → Obama expansion → Trump continuity → Biden maintenance</p>
+      <p><strong>Fed Continuity</strong>: Monetary policy remains consistent regardless of party - both parties support money printing, bailouts, and deficit spending.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Monetary System as Constitutional Subversion</div>
+      <p>The Federal Reserve represents the deepest constitutional violation: delegating Congress's monetary powers to a private banking cartel enables all other violations by providing unlimited financing.</p>
+      <p><strong>Mechanism</strong>: Fed creates money → Government borrows/spends without taxation → Constitutional limits bypassed → Power consolidated</p>
+      <p><strong>Hidden Taxation</strong>: Inflation transfers wealth from citizens to government and connected financial institutions without representation or consent.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Judicial Complicity</div>
+      <p>The Supreme Court consistently defers to executive power during crises, often overturning protections decades later when damage is done. Court acts as legitimizer rather than check.</p>
+      <p><strong>Pattern</strong>: Wartime deference → Peacetime reversal → Next crisis deference</p>
+      <p><strong>Monetary Deference</strong>: Court refuses to address Fed's constitutional violations, treating monetary policy as "political question" beyond judicial review.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Secrecy and Classification</div>
+      <p>Government uses classification to hide constitutional violations from public scrutiny. Most revelations come from whistleblowers or FOIA requests decades later.</p>
+      <p><strong>Examples</strong>: Pentagon Papers, Church Committee, Snowden revelations</p>
+      <p><strong>Fed Secrecy</strong>: $16 trillion in secret bailouts (2008) only revealed through GAO audit; Fed operates with minimal transparency or accountability.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Corporate-Government Fusion (Corporatism)</div>
+      <p>The merger of state and corporate power creates a fascist system where government serves connected businesses rather than citizens. Free market capitalism replaced by crony capitalism.</p>
+      <p><strong>Mechanism</strong>: Revolving door → Regulatory capture → Bailouts and subsidies → Market manipulation → Wealth concentration</p>
+      <p><strong>Examples</strong>: Wall Street bailouts, defense contractor wars, pharmaceutical regulatory capture, big tech censorship partnership</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Propaganda and Manufactured Consent</div>
+      <p>Government uses media manipulation, false flags, and propaganda to justify violations. Public opinion manufactured to support unconstitutional actions.</p>
+      <p><strong>Examples</strong>: Gulf of Tonkin, WMD lies, terrorism fears</p>
+      <p><strong>Economic Propaganda</strong>: Fed and Treasury promote myths about "necessary" bailouts, "transitory" inflation, and benefits of monetary expansion to obscure wealth transfers.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">The Cantillon Effect and Constitutional Subversion</div>
+      <p>Those closest to new money creation (banks, government, connected corporations) benefit first and most, while ordinary citizens face rising prices. This creates a de facto aristocracy based on monetary proximity.</p>
+      <p><strong>Constitutional Violation</strong>: Creates unequal protection under law - connected insiders receive subsidies and bailouts while citizens bear costs through inflation and taxation.</p>
+      <p><strong>Wealth Concentration</strong>: Fed policies since 2008 transferred unprecedented wealth to financial elites, creating greatest inequality since Gilded Age.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Integration: How Fed Enables All Other Violations</div>
+      <p>The Federal Reserve is the cornerstone that enables every other constitutional violation by providing unlimited financing for government growth.</p>
+      <ul style="margin: 10px 0; padding-left: 20px;">
+        <li><strong>War financing</strong>: Enables undeclared wars without taxation pain</li>
+        <li><strong>Surveillance state</strong>: Funds massive intelligence apparatus</li>
+        <li><strong>Bailouts</strong>: Provides money for corporate welfare and "too big to fail"</li>
+        <li><strong>Welfare state</strong>: Monetizes social spending beyond tax revenues</li>
+        <li><strong>Imperial expansion</strong>: Finances global military presence</li>
+        <li><strong>Regulatory state</strong>: Funds massive bureaucratic apparatus</li>
+      </ul>
+      <p><strong>Constitutional Restoration</strong>: Ending the Fed and returning to constitutional money (gold/silver) would automatically constrain government to its enumerated powers by removing unlimited financing capability.</p>
+    </div>
+  </section>
+
+  <section id="references" class="section">
+    <h2>Primary Sources and References</h2>
+    <div class="grid">
+      <div class="card">
+        <div class="card-title">Government Archives</div>
+        <ul class="facts">
+          <li><a href="https://www.archives.gov/" target="_blank">National Archives</a> - Official government documents</li>
+          <li><a href="https://nsarchive2.gwu.edu/" target="_blank">National Security Archive</a> - Declassified documents</li>
+          <li><a href="https://www.cia.gov/readingroom/" target="_blank">CIA Reading Room</a> - Declassified CIA files</li>
+          <li><a href="https://vault.fbi.gov/" target="_blank">FBI Vault</a> - FBI historical documents</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Legal Sources</div>
+        <ul class="facts">
+          <li><a href="https://supreme.justia.com/" target="_blank">Supreme Court Cases</a> - Full text decisions</li>
+          <li><a href="https://www.loc.gov/law/" target="_blank">Library of Congress Law</a> - Historical legal documents</li>
+          <li><a href="https://avalon.law.yale.edu/" target="_blank">Avalon Project</a> - Historical documents</li>
+          <li><a href="https://constitutioncenter.org/" target="_blank">Constitution Center</a> - Constitutional analysis</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Congressional Sources</div>
+        <ul class="facts">
+          <li><a href="https://history.house.gov/" target="_blank">House History</a> - Congressional historical documents</li>
+          <li><a href="https://www.senate.gov/history/" target="_blank">Senate History</a> - Senate historical records</li>
+          <li><a href="https://www.govinfo.gov/" target="_blank">Government Publishing Office</a> - Official publications</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Investigative Reports</div>
+        <ul class="facts">
+          <li><a href="https://www.intelligence.senate.gov/sites/default/files/publications/CRPT-113srpt53.pdf" target="_blank">Senate Torture Report</a> - CIA torture program</li>
+          <li><a href="https://www.aarclibrary.org/publib/church/contents.htm" target="_blank">Church Committee Report</a> - Intelligence abuses</li>
+          <li><a href="https://www.justice.gov/archive/opa/docs/torture_memo.pdf" target="_blank">Torture Memos</a> - Bush administration legal justifications</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Academic Sources</div>
+        <ul class="facts">
+          <li><strong>Arthur Schlesinger Jr.</strong> - "The Imperial Presidency" (1973)</li>
+          <li><strong>Chalmers Johnson</strong> - "Blowback" trilogy on US imperialism</li>
+          <li><strong>James Bovard</strong> - "Terrorism and Tyranny" (2003)</li>
+          <li><strong>Glenn Greenwald</strong> - "No Place to Hide" NSA revelations</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Civil Liberties Organizations</div>
+        <ul class="facts">
+          <li><a href="https://www.aclu.org/" target="_blank">ACLU</a> - Civil liberties advocacy and litigation</li>
+          <li><a href="https://www.eff.org/" target="_blank">Electronic Frontier Foundation</a> - Digital rights</li>
+          <li><a href="https://ccrjustice.org/" target="_blank">Center for Constitutional Rights</a> - Constitutional litigation</li>
+          <li><a href="https://www.brennancenter.org/" target="_blank">Brennan Center for Justice</a> - Democracy and justice</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Federal Reserve & Monetary Sources</div>
+        <ul class="facts">
+          <li><a href="https://www.federalreserve.gov/" target="_blank">Federal Reserve</a> - Official Fed website and data</li>
+          <li><a href="https://fraser.stlouisfed.org/" target="_blank">FRASER</a> - Federal Reserve historical documents</li>
+          <li><a href="https://www.gao.gov/assets/gao-11-696.pdf" target="_blank">GAO Fed Audit (2011)</a> - $16 trillion bailout revelation</li>
+          <li><a href="https://wtfhappenedin1971.com/" target="_blank">WTF Happened in 1971?</a> - Economic data visualization</li>
+          <li><a href="https://www.bls.gov/data/inflation_calculator.htm" target="_blank">BLS Inflation Calculator</a> - Purchasing power data</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Economic & Monetary Theory</div>
+        <ul class="facts">
+          <li><strong>Murray Rothbard</strong> - "The Case Against the Fed", "What Has Government Done to Our Money?"</li>
+          <li><strong>G. Edward Griffin</strong> - "The Creature from Jekyll Island" (1994)</li>
+          <li><strong>Ron Paul</strong> - "End the Fed" (2009), "The Case for Gold" (1982)</li>
+          <li><strong>Ludwig von Mises</strong> - "The Theory of Money and Credit" (1912)</li>
+          <li><strong>F.A. Hayek</strong> - "Denationalisation of Money" (1976)</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Corporate Influence & Cronyism</div>
+        <ul class="facts">
+          <li><a href="https://www.opensecrets.org/" target="_blank">OpenSecrets.org</a> - Money in politics database</li>
+          <li><a href="https://projects.propublica.org/bailout/" target="_blank">ProPublica Bailout Tracker</a> - Corporate bailout database</li>
+          <li><a href="https://www.citizen.org/" target="_blank">Public Citizen</a> - Corporate accountability research</li>
+          <li><a href="https://corporateeurope.org/" target="_blank">Corporate Europe Observatory</a> - Corporate influence analysis</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Austrian Economics & Sound Money</div>
+        <ul class="facts">
+          <li><a href="https://mises.org/" target="_blank">Mises Institute</a> - Austrian economics research</li>
+          <li><a href="https://www.cato.org/policy-areas/money-banking" target="_blank">Cato Institute</a> - Monetary policy analysis</li>
+          <li><a href="https://schiffgold.com/" target="_blank">SchiffGold</a> - Sound money advocacy</li>
+          <li><a href="https://www.shadowstats.com/" target="_blank">ShadowStats</a> - Alternative economic statistics</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Historical Banking & Financial Crises</div>
+        <ul class="facts">
+          <li><a href="https://www.fdic.gov/bank-failures/" target="_blank">FDIC Bank Failures</a> - Historical bank failure data</li>
+          <li><a href="https://www.financialcrisisandinquiry.gov/" target="_blank">Financial Crisis Inquiry Commission</a> - 2008 crisis investigation</li>
+          <li><a href="https://www.treasurydirect.gov/NP/debt/current" target="_blank">Treasury Direct</a> - National debt data</li>
+          <li><strong>Charles Calomiris & Stephen Haber</strong> - "Fragile by Design: The Political Origins of Banking Crises"</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer style="text-align: center; color: var(--muted); font-size: 14px; margin-top: 40px; padding: 20px; border-top: 1px solid var(--border);">
+    Last updated: August 24, 2025
+  </footer>
+</div>
+
+<button id="backToTop" class="back-to-top" title="Back to top">↑</button>
+
+</body>
+</html>

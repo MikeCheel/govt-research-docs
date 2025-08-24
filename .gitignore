@@ -87,3 +87,6 @@ coverage/
 
 # Claude Code
 .claude/
+
+# AI Tools and Related
+ai-todos.md
