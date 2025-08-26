@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="icon" href="data:,">
+<title>The Trump Regime: Fascist, Communist, or What?</title>
+<style>
+:root {
+            --bg-color: #ffffff;
+            --text-color: #333333;
+            --card-bg: #f8fafc;
+            --card-border: #e2e8f0;
+            --accent-color: #4f46e5;
+            --accent-hover: #4338ca;
+            --shadow: rgba(0, 0, 0, 0.1);
+            --shadow-hover: rgba(0, 0, 0, 0.15);
+            --panel: var(--card-bg);
+            --panel-bright: #f1f5f9;
+            --card: var(--card-bg);
+            --muted: #64748b;
+            --danger: #ef4444;
+            --ok: #22c55e;
+            --border: var(--card-border);
+            --blur: blur(8px);
+            --radius: 16px;
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #0f172a;
+            --text-color: #e2e8f0;
+            --card-bg: #1e293b;
+            --card-border: #334155;
+            --accent-color: #6366f1;
+            --accent-hover: #8b5cf6;
+            --shadow: rgba(0, 0, 0, 0.3);
+            --shadow-hover: rgba(0, 0, 0, 0.4);
+            --panel: var(--card-bg);
+            --panel-bright: #334155;
+            --card: var(--card-bg);
+            --muted: #94a3b8;
+            --danger: #ef4444;
+            --ok: #22c55e;
+            --border: var(--card-border);
+        }
+* { box-sizing: border-box; }
+html, body { margin:0; padding:0; background:var(--bg-color); color:var(--text-color); font:15.5px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; transition: background-color 0.3s ease, color 0.3s ease; }
+a { color: var(--accent-color); text-decoration: none; }
+a:hover { text-decoration: underline; }
+.navbar {
+  position: sticky; top:0; z-index:10;
+  backdrop-filter: var(--blur);
+  background: var(--panel);
+  border-bottom: 1px solid var(--border);
+  display:flex; align-items:center; justify-content:space-between;
+  padding:10px 14px;
+  gap: 20px;
+}
+.navbar-left {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex: 1;
+}
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.nav-buttons {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.navbar .brand { 
+  font-weight:700; 
+  letter-spacing:.3px; 
+  white-space: nowrap;
+  min-width: fit-content;
+}
+.navbar button, .navbar select {
+  background: var(--panel-bright); 
+  color: var(--text-color);
+  border: 1px solid var(--border);
+  border-radius: 10px; 
+  padding: 8px 10px; 
+  cursor: pointer;
+  white-space: nowrap;
+}
+.navbar button:hover { background: var(--panel); }
+.navbar select { 
+  appearance: none; 
+}
+.navbar select option {
+  background: var(--panel-bright);
+  color: var(--text-color);
+}
+.navbar-divider {
+  width: 2px;
+  height: 30px;
+  background: var(--border);
+  border-radius: 1px;
+  flex-shrink: 0;
+}
+
+/* Hamburger menu styles - hidden by default (desktop) */
+.hamburger-menu {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  background: var(--panel-bright);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  cursor: pointer;
+  padding: 8px;
+  transition: all 0.3s ease;
+}
+
+.hamburger-line {
+  width: 20px;
+  height: 2px;
+  background: var(--text-color);
+  margin: 2px 0;
+  transition: all 0.3s ease;
+  border-radius: 1px;
+}
+
+.hamburger-menu.active .hamburger-line:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger-menu.active .hamburger-line:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger-menu.active .hamburger-line:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -6px);
+}
+
+.mobile-actions {
+  display: none;
+}
+
+.mobile-theme-controls {
+  display: none;
+}
+
+.desktop-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.desktop-theme-controls {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+@media (max-width: 1024px) {
+  .navbar {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 14px;
+    height: auto;
+    max-height: none;
+    overflow: visible;
+  }
+  
+  /* Position hamburger menu on the right side on mobile */
+  .hamburger-menu {
+    display: flex;
+    order: 3;
+    margin-left: auto;
+  }
+  
+  .navbar-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex: 1;
+    order: 1;
+  }
+  
+  .navbar-right {
+    display: none;
+  }
+  
+  .navbar-divider {
+    display: none;
+  }
+  
+  .nav-buttons {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-top: none;
+    border-radius: 0 0 var(--radius) var(--radius);
+    box-shadow: var(--shadow);
+    z-index: 1000;
+    flex-direction: column;
+    gap: 8px;
+    padding: 16px;
+  }
+  
+  .nav-buttons.show {
+    display: flex;
+  }
+  
+  .nav-buttons button:not(.theme-toggle),
+  .nav-buttons select:not(.style-selector) {
+    width: 100%;
+    text-align: left;
+    justify-content: flex-start;
+  }
+  
+  .mobile-actions {
+    display: flex;
+    gap: 8px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+    margin-top: 8px;
+  }
+  
+  .mobile-actions button {
+    flex: 1;
+  }
+  
+  .mobile-theme-controls {
+    display: flex;
+    gap: 8px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+    margin-top: 8px;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .mobile-theme-controls .style-selector {
+    flex: 1;
+    max-width: 150px;
+    width: auto !important;
+    text-align: center;
+  }
+  
+  .mobile-theme-controls .theme-toggle {
+    width: 60px !important;
+    height: 30px !important;
+    flex: 0 0 auto;
+    padding: 2px !important;
+  }
+  
+  .desktop-actions {
+    display: none;
+  }
+  
+  .desktop-theme-controls {
+    display: none;
+  }
+  
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 10px 12px;
+  }
+  
+  .navbar-left {
+    gap: 12px;
+  }
+  
+  .navbar-right {
+    gap: 8px;
+  }
+  
+  .brand {
+    font-size: 14px;
+    line-height: 1.2;
+  }
+  
+  .style-selector,
+  .theme-toggle {
+    transform: scale(0.95);
+  }
+  
+  .navbar-right {
+    display: flex !important;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .nav-buttons {
+    padding: 12px;
+  }
+}
+.container { max-width: 1100px; margin: 0 auto; padding: 22px 16px 60px; }
+.section { background: var(--panel); border:1px solid var(--border); border-radius: var(--radius); padding:18px; margin:16px 0; box-shadow: var(--shadow); }
+.section h2 { margin:0 0 10px; font-size: 20px; }
+.grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:14px; }
+.card { background: var(--card); border:1px solid var(--border); border-radius: var(--radius); padding:14px; }
+.card-title { font-weight:700; margin-bottom:4px; }
+.card-role { color: var(--muted); margin-bottom:8px; font-size: 14px; }
+.facts { padding-left: 18px; margin: 6px 0 8px; }
+.links { font-size:14px; color: var(--muted); }
+.tl-item { background: var(--card); border:1px solid var(--border); border-radius: var(--radius); margin:10px 0; }
+.tl-item > summary { list-style:none; cursor:pointer; padding:10px 12px; display:flex; align-items:center; gap:8px; }
+.tl-item > summary::-webkit-details-marker { display:none; }
+.tl-item[open] > summary { background: var(--panel-bright); border-bottom:1px solid var(--border); border-top-left-radius: var(--radius); border-top-right-radius: var(--radius); }
+.tl-date { font-weight:700; }
+.tl-body { padding: 10px 12px 12px; }
+.tl-row { display:grid; grid-template-columns: 190px 1fr; gap:10px; margin:6px 0; }
+.lbl { color: var(--muted); }
+.lbl.bad { color: var(--danger); font-weight:700; }
+.lbl.good { color: var(--ok); font-weight:700; }
+.lbl.neutral { color: var(--muted); font-weight:700; }
+.tl-links { margin-top: 8px; font-size: 14px; color: var(--muted); }
+.refs { font-size: 14px; color: var(--muted); }
+h1 { margin: 8px 0 6px; font-size: 24px; }
+.lede { color: var(--muted); }
+hr.sep { border:none; height:1px; background: var(--border); margin: 12px 0; }
+/* Glassmorphism Style */
+        [data-style="glassmorphism"] {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        [data-style="glassmorphism"] .container {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: 20px;
+        }
+
+        [data-style="glassmorphism"][data-theme="dark"] .container {
+            background: rgba(15, 23, 42, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        [data-style="glassmorphism"] .section {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+        }
+
+        [data-style="glassmorphism"][data-theme="dark"] .section {
+            background: rgba(30, 41, 59, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        [data-style="glassmorphism"] .card,
+        [data-style="glassmorphism"] .tl-item {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        [data-style="glassmorphism"][data-theme="dark"] .card,
+        [data-style="glassmorphism"][data-theme="dark"] .tl-item {
+            background: rgba(30, 41, 59, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        [data-style="glassmorphism"] .navbar {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+        }
+
+        [data-style="glassmorphism"][data-theme="dark"] .navbar {
+            background: rgba(15, 23, 42, 0.4);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Neumorphism Style */
+        [data-style="neumorphism"] {
+            background: #e0e5ec;
+        }
+
+        [data-style="neumorphism"][data-theme="dark"] {
+            background: #2d3748;
+        }
+
+        [data-style="neumorphism"] .container {
+            background: #e0e5ec;
+            box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff;
+            border-radius: 20px;
+            border: none;
+        }
+
+        [data-style="neumorphism"][data-theme="dark"] .container {
+            background: #2d3748;
+            box-shadow: 20px 20px 60px #1a202c, -20px -20px 60px #404c5a;
+        }
+
+        [data-style="neumorphism"] .section {
+            background: #e0e5ec;
+            box-shadow: inset 5px 5px 10px #bebebe, inset -5px -5px 10px #ffffff;
+            border: none;
+            border-radius: 15px;
+        }
+
+        [data-style="neumorphism"][data-theme="dark"] .section {
+            background: #2d3748;
+            box-shadow: inset 5px 5px 10px #1a202c, inset -5px -5px 10px #404c5a;
+        }
+
+        [data-style="neumorphism"] .card,
+        [data-style="neumorphism"] .tl-item {
+            background: #e0e5ec;
+            box-shadow: inset 3px 3px 6px #bebebe, inset -3px -3px 6px #ffffff;
+            border: none;
+            border-radius: 12px;
+        }
+
+        [data-style="neumorphism"][data-theme="dark"] .card,
+        [data-style="neumorphism"][data-theme="dark"] .tl-item {
+            background: #2d3748;
+            box-shadow: inset 3px 3px 6px #1a202c, inset -3px -3px 6px #404c5a;
+        }
+
+        [data-style="neumorphism"] .navbar {
+            background: #e0e5ec;
+            box-shadow: 5px 5px 10px #bebebe, -5px -5px 10px #ffffff;
+            border: none;
+        }
+
+        [data-style="neumorphism"][data-theme="dark"] .navbar {
+            background: #2d3748;
+            box-shadow: 5px 5px 10px #1a202c, -5px -5px 10px #404c5a;
+        }
+
+        /* Glassmorphism specific adjustments for controls */
+        [data-style="glassmorphism"] .navbar button,
+        [data-style="glassmorphism"] .navbar select {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        [data-style="glassmorphism"][data-theme="dark"] .navbar button,
+        [data-style="glassmorphism"][data-theme="dark"] .navbar select {
+            background: rgba(30, 41, 59, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        [data-style="glassmorphism"] .navbar select option {
+            background: rgba(255, 255, 255, 0.9);
+            color: #333;
+        }
+
+        [data-style="glassmorphism"][data-theme="dark"] .navbar select option {
+            background: rgba(30, 41, 59, 0.9);
+            color: #e2e8f0;
+        }
+
+        /* Neumorphism specific adjustments for controls */
+        [data-style="neumorphism"] .navbar button,
+        [data-style="neumorphism"] .navbar select {
+            background: #e0e5ec;
+            box-shadow: inset 3px 3px 6px #bebebe, inset -3px -3px 6px #ffffff;
+            border: none;
+        }
+
+        [data-style="neumorphism"][data-theme="dark"] .navbar button,
+        [data-style="neumorphism"][data-theme="dark"] .navbar select {
+            background: #2d3748;
+            box-shadow: inset 3px 3px 6px #1a202c, inset -3px -3px 6px #404c5a;
+        }
+
+        [data-style="neumorphism"] .navbar select option {
+            background: #e0e5ec;
+            color: #333;
+        }
+
+        [data-style="neumorphism"][data-theme="dark"] .navbar select option {
+            background: #2d3748;
+            color: #e2e8f0;
+        }
+
+        /* Back to top button */
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            font-size: 20px;
+            display: none;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .back-to-top:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+        }
+
+        .back-to-top.show {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .back-to-top {
+                width: 45px;
+                height: 45px;
+                font-size: 18px;
+                bottom: 15px;
+                right: 15px;
+            }
+        }
+
+        /* Theme controls styling */
+        .style-selector {
+            background: var(--panel);
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            padding: 0.5rem;
+            color: var(--text-color);
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .style-selector:hover {
+            border-color: var(--accent-color);
+        }
+
+        .style-selector option {
+            background: var(--panel);
+            color: var(--text-color);
+        }
+
+        .theme-toggle {
+            background: var(--panel);
+            border: 2px solid var(--border);
+            border-radius: 50px;
+            width: 60px;
+            height: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            padding: 2px;
+        }
+
+        .theme-toggle:hover {
+            border-color: var(--accent-color);
+        }
+
+        .theme-toggle-slider {
+            width: 24px;
+            height: 24px;
+            background: var(--accent-color);
+            border-radius: 50%;
+            transition: transform 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            color: white;
+        }
+
+        [data-theme="dark"] .theme-toggle-slider {
+            transform: translateX(28px);
+        }
+
+        @media print {
+          @page {
+            margin: 0.75in;
+            size: letter;
+          }
+          
+          * {
+            -webkit-print-color-adjust: exact !important;
+            color-adjust: exact !important;
+          }
+          
+          body { 
+            line-height: 1.3;
+            font-size: 10pt;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+          }
+          
+          .navbar { 
+            position: static;
+            border-bottom: 1px solid #333;
+            padding: 8px 0;
+            margin-bottom: 15px;
+            page-break-after: avoid;
+          }
+          
+          .navbar button, 
+          .hamburger-menu,
+          .navbar select,
+          .theme-toggle,
+          .back-to-top {
+            display: none !important;
+          }
+          
+          .navbar-left, .navbar-right {
+            display: inline-block;
+            vertical-align: top;
+          }
+          
+          .nav-buttons {
+            display: none;
+          }
+          
+          .navbar-divider { display: none !important; }
+          
+          .brand {
+            font-size: 14pt;
+            font-weight: bold;
+            margin: 0;
+          }
+          
+          .container {
+            max-width: none;
+            padding: 0;
+            margin: 0;
+          }
+          
+          .section { 
+            break-inside: auto;
+            margin-bottom: 12px;
+            padding: 10px;
+            box-shadow: none !important;
+          }
+          
+          .section h1, .section h2, .section h3 {
+            page-break-after: avoid;
+            break-after: avoid;
+            margin-top: 0;
+            margin-bottom: 6px;
+            orphans: 3;
+            widows: 3;
+          }
+          
+          .tl-item { 
+            break-inside: avoid; 
+            margin-bottom: 8px;
+            padding: 6px;
+            box-shadow: none !important;
+          }
+          
+          .tl-item summary {
+            font-weight: bold;
+            margin-bottom: 5px;
+          }
+          
+          .tl-body {
+            break-inside: auto;
+            padding-top: 4px;
+          }
+          
+          .tl-row {
+            break-inside: auto;
+            margin-bottom: 3px;
+            display: block;
+          }
+          
+          .tl-row .lbl {
+            font-weight: bold;
+            display: inline-block;
+            width: 140px;
+            vertical-align: top;
+          }
+          
+          .tl-row .val {
+            display: inline-block;
+            width: calc(100% - 150px);
+            vertical-align: top;
+          }
+          
+          .card { 
+            break-inside: avoid;
+            margin-bottom: 6px;
+            padding: 6px;
+            box-shadow: none !important;
+          }
+          
+          .grid {
+            display: block;
+          }
+          
+          .grid .card {
+            display: block;
+            width: 100%;
+            margin-bottom: 6px;
+          }
+          
+          .back-to-top { display: none !important; }
+          
+          a { 
+            color: #0066cc !important;
+            text-decoration: underline;
+          }
+          
+          .tl-links, .links {
+            font-size: 9pt;
+            margin-top: 5px;
+          }
+          
+          details[open] {
+            page-break-inside: avoid;
+            break-inside: avoid;
+          }
+          
+          /* Force compact layout */
+          h1 { font-size: 16pt; margin: 0 0 6px 0; }
+          h2 { font-size: 14pt; margin: 0 0 4px 0; }
+          h3 { font-size: 12pt; margin: 0 0 3px 0; }
+          
+          p, div, li {
+            margin-bottom: 3px;
+            orphans: 2;
+            widows: 2;
+          }
+          
+          ul, ol {
+            margin: 3px 0;
+            padding-left: 18px;
+          }
+          
+          .tl-links, .links {
+            font-size: 9pt;
+            margin-top: 3px;
+          }
+          
+          details {
+            break-inside: auto;
+          }
+          
+          details[open] {
+            break-inside: auto;
+          }
+        }
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script>
+function gotoSection(id) {
+  document.getElementById(id).scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+// Theme and style functionality
+document.addEventListener('DOMContentLoaded', () => {
+  const mobileThemeToggle = document.getElementById('themeToggle');
+  const desktopThemeToggle = document.getElementById('desktopThemeToggle');
+  const mobileStyleSelector = document.getElementById('styleSelector');
+  const desktopStyleSelector = document.getElementById('desktopStyleSelector');
+  const body = document.body;
+  
+  const mobileSlider = mobileThemeToggle?.querySelector('.theme-toggle-slider');
+  const desktopSlider = desktopThemeToggle?.querySelector('.theme-toggle-slider');
+
+  // Load saved preferences or default values
+  const savedTheme = localStorage.getItem('theme') || 'light';
+  const savedStyle = localStorage.getItem('style') || 'default';
+  
+  body.setAttribute('data-theme', savedTheme);
+  body.setAttribute('data-style', savedStyle);
+  
+  if (mobileStyleSelector) mobileStyleSelector.value = savedStyle;
+  if (desktopStyleSelector) desktopStyleSelector.value = savedStyle;
+  
+  updateToggleIcon(savedTheme);
+
+  function updateToggleIcon(theme) {
+    const icon = theme === 'light' ? '☀️' : '🌙';
+    if (mobileSlider) mobileSlider.textContent = icon;
+    if (desktopSlider) desktopSlider.textContent = icon;
+  }
+
+  function toggleTheme() {
+    const currentTheme = body.getAttribute('data-theme');
+    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+    
+    body.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+    updateToggleIcon(newTheme);
+  }
+
+  function changeStyle(newStyle) {
+    body.setAttribute('data-style', newStyle);
+    localStorage.setItem('style', newStyle);
+    // Sync both selectors
+    if (mobileStyleSelector) mobileStyleSelector.value = newStyle;
+    if (desktopStyleSelector) desktopStyleSelector.value = newStyle;
+  }
+
+  // Theme toggle functionality for both mobile and desktop
+  if (mobileThemeToggle) {
+    mobileThemeToggle.addEventListener('click', toggleTheme);
+  }
+  if (desktopThemeToggle) {
+    desktopThemeToggle.addEventListener('click', toggleTheme);
+  }
+
+  // Style selector functionality for both mobile and desktop
+  if (mobileStyleSelector) {
+    mobileStyleSelector.addEventListener('change', (e) => changeStyle(e.target.value));
+  }
+  if (desktopStyleSelector) {
+    desktopStyleSelector.addEventListener('change', (e) => changeStyle(e.target.value));
+  }
+
+  // Hamburger menu functionality
+  const hamburgerMenu = document.getElementById('hamburgerMenu');
+  const navButtons = document.getElementById('navButtons');
+  
+  hamburgerMenu.addEventListener('click', () => {
+    hamburgerMenu.classList.toggle('active');
+    navButtons.classList.toggle('show');
+  });
+
+  // Close mobile menu when clicking on a navigation item
+  const navItems = navButtons.querySelectorAll('button[onclick]');
+  navItems.forEach(item => {
+    item.addEventListener('click', () => {
+      if (window.innerWidth <= 1024) {
+        hamburgerMenu.classList.remove('active');
+        navButtons.classList.remove('show');
+      }
+    });
+  });
+
+  // Close mobile menu when clicking outside
+  document.addEventListener('click', (e) => {
+    if (window.innerWidth <= 1024 && 
+        !hamburgerMenu.contains(e.target) && 
+        !navButtons.contains(e.target) && 
+        navButtons.classList.contains('show')) {
+      hamburgerMenu.classList.remove('active');
+      navButtons.classList.remove('show');
+    }
+  });
+
+  // Close mobile menu on window resize
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 1024) {
+      hamburgerMenu.classList.remove('active');
+      navButtons.classList.remove('show');
+    }
+  });
+
+  // Back to top functionality
+  const backToTopButton = document.getElementById('backToTop');
+  
+  window.addEventListener('scroll', () => {
+    if (window.pageYOffset > 300) {
+      backToTopButton.classList.add('show');
+    } else {
+      backToTopButton.classList.remove('show');
+    }
+  });
+
+  backToTopButton.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+});
+
+</script>
+</head>
+<body data-theme="light" data-style="default">
+<nav class="navbar">
+  <div class="navbar-left">
+    <div class="brand">Trump Ideology Analysis</div>
+    <div class="nav-buttons" id="navButtons">
+      <button onclick="gotoSection('intro')">Introduction</button>
+      <button onclick="gotoSection('fascism')">Fascism Analysis</button>
+      <button onclick="gotoSection('communism')">Communism Analysis</button>
+      <button onclick="gotoSection('other-labels')">Other Classifications</button>
+      <button onclick="gotoSection('conclusion')">Conclusion</button>
+      <button onclick="gotoSection('references')">References</button>
+      <div class="mobile-actions">
+        <button onclick="window.print()">🖨️ Print</button>
+      </div>
+      <div class="mobile-theme-controls">
+        <select class="style-selector" id="styleSelector">
+          <option value="default">Default</option>
+          <option value="glassmorphism">Glassmorphism</option>
+          <option value="neumorphism">Neumorphism</option>
+        </select>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+          <div class="theme-toggle-slider">☀️</div>
+        </button>
+      </div>
+    </div>
+  </div>
+  <button class="hamburger-menu" id="hamburgerMenu" aria-label="Toggle navigation menu">
+    <span class="hamburger-line"></span>
+    <span class="hamburger-line"></span>
+    <span class="hamburger-line"></span>
+  </button>
+  <div class="navbar-divider"></div>
+  <div class="navbar-right">
+    <div class="desktop-theme-controls">
+      <select class="style-selector" id="desktopStyleSelector">
+        <option value="default">Default</option>
+        <option value="glassmorphism">Glassmorphism</option>
+        <option value="neumorphism">Neumorphism</option>
+      </select>
+      <button class="theme-toggle" id="desktopThemeToggle" aria-label="Toggle theme">
+        <div class="theme-toggle-slider">☀️</div>
+      </button>
+    </div>
+    <div class="desktop-actions">
+      <button onclick="window.print()">🖨️ Print</button>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <section id="intro" class="section">
+    <h1>The Trump Regime: Fascist, Communist, or What?</h1>
+    <p class="lede">This comprehensive analysis examines whether Donald Trump or the "Trump regime" can be classified as fascist, communist, or something else entirely, based on scholarly research and historical evidence.</p>
+  </section>
+
+  <section id="fascism" class="section">
+    <h2>Fascism Analysis</h2>
+    <p>Fascism is historically defined as an authoritarian, ultranationalist ideology that emphasizes a strong, centralized state, suppression of dissent, racism, xenophobia, and a cult of personality around a leader. It often involves state control over aspects of society and the economy, while maintaining private property and corporate power under strict government oversight.</p>
+    
+    <div class="card">
+      <div class="card-title">Arguments for Trump as Fascist</div>
+      <ul class="facts">
+        <li><strong>Authoritarian Tendencies</strong>: Historians like Timothy Snyder and Robert Paxton have pointed to Trump's actions, particularly the January 6, 2021, Capitol attack, as evidence of fascist-like behavior</li>
+        <li><strong>Rhetoric and Propaganda</strong>: Trump's rhetoric, such as calling political opponents "vermin" or "enemies of the people," echoes fascist leaders like Hitler and Mussolini</li>
+        <li><strong>Cult of Personality</strong>: Trumpism involves a strong leader-centric movement, with a dedicated following often described as a cult of personality</li>
+        <li><strong>Policies and Actions</strong>: Policies like family separations at the border and mass deportation plans have been compared to fascist racial laws</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Arguments Against Trump as Fascist</div>
+      <ul class="facts">
+        <li><strong>Lack of Coherent Ideology</strong>: Scholars like Roger Griffin argue Trump lacks the fixed, revolutionary ideology typical of fascism</li>
+        <li><strong>No Totalitarian State</strong>: Unlike historical fascist regimes, Trump operated within democratic constraints during his first term</li>
+        <li><strong>Populism vs. Fascism</strong>: Some classify Trump as a "nativist-populist" rather than a full fascist</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="communism" class="section">
+    <h2>Communism Analysis</h2>
+    <p>Communism is a classless, stateless ideology advocating collective ownership of production and the abolition of private property. It's rooted in Marxist theory, emphasizing economic equality and anti-capitalism.</p>
+    
+    <div class="card">
+      <div class="card-title">Arguments Against Trump as Communist</div>
+      <ul class="facts">
+        <li><strong>Pro-Capitalist Policies</strong>: Trump's policies—tax cuts for corporations, deregulation, and support for big business—are fundamentally opposed to communist principles</li>
+        <li><strong>Anti-Socialist Rhetoric</strong>: Trump consistently attacks socialism and communism, positioning himself as their opponent</li>
+        <li><strong>Wealth and Class Position</strong>: As a billionaire capitalist, Trump represents the class interests communism opposes</li>
+        <li><strong>No Economic Redistribution</strong>: Trump's policies favor wealth concentration, not redistribution</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Arguments for Trump as Communist (Limited)</div>
+      <ul class="facts">
+        <li><strong>Populist Economic Rhetoric</strong>: Some protectionist trade policies and anti-globalization rhetoric could be superficially compared to certain left-wing economic positions</li>
+        <li><strong>Government Intervention</strong>: Some policies involved significant government action in the economy</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="other-labels" class="section">
+    <h2>Other Classifications</h2>
+    
+    <div class="grid">
+      <div class="card">
+        <div class="card-title">Populism</div>
+        <div class="card-role">Most Common Classification</div>
+        <ul class="facts">
+          <li>Anti-elite rhetoric and appeals to "the people"</li>
+          <li>Simplistic solutions to complex problems</li>
+          <li>Charismatic leadership style</li>
+          <li>Both left-wing and right-wing populist elements</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Authoritarianism</div>
+        <div class="card-role">Strong Executive Power</div>
+        <ul class="facts">
+          <li>Disregard for institutional norms</li>
+          <li>Attacks on independent media and judiciary</li>
+          <li>Concentration of executive power</li>
+          <li>Personal loyalty over institutional loyalty</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Nationalism</div>
+        <div class="card-role">"America First"</div>
+        <ul class="facts">
+          <li>Strong emphasis on national sovereignty</li>
+          <li>Skepticism of international agreements</li>
+          <li>Protectionist economic policies</li>
+          <li>Border security emphasis</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Conservatism</div>
+        <div class="card-role">Traditional Republican Base</div>
+        <ul class="facts">
+          <li>Judicial appointments (conservative judges)</li>
+          <li>Some traditional conservative policies</li>
+          <li>Support from religious conservatives</li>
+          <li>Pro-gun rights stance</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="conclusion" class="section">
+    <h2>Conclusion</h2>
+    <p>Based on scholarly analysis and historical comparison, Donald Trump's political movement does not neatly fit into traditional fascist or communist categories:</p>
+    
+    <div class="card">
+      <div class="card-title">Key Findings</div>
+      <ul class="facts">
+        <li><strong>Not Communist</strong>: Trump's pro-capitalist policies, wealth, and anti-socialist rhetoric clearly distinguish him from communism</li>
+        <li><strong>Fascist Elements Present</strong>: Some authoritarian tendencies, nationalist rhetoric, and cult of personality show fascist-like characteristics</li>
+        <li><strong>Primarily Populist</strong>: The movement is best understood as a form of right-wing populism with authoritarian characteristics</li>
+        <li><strong>Unique Hybrid</strong>: Trumpism combines elements of nationalism, populism, conservatism, and authoritarianism in a unique American context</li>
+      </ul>
+    </div>
+
+    <p>Scholars generally agree that while Trump exhibits some fascist-like tendencies, he lacks the coherent revolutionary ideology and totalitarian state apparatus of historical fascism. The movement is more accurately described as "authoritarian populism" or "illiberal democracy" rather than full fascism.</p>
+  </section>
+
+  <section id="references" class="section">
+    <h2>References and Scholarly Sources</h2>
+    
+    <div class="card">
+      <div class="card-title">Academic Sources</div>
+      <ul class="facts">
+        <li>Paxton, Robert O. (2004). <em>The Anatomy of Fascism</em>. Knopf Doubleday</li>
+        <li>Snyder, Timothy (2017). <em>On Tyranny: Twenty Lessons from the Twentieth Century</em>. Tim Duggan Books</li>
+        <li>Griffin, Roger (2018). <em>Fascism: An Introduction to Comparative Fascist Studies</em>. Polity Press</li>
+        <li>Mudde, Cas (2007). <em>Populist Radical Right Parties in Europe</em>. Cambridge University Press</li>
+        <li>Levitsky, Steven & Ziblatt, Daniel (2018). <em>How Democracies Die</em>. Crown</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Journal Articles</div>
+      <ul class="facts">
+        <li>Stanley, Jason (2018). "How Fascism Works: The Politics of Us and Them." <em>Random House</em></li>
+        <li>Müller, Jan-Werner (2016). <em>What Is Populism?</em> University of Pennsylvania Press</li>
+        <li>Eatwell, Roger & Goodwin, Matthew (2018). <em>National Populism: The Revolt Against Liberal Democracy</em>. Penguin</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Historical Comparisons</div>
+      <ul class="facts">
+        <li>Comparison to European populist movements (Le Pen, Orban, Salvini)</li>
+        <li>Historical American populism (Huey Long, George Wallace)</li>
+        <li>20th century authoritarian movements</li>
+      </ul>
+    </div>
+  </section>
+</div>
+
+<button id="backToTop" class="back-to-top" title="Back to top">↑</button>
+
+</body>
+</html>
