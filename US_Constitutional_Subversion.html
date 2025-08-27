@@ -586,7 +586,7 @@ hr.sep { border:none; height:1px; background: var(--border); margin: 12px 0; }
           
           * {
             -webkit-print-color-adjust: exact !important;
-            color-adjust: exact !important;
+            print-color-adjust: exact !important;
           }
           
           body { 
@@ -920,54 +920,94 @@ document.addEventListener('DOMContentLoaded', () => {
       <button onclick="gotoSection('references')">References</button>
       <select id="filter" onchange="filterTimeline()">
         <option value="all">Filter by actor...</option>
-        <option>George Washington (1st President)</option>
-        <option>John Adams (2nd President)</option>
-        <option>Thomas Jefferson (3rd President)</option>
-        <option>James Madison (4th President)</option>
-        <option>James Monroe (5th President)</option>
-        <option>John Quincy Adams (6th President)</option>
-        <option>Andrew Jackson (7th President)</option>
-        <option>Martin Van Buren (8th President)</option>
-        <option>William Henry Harrison (9th President)</option>
-        <option>John Tyler (10th President)</option>
-        <option>James Knox Polk (11th President)</option>
-        <option>Zachary Taylor (12th President)</option>
-        <option>Millard Fillmore (13th President)</option>
-        <option>Franklin Pierce (14th President)</option>
-        <option>James Buchanan (15th President)</option>
-        <option>Abraham Lincoln (16th President)</option>
-        <option>Andrew Johnson (17th President)</option>
-        <option>Ulysses S. Grant (18th President)</option>
-        <option>Rutherford Birchard Hayes (19th President)</option>
-        <option>James Abram Garfield (20th President)</option>
-        <option>Chester Alan Arthur (21st President)</option>
-        <option>Grover Cleveland (22nd President)</option>
-        <option>Benjamin Harrison (23rd President)</option>
-        <option>Grover Cleveland (24th President)</option>
-        <option>William McKinley (25th President)</option>
-        <option>Theodore Roosevelt (26th President)</option>
-        <option>William Howard Taft (27th President)</option>
-        <option>Woodrow Wilson (28th President)</option>
-        <option>Warren Gamaliel Harding (29th President)</option>
-        <option>Calvin Coolidge (30th President)</option>
-        <option>Herbert Clark Hoover (31st President)</option>
-        <option>Franklin Delano Roosevelt (32nd President)</option>
-        <option>Harry S. Truman (33rd President)</option>
-        <option>Dwight David Eisenhower (34th President)</option>
-        <option>John Fitzgerald Kennedy (35th President)</option>
-        <option>Lyndon Baines Johnson (36th President)</option>
-        <option>Richard Milhous Nixon (37th President)</option>
-        <option>Gerald Rudolph Ford (38th President)</option>
-        <option>James Earl Carter Jr. (39th President)</option>
-        <option>Ronald Wilson Reagan (40th President)</option>
-        <option>George Herbert Walker Bush (41st President)</option>
-        <option>William Jefferson Clinton (42nd President)</option>
-        <option>George Walker Bush (43rd President)</option>
-        <option>Barack Hussein Obama (44th President)</option>
-        <option>Donald John Trump (45th President)</option>
-        <option>Joseph Robinette Biden Jr. (46th President)</option>
-        <option>Federal Reserve</option>
-        <option>Treasury</option>
+        <optgroup label="━━━ PRESIDENTS ━━━">
+          <option>George Washington (1st President)</option>
+          <option>John Adams (2nd President)</option>
+          <option>Thomas Jefferson (3rd President)</option>
+          <option>James Madison (4th President)</option>
+          <option>James Monroe (5th President)</option>
+          <option>John Quincy Adams (6th President)</option>
+          <option>Andrew Jackson (7th President)</option>
+          <option>Martin Van Buren (8th President)</option>
+          <option>William Henry Harrison (9th President)</option>
+          <option>John Tyler (10th President)</option>
+          <option>James Knox Polk (11th President)</option>
+          <option>Zachary Taylor (12th President)</option>
+          <option>Millard Fillmore (13th President)</option>
+          <option>Franklin Pierce (14th President)</option>
+          <option>James Buchanan (15th President)</option>
+          <option>Abraham Lincoln (16th President)</option>
+          <option>Andrew Johnson (17th President)</option>
+          <option>Ulysses S. Grant (18th President)</option>
+          <option>Rutherford Birchard Hayes (19th President)</option>
+          <option>James Abram Garfield (20th President)</option>
+          <option>Chester Alan Arthur (21st President)</option>
+          <option>Grover Cleveland (22nd President)</option>
+          <option>Benjamin Harrison (23rd President)</option>
+          <option>Grover Cleveland (24th President)</option>
+          <option>William McKinley (25th President)</option>
+          <option>Theodore Roosevelt (26th President)</option>
+          <option>William Howard Taft (27th President)</option>
+          <option>Woodrow Wilson (28th President)</option>
+          <option>Warren Gamaliel Harding (29th President)</option>
+          <option>Calvin Coolidge (30th President)</option>
+          <option>Herbert Clark Hoover (31st President)</option>
+          <option>Franklin Delano Roosevelt (32nd President)</option>
+          <option>Harry S. Truman (33rd President)</option>
+          <option>Dwight David Eisenhower (34th President)</option>
+          <option>John Fitzgerald Kennedy (35th President)</option>
+          <option>Lyndon Baines Johnson (36th President)</option>
+          <option>Richard Milhous Nixon (37th President)</option>
+          <option>Gerald Rudolph Ford (38th President)</option>
+          <option>James Earl Carter Jr. (39th President)</option>
+          <option>Ronald Wilson Reagan (40th President)</option>
+          <option>George Herbert Walker Bush (41st President)</option>
+          <option>William Jefferson Clinton (42nd President)</option>
+          <option>George Walker Bush (43rd President)</option>
+          <option>Barack Hussein Obama (44th President)</option>
+          <option>Donald John Trump (45th President)</option>
+          <option>Joseph Robinette Biden Jr. (46th President)</option>
+        </optgroup>
+        <optgroup label="━━━ CONGRESS ━━━">
+          <option>Thaddeus Stevens (Rep-PA)</option>
+          <option>Joe McCarthy (Rep-WI)</option>
+          <option>Harry Reid (Dem-NV)</option>
+          <option>Nancy Pelosi (Dem-CA)</option>
+          <option>Chuck Schumer (Dem-NY)</option>
+          <option>Alexander Hamilton (Fed-NY)</option>
+          <option>Carter Glass (Dem-VA)</option>
+          <option>Edwin Webb (Dem-NC)</option>
+          <option>Howard W. Smith (Dem-VA)</option>
+          <option>James Sensenbrenner (Rep-WI)</option>
+          <option>Carl Levin (Dem-MI)</option>
+          <option>John McCain (Rep-AZ)</option>
+          <option>Elbridge G. Spaulding (Rep-NY)</option>
+          <option>Charles Sumner (Rep-MA)</option>
+          <option>John Bingham (Rep-OH)</option>
+          <option>Robert Owen (Dem-OK)</option>
+          <option>Harrison Gray Otis (Fed-MA)</option>
+        </optgroup>
+        <optgroup label="━━━ SUPREME COURT ━━━">
+          <option>Roger Taney (Chief Justice 1836-1864)</option>
+          <option>Oliver Wendell Holmes Jr. (1902-1932)</option>
+          <option>Hugo Black (1937-1971)</option>
+          <option>Earl Warren (Chief Justice 1953-1969)</option>
+          <option>William Brennan (1956-1990)</option>
+          <option>Harry Blackmun (1970-1994)</option>
+          <option>Anthony Kennedy (1988-2018)</option>
+          <option>David Souter (1990-2009)</option>
+          <option>John Paul Stevens (1975-2010)</option>
+          <option>John Roberts (Chief Justice 2005-present)</option>
+          <option>John Marshall Harlan I (1877-1911)</option>
+          <option>Antonin Scalia (1986-2016)</option>
+          <option>Clarence Thomas (1991-present)</option>
+        </optgroup>
+        <optgroup label="━━━ INSTITUTIONS ━━━">
+          <option>Federal Reserve</option>
+          <option>Treasury</option>
+          <option>Congress (Institution)</option>
+          <option>Supreme Court (Institution)</option>
+        </optgroup>
       </select>
       <div class="mobile-actions">
         <button onclick="window.print()">🖨️ Print</button>
@@ -1660,33 +1700,59 @@ document.addEventListener('DOMContentLoaded', () => {
 
       <div class="card">
         <div class="card-title">James Madison (1809-1817)</div>
-        <div class="card-role">War of 1812</div>
+        <div class="card-role">War of 1812 & Constitutional Contradictions - "Father of Constitution" Who Violated It</div>
         <ul class="facts">
-          <li><strong>War of 1812</strong>: Poorly justified war declaration</li>
-          <li><strong>National bank</strong>: Initially opposed, later supported Second Bank</li>
-          <li><strong>Internal improvements</strong>: Federal funding for roads, canals</li>
+          <li><strong>War of 1812 Declaration</strong>: Requested war declaration from Congress but based on flimsy evidence of British violations. War was largely driven by War Hawks' territorial ambitions rather than genuine threats to US sovereignty. Failed to adequately prepare military, leading to disasters including British burning of Washington. <a href="https://www.archives.gov/milestone-documents/war-message" target="_blank">[War Message 1812]</a></li>
+          <li><strong>Alien Enemies Act Extension (1812)</strong>: Extended wartime detention powers from 1798 Alien and Sedition Acts that he had previously condemned as unconstitutional. Allowed indefinite detention of enemy aliens without due process, violating his own constitutional principles. <a href="https://www.loc.gov/law/help/statutes-at-large/12th-congress/session-1/c12s1ch85.pdf" target="_blank">[Alien Enemies Act]</a></li>
+          <li><strong>National Bank Flip-Flop</strong>: As Jefferson's Secretary of State, argued First Bank of the United States was unconstitutional. As President, signed bill creating Second Bank (1816) despite no constitutional amendment changing federal powers. Pure political expediency over constitutional principle. <a href="https://www.archives.gov/milestone-documents/bank-bill-veto" target="_blank">[Bank Charter History]</a></li>
+          <li><strong>Conscription Plans (1814)</strong>: Proposed federal military draft after volunteer recruitment failed during War of 1812. James Monroe, his Secretary of War, developed plan for federal conscription of state militias. Plan abandoned after fierce opposition from Daniel Webster and others who called it unconstitutional. <a href="https://founders.archives.gov/documents/Madison/03-08-02-0240" target="_blank">[Madison Papers]</a></li>
+          <li><strong>Internal Improvements Hypocrisy</strong>: Vetoed Bonus Bill (1817) for federal road construction as unconstitutional, then privately supported similar projects. Wrote that federal government lacked constitutional authority for internal improvements, but political pressure led to inconsistent enforcement of this principle.</li>
+          <li><strong>General Survey Act (1824)</strong>: Though signed after presidency, Madison's precedents enabled federal surveys for roads and canals that exceeded enumerated powers. His inconsistency on internal improvements created constitutional confusion for decades.</li>
+          <li><strong>Impressment Response Failure</strong>: Failed to adequately respond to British impressment of American sailors, leading to war. Could have pursued diplomatic solutions more vigorously. Over 6,000 Americans were impressed by British Navy before war - constitutional duty to protect citizens was neglected. <a href="https://millercenter.org/president/madison/foreign-affairs" target="_blank">[Miller Center - Madison]</a></li>
+          <li><strong>Treasury Note Issues</strong>: Authorized Treasury notes (government IOUs) that functioned as paper money without constitutional authority to issue bills of credit. Though called "Treasury notes," they circulated as de facto currency, violating Constitution's gold/silver requirement for states and federal monetary powers.</li>
+          <li><strong>Sedition Act Prosecutions</strong>: Though he opposed Alien and Sedition Acts, failed to pardon all victims of Federalist prosecutions. Some journalists and critics remained imprisoned or under legal threat. As champion of First Amendment, should have immediately reversed all prior restraints on speech.</li>
+          <li><strong>State Militia Federalization</strong>: During War of 1812, attempted to federalize state militias beyond constitutional authority. Governors of Connecticut and Massachusetts refused compliance, asserting state sovereignty. Madison's broad interpretation of war powers set precedent for future federal overreach of state military forces.</li>
+          <li><strong>British Property Seizures</strong>: Authorized seizure of British property in US without due process during War of 1812. Violated Fifth Amendment taking clause by confiscating private property based solely on owner nationality. Property rights violated without individualized determination of threat.</li>
+          <li><strong>Prisoner of War Policies</strong>: Authorized harsh treatment of British prisoners in retaliation for British policies. Violated international laws of war and constitutional protections. Some British prisoners held in conditions that violated human dignity and constitutional principles of proportionate punishment.</li>
         </ul>
       </div>
 
       <div class="card">
         <div class="card-title">James Monroe (1817-1825)</div>
-        <div class="card-role">Monroe Doctrine & Federal Expansion</div>
+        <div class="card-role">Monroe Doctrine & Federal Expansion - "Era of Good Feelings" Constitutional Subversion</div>
         <ul class="facts">
-          <li><strong>Monroe Doctrine (1823)</strong>: Claimed hemispheric authority without constitutional basis</li>
-          <li><strong>Missouri Compromise</strong>: Federal intervention in state sovereignty over slavery</li>
-          <li><strong>Internal improvements</strong>: Vetoed Bonus Bill then supported federal infrastructure projects</li>
-          <li><strong>Seminole War</strong>: Authorized military action in Spanish Florida without Congressional approval</li>
+          <li><strong>Monroe Doctrine (1823)</strong>: Unilateral presidential declaration claiming authority to dictate European powers' actions in Western Hemisphere without Congressional authorization or constitutional basis. Essentially declared war powers over entire hemisphere. "The American continents...are henceforth not to be considered as subjects for future colonization by any European powers." Created precedent for imperial interventionism in Latin America for next 200 years. <a href="https://avalon.law.yale.edu/19th_century/monroe.asp" target="_blank">[Monroe Doctrine Text]</a></li>
+          <li><strong>Missouri Compromise (1820)</strong>: Federal government exceeded constitutional authority by restricting slavery in territories above 36°30' line and imposing conditions on Missouri statehood. Congress had no enumerated power to regulate slavery in territories or dictate terms to sovereign states seeking admission. Violated states' rights and established dangerous precedent of federal supremacy over state sovereignty in territorial organization. <a href="https://www.archives.gov/milestone-documents/missouri-compromise" target="_blank">[National Archives - Missouri Compromise]</a></li>
+          <li><strong>Internal Improvements Hypocrisy</strong>: Vetoed Bonus Bill (1817) for federal road construction as unconstitutional, calling it beyond federal powers, then inconsistently supported similar federal infrastructure projects throughout his presidency. His inconsistent application of constitutional principles created precedent for selective interpretation of enumerated powers based on political convenience rather than constitutional law.</li>
+          <li><strong>First Seminole War (1817-1818)</strong>: Authorized General Andrew Jackson's military invasion of Spanish Florida without Congressional war declaration. Jackson exceeded orders by capturing Spanish forts, executing British subjects, and effectively conquering territory. Monroe retroactively approved these actions, establishing precedent for undeclared wars and territorial acquisition through military force without legislative authorization. <a href="https://history.army.mil/books/AMH/AMH-04.htm" target="_blank">[Army History - Seminole Wars]</a></li>
+          <li><strong>Colonization Society Federal Support</strong>: Used federal resources and diplomatic channels to support American Colonization Society's efforts to relocate free blacks to Liberia. No constitutional authority for federal government to engage in racial relocation programs or establish foreign colonies. Violated equal protection principles and exceeded federal powers. <a href="https://www.loc.gov/collections/american-colonization-society-records/" target="_blank">[Library of Congress - ACS Records]</a></li>
+          <li><strong>Tariff of 1824 Support</strong>: Endorsed protective tariff that favored Northern manufacturing over Southern agriculture, violating constitutional principle of equal treatment of states. Tariffs were meant for revenue, not economic favoritism. Created sectional tensions that violated constitutional union principles by benefiting some states at expense of others.</li>
+          <li><strong>Federal Survey and Mapping Projects</strong>: Authorized extensive federal surveys of interior territories and coastal regions beyond what was necessary for national defense or postal service. Expanded federal bureaucracy and spending without clear constitutional authority. Used military personnel for civilian purposes, blurring separation between military and civilian government functions.</li>
+          <li><strong>Indian Treaty Violations</strong>: Continued systematic violation of treaties with Native American tribes, allowing settlers to encroach on treaty-protected lands without federal enforcement of treaty obligations. Constitution requires treaties to be "supreme law of land," but Monroe administration regularly ignored treaty violations by states and citizens. <a href="https://www.archives.gov/research/native-americans/treaties" target="_blank">[National Archives - Indian Treaties]</a></li>
+          <li><strong>Cumberland Road Federal Funding</strong>: Despite constitutional concerns about internal improvements, continued federal funding of Cumberland Road construction across state lines. Used "post roads" constitutional clause as excuse for massive federal infrastructure spending that primarily benefited commercial interests rather than postal service. Set precedent for elastic interpretation of postal powers.</li>
+          <li><strong>Panic of 1819 Response</strong>: Failed to adequately respond to nation's first major economic depression, allowing widespread foreclosures and bank failures while maintaining support for Second Bank of the United States. Federal government had constitutional duty to maintain stable currency, but Monroe's policies worsened economic crisis affecting entire nation.</li>
+          <li><strong>Congressional Salary Controversy</strong>: Supported Congressional pay raise that was widely unpopular and potentially violated constitutional principle of representatives serving at people's pleasure. Though Congress has power to set own salary, Monroe's support for timing of increase showed disregard for public opposition to self-dealing by elected officials.</li>
+          <li><strong>Diplomatic Recognition Powers</strong>: Unilaterally recognized independence of Latin American republics without consulting Congress about foreign policy implications. While President has diplomatic recognition powers, Monroe's broad recognition of revolutionary governments set precedent for executive branch making foreign policy decisions with major military and economic consequences without legislative input. <a href="https://history.state.gov/milestones/1801-1829/monroe" target="_blank">[State Department - Monroe Doctrine]</a></li>
         </ul>
       </div>
 
       <div class="card">
         <div class="card-title">John Quincy Adams (1825-1829)</div>
-        <div class="card-role">Federal Infrastructure & Political Corruption</div>
+        <div class="card-role">Federal Infrastructure & Political Corruption - "National Republican" Constitutional Expansion</div>
         <ul class="facts">
-          <li><strong>"Corrupt Bargain"</strong>: Won presidency through House deal despite losing popular vote</li>
-          <li><strong>Internal improvements</strong>: Massive federal spending on roads, canals, universities</li>
-          <li><strong>American System</strong>: Federal intervention in economic development</li>
-          <li><strong>National observatory</strong>: Federal funding for scientific research beyond enumerated powers</li>
+          <li><strong>"Corrupt Bargain" (1825)</strong>: Won presidency through House of Representatives deal with Henry Clay despite losing both popular vote (105,321 to Jackson's 152,901) and electoral college plurality (84 to Jackson's 99). Appointed Clay as Secretary of State in exchange for Clay's support, creating appearance of constitutional crisis and vote trading. Violated democratic principles and popular sovereignty embedded in constitutional system. <a href="https://www.archives.gov/milestone-documents/election-of-1824" target="_blank">[National Archives - 1824 Election]</a></li>
+          <li><strong>American System Constitutional Overreach</strong>: Promoted massive federal spending on internal improvements (roads, canals, bridges, universities, observatories) under elastic interpretation of "general welfare" clause. Created precedent for unlimited federal spending beyond enumerated powers. Congress had no constitutional authority for most infrastructure projects outside postal roads and national defense. <a href="https://millercenter.org/president/johnquincyadams/domestic-affairs" target="_blank">[Miller Center - J.Q. Adams]</a></li>
+          <li><strong>National University Proposal (1825)</strong>: Proposed federal funding for national university and astronomical observatory, claiming "general welfare" clause authorized federal education and scientific research. No enumerated power existed for federal involvement in education or scientific research. Created dangerous precedent for federal expansion into areas reserved to states. <a href="https://www.presidency.ucsb.edu/documents/first-annual-message-4" target="_blank">[First Annual Message 1825]</a></li>
+          <li><strong>Federal Road and Canal Projects</strong>: Approved massive federal spending on Cumberland Road extension, Chesapeake and Ohio Canal, and other infrastructure projects totaling over $2 million (equivalent to $50+ million today). Used "post roads" and "commerce" clauses as pretexts for projects that primarily benefited private commercial interests rather than constitutional purposes. Set precedent for federal infrastructure spending that exploded in 20th century.</li>
+          <li><strong>Naval Academy and Military Education Expansion</strong>: Expanded federal military education beyond constitutional necessity, creating precedent for federal involvement in higher education. While military education had constitutional basis, Adams' expansions exceeded defensive needs and created blueprint for federal educational bureaucracy.</li>
+          <li><strong>Federal Land Surveys and Western Development</strong>: Authorized extensive federal surveys of western territories beyond what was necessary for land sales or defense. Used federal resources to subsidize western development and speculation, violating constitutional principle of equal treatment. Created federal land policy that favored certain regions over others.</li>
+          <li><strong>Tariff of 1828 Support ("Tariff of Abominations")</strong>: Supported protective tariff that heavily favored Northern manufacturing at expense of Southern agriculture. Tariffs should be for revenue, not economic favoritism toward particular regions or industries. Violated constitutional principle of equal treatment and created sectional crisis that nearly led to nullification and secession. <a href="https://millercenter.org/president/johnquincyadams/key-events" target="_blank">[Miller Center - Key Events]</a></li>
+          <li><strong>Federal Bureaucracy Expansion</strong>: Dramatically expanded federal civilian employment and bureaucracy beyond constitutional necessity. Created new federal positions and departments that exceeded enumerated powers. Set precedent for administrative state expansion that violated constitutional principle of limited government and separation of powers.</li>
+          <li><strong>Indian Removal Preparation</strong>: Despite later opposing Jackson's Indian Removal Act, Adams administration began surveys and negotiations that laid groundwork for forced removal of Native American tribes. Violated treaty obligations and constitutional requirement that treaties are "supreme law of land." Failed to protect Native American rights guaranteed by previous treaties.</li>
+          <li><strong>Federal Banking Policy Inconsistency</strong>: Supported Second Bank of the United States despite questionable constitutional authority while simultaneously promoting federal infrastructure spending. Created precedent for federal involvement in banking and finance that exceeded constitutional bounds. Failed to maintain consistent constitutional principles in financial policy.</li>
+          <li><strong>Congressional Election Interference</strong>: Used federal patronage and appointments to influence Congressional elections and build political support for his agenda. Violated constitutional principle of separation of powers by using executive branch resources to influence legislative branch elections. Created precedent for executive political interference in legislative process.</li>
+          <li><strong>Federal Scientific Expeditions</strong>: Authorized federal funding for scientific expeditions and research beyond constitutional authority. While some scientific work had military applications, Adams promoted pure research that exceeded federal powers. Created precedent for federal involvement in scientific research that exploded in 20th century with National Science Foundation and other agencies. <a href="https://www.whitehouse.gov/about-the-white-house/presidents/john-quincy-adams/" target="_blank">[White House - J.Q. Adams]</a></li>
+          <li><strong>Federal Art and Culture Promotion</strong>: Supported federal involvement in arts and culture through observatory and university proposals. No constitutional authority existed for federal promotion of arts or culture. Created dangerous precedent for federal cultural programs that violated limited government principles and established religion concerns.</li>
         </ul>
       </div>
 
@@ -1703,33 +1769,54 @@ document.addEventListener('DOMContentLoaded', () => {
 
       <div class="card">
         <div class="card-title">Martin Van Buren (1837-1841)</div>
-        <div class="card-role">Economic Crisis & Federal Power</div>
+        <div class="card-role">Economic Crisis & Federal Power Expansion - "Little Magician" of Constitutional Subversion</div>
         <ul class="facts">
-          <li><strong>Panic of 1837</strong>: Failed to address economic crisis, defended Jackson's policies</li>
-          <li><strong>Independent Treasury</strong>: Created federal sub-treasury system beyond constitutional scope</li>
-          <li><strong>Caroline Affair</strong>: Military intervention in Canadian rebellion</li>
-          <li><strong>Aroostook War</strong>: Federal intervention in Maine boundary dispute</li>
+          <li><strong>Panic of 1837 Response</strong>: Economic depression triggered by Jackson's bank destruction, but Van Buren refused to address crisis through constitutional means. Instead of allowing natural market correction, maintained inflationary policies and defended Jackson's unconstitutional monetary manipulation. 200+ banks failed, unemployment soared to 25%. <a href="https://fraser.stlouisfed.org/title/statement-secretary-treasury-state-finances-december-1837-5118" target="_blank">[Treasury Report 1837]</a></li>
+          <li><strong>Independent Treasury Act (1840)</strong>: Created separate federal treasury system to store government funds outside private banks. Violated constitutional principles by expanding federal bureaucracy beyond enumerated powers. Government became its own banker without constitutional authority, concentrating financial power in federal hands. <a href="https://www.archives.gov/legislative/features/act" target="_blank">[Independent Treasury Act]</a></li>
+          <li><strong>Caroline Affair (1837-1840)</strong>: When Canadian rebels used American steamship Caroline to transport supplies, British forces burned ship in US waters, killing American citizen Amos Durfee. Van Buren failed to demand satisfaction from Britain, neglecting constitutional duty to protect American sovereignty. Later imprisoned Alexander McLeod without due process when he bragged about killing Durfee. <a href="https://millercenter.org/president/vanburen/foreign-affairs" target="_blank">[Miller Center - Van Buren Foreign Affairs]</a></li>
+          <li><strong>Aroostook "War" (1838-1839)</strong>: Federal intervention in Maine-New Brunswick boundary dispute exceeded constitutional authority. Deployed federal troops to support Maine's territorial claims without Congressional declaration of war. Established precedent for federal military intervention in state boundary disputes beyond constitutional scope. <a href="https://www.loc.gov/law/help/us-treaties/bevans/m-ust000012-0090.pdf" target="_blank">[Webster-Ashburton Treaty]</a></li>
+          <li><strong>Trail of Tears Continuation</strong>: Completed Jackson's Indian Removal policy despite knowing it violated Cherokee treaties and Supreme Court decision in Worcester v. Georgia (1832). 4,000+ Cherokee died during forced removal. Federal government broke solemn treaties guaranteed by Constitution's Supremacy Clause. <a href="https://www.archives.gov/milestone-documents/treaty-of-new-echota" target="_blank">[Treaty of New Echota]</a></li>
+          <li><strong>Specie Circular Enforcement</strong>: Continued Jackson's executive order requiring gold/silver payment for federal land purchases. Policy drained specie from eastern banks, contributing to Panic of 1837. Executive monetary policy exceeded constitutional authority - Congress has power to regulate currency, not President. <a href="https://fraser.stlouisfed.org/archival/1300/item/456291" target="_blank">[Specie Circular Text]</a></li>
+          <li><strong>Gag Rule Support</strong>: Supported Congressional "gag rule" tabling all anti-slavery petitions from 1836-1844. Violated First Amendment right to petition government for redress of grievances. As Andrew Jackson's Vice President and chosen successor, enabled systematic suppression of free speech in Congress. <a href="https://www.archives.gov/legislative/features/gag-rule" target="_blank">[Congressional Gag Rule]</a></li>
+          <li><strong>Sub-Treasury Political Manipulation</strong>: Used Independent Treasury system to reward political allies and punish opponents. Appointed loyal Democrats as sub-treasury agents, creating federal patronage network. Violated principle of neutral government by politicizing federal financial institutions.</li>
+          <li><strong>Deposit Pet Banks Continuation</strong>: Continued Jackson's "pet banks" system where federal deposits were placed in politically-friendly state banks rather than national bank. System led to speculation, inflation, and ultimate economic collapse. Constitutional duty to manage public finances responsibly was abandoned for political expediency.</li>
+          <li><strong>Anti-Abolitionist Mob Appeasement</strong>: Failed to protect abolitionists from violent mobs in Northern cities. When Elijah Lovejoy's printing press was destroyed by pro-slavery mob in Alton, Illinois (1837), federal government provided no protection. Constitutional duty to ensure domestic tranquility and protect free speech was neglected.</li>
+          <li><strong>Texas Annexation Opposition</strong>: Opposed Texas annexation primarily due to slavery politics rather than constitutional principles. However, his opposition was based on political calculations about preserving Democratic Party unity, not genuine constitutional concerns about territorial expansion authority.</li>
+          <li><strong>Federal Infrastructure Spending</strong>: Despite rhetoric about limited government, continued federal spending on internal improvements through various legislative maneuvers. Cumberland Road received federal maintenance funding without clear constitutional authority for such expenditures.</li>
         </ul>
       </div>
 
       <div class="card">
         <div class="card-title">William Henry Harrison (1841)</div>
-        <div class="card-role">Brief Presidency & Precedent Issues</div>
+        <div class="card-role">Brief Presidency & Dangerous Constitutional Precedents</div>
         <ul class="facts">
-          <li><strong>Cabinet independence</strong>: Promised to defer to Congress, undermining executive authority</li>
-          <li><strong>Whig platform</strong>: Committed to limiting presidential power to unconstitutional extent</li>
-          <li><strong>Death precedent</strong>: 31-day presidency raised succession questions</li>
+          <li><strong>Executive Weakness Promise</strong>: Pledged to serve only one term and defer extensively to Congress, undermining constitutional separation of powers. Promised not to use veto power except for clearly unconstitutional bills, weakening executive check on legislative power. Constitutional framers intended strong executive as check on legislative tyranny. <a href="https://millercenter.org/president/harrison/inaugural-address" target="_blank">[Inaugural Address 1841]</a></li>
+          <li><strong>Congressional Deference Pledge</strong>: Promised to implement Whig Party platform regardless of his own judgment, essentially surrendering executive independence to legislative party. Would have made presidency subordinate to Congress, violating separation of powers principle that each branch should be independent.</li>
+          <li><strong>Patronage System Expansion</strong>: Despite brief presidency, began massive replacement of Democratic officeholders with Whigs, expanding "spoils system" beyond constitutional merit-based civil service. Thousands of federal positions changed hands based on party loyalty rather than competence.</li>
+          <li><strong>Death Succession Crisis</strong>: 31-day presidency created constitutional crisis about vice presidential succession. Constitution unclear whether VP becomes "Acting President" or full President. Tyler's assumption of full presidential powers established precedent not clearly authorized by Constitution's text. <a href="https://www.archives.gov/milestone-documents/25th-amendment" target="_blank">[25th Amendment Background]</a></li>
+          <li><strong>Tippecanoe Military Record</strong>: Pre-presidential military actions as territorial governor violated Indian treaties. Battle of Tippecanoe (1811) was provoked attack on Tecumseh's confederation despite existing treaties. Used military force beyond constitutional authority of territorial governors.</li>
+          <li><strong>Campaign Log Cabin Deception</strong>: Won presidency through deceptive "log cabin and hard cider" campaign portraying himself as common man while being from wealthy Virginia planter family. Electoral fraud through systematic misrepresentation of background and wealth. Violated public trust essential to republican government.</li>
+          <li><strong>Age and Health Deception</strong>: At 68, oldest president elected until Reagan. Concealed serious health problems during campaign, knowing he might not survive presidency. Inaugural address in freezing rain without coat led to pneumonia and death - reckless endangerment of constitutional continuity.</li>
+          <li><strong>Anti-Jackson Overreaction</strong>: Whig platform promised to reverse Jackson's "tyrannical" presidency by making executive branch weak and subservient. Constitutional balance requires strong executive as check on legislative power - Harrison's promises would have destroyed separation of powers in opposite direction from Jackson.</li>
         </ul>
       </div>
 
       <div class="card">
         <div class="card-title">John Tyler (1841-1845)</div>
-        <div class="card-role">Constitutional Crisis & Annexation</div>
+        <div class="card-role">Constitutional Crisis & Annexation Subversion - "His Accidency" Who Broke The System</div>
         <ul class="facts">
-          <li><strong>Texas annexation</strong>: Used joint resolution to bypass treaty ratification requirement</li>
-          <li><strong>Party expulsion</strong>: First president expelled from his own party, created constitutional crisis</li>
-          <li><strong>Veto power</strong>: Extensive use of veto against Congress undermined legislative authority</li>
-          <li><strong>"His Accidency"</strong>: Succession without election raised legitimacy questions</li>
+          <li><strong>Texas Annexation by Joint Resolution (1845)</strong>: When Senate rejected Texas annexation treaty (16-35 vote), Tyler circumvented Constitution by using joint Congressional resolution requiring only simple majority. Treaty Clause requires 2/3 Senate approval for territorial acquisition. Joint resolution precedent enabled future territorial expansion without constitutional treaty process. <a href="https://www.archives.gov/milestone-documents/joint-resolution-to-admit-texas" target="_blank">[Joint Resolution Text]</a></li>
+          <li><strong>Presidential Succession Crisis</strong>: After Harrison's death, Tyler claimed full presidential powers despite Constitution saying VP shall "discharge the Powers and Duties" - unclear if this meant acting president or full president. Tyler's precedent established that VP becomes full president, but constitutional text was ambiguous until 25th Amendment (1967). <a href="https://www.archives.gov/milestone-documents/25th-amendment" target="_blank">[25th Amendment History]</a></li>
+          <li><strong>Whig Party Expulsion</strong>: First president expelled from his own party after vetoing Whig legislation (National Bank bills). Created constitutional crisis where president had no party support in Congress. Entire Cabinet resigned except Secretary of State Daniel Webster. Showed fundamental flaw in party system vs. constitutional separation of powers.</li>
+          <li><strong>Excessive Veto Usage</strong>: Vetoed 10 bills during presidency, including two attempts to recharter National Bank. Whigs argued he was violating electoral mandate since he ran on Whig platform with Harrison. Constitutional crisis between executive independence and electoral promises to implement party platform.</li>
+          <li><strong>Dorr Rebellion Response (1842)</strong>: Rhode Island constitutional crisis where two governments claimed authority. Tyler supported conservative faction against popular democratic movement led by Thomas Dorr. Federal intervention in state internal affairs exceeded constitutional authority - guarantee clause doesn't authorize choosing between competing state governments. <a href="https://www.loc.gov/rr/program/bib/ourdocs/14thamendment.html" target="_blank">[Dorr Rebellion Documents]</a></li>
+          <li><strong>Webster-Ashburton Treaty (1842)</strong>: Settled Maine-Canada boundary dispute but gave away significant American territorial claims without Senate consultation during negotiations. Secret negotiations violated constitutional requirement for Senate advice and consent in treaty-making process.</li>
+          <li><strong>Fiscal Corporation Bill Veto</strong>: After vetoing National Bank recharter, proposed alternative "Fiscal Corporation" then vetoed modified version when Congress passed it. Whigs accused him of bad faith negotiation and constitutional obstruction. Created precedent for presidential flip-flopping on own proposals.</li>
+          <li><strong>Distribution Act Subversion</strong>: Signed Distribution Act giving states proceeds from federal land sales, then effectively nullified it by signing higher tariff that triggered suspension clause. Used constitutional technicality to undermine legislation he had signed into law.</li>
+          <li><strong>Cabinet Domination Attempt</strong>: Initially tried to defer to Harrison's Cabinet, essentially allowing unelected officials to run executive branch. When that failed, mass resignations left Tyler isolated. Showed confusion about constitutional role of president vs. cabinet government model.</li>
+          <li><strong>Impeachment Threat Response</strong>: House passed impeachment resolution (127-83) but didn't pursue charges. Tyler's response set precedent for presidents resisting legislative oversight. Argued Congress couldn't impeach for policy disagreements, but constitutional "high crimes and misdemeanors" standard remained undefined.</li>
+          <li><strong>Slavery Extension Support</strong>: Supported Texas annexation primarily to extend slavery westward. Constitutional duty to preserve union was subordinated to sectional interests. Annexation led directly to Mexican-American War and heightened slavery tensions that ultimately caused Civil War.</li>
+          <li><strong>Final Day Legislation Signing</strong>: On last day in office, signed bill admitting Florida and Iowa as states, rushing statehood process for partisan advantage. Constitutional requirement for orderly statehood admission was compromised for political expedience.</li>
         </ul>
       </div>
 
@@ -1745,79 +1832,144 @@ document.addEventListener('DOMContentLoaded', () => {
 
       <div class="card">
         <div class="card-title">Zachary Taylor (1849-1850)</div>
-        <div class="card-role">Slavery Crisis & Federal Authority</div>
+        <div class="card-role">Slavery Crisis & Federal Authority - "Old Rough and Ready" Constitutional Crisis</div>
         <ul class="facts">
-          <li><strong>California admission</strong>: Bypassed Congress on statehood process</li>
-          <li><strong>Compromise opposition</strong>: Threatened to use military force against secession</li>
-          <li><strong>Federal supremacy</strong>: Asserted federal authority over state sovereignty</li>
-          <li><strong>Death in office</strong>: Created another succession crisis</li>
+          <li><strong>California Statehood Bypass (1849-1850)</strong>: Encouraged California to bypass normal territorial stage and apply directly for statehood without Congressional authorization of territorial government. Constitution requires territorial organization before statehood, but Taylor urged California to skip territorial phase entirely. Violated constitutional process for admitting new states and created precedent for executive manipulation of statehood process. <a href="https://www.archives.gov/milestone-documents/compromise-of-1850" target="_blank">[National Archives - Compromise of 1850]</a></li>
+          <li><strong>Military Threat Against Texas (1850)</strong>: Threatened to use federal military force against Texas over border dispute with New Mexico Territory. Told Texas he would personally lead troops to prevent Texas from enforcing its territorial claims. Violated state sovereignty by threatening military action against state government exercising legitimate authority. Used federal troops to intimidate sovereign state without Congressional authorization. <a href="https://millercenter.org/president/taylor/key-events" target="_blank">[Miller Center - Taylor Key Events]</a></li>
+          <li><strong>Secession Threat Military Response</strong>: Declared he would hang secessionists "as high as Haman" and use military force to preserve Union. Threatened military action against states exercising constitutional rights to consider withdrawal from Union. While secession was controversial, Taylor's threats violated due process and constitutional protections for political dissent and state deliberation.</li>
+          <li><strong>Congressional Compromise Opposition</strong>: Opposed Congressional compromise efforts that would have peacefully resolved sectional crisis, preferring executive action and military threats. Constitutional system depends on legislative compromise for major national issues, but Taylor rejected Congressional leadership role. His obstruction of legislative process created constitutional crisis.</li>
+          <li><strong>New Mexico Territory Dispute</strong>: Unilaterally established New Mexico territorial boundaries without proper Congressional authority. Drew territorial lines that violated Texas's legitimate claims based on previous annexation agreements. Federal government had duty to respect state boundaries established during annexation, but Taylor redrew them by executive fiat.</li>
+          <li><strong>Military Appointments and Patronage</strong>: Used military background to stack federal appointments with military allies rather than civilian officials. Violated civilian control of government principle by preferring military men for civilian positions. Created precedent for militarization of civilian government that threatened constitutional separation between military and civilian authority.</li>
+          <li><strong>Federal vs. State Authority Expansion</strong>: Consistently chose federal supremacy over state rights in every dispute, regardless of constitutional merits. Rejected constitutional principle that states retained powers not delegated to federal government. His broad interpretation of federal authority set precedent for later federal overreach against states.</li>
+          <li><strong>Executive Emergency Powers Claims</strong>: Claimed broad executive powers to respond to sectional crisis without Congressional authorization. Argued president had inherent authority to take whatever action necessary to preserve Union. Created precedent for executive emergency powers that violated constitutional requirement for Congressional involvement in major policy decisions. <a href="https://www.whitehouse.gov/about-the-white-house/presidents/zachary-taylor/" target="_blank">[White House - Zachary Taylor]</a></li>
+          <li><strong>Fugitive Slave Law Enforcement Plans</strong>: Despite opposing Compromise of 1850, Taylor planned aggressive federal enforcement of fugitive slave laws using military if necessary. Violated constitutional principles by using federal military for civilian law enforcement within states. Threatened state sovereignty by imposing federal will through military rather than civilian courts.</li>
+          <li><strong>Congressional Session Manipulation</strong>: Attempted to influence Congressional debates through behind-the-scenes pressure and threats rather than proper executive-legislative relations. Used presidential influence to manipulate legislative process, violating separation of powers. Created precedent for executive interference in legislative deliberations.</li>
+          <li><strong>Federal Land Policy Expansion</strong>: Expanded federal control over western territories beyond constitutional necessity, creating precedent for federal land management bureaucracy. Used territorial disputes to justify expanding federal administrative control over local issues that should have been left to territorial and state governments.</li>
+          <li><strong>Death and Succession Constitutional Gap</strong>: Taylor's sudden death in office (July 9, 1850) created succession crisis due to unclear constitutional provisions about vice presidential succession. While not his fault, his death highlighted constitutional weaknesses in succession process. His brief presidency established no clear precedents for executive continuity, contributing to constitutional uncertainty during critical sectional crisis period. <a href="https://millercenter.org/president/taylor/life-in-brief" target="_blank">[Miller Center - Taylor Life]</a></li>
         </ul>
       </div>
 
       <div class="card">
         <div class="card-title">Millard Fillmore (1850-1853)</div>
-        <div class="card-role">Compromise of 1850 & Fugitive Slaves</div>
+        <div class="card-role">Compromise of 1850 & Fugitive Slaves - "Accidental President" Constitutional Violations</div>
         <ul class="facts">
-          <li><strong>Fugitive Slave Act</strong>: Federal enforcement of slavery in free states</li>
-          <li><strong>Compromise of 1850</strong>: Expanded federal authority over state-level slavery decisions</li>
-          <li><strong>Japan expedition</strong>: Military diplomacy without Congressional approval</li>
-          <li><strong>Know-Nothing connections</strong>: Later joined nativist anti-immigrant party</li>
+          <li><strong>Fugitive Slave Act Enforcement (1850)</strong>: Aggressively enforced federal law requiring free states to capture and return runaway slaves, forcing free state citizens to participate in slavery system against their moral convictions. Violated state sovereignty by forcing free states to enforce institution they had legally abolished. Used federal marshals, commissioners, and military to override state laws protecting free blacks and refugees. <a href="https://www.archives.gov/milestone-documents/fugitive-slave-act" target="_blank">[National Archives - Fugitive Slave Act]</a></li>
+          <li><strong>Federal Commissioners and Kangaroo Courts</strong>: Created system of federal commissioners with financial incentive to return alleged fugitives ($10 for returning, $5 for releasing). Violated due process by creating biased judicial system that presumed guilt. Denied alleged fugitives right to jury trial, legal representation, and ability to testify on their own behalf. Constitutional abomination that turned federal judiciary into slave-catching apparatus. <a href="https://millercenter.org/president/fillmore/key-events" target="_blank">[Miller Center - Fillmore Key Events]</a></li>
+          <li><strong>Federal Military Enforcement of Slavery</strong>: Used federal troops to enforce slavery in free territories and states, violating constitutional principle that federal government should protect liberty, not enforce bondage. Deployed military to Boston, Philadelphia, and other cities to ensure fugitive slave law compliance. Used federal power to force free citizens to become complicit in human trafficking.</li>
+          <li><strong>Compromise of 1850 Constitutional Violations</strong>: Signed legislation that violated constitutional principles by forcing free states to enforce slavery, admitting California without proper territorial phase, and organizing Utah/New Mexico territories without resolving slavery question. Created precedent for federal government forcing states to violate their own laws and moral convictions.</li>
+          <li><strong>Japan Expedition Authorization (1852)</strong>: Authorized Commodore Matthew Perry's military expedition to Japan without Congressional declaration of war or authorization for hostile foreign intervention. Used military force for commercial diplomacy, violating constitutional requirement for Congressional approval of foreign military operations. Set precedent for executive military diplomacy without legislative consent. <a href="https://history.navy.mil/browse-by-topic/exploration-and-survey/matthew-perry-and-the-opening-of-japan.html" target="_blank">[Naval History - Perry Expedition]</a></li>
+          <li><strong>Presidential Succession Constitutional Crisis</strong>: Became president after Taylor's death despite constitutional questions about vice presidential succession powers and authority. No clear constitutional provisions existed for whether VP automatically became full president or acting president. Fillmore assumed full presidential powers without constitutional amendment clarifying succession, setting precedent that wasn't formally resolved until 25th Amendment (1967).</li>
+          <li><strong>Federal Postal Censorship</strong>: Allowed federal postal service to censor anti-slavery materials being mailed to Southern states, violating First Amendment free speech and press protections. Federal government had no constitutional authority to censor political materials based on content. Created precedent for federal censorship of political dissent during sectional tensions.</li>
+          <li><strong>State Nullification Rejection</strong>: Rejected state efforts to nullify Fugitive Slave Act through personal liberty laws, asserting absolute federal supremacy over state sovereignty. While federal law was supreme, Fillmore's interpretation allowed no room for state constitutional protections of their own citizens. Violated constitutional balance between state and federal authority.</li>
+          <li><strong>Federal Bureaucracy Expansion for Slavery Enforcement</strong>: Created extensive federal bureaucracy of commissioners, marshals, and clerks specifically to enforce slavery in free states. Expanded federal government beyond constitutional bounds by creating administrative apparatus for enforcing immoral institution. Used taxpayer funds to subsidize slavery enforcement against taxpayers' moral convictions. <a href="https://www.whitehouse.gov/about-the-white-house/presidents/millard-fillmore/" target="_blank">[White House - Millard Fillmore]</a></li>
+          <li><strong>Federal Court System Corruption</strong>: Allowed federal court system to be corrupted by Fugitive Slave Act's financial incentives and biased procedures. Federal judiciary lost constitutional independence and impartiality by becoming enforcement arm of slavery interests. Violated separation of powers by turning courts into executive enforcement agencies rather than independent judicial bodies.</li>
+          <li><strong>International Slave Trade Expansion</strong>: Failed to adequately enforce laws against international slave trade, allowing continued importation of enslaved people despite constitutional and legal prohibitions. Used weak enforcement as political compromise with Southern interests, violating constitutional duty to enforce federal laws equally.</li>
+          <li><strong>Congressional District Manipulation</strong>: Supported gerrymandering and district manipulation to ensure pro-compromise Congressional majorities. Used federal patronage and influence to affect Congressional elections, violating constitutional separation of powers and electoral integrity. Created precedent for executive interference in legislative elections.</li>
         </ul>
       </div>
 
       <div class="card">
         <div class="card-title">Franklin Pierce (1853-1857)</div>
-        <div class="card-role">Kansas-Nebraska & Territorial Expansion</div>
+        <div class="card-role">Kansas-Nebraska & Territorial Expansion - "Young Hickory" Constitutional Disasters</div>
         <ul class="facts">
-          <li><strong>Kansas-Nebraska Act</strong>: Repealed Missouri Compromise, sparked "Bleeding Kansas"</li>
-          <li><strong>Ostend Manifesto</strong>: Secret plan to acquire Cuba through purchase or force</li>
-          <li><strong>Gadsden Purchase</strong>: Territorial acquisition for railroad development</li>
-          <li><strong>Bleeding Kansas</strong>: Federal troops enforced pro-slavery government</li>
+          <li><strong>Kansas-Nebraska Act (1854)</strong>: Signed legislation repealing Missouri Compromise (1820) and allowing "popular sovereignty" in territories previously guaranteed to be free. Violated constitutional precedent established 34 years earlier and broke federal commitment to territorial slavery restrictions. Created "Bleeding Kansas" civil war with 200+ deaths as pro- and anti-slavery settlers fought for control. <a href="https://www.archives.gov/milestone-documents/kansas-nebraska-act" target="_blank">[National Archives - Kansas-Nebraska Act]</a></li>
+          <li><strong>Federal Military Enforcement of Pro-Slavery Government (1855-1856)</strong>: Used federal troops to enforce fraudulent pro-slavery territorial government in Kansas despite clear evidence of election fraud by Missouri "Border Ruffians." Violated democratic principles and equal protection by using military force to maintain government that lacked legitimate popular support. Federal troops protected pro-slavery legislature that most Kansas residents opposed. <a href="https://millercenter.org/president/pierce/key-events" target="_blank">[Miller Center - Pierce Key Events]</a></li>
+          <li><strong>Ostend Manifesto (1854)</strong>: Authorized secret diplomatic initiative proposing U.S. purchase Cuba from Spain or take it by force if Spain refused to sell. Violated constitutional requirement for Congressional involvement in foreign policy and territorial acquisition. Document declared U.S. would be "justified in wresting" Cuba from Spain, essentially authorizing aggressive war without Congressional declaration. <a href="https://avalon.law.yale.edu/19th_century/ostend.asp" target="_blank">[Avalon Project - Ostend Manifesto]</a></li>
+          <li><strong>Gadsden Purchase (1853)</strong>: Purchased 30,000 square miles from Mexico for $10 million primarily to benefit Southern Pacific Railroad interests. Violated constitutional principle of equal treatment by using federal funds to subsidize sectional railroad development that primarily benefited Southern interests. Created precedent for federal spending to benefit private railroad corporations without clear constitutional authority.</li>
+          <li><strong>Nicaraguan Filibuster Support</strong>: Tacitly supported William Walker's illegal military expeditions to Nicaragua, violating U.S. neutrality laws and international law. While not officially endorsing Walker's filibustering, Pierce administration failed to adequately prevent or prosecute violations of federal neutrality statutes. Created precedent for executive tolerance of private military adventures in Latin America.</li>
+          <li><strong>Federal Fugitive Slave Law Expansion</strong>: Expanded federal enforcement of Fugitive Slave Act beyond what previous administrations attempted, using federal marshals to hunt escaped slaves throughout Northern states. Violated state sovereignty and forced free state citizens to participate in slavery enforcement against their moral convictions and state laws. <a href="https://www.whitehouse.gov/about-the-white-house/presidents/franklin-pierce/" target="_blank">[White House - Franklin Pierce]</a></li>
+          <li><strong>Constitutional Convention Threats</strong>: When faced with sectional crisis, Pierce suggested possible constitutional convention to address slavery question, threatening stability of existing constitutional system. While constitutional conventions are legal, Pierce's threats to fundamentally alter Constitution during sectional crisis violated constitutional continuity and stability principles.</li>
+          <li><strong>Federal Postal Censorship Expansion</strong>: Expanded federal postal censorship of anti-slavery materials beyond Fillmore's policies, allowing Southern postmasters to destroy abolitionist literature. Violated First Amendment by creating federal censorship system based on sectional political considerations. Used federal postal service to suppress political dissent rather than ensure free communication.</li>
+          <li><strong>Kansas Territorial Election Fraud Tolerance</strong>: Refused to investigate or remedy massive election fraud in Kansas territorial elections despite overwhelming evidence of Missouri residents illegally voting. Over 5,000 fraudulent votes cast in territory with only 1,500 legal voters. Constitutional duty required ensuring legitimate democratic government in territories, but Pierce endorsed fraudulent results for political reasons.</li>
+          <li><strong>Federal Troops for Political Purposes</strong>: Used federal military to protect political allies and pro-slavery territorial officials rather than maintaining order or protecting constitutional rights. Violated civilian control of military by using troops for partisan political purposes rather than neutral law enforcement. Created precedent for militarizing political disputes.</li>
+          <li><strong>Congressional Opposition and Separation of Powers</strong>: Consistently opposed Congressional efforts to investigate Kansas situation, claiming executive privilege and refusing to cooperate with legislative branch oversight. Violated constitutional separation of powers by refusing legitimate Congressional oversight of territorial administration. Used executive secrecy to conceal constitutional violations in Kansas. <a href="https://millercenter.org/president/pierce/domestic-affairs" target="_blank">[Miller Center - Pierce Domestic Affairs]</a></li>
+          <li><strong>Federal Land Policy for Railroad Subsidies</strong>: Used federal land grants to subsidize private railroad corporations, particularly transcontinental routes that benefited specific sectional interests. Constitutional authority for federal railroad subsidies was questionable, and Pierce's grants violated equal treatment principles by favoring certain regions and corporations over others.</li>
+          <li><strong>International Slavery Expansion Diplomacy</strong>: Pursued diplomatic policies aimed at expanding slavery into Cuba, Central America, and other regions through diplomatic pressure and implicit military threats. Violated constitutional principle that federal government should protect liberty rather than expand bondage. Used federal diplomatic resources to serve slavery interests rather than American liberty principles.</li>
         </ul>
       </div>
 
       <div class="card">
         <div class="card-title">James Buchanan (1857-1861)</div>
-        <div class="card-role">Secession Crisis & Constitutional Failure</div>
+        <div class="card-role">Secession Crisis & Constitutional Failure - "Worst President" Constitutional Abdication</div>
         <ul class="facts">
-          <li><strong>Dred Scott influence</strong>: Improperly communicated with Supreme Court justices</li>
-          <li><strong>Lecompton Constitution</strong>: Attempted to force pro-slavery constitution on Kansas</li>
-          <li><strong>Secession inaction</strong>: Claimed states couldn't secede but federal government couldn't stop them</li>
-          <li><strong>Fort Sumter</strong>: Failed to reinforce federal installations, precipitated war</li>
+          <li><strong>Dred Scott Judicial Tampering (1857)</strong>: Improperly communicated with Supreme Court Justice Robert Grier and others before Dred Scott decision to encourage broad pro-slavery ruling. Violated separation of powers by executive branch interfering with judicial independence. Buchanan knew details of decision before public announcement and claimed it would "settle" slavery issue. Constitutional crisis of executive manipulation of judiciary. <a href="https://supreme.justia.com/cases/federal/us/60/393/" target="_blank">[Dred Scott v. Sandford]</a></li>
+          <li><strong>Lecompton Constitution Fraud (1857-1858)</strong>: Attempted to force fraudulent pro-slavery Lecompton Constitution on Kansas despite clear evidence it was rejected by legitimate popular vote. Used federal power to support constitution that majority of Kansas residents opposed. Violated democratic principles and popular sovereignty by backing minority rule through federal coercion. Congressional investigation revealed massive electoral fraud. <a href="https://millercenter.org/president/buchanan/key-events" target="_blank">[Miller Center - Buchanan Key Events]</a></li>
+          <li><strong>Constitutional Crisis over Secession (1860-1861)</strong>: Created constitutional paralysis by claiming states had no right to secede but federal government had no power to prevent secession. His constitutional interpretation created legal vacuum that encouraged Southern states to believe secession was consequence-free. Violated presidential oath to preserve, protect and defend Constitution by refusing to act decisively.</li>
+          <li><strong>Federal Installations Abandonment</strong>: Failed to reinforce federal forts, arsenals, and customhouses in Southern states as secession crisis developed. Allowed Confederate forces to seize federal property without resistance, effectively recognizing Confederate authority over federal installations. Violated constitutional duty to enforce federal law and protect federal property.</li>
+          <li><strong>Military Inaction During Crisis</strong>: Refused to take military action to prevent secession despite constitutional duty to enforce federal laws. Allowed Southern states to seize federal armories, post offices, and revenue facilities. His military passivity encouraged further Confederate preparation for war while Union remained unprepared. <a href="https://www.whitehouse.gov/about-the-white-house/presidents/james-buchanan/" target="_blank">[White House - James Buchanan]</a></li>
+          <li><strong>Congressional Message Constitutional Abdication (1860)</strong>: Delivered Congressional message declaring secession illegal while simultaneously claiming federal government was powerless to prevent it. Created constitutional contradiction that paralyzed federal response. Essentially invited Southern states to secede by declaring federal government impotent to stop them.</li>
+          <li><strong>Cabinet Infiltration by Secessionists</strong>: Allowed Southern sympathizers in cabinet to remain in positions where they could sabotage federal policy and aid Confederate preparations. Secretary of War John Floyd transferred weapons to Southern arsenals; Secretary of Interior Jacob Thompson used federal resources to support secession. Violated oath of office by allowing federal government to be subverted from within.</li>
+          <li><strong>Federal Revenue Collection Failure</strong>: Allowed Southern states to stop collecting federal tariffs and revenues months before formal secession. Failed to enforce federal revenue laws, allowing Confederate states to defund federal government while using seized funds for military preparation. Constitutional duty required faithful execution of revenue collection laws.</li>
+          <li><strong>Diplomatic Recognition Crisis</strong>: Created diplomatic confusion by receiving Confederate commissioners as if they represented legitimate government while simultaneously claiming secession was illegal. His contradictory approach to Confederate representatives encouraged international recognition of Confederacy and weakened federal authority globally.</li>
+          <li><strong>Federal Courts Subversion</strong>: Allowed federal judges and court officials in Southern states to cease functioning or actively support secession without consequences. Federal judiciary collapsed in seceding states while Buchanan took no action to maintain federal court system. Violated constitutional duty to ensure federal court system functioned throughout country. <a href="https://millercenter.org/president/buchanan/domestic-affairs" target="_blank">[Miller Center - Buchanan Domestic Affairs]</a></li>
+          <li><strong>Star of the West Incident (1861)</strong>: Sent civilian merchant vessel Star of the West to resupply Fort Sumter without adequate military escort or clear rules of engagement. Ship was fired upon by Confederate forces and turned back, creating humiliating federal retreat. Poor planning and execution weakened federal authority and encouraged Confederate military action.</li>
+          <li><strong>Congressional Relations Breakdown</strong>: Lost control of Congressional relationships during critical period when national unity was essential. His inability to work with Congress during secession crisis prevented legislative solutions that might have preserved Union peacefully. Violated constitutional role as chief executive to lead during national emergencies.</li>
+          <li><strong>Presidential Transition Sabotage</strong>: Failed to adequately prepare Lincoln administration for inherited crisis, leaving incoming president with impossible situation. Buchanan's final months created constitutional vacuum that made peaceful resolution nearly impossible. His lame-duck paralysis violated responsibility for orderly transition of presidential power during national emergency. <a href="https://www.archives.gov/milestone-documents/buchanan-lincoln-correspondence" target="_blank">[National Archives - Buchanan-Lincoln Transition]</a></li>
         </ul>
       </div>
 
       <div class="card">
         <div class="card-title">Abraham Lincoln (1861-1865)</div>
-        <div class="card-role">Wartime Constitutional Suspension</div>
+        <div class="card-role">Wartime Constitutional Suspension - "Great Emancipator" of Constitutional Government</div>
         <ul class="facts">
-          <li><strong>250+ newspapers shutdown</strong>: Destroyed free press nationwide</li>
-          <li><strong>Congressional arrests</strong>: Imprisoned Congressman Vallandigham and other legislators</li>
-          <li><strong>13,000+ political prisoners</strong>: Detained civilians, judges, clergy without trial</li>
-          <li><strong>Union redefinition</strong>: Perverted constitutional compact into forced nation-state</li>
-          <li><strong>Habeas Corpus</strong>: Suspended without Congressional approval</li>
-          <li><strong>Military tribunals</strong>: Tried civilians in military courts</li>
+          <li><strong>Habeas Corpus Suspension (1861)</strong>: Suspended habeas corpus throughout entire country without Congressional approval - Constitution explicitly grants this power to Congress (Art. I, Sec. 9). Chief Justice Roger Taney ruled Lincoln's actions unconstitutional in Ex parte Merryman, Lincoln ignored ruling. <a href="https://supreme.justia.com/cases/federal/us/65/2/" target="_blank">[Ex parte Merryman]</a></li>
+          <li><strong>Mass Arbitrary Arrests</strong>: 13,000+ political prisoners detained without trial, charges, or evidence. Included civilians, clergy, judges, state legislators, newspaper editors, and even Congressman Clement Vallandigham (D-OH) for antiwar speech. Massive violation of 1st, 4th, 5th, and 6th Amendments. <a href="https://www.jstor.org/stable/1906011" target="_blank">[Civil Liberties Under Lincoln - Randall]</a></li>
+          <li><strong>Press Censorship & Suppression</strong>: Shut down 250+ newspapers that opposed war or administration policies. Military occupied newspaper offices, arrested editors, destroyed printing equipment. Direct violation of 1st Amendment press freedom. Notable shutdowns: New York World, Chicago Times, Philadelphia Evening Journal. <a href="https://www.smithsonianmag.com/history/lincoln-censored-press-180956470/" target="_blank">[Smithsonian - Press Censorship]</a></li>
+          <li><strong>Military Tribunals for Civilians</strong>: Tried civilians in military courts even where civilian courts were operating. Supreme Court ruled this unconstitutional in Ex parte Milligan (1866) after Lincoln's death - military tribunals cannot try civilians when civilian courts are functioning. <a href="https://supreme.justia.com/cases/federal/us/71/2/" target="_blank">[Ex parte Milligan]</a></li>
+          <li><strong>Congressional Exclusion</strong>: Called special Congress session for July 4, 1861 - 3+ months after Fort Sumter - deliberately preventing Congressional oversight of war decisions. Then presented Congress with fait accompli of expanded federal army, navy, spending without appropriation. <a href="https://millercenter.org/president/lincoln/domestic-affairs" target="_blank">[Miller Center]</a></li>
+          <li><strong>Suspension of Elections</strong>: Cancelled or postponed elections in several states. Maryland legislature prevented from meeting to consider secession - military surrounded state capitol, arrested legislators. Similar interference in Missouri, Kentucky, other border states. <a href="https://msa.maryland.gov/msa/mdstatehouse/html/lincoln_visits.html" target="_blank">[Maryland Archives]</a></li>
+          <li><strong>Economic Warfare Without Congressional Approval</strong>: Imposed naval blockade of Southern ports - act of war under international law - without Congressional declaration of war. Seized private ships and cargo. Violated congressional war powers and property rights.</li>
+          <li><strong>Forced Union Theory</strong>: Argued secession was impossible because Union was perpetual - directly contradicted founding principles. Declaration of Independence states governments derive "just powers from consent of governed" and people can "alter or abolish" governments. Constitution ratified by state conventions that could have rejected it.</li>
+          <li><strong>Emancipation Proclamation Executive Overreach</strong>: Freed slaves only in rebelling states (not Union states) - purely military/political move, not moral one. Claimed wartime executive power to confiscate private property without compensation, congressional approval, or constitutional amendment. Even Lincoln questioned his own authority.</li>
+          <li><strong>Draft Riots & Military Suppression</strong>: Conscription Act (1863) drafted men to fight against their will - first federal draft in US history. When New York City erupted in riots (July 1863), used military force killing 120+ civilians. Violated state sovereignty and individual liberty.</li>
+          <li><strong>Suspension of Gold Standard</strong>: Legal Tender Act (1862) made paper "greenbacks" legal tender for all debts - first time in US history government forced acceptance of fiat currency. Previous contracts specified gold/silver payment. Violated contract clause and property rights.</li>
+          <li><strong>Tariff Warfare</strong>: Morrill Tariff (1861) raised tariffs to 40%+ - major cause of Southern secession. Used tariffs to fund war and protect Northern industry while forcing agricultural South to pay higher prices. Economic warfare through taxation.</li>
+          <li><strong>Telegraph Censorship</strong>: Nationalized telegraph lines, censored all telegraph communications. Secretary of War Edwin Stanton controlled all telegraph traffic. Created first national communications surveillance system.</li>
+          <li><strong>Income Tax Without Apportionment</strong>: Revenue Act (1861) created first federal income tax without apportionment among states as Constitution requires. Supreme Court would later rule similar taxes unconstitutional in Pollock v. Farmers' Loan (1895). <a href="https://supreme.justia.com/cases/federal/us/158/601/" target="_blank">[Pollock Decision]</a></li>
+          <li><strong>Executive Legislation</strong>: Issued 48 executive orders and proclamations with force of law while Congress was not in session. Expanded army/navy, suspended habeas corpus, spent unappropriated funds, established draft - all without Congressional authorization. Set precedent for executive legislation.</li>
         </ul>
+        <div style="margin-top: 15px; padding: 10px; background: var(--danger); color: white; border-radius: 8px; font-size: 14px;">
+          <strong>Constitutional Analysis:</strong> Lincoln destroyed the limited constitutional republic established by founders and created precedents for all future executive tyranny. Suspended virtually every constitutional protection - free speech, press, habeas corpus, jury trial, property rights, state sovereignty. Transformed voluntary union of states into coercive nation-state enforced by military power.
+        </div>
       </div>
 
       <div class="card">
         <div class="card-title">Andrew Johnson (1865-1869)</div>
-        <div class="card-role">Reconstruction Defiance</div>
+        <div class="card-role">Reconstruction Defiance - "Accidental President" Constitutional Crisis</div>
         <ul class="facts">
-          <li><strong>Reconstruction opposition</strong>: Obstructed Congressional Reconstruction</li>
-          <li><strong>Tenure of Office violation</strong>: Fired Secretary of War Stanton</li>
-          <li><strong>Impeachment</strong>: First president impeached (acquitted by 1 vote)</li>
+          <li><strong>Tenure of Office Act Violation (1867)</strong>: Fired Secretary of War Edwin Stanton in direct violation of Tenure of Office Act requiring Senate consent for removal of officials confirmed by Senate. Johnson claimed act was unconstitutional, but violated separation of powers by ignoring law passed by Congress over his veto. Led directly to impeachment proceedings. <a href="https://www.archives.gov/milestone-documents/tenure-of-office-act" target="_blank">[National Archives - Tenure of Office Act]</a></li>
+          <li><strong>Presidential Reconstruction Plan Without Congressional Approval (1865)</strong>: Implemented own Reconstruction plan while Congress was not in session, usurping legislative authority over post-war policy. Created lenient readmission requirements for Southern states without Congressional input. Constitution grants Congress authority over admitting states and governing territories, but Johnson acted unilaterally. <a href="https://millercenter.org/president/johnson/key-events" target="_blank">[Miller Center - Johnson Key Events]</a></li>
+          <li><strong>Freedmen's Bureau Veto (1866)</strong>: Vetoed legislation extending Freedmen's Bureau that provided essential services to freed slaves and poor whites. His veto message contained racist language and constitutional arguments that effectively abandoned federal responsibility to protect freed slaves' rights. Violated 14th Amendment equal protection principles and federal duty to protect citizens. <a href="https://www.archives.gov/milestone-documents/freedmens-bureau-act" target="_blank">[National Archives - Freedmen's Bureau]</a></li>
+          <li><strong>Civil Rights Act Veto (1866)</strong>: Vetoed Civil Rights Act of 1866 that granted citizenship and equal rights to freed slaves. His veto message argued federal government had no authority to protect citizens' civil rights within states. Congress overrode veto, but Johnson's opposition violated constitutional principle that federal government must protect citizens' rights from state violations.</li>
+          <li><strong>14th Amendment Opposition</strong>: Actively campaigned against ratification of 14th Amendment, encouraging Southern states to reject constitutional amendment guaranteeing equal protection and due process. Violated presidential oath to support Constitution by opposing constitutional amendments passed by Congress. Used presidential influence to obstruct constitutional process.</li>
+          <li><strong>Congressional Elections Interference (1866)</strong>: Undertook "Swing Around the Circle" speaking tour to campaign against Republican Congressional candidates during midterm elections. Used presidential office and federal resources to influence Congressional elections, violating separation of powers. Presidential campaigning against Congress created constitutional crisis over executive interference in legislative elections. <a href="https://www.whitehouse.gov/about-the-white-house/presidents/andrew-johnson/" target="_blank">[White House - Andrew Johnson]</a></li>
+          <li><strong>Military Reconstruction Acts Obstruction (1867)</strong>: Obstructed implementation of Military Reconstruction Acts through administrative sabotage and appointment of generals sympathetic to his views. While president has authority over military, Johnson used this power to undermine laws passed by Congress over his vetoes. Violated constitutional duty to faithfully execute laws.</li>
+          <li><strong>Impeachment and Constitutional Crisis (1868)</strong>: Became first president impeached by House of Representatives for "high crimes and misdemeanors." Though acquitted by Senate by one vote, Johnson's actions created constitutional crisis over presidential power versus Congressional authority. His defiance of laws established dangerous precedent for executive resistance to legislative oversight. <a href="https://www.archives.gov/milestone-documents/johnson-impeachment" target="_blank">[National Archives - Johnson Impeachment]</a></li>
+          <li><strong>Federal Appointments Manipulation</strong>: Used appointment power to place Democrats and Johnson supporters in federal positions, undermining Republican Reconstruction policies. Violated merit-based appointment principles and used patronage to obstruct Congressional policies. Created parallel federal bureaucracy loyal to president rather than to laws passed by Congress.</li>
+          <li><strong>Pardoning Power Abuse</strong>: Issued thousands of pardons to Confederate leaders and officials, effectively nullifying consequences for treason and rebellion. While president has pardoning power, Johnson's blanket pardons undermined rule of law and rewarded those who had violated their oaths to Constitution. His pardons enabled Confederate leaders to return to power in Southern states.</li>
+          <li><strong>States' Rights Constitutional Misinterpretation</strong>: Argued federal government had no constitutional authority to regulate civil rights within states, essentially returning to pre-Civil War constitutional interpretation that enabled slavery. His constitutional philosophy violated post-war amendments and enabled state violations of citizens' federal constitutional rights. <a href="https://millercenter.org/president/johnson/domestic-affairs" target="_blank">[Miller Center - Johnson Domestic Affairs]</a></li>
+          <li><strong>Federal Revenue and Reconstruction Funding Obstruction</strong>: Used administrative means to limit funding for Reconstruction programs and federal protection of freed slaves. While not technically illegal, Johnson's obstruction violated spirit of Congressional appropriations and constitutional duty to faithfully execute laws funding federal programs.</li>
+          <li><strong>Constitutional Convention Threats</strong>: Suggested calling constitutional convention to alter Reconstruction amendments and presidential powers. While constitutional conventions are legal, Johnson's threats during impeachment crisis violated constitutional stability and separation of powers by attempting to use constitutional process to escape Congressional oversight.</li>
         </ul>
       </div>
 
       <div class="card">
         <div class="card-title">Ulysses S. Grant (1869-1877)</div>
-        <div class="card-role">Reconstruction & Corruption</div>
+        <div class="card-role">Reconstruction & Corruption - "Hero General" Administration Scandals</div>
         <ul class="facts">
-          <li><strong>Force Acts</strong>: Used federal troops to suppress Ku Klux Klan</li>
-          <li><strong>Black Friday Gold Panic</strong>: Personal involvement in gold market manipulation</li>
-          <li><strong>Whiskey Ring</strong>: Administration scandals involving tax evasion</li>
-          <li><strong>Salary Grab Act</strong>: Retroactive congressional pay raises</li>
+          <li><strong>Black Friday Gold Panic (1869)</strong>: Grant's brother-in-law and personal relationships led to gold market manipulation by Jay Gould and James Fisk. Grant's release of government gold caused market crash and financial panic. Presidential personal associations enabled Wall Street manipulation that harmed national economy. Violated constitutional duty to maintain stable currency and honest financial markets. <a href="https://millercenter.org/president/grant/key-events" target="_blank">[Miller Center - Grant Key Events]</a></li>
+          <li><strong>Credit Mobilier Scandal (1872)</strong>: Grant administration officials received bribes from Credit Mobilier company related to Union Pacific Railroad construction. Vice President Schuyler Colfax and multiple Congressional leaders received discounted stock in exchange for favorable legislation. Grant's failure to investigate corruption violated constitutional duty to ensure faithful execution of laws. Scandal involved millions in fraudulent government contracts.</li>
+          <li><strong>Whiskey Ring (1875)</strong>: Grant's private secretary Orville Babcock led conspiracy to defraud federal government of liquor taxes, involving 350+ indictments. Grant personally intervened to protect Babcock despite overwhelming evidence of guilt. Presidential obstruction of justice violated constitutional duty to ensure laws were faithfully executed. Ring defrauded Treasury of millions in tax revenue. <a href="https://www.whitehouse.gov/about-the-white-house/presidents/ulysses-s-grant/" target="_blank">[White House - Ulysses S. Grant]</a></li>
+          <li><strong>Salary Grab Act (1873)</strong>: Signed legislation giving Congressional pay raise retroactive to beginning of term, essentially allowing Congress to vote themselves back pay. Violated constitutional principle that representatives should not benefit financially from their own legislative votes. Public outrage forced repeal, but Grant's signature enabled Congressional self-dealing.</li>
+          <li><strong>Force Acts Implementation (1870-1871)</strong>: While Force Acts were constitutional, Grant's implementation sometimes exceeded constitutional bounds by using federal military for civilian law enforcement without proper legal justification. Suspended habeas corpus in South Carolina without clear constitutional authority. Military trials of civilians violated due process rights guaranteed by Constitution. <a href="https://www.archives.gov/milestone-documents/force-acts" target="_blank">[National Archives - Force Acts]</a></li>
+          <li><strong>Santa Domingo Annexation Scheme (1869-1871)</strong>: Attempted to annex Dominican Republic through secret negotiations without proper Congressional involvement. Used personal agents and naval forces to pressure Dominican government. Violated constitutional requirement for Congressional approval of territorial annexation. Senate rejected treaty, but Grant's secret diplomacy undermined constitutional treaty process.</li>
+          <li><strong>Black Friday Trading Scandal Personal Involvement</strong>: Grant's social relationships with gold speculators Jay Gould and James Fisk created appearance of presidential involvement in market manipulation. While not personally profiting, Grant's associations enabled speculators to claim presidential support for their schemes. Violated constitutional principle that president should avoid conflicts of interest.</li>
+          <li><strong>Indian Ring Corruption</strong>: Bureau of Indian Affairs under Grant became center of massive corruption involving fraudulent contracts, stolen supplies, and land speculation. Secretary of Interior Columbus Delano resigned due to scandal. Grant's failure to adequately supervise Indian affairs violated federal treaty obligations and constitutional duty to faithfully execute laws protecting Native Americans. <a href="https://millercenter.org/president/grant/domestic-affairs" target="_blank">[Miller Center - Grant Domestic Affairs]</a></li>
+          <li><strong>Custom House Corruption</strong>: New York Custom House became center of political patronage and corruption, with customs officials taking bribes and skimming import duties. Grant's failure to reform customs system violated constitutional duty to collect federal revenues honestly. Chester Arthur (later president) led corrupt customs operation that defrauded federal Treasury of millions.</li>
+          <li><strong>Tweed Ring Tolerance</strong>: Grant administration failed to investigate or prosecute Boss Tweed's Democratic political machine in New York despite clear evidence of massive corruption affecting federal elections and revenue collection. While primarily state/local corruption, federal elections were affected and Grant's inaction violated constitutional duty to ensure honest federal elections.</li>
+          <li><strong>Railroad Land Grant Corruption</strong>: Grant administration distributed millions of acres of federal land to railroad corporations through fraudulent grants and political corruption. Union Pacific, Central Pacific, and other railroads received land worth hundreds of millions through bribery and political influence. Violated constitutional principle of equal treatment and honest disposition of federal property.</li>
+          <li><strong>Third Term Constitutional Crisis (1876)</strong>: Grant considered seeking unprecedented third term as president, violating Washington's two-term precedent that had constitutional force. While not explicitly prohibited by Constitution until 22nd Amendment (1951), Grant's consideration of third term violated constitutional tradition and separation of powers principles. Congressional pressure forced him to abandon idea.</li>
+          <li><strong>Executive Privilege Abuse</strong>: Grant claimed executive privilege to protect corrupt officials like Orville Babcock from Congressional investigation. Used presidential power to obstruct justice and protect friends rather than enforce laws. Violated constitutional separation of powers by preventing Congressional oversight of executive branch corruption. Created precedent for presidential obstruction of Congressional investigations. <a href="https://www.archives.gov/milestone-documents/grant-memoirs" target="_blank">[National Archives - Grant Papers]</a></li>
         </ul>
       </div>
 
@@ -1866,12 +2018,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
       <div class="card">
         <div class="card-title">Benjamin Harrison (1889-1893)</div>
-        <div class="card-role">McKinley Tariff & Federal Expansion</div>
+        <div class="card-role">McKinley Tariff & Federal Expansion - "Billion Dollar Congress" President</div>
         <ul class="facts">
-          <li><strong>McKinley Tariff</strong>: Highest tariffs in US history, protected special interests</li>
-          <li><strong>Sherman Antitrust Act</strong>: Vague federal regulation of interstate commerce</li>
-          <li><strong>Force Bill</strong>: Attempted federal supervision of elections in Southern states</li>
-          <li><strong>Billion Dollar Congress</strong>: Excessive federal spending on pensions and projects</li>
+          <li><strong>McKinley Tariff (1890)</strong>: Signed highest tariff in US history (average 49.5% on imported goods), protecting domestic industries at consumer expense. Violated constitutional principle of equal treatment by favoring specific businesses and regions. Tariff enabled monopolistic pricing and corporate welfare at expense of competitive markets. <a href="https://www.archives.gov/legislative/features/mckinley-tariff" target="_blank">[McKinley Tariff Act]</a></li>
+          <li><strong>Sherman Antitrust Act (1890)</strong>: Signed vague federal legislation regulating interstate commerce without clear constitutional authority. "Restraint of trade" standard was undefined, giving federal courts unlimited power to determine legitimate business practices. Created precedent for expansive federal regulation of private enterprise. <a href="https://www.archives.gov/milestone-documents/sherman-anti-trust-act" target="_blank">[Sherman Act Text]</a></li>
+          <li><strong>Federal Elections Bill/"Force Bill" (1890)</strong>: Supported federal supervision of Southern elections to protect African American voting rights. While morally justified, exceeded constitutional authority by federalizing local elections. Constitution gives states primary responsibility for election procedures. Bill failed in Senate but established precedent for federal election intervention. <a href="https://www.senate.gov/artandhistory/history/common/generic/VotingRights_FederalElectionsBill.htm" target="_blank">[Senate History - Force Bill]</a></li>
+          <li><strong>"Billion Dollar Congress" Spending</strong>: First peacetime Congress to spend $1 billion annually - massive increase from $375 million in 1880s. Approved excessive spending on Civil War pensions, public works projects, and federal subsidies. Constitutional principle of limited, enumerated federal powers was abandoned for lavish expenditures.</li>
+          <li><strong>Forest Reserve Act (1891)</strong>: Signed legislation giving president power to set aside federal forest reserves by proclamation. Created 13 million acres of federal reserves without Congressional approval for specific territories. Violated constitutional requirement for specific Congressional appropriation of federal lands and legislative approval of executive land management.</li>
+          <li><strong>Wounded Knee Response (1890)</strong>: Federal troops killed 200+ Lakota at Wounded Knee, including women and children. Harrison failed to investigate massacre or hold military accountable. Constitutional duty to ensure domestic tranquility was perverted into military suppression of Native Americans exercising religious freedom (Ghost Dance).</li>
+          <li><strong>Chilean Crisis (1891-1892)</strong>: Threatened war with Chile over Baltimore incident where American sailors were killed in Valparaíso. Demanded apology and reparations with ultimatum threatening military action. Executive saber-rattling exceeded constitutional authority - only Congress can declare war. Crisis resolved when Chile apologized. <a href="https://history.state.gov/milestones/1866-1898/baltimore-crisis" target="_blank">[State Department History]</a></li>
+          <li><strong>Dependent Pension Act (1890)</strong>: Expanded Civil War pensions to any Union veteran with 90 days service who had any disability, regardless of war connection. Massive federal welfare program costing $159 million annually by 1893. No constitutional authority for federal pension system - created precedent for federal social welfare spending.</li>
+          <li><strong>Reciprocal Tariff Provisions</strong>: McKinley Tariff included presidential authority to negotiate reciprocal trade agreements, delegating Congressional trade regulation power to executive branch. Violated constitutional requirement that Congress regulate foreign commerce. Presidential trade authority precedent enabled future executive trade wars.</li>
+          <li><strong>Federal Circuit Court of Appeals Act (1891)</strong>: Created intermediate federal appellate courts expanding federal judicial system without clear constitutional necessity. Increased federal court jurisdiction over state matters. Constitutional principle of limited federal courts with state courts handling most legal disputes was eroded.</li>
+          <li><strong>Immigration Restriction</strong>: Supported first general federal immigration restrictions beyond Chinese Exclusion Act. Immigration Act of 1891 excluded "paupers, polygamists, and persons suffering from loathsome diseases." Federal immigration control exceeded enumerated powers - Constitution delegates naturalization, not immigration control, to Congress.</li>
+          <li><strong>Corporate Political Influence</strong>: Campaign heavily funded by industrialists benefiting from high tariffs. Standard Oil, Carnegie Steel, and other trusts provided unprecedented corporate financing. Violated principle of democratic government by allowing wealthy interests to purchase electoral outcomes through massive campaign contributions.</li>
         </ul>
       </div>
 
@@ -1898,45 +2058,88 @@ document.addEventListener('DOMContentLoaded', () => {
 
       <div class="card">
         <div class="card-title">William Howard Taft (1909-1913)</div>
-        <div class="card-role">Dollar Diplomacy & Federal Expansion</div>
+        <div class="card-role">Dollar Diplomacy & Federal Expansion - "Constitutional Lawyer" Who Expanded Federal Power</div>
         <ul class="facts">
-          <li><strong>Dollar Diplomacy</strong>: Used economic pressure to advance foreign policy without Congressional oversight</li>
-          <li><strong>16th Amendment</strong>: Pushed for federal income tax amendment</li>
-          <li><strong>Mann-Elkins Act</strong>: Expanded federal regulation of telecommunications</li>
-          <li><strong>Antitrust prosecutions</strong>: Filed more antitrust cases than Roosevelt, expanding federal power</li>
+          <li><strong>Dollar Diplomacy</strong>: Used economic coercion and military intervention to advance American business interests in Latin America and Asia without Congressional approval. Encouraged American investment in Honduras, Nicaragua, China with military backing. Violated constitutional principle of Congressional control over foreign policy and war powers. <a href="https://history.state.gov/milestones/1909-1913/dollar-diplomacy" target="_blank">[State Department - Dollar Diplomacy]</a></li>
+          <li><strong>16th Amendment Ratification Push (1913)</strong>: Actively lobbied states to ratify federal income tax amendment, knowing it would fundamentally transform relationship between citizens and federal government. Created mechanism for confiscatory taxation and class warfare. Violated original constitutional principle of limited federal revenue through tariffs and excise taxes. <a href="https://www.archives.gov/milestone-documents/16th-amendment" target="_blank">[16th Amendment]</a></li>
+          <li><strong>Mann-Elkins Act (1910)</strong>: Expanded Interstate Commerce Commission authority over telegraph, telephone, cable, and wireless companies. Federal regulation of communications exceeded constitutional commerce clause authority. Created precedent for federal control over information infrastructure and private communications networks.</li>
+          <li><strong>Antitrust Prosecutions (90+ Cases)</strong>: Filed more antitrust cases than Theodore Roosevelt, including prosecution of Standard Oil and American Tobacco. While targeting monopolies, vague Sherman Act standards gave federal government unlimited power to determine legitimate business practices. Constitutional due process violated by prosecuting businesses under undefined "restraint of trade" standards.</li>
+          <li><strong>Payne-Aldrich Tariff (1909)</strong>: Despite campaign promises to reduce tariffs, signed moderate tariff reduction that still protected special interests. Defended high tariffs in Winona Speech, claiming they helped American workers while enriching corporate monopolies. Violated constitutional principle of equal treatment by favoring specific industries and regions. <a href="https://millercenter.org/president/taft/domestic-affairs" target="_blank">[Miller Center - Taft Domestic Policy]</a></li>
+          <li><strong>Ballinger-Pinchot Controversy</strong>: Fired Chief Forester Gifford Pinchot for criticizing Interior Secretary Richard Ballinger's coal land policies. Pinchot accused Ballinger of favoring corporate interests over conservation. Taft's handling revealed corporate influence over natural resource policy and suppression of federal employee whistleblowing.</li>
+          <li><strong>Postal Savings System (1910)</strong>: Created federal postal savings banks competing with private banks, expanding federal government into banking services without clear constitutional authority. Government competition with private enterprise violated principles of limited federal role in economy.</li>
+          <li><strong>Federal Courts Expansion</strong>: Signed Judicial Code of 1911 reorganizing federal court system and creating additional federal judgeships. Expanded federal judicial power over state matters without constitutional necessity. Original federal court system was limited to handle only federal constitutional issues, not general legal disputes.</li>
+          <li><strong>Corporate Income Tax</strong>: Before 16th Amendment ratification, imposed 1% federal tax on corporate income through Payne-Aldrich Tariff. Circumvented constitutional direct tax requirements by calling it "excise tax." Created precedent for federal corporate taxation without constitutional amendment.</li>
+          <li><strong>Mexican Border Intervention (1911-1913)</strong>: Deployed 20,000+ federal troops to Mexican border during Mexican Revolution without Congressional approval. Military mobilization exceeded executive authority and threatened war with Mexico. Constitutional war powers belong to Congress, not President acting unilaterally.</li>
+          <li><strong>New Mexico and Arizona Statehood (1912)</strong>: Required Arizona to remove judicial recall provision from state constitution as condition for statehood. Federal interference in state constitutional conventions exceeded enumerated powers. States have sovereign right to organize their internal government structure without federal micromanagement.</li>
+          <li><strong>Federal Bureau of Investigation Expansion</strong>: Expanded federal detective force created under Roosevelt into permanent investigative agency. Federal police powers exceeded constitutional authority - criminal law enforcement belongs primarily to states under 10th Amendment. Created precedent for federal law enforcement expansion.</li>
+          <li><strong>Reciprocal Trade Agreements</strong>: Negotiated trade agreements with Canada and other countries using presidential authority delegated through tariff legislation. Congressional power to regulate foreign commerce was unconstitutionally delegated to executive branch. Trade policy became executive rather than legislative function.</li>
         </ul>
       </div>
 
       <div class="card">
         <div class="card-title">Woodrow Wilson (1913-1921)</div>
-        <div class="card-role">WWI & Federal Reserve</div>
+        <div class="card-role">WWI & Federal Reserve - Creator of Modern Administrative State</div>
         <ul class="facts">
-          <li><strong>Federal Reserve Act</strong>: Delegated monetary powers to private banks</li>
-          <li><strong>WWI entry</strong>: "Make world safe for democracy" imperial mission</li>
-          <li><strong>Espionage/Sedition Acts</strong>: Criminalized anti-war speech</li>
-          <li><strong>Palmer Raids</strong>: Mass arrests of radicals and immigrants</li>
+          <li><strong>Federal Reserve Act (1913)</strong>: Unconstitutionally delegated Congress's monetary powers (Art. I, Sec. 8) to private banking cartel. Created system where private banks control money supply, set interest rates, create money from nothing and loan to government at interest. No constitutional authority to delegate monetary powers to private entities. <a href="https://www.archives.gov/milestone-documents/federal-reserve-act" target="_blank">[Federal Reserve Act]</a></li>
+          <li><strong>16th Amendment Income Tax</strong>: Pushed ratification of income tax amendment (1913) enabling massive federal revenue growth. Direct taxation on individuals unprecedented in US history. Created mechanism for confiscatory taxation and class warfare. <a href="https://www.archives.gov/milestone-documents/16th-amendment" target="_blank">[16th Amendment]</a></li>
+          <li><strong>17th Amendment Direct Election of Senators</strong>: Pushed ratification destroying original federal structure where states appointed senators to represent state governments. Converted Senate to second House of Representatives, eliminated state representation in federal government. <a href="https://www.archives.gov/milestone-documents/17th-amendment" target="_blank">[17th Amendment]</a></li>
+          <li><strong>World War I Entry Without Declaration</strong>: Asked Congress for war declaration after already committing to Allied cause through loans, arms sales, Lusitania incident. "Make world safe for democracy" - messianic interventionism not found in Constitution. Violated neutrality and non-intervention principles. <a href="https://www.archives.gov/milestone-documents/joint-address-to-congress-leading-to-a-declaration-of-war-against-germany" target="_blank">[War Message to Congress]</a></li>
+          <li><strong>Espionage Act (1917)</strong>: Criminalized "disloyal" speech, criticism of government, military, or flag during wartime. 2,000+ prosecutions for speech crimes. Direct violation of 1st Amendment. Upheld by Supreme Court in Schenck v. US using "clear and present danger" test. <a href="https://www.archives.gov/milestone-documents/espionage-act-of-1917" target="_blank">[Espionage Act]</a></li>
+          <li><strong>Sedition Act (1918)</strong>: Made it crime to "utter, print, write, or publish any disloyal, profane, scurrilous, or abusive language" about government, military, Constitution, or flag. 10+ years prison for speech. More restrictive than Alien & Sedition Acts of 1798. Socialist leader Eugene Debs imprisoned for antiwar speech. <a href="https://supreme.justia.com/cases/federal/us/249/211/" target="_blank">[Debs v. US]</a></li>
+          <li><strong>Palmer Raids (1919-1920)</strong>: Attorney General A. Mitchell Palmer conducted mass arrests of 10,000+ suspected radicals, socialists, and immigrants. Violated 4th Amendment protections against unreasonable search and seizure, due process rights. Many held without charges, deported without trials. <a href="https://www.fbi.gov/history/brief-history/palmer-raids" target="_blank">[FBI History - Palmer Raids]</a></li>
+          <li><strong>Committee on Public Information (1917)</strong>: Created federal propaganda agency under George Creel producing films, posters, speeches to manipulate public opinion for war. Used taxpayer funds for government propaganda - no constitutional authority for federal thought control. <a href="https://www.archives.gov/research/guide-fed-records/groups/063.html" target="_blank">[Archives - CPI Records]</a></li>
+          <li><strong>Food Administration Czar</strong>: Appointed Herbert Hoover as "Food Administrator" with power to control production, distribution, and prices of food nationwide. No constitutional authority for peacetime price controls. Created precedent for economic czars and administrative agencies controlling private enterprise.</li>
+          <li><strong>War Industries Board</strong>: Created board under Bernard Baruch to control all industrial production during war. Set prices, allocated materials, determined production priorities. Essentially socialist control of economy without constitutional basis. Precedent for New Deal economic controls.</li>
+          <li><strong>Selective Service Act (1917)</strong>: Instituted military draft forcing men to fight against their will. Created system of "conscientious objector" status requiring government approval for religious beliefs. Violated individual liberty and religious freedom. <a href="https://www.archives.gov/milestone-documents/selective-service-act" target="_blank">[Selective Service Act]</a></li>
+          <li><strong>Trading with the Enemy Act (1917)</strong>: Gave president sweeping powers to regulate or prohibit trade during war. Created precedent for Economic Czar powers and emergency authority. Later used by FDR during bank holiday (1933) when no war existed.</li>
+          <li><strong>Railway Control Act (1918)</strong>: Nationalized all railroads during WWI under federal control. Government operated private property without compensation or constitutional authority. Returned to private ownership after war but established precedent for emergency socialism.</li>
+          <li><strong>Versailles Treaty & League of Nations</strong>: Negotiated treaty committing US to world government (League of Nations) without Senate consultation. Senate rejected treaty 55-39. Wilson suffered stroke campaigning for treaty, wife Edith effectively ran government for 18 months - unconstitutional. <a href="https://www.senate.gov/artandhistory/history/common/briefing/Treaties.htm" target="_blank">[Senate Treaty History]</a></li>
+          <li><strong>Segregation of Federal Government</strong>: Segregated federal civil service that had been integrated since Reconstruction. Fired black federal employees, required photo identification for job applications to screen out blacks. Showed film "Birth of a Nation" at White House glorifying KKK.</li>
+          <li><strong>Federal Farm Loan Act (1916)</strong>: Created federal farm credit system subsidizing agricultural loans. No constitutional authority for federal agricultural lending. Expanded federal government into private credit markets.</li>
         </ul>
+        <div style="margin-top: 15px; padding: 10px; background: var(--danger); color: white; border-radius: 8px; font-size: 14px;">
+          <strong>Constitutional Analysis:</strong> Wilson created the modern administrative state that founders explicitly rejected. Federal Reserve, income tax, direct election of senators, and wartime emergency powers fundamentally transformed limited constitutional republic into unlimited government. His "progressive" ideology viewed Constitution as "living document" to be reinterpreted rather than binding law.
+        </div>
       </div>
 
       <div class="card">
         <div class="card-title">Warren G. Harding (1921-1923)</div>
-        <div class="card-role">Teapot Dome & Administrative Corruption</div>
+        <div class="card-role">Teapot Dome & Administrative Corruption - "Ohio Gang" President Who Corrupted Government</div>
         <ul class="facts">
-          <li><strong>Teapot Dome scandal</strong>: Cabinet members took bribes for oil leases on federal land</li>
-          <li><strong>Veterans Bureau scandal</strong>: Massive fraud in veterans' hospital construction</li>
-          <li><strong>Ohio Gang</strong>: Appointed corrupt political associates to federal positions</li>
-          <li><strong>Washington Conference</strong>: Naval agreements without full Senate treaty process</li>
+          <li><strong>Teapot Dome Scandal (1921-1923)</strong>: Interior Secretary Albert Fall secretly leased federal oil reserves at Teapot Dome, Wyoming and Elk Hills, California to private companies in exchange for $400,000+ in bribes. Fall became first Cabinet member imprisoned for crimes in office. Harding's negligent oversight enabled systematic looting of federal resources. <a href="https://www.archives.gov/milestone-documents/teapot-dome-scandal" target="_blank">[Teapot Dome Documents]</a></li>
+          <li><strong>Veterans Bureau Scandal (1921-1923)</strong>: Veterans Bureau Director Charles Forbes stole millions from $500+ million veterans' hospital construction program. Sold government supplies at fraction of cost, awarded contracts to conspirators, skimmed funds meant for disabled veterans. Over $200 million stolen while veterans suffered in substandard facilities. Constitutional duty to care for veterans was violated for personal enrichment.</li>
+          <li><strong>"Ohio Gang" Corruption Network</strong>: Appointed corrupt political cronies from Ohio to key federal positions who systematically looted government. Attorney General Harry Daugherty sold government positions, legal protections, and pardons. Justice Department became criminal enterprise selling immunity from prosecution. Violated constitutional duty to ensure faithful execution of laws.</li>
+          <li><strong>Alien Property Custodian Fraud</strong>: Alien Property Custodian Thomas Miller sold German-owned companies seized during WWI to American businesses for bribes. Millions in enemy assets transferred illegally to private parties. Federal trust responsibility for seized property was violated for personal profit. Miller sentenced to prison for fraud and conspiracy.</li>
+          <li><strong>Washington Naval Conference (1921-1922)</strong>: Negotiated naval armament limitations and Far East agreements through executive conference rather than formal treaty process. Nine-Power Treaty and Four-Power Treaty avoided full Senate ratification requirements through creative interpretation. Constitutional treaty power was circumvented to avoid legislative oversight. <a href="https://history.state.gov/milestones/1921-1936/washington-conference" target="_blank">[State Department - Washington Conference]</a></li>
+          <li><strong>Prohibition Enforcement Corruption</strong>: Justice Department and Treasury agents routinely accepted bribes from bootleggers and organized crime. Daugherty's Justice Department sold selective enforcement, allowing favored criminals to operate freely. Constitutional duty to enforce federal law was abandoned for criminal profit-sharing.</li>
+          <li><strong>Tax Evasion and Influence Peddling</strong>: Multiple administration officials avoided taxes and sold government influence. Commissioner of Internal Revenue appointed cronies who provided tax favors to wealthy contributors. Federal tax system became pay-for-immunity scheme rather than equal enforcement of law.</li>
+          <li><strong>Immigration Quota Act (1921)</strong>: Signed discriminatory immigration legislation limiting European immigration through national origin quotas, effectively excluding Southern and Eastern Europeans. While Congress passed the law, Harding's support violated constitutional equal protection principles and established precedent for ethnic discrimination in immigration policy.</li>
+          <li><strong>Federal Trade Commission Politicization</strong>: Appointed business-friendly commissioners who refused to enforce antitrust laws against large corporations. FTC became defender of monopolistic practices rather than protector of competitive markets. Constitutional responsibility for faithful law execution was abandoned to serve corporate interests.</li>
+          <li><strong>Fordney-McCumber Tariff (1922)</strong>: Signed highest peacetime tariff in US history, protecting domestic industries while raising consumer prices. Tariff included flexible provisions allowing presidential adjustment of rates, delegating Congressional commerce power to executive branch. Created precedent for presidential trade policy authority beyond constitutional scope.</li>
+          <li><strong>Executive Privilege Claims</strong>: Refused Congressional demands for information about administration scandals, claiming executive privilege to hide criminal activity. Constitutional separation of powers was perverted to obstruct legitimate legislative oversight of executive branch corruption and criminal conduct.</li>
+          <li><strong>Federal Reserve Independence Compromise</strong>: Failed to challenge Federal Reserve's private banking cartel structure despite campaign promises to restore constitutional monetary policy. Continued Wilson's unconstitutional delegation of monetary powers to private bankers who profited from government debt financing.</li>
+          <li><strong>Newspaper Chain Corruption</strong>: Used government printing contracts and postal privileges to reward friendly newspapers and punish critics. Federal resources were used to manipulate public opinion and suppress investigative journalism about administration corruption. Violated First Amendment principles and constitutional duty of neutral government.</li>
         </ul>
       </div>
 
       <div class="card">
         <div class="card-title">Calvin Coolidge (1923-1929)</div>
-        <div class="card-role">Business Favoritism & Federal Neglect</div>
+        <div class="card-role">Business Favoritism & Federal Neglect - "Silent Cal" Who Enabled Corporate Plunder</div>
         <ul class="facts">
-          <li><strong>Andrew Mellon tax cuts</strong>: Regressive tax policy favoring wealthy individuals and corporations</li>
-          <li><strong>Stock market speculation</strong>: Failed to regulate reckless financial practices</li>
-          <li><strong>Radio Act of 1927</strong>: Federal regulation of airwaves without clear constitutional authority</li>
-          <li><strong>Immigration restrictions</strong>: Signed discriminatory National Origins Act</li>
+          <li><strong>Mellon Tax Plan - Corporate Welfare</strong>: Treasury Secretary Andrew Mellon's tax cuts reduced top income tax rate from 73% to 25%, massively benefiting wealthy while shifting tax burden to middle class. Mellon personally saved millions from his own tax cuts while serving as Treasury Secretary - massive conflict of interest. Policy enabled speculation bubble leading to 1929 crash. <a href="https://fraser.stlouisfed.org/archival/1300/item/502264" target="_blank">[Treasury Annual Report 1928]</a></li>
+          <li><strong>Federal Reserve Speculation Enablement</strong>: Failed to use presidential influence to stop Federal Reserve's inflationary easy money policies that fueled stock market speculation (1924-1929). Fed kept interest rates artificially low, creating asset bubble. Constitutional duty to preserve sound currency was abandoned for corporate profits and political popularity.</li>
+          <li><strong>Radio Act of 1927</strong>: Created Federal Radio Commission with power to license and regulate all radio broadcasting. Federal control of airwaves exceeded constitutional authority - First Amendment protects speech, not government licensing of speakers. Established precedent for federal censorship through licensing requirements. <a href="https://www.archives.gov/milestone-documents/radio-act-of-1927" target="_blank">[Radio Act 1927]</a></li>
+          <li><strong>National Origins Immigration Act (1924)</strong>: Signed discriminatory immigration law establishing permanent quotas based on 1890 census to exclude Southern and Eastern Europeans, Asians, and Africans. Law explicitly designed to maintain white Protestant racial composition. Violated constitutional equal protection principles and established ethnic nationalism in federal law.</li>
+          <li><strong>Teapot Dome Cover-up Continuation</strong>: Despite inheriting Harding scandals, failed to fully investigate corruption or recover stolen federal resources. Allowed corrupt officials to escape with minimal punishment. Constitutional duty to ensure faithful law execution was subordinated to party loyalty and political expediency.</li>
+          <li><strong>Corporate Monopoly Protection</strong>: Appointed business-friendly regulators who refused to enforce antitrust laws against large corporations. Federal Trade Commission became protector of monopolistic practices rather than competitor of competitive markets. Constitutional responsibility for equal law enforcement was abandoned to serve corporate interests.</li>
+          <li><strong>Agricultural Depression Neglect</strong>: Refused federal assistance to farmers suffering from post-WWI price collapse while providing tax cuts and subsidies to corporations. 600,000+ farm foreclosures occurred during presidency. Constitutional general welfare clause was interpreted to benefit corporations but not agricultural producers.</li>
+          <li><strong>Labor Rights Suppression</strong>: Used federal power to break strikes and support corporate anti-union policies. Federal courts issued injunctions against labor organizing while protecting corporate monopolies. Constitutional right to peaceful assembly and association was denied to workers but protected for business combinations.</li>
+          <li><strong>Federal Reserve Cronyism</strong>: Reappointed Benjamin Strong as New York Fed President despite his coordination with European central banks that manipulated US monetary policy for foreign benefit. Fed's easy money policies served British gold standard restoration rather than US constitutional monetary stability.</li>
+          <li><strong>World Court Participation Attempt</strong>: Supported US participation in World Court (Permanent Court of International Justice) with reservations that would have subordinated US sovereignty to international tribunal. Senate rejected participation, but Coolidge's support violated constitutional principle of judicial independence and national sovereignty.</li>
+          <li><strong>Kellogg-Briand Pact (1928)</strong>: Signed international agreement "outlawing war" that was purely symbolic but established precedent for international law superseding US constitutional war powers. Created false expectations about international law enforcement while undermining Congressional war declaration authority.</li>
+          <li><strong>Federal Highway System Expansion</strong>: Signed Federal Highway Act of 1921 providing federal funding for state road construction, expanding federal role in transportation infrastructure beyond constitutional authority. Interstate commerce clause was stretched to justify federal highway construction within individual states.</li>
+          <li><strong>Prohibition Enforcement Failure</strong>: Failed to adequately enforce 18th Amendment prohibition laws while organized crime gained unprecedented power. Constitutional duty to enforce federal law was abandoned due to political unpopularity, allowing criminal enterprises to flourish and corrupt local governments nationwide.</li>
+          <li><strong>Budget Surplus Mismanagement</strong>: Federal budget surpluses were used for tax cuts benefiting wealthy rather than debt reduction or constitutional limited government. Surpluses enabled federal spending expansion under future administrations rather than permanent government size reduction.</li>
         </ul>
       </div>
 
@@ -2016,13 +2219,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
       <div class="card">
         <div class="card-title">Franklin D. Roosevelt (1933-1945)</div>
-        <div class="card-role">New Deal & WWII Overreach</div>
+        <div class="card-role">New Deal & WWII Overreach - Most Unconstitutional President</div>
         <ul class="facts">
-          <li><strong>Court packing</strong>: Attempted to expand Supreme Court</li>
-          <li><strong>Japanese internment</strong>: 120,000 citizens detained without trial</li>
-          <li><strong>Gold confiscation</strong>: Seized private gold holdings</li>
-          <li><strong>4 terms</strong>: Broke Washington's precedent</li>
+          <li><strong>Gold Confiscation (1933)</strong>: Executive Order 6102 criminalized private gold ownership, forcing citizens to sell gold to government at $20.67/oz, then devalued to $35/oz - massive wealth transfer without Congressional appropriation or constitutional authority. Violated 5th Amendment taking clause. <a href="https://www.archives.gov/milestone-documents/executive-order-6102" target="_blank">[EO 6102]</a></li>
+          <li><strong>Japanese Internment (1942)</strong>: Executive Order 9066 authorized military commanders to exclude "any or all persons" from military areas - resulted in detention of 120,000+ Japanese Americans (70,000 US citizens) without trial, charges, or evidence. Massive violation of 5th and 14th Amendment due process rights. <a href="https://www.archives.gov/milestone-documents/executive-order-9066" target="_blank">[EO 9066]</a></li>
+          <li><strong>Court Packing Scheme (1937)</strong>: Proposed Judiciary Reorganization Bill to add up to 6 new Supreme Court justices after Court struck down New Deal programs. Direct assault on judicial independence and separation of powers. Senate rejected 70-20. <a href="https://www.senate.gov/artandhistory/history/common/generic/FDR_Court_Packing.htm" target="_blank">[Senate History]</a></li>
+          <li><strong>Schechter Poultry Corp. v. US Violations</strong>: After Supreme Court unanimously struck down National Industrial Recovery Act (1935) as unconstitutional delegation of legislative power, FDR attacked Court and continued similar programs. <a href="https://supreme.justia.com/cases/federal/us/295/495/" target="_blank">[Schechter Decision]</a></li>
+          <li><strong>Four Terms Breaking Precedent</strong>: Washington established 2-term precedent; FDR sought 4 terms concentrating unprecedented power. Led to 22nd Amendment (1951) limiting presidents to 2 terms. Constitutional scholars argued violation of republican government principles.</li>
+          <li><strong>Lend-Lease Act (1941)</strong>: Transferred $50+ billion in military aid to allies before Pearl Harbor while claiming US neutrality. Violated Neutrality Acts and exceeded executive authority in foreign affairs. <a href="https://www.archives.gov/milestone-documents/lend-lease-act" target="_blank">[Lend-Lease Act]</a></li>
+          <li><strong>Destroyers-for-Bases Deal (1940)</strong>: Transferred 50 destroyers to Britain without Congressional approval, circumventing legislative war powers. Attorney General Robert Jackson provided dubious legal justification. <a href="https://millercenter.org/president/roosevelt/foreign-affairs" target="_blank">[Miller Center]</a></li>
+          <li><strong>Banking Acts & Federal Control</strong>: Banking Act of 1933 (Glass-Steagall) and 1935 centralized banking under federal control, gave Federal Reserve Board unprecedented power over economy without clear constitutional basis. Created FDIC insurance shifting private risks to taxpayers.</li>
+          <li><strong>Agricultural Adjustment Act</strong>: Paid farmers not to produce food during Depression when people were hungry. Supreme Court struck down as unconstitutional in US v. Butler (1936) - taxing one group to benefit another exceeded federal power. <a href="https://supreme.justia.com/cases/federal/us/297/1/" target="_blank">[Butler Decision]</a></li>
+          <li><strong>National Labor Relations Act</strong>: Forced employers to recognize unions and bargain collectively. Supreme Court initially struck similar provisions down, FDR packed Court threat led to "switch in time that saved nine." Violated property rights and freedom of association.</li>
+          <li><strong>Social Security Act (1935)</strong>: Created national pension system with no constitutional authority. Taxing working people to pay current retirees - essentially Ponzi scheme structure. Supreme Court narrowly upheld in Helvering v. Davis (1937) during Court-packing pressure. <a href="https://supreme.justia.com/cases/federal/us/301/619/" target="_blank">[Helvering Decision]</a></li>
+          <li><strong>War Powers Act (1941)</strong>: Seized control over economy, froze prices, controlled production. Created Office of Price Administration with power to set prices throughout economy - massive violation of property rights and economic liberty without constitutional basis.</li>
+          <li><strong>German-American Internment</strong>: Detained 11,000+ German Americans and German nationals, often U.S. citizens, in camps throughout war. Less publicized than Japanese internment but equally unconstitutional. <a href="https://www.nps.gov/articles/german-american-internment.htm" target="_blank">[NPS History]</a></li>
+          <li><strong>Censorship & Press Control</strong>: Created Office of Censorship (1941) controlling all communications leaving US. Violated 1st Amendment press freedoms. Office of War Information created propaganda for domestic consumption. <a href="https://www.archives.gov/research/guide-fed-records/groups/216.html" target="_blank">[Archives - Censorship]</a></li>
+          <li><strong>A.L.A. Schechter Poultry Corp. Defiance</strong>: After Court struck down NIRA, FDR created similar programs under different names (NLRA, AAA amendments) - openly defying Supreme Court constitutional rulings and separation of powers.</li>
         </ul>
+        <div style="margin-top: 15px; padding: 10px; background: var(--danger); color: white; border-radius: 8px; font-size: 14px;">
+          <strong>Constitutional Analysis:</strong> FDR fundamentally transformed the federal government from limited constitutional republic to administrative state. Violated virtually every constitutional principle: separation of powers, enumerated powers, individual rights, property rights, due process. His precedents enabled all subsequent presidential overreach.
+        </div>
       </div>
 
       <div class="card">
@@ -2070,46 +2287,109 @@ document.addEventListener('DOMContentLoaded', () => {
 
       <div class="card">
         <div class="card-title">George W. Bush (2001-2009)</div>
-        <div class="card-role">War on Terror</div>
+        <div class="card-role">War on Terror - "Constitution is Just a Goddamned Piece of Paper"</div>
         <ul class="facts">
-          <li><strong>Patriot Act</strong>: Mass surveillance without warrants</li>
-          <li><strong>Torture program</strong>: Enhanced interrogation techniques</li>
-          <li><strong>Signing statements</strong>: 1,200+ statements ignoring laws</li>
-          <li><strong>Indefinite detention</strong>: Guantanamo without trial</li>
+          <li><strong>USA PATRIOT Act (2001)</strong>: Massive expansion of surveillance powers allowing warrantless searches, indefinite detention, secret courts. Violated 1st, 4th, 5th, 6th, 8th, and 14th Amendments. Rushed through Congress 45 days after 9/11 with minimal debate - most members didn't read 342-page bill. <a href="https://www.congress.gov/bill/107th-congress/house-bill/3162" target="_blank">[PATRIOT Act Text]</a></li>
+          <li><strong>Warrantless NSA Surveillance Program</strong>: Authorized NSA to monitor international communications of Americans without FISA warrants starting October 2001. Directly violated 4th Amendment and Foreign Intelligence Surveillance Act. Program revealed by New York Times (2005), Bush claimed "inherent authority" as Commander in Chief. <a href="https://www.nytimes.com/2005/12/16/politics/bush-lets-us-spy-on-callers-without-courts.html" target="_blank">[NYT NSA Story]</a></li>
+          <li><strong>Torture Program & "Enhanced Interrogation"</strong>: CIA torture program included waterboarding, stress positions, sleep deprivation, sexual humiliation. Abu Ghraib prison abuses documented. Direct violation of 8th Amendment prohibition on cruel and unusual punishment and Geneva Conventions. <a href="https://www.aclu.org/other/torture-foia" target="_blank">[ACLU Torture Documents]</a></li>
+          <li><strong>Indefinite Detention Without Trial</strong>: Guantanamo Bay detention of 779+ prisoners without habeas corpus hearings, legal representation, or trial by jury. Held "enemy combatants" for years without charges. Supreme Court ruled detention unconstitutional in Hamdan v. Rumsfeld (2006). <a href="https://supreme.justia.com/cases/federal/us/548/557/" target="_blank">[Hamdan v. Rumsfeld]</a></li>
+          <li><strong>Military Commissions Act (2006)</strong>: Attempted to strip habeas corpus rights from detainees, authorize secret evidence, allow coerced testimony. Tried to overrule Supreme Court decisions on detention. Created parallel military justice system outside constitutional protections.</li>
+          <li><strong>1,200+ Presidential Signing Statements</strong>: Issued more signing statements than all previous presidents combined, claiming authority to ignore parts of laws he signed. Essentially line-item veto power not granted by Constitution. Constitutional scholars called it "monarchical" behavior. <a href="https://www.coherentbabble.com/listBushSigning.htm" target="_blank">[Signing Statements Database]</a></li>
+          <li><strong>Iraq War Without Proper Authorization</strong>: Used post-9/11 Authorization for Use of Military Force (Afghanistan) to justify Iraq invasion. Iraq had no connection to 9/11 attacks. Congressional Iraq resolution based on false WMD intelligence. Violated constitutional war powers and international law.</li>
+          <li><strong>Domestic Military Deployment</strong>: Used active-duty military for domestic law enforcement during Hurricane Katrina response, violating Posse Comitatus Act. Proposed using military to enforce quarantine during bird flu scare - direct violation of civilian control principles.</li>
+          <li><strong>Secret CIA Black Sites</strong>: Created network of secret CIA detention facilities in foreign countries where suspects were tortured without legal process. "Extraordinary rendition" program kidnapped suspects off streets and flew them to torture sites. Completely outside rule of law.</li>
+          <li><strong>Financial Surveillance Without Warrants</strong>: Treasury Department's Terrorist Finance Tracking Program monitored international financial transactions without warrants through SWIFT banking network. Violated 4th Amendment privacy rights and banking privacy laws.</li>
+          <li><strong>Presidential Records Act Violation</strong>: Executive Order 13233 (2001) restricted access to presidential records, violating Presidential Records Act and public's right to information. Attempted to hide government documents from oversight.</li>
+          <li><strong>Prosecutor Firing Scandal</strong>: Fired 8 U.S. attorneys for refusing to prosecute Democrats before elections or for prosecuting Republicans. Political interference with justice system. Several officials resigned, attorney general nearly impeached.</li>
+          <li><strong>Valerie Plame CIA Leak</strong>: White House officials (Scooter Libby, Karl Rove) leaked identity of covert CIA agent to punish her husband for criticizing Iraq War intelligence. Endangered national security and violated Intelligence Identities Protection Act.</li>
+          <li><strong>Free Speech Zones</strong>: Created "protest zones" miles away from presidential events, violating 1st Amendment right to petition government. Arrested protesters holding signs critical of president while allowing supporters near events.</li>
+          <li><strong>State Secrets Privilege Abuse</strong>: Invoked "state secrets" privilege to dismiss lawsuits challenging torture, surveillance, and detention programs. Prevented judicial review of executive branch actions, undermining checks and balances.</li>
+          <li><strong>TARP Bailouts Without Congressional Appropriation</strong>: Treasury Secretary Paulson initially claimed authority to spend $700 billion on bank bailouts with no oversight. Congress forced to grant retroactive approval under threat of economic collapse. Violated appropriations clause.</li>
         </ul>
+        <div style="margin-top: 15px; padding: 10px; background: var(--danger); color: white; border-radius: 8px; font-size: 14px;">
+          <strong>Constitutional Analysis:</strong> Bush administration's "unitary executive" theory claimed president has unlimited power during wartime, essentially making him dictator. Violated every amendment in Bill of Rights. Set precedents for surveillance state, torture, indefinite detention, and executive supremacy that subsequent presidents have continued and expanded.
+        </div>
       </div>
 
       <div class="card">
         <div class="card-title">Barack Obama (2009-2017)</div>
-        <div class="card-role">Drone Program Expansion</div>
+        <div class="card-role">Drone Program Expansion - "I'm Really Good at Killing People"</div>
         <ul class="facts">
-          <li><strong>Targeted killings</strong>: Assassinated US citizens without trial</li>
-          <li><strong>Libya intervention</strong>: Military action without Congressional approval</li>
-          <li><strong>NSA surveillance</strong>: Expanded warrantless surveillance programs</li>
-          <li><strong>Whistleblower persecution</strong>: Prosecuted more than all predecessors</li>
+          <li><strong>Targeted Killing of US Citizens</strong>: Assassinated US citizens Anwar al-Awlaki (2011) and his 16-year-old son Abdulrahman al-Awlaki (2011) via drone strikes without trial, charges, or constitutional due process. Created "kill list" with US citizens targeted for execution based on secret evidence. Violated 5th Amendment due process rights. <a href="https://www.aclu.org/issues/national-security/targeted-killing" target="_blank">[ACLU Targeted Killing]</a></li>
+          <li><strong>Libya War Without Congressional Authorization</strong>: Launched military campaign against Libya (2011) without Congressional declaration or authorization. Claimed humanitarian intervention authority and that bombing wasn't "hostilities" under War Powers Resolution. 7+ month campaign exceeded 60-day limit. <a href="https://www.whitehouse.gov/sites/whitehouse.gov/files/documents/United%20States%20Activities%20in%20Libya%20-%20June%202011.pdf" target="_blank">[Libya Report to Congress]</a></li>
+          <li><strong>Massive NSA Surveillance Expansion</strong>: Continued and expanded Bush-era programs. Collected metadata on all phone calls, emails, internet activity of Americans. PRISM program accessed data from Google, Facebook, Microsoft without warrants. Violated 4th Amendment on massive scale revealed by Edward Snowden. <a href="https://www.theguardian.com/world/2013/jun/06/nsa-phone-records-verizon-court-order" target="_blank">[Guardian NSA Story]</a></li>
+          <li><strong>Whistleblower Prosecutions</strong>: Used Espionage Act to prosecute 8+ whistleblowers - more than all previous presidents combined. Prosecuted Chelsea Manning (35 years), pursued Edward Snowden (exile), prosecuted Thomas Drake, John Kiriakou, others for exposing government wrongdoing. Chilled constitutional right to expose government crimes.</li>
+          <li><strong>Drone War Expansion</strong>: Conducted 542+ drone strikes in Pakistan, Yemen, Somalia, Libya - 10x more than Bush. Killed thousands including civilians. "Signature strikes" targeted unknown persons based on behavioral patterns. Created precedent for global assassination program.</li>
+          <li><strong>Kill List & "Terror Tuesday" Meetings</strong>: Personally reviewed and approved targets for assassination each Tuesday. Kill list included US citizens, foreign nationals, and unknown persons. Secret criteria for death determinations. No judicial review or constitutional process.</li>
+          <li><strong>NDAA Indefinite Detention</strong>: Signed National Defense Authorization Act (2012) codifying indefinite military detention of US citizens suspected of terrorism without trial. Initially threatened veto, then signed with "signing statement" claiming wouldn't use against Americans (which Bush precedent shows is meaningless).</li>
+          <li><strong>Syria Military Action Planning</strong>: Planned military strikes against Syria (2013) without Congressional authorization based on chemical weapons allegations. Only abandoned after Congressional and public opposition. Violated constitutional war powers.</li>
+          <li><strong>IRS Political Targeting</strong>: IRS under Lois Lerner targeted conservative groups (Tea Party, patriot organizations) for enhanced scrutiny and audits. Denied tax-exempt status based on political views. Violated 1st Amendment equal protection rights. Lerner pleaded 5th Amendment, destroyed evidence.</li>
+          <li><strong>DOJ Reporter Surveillance</strong>: Justice Department secretly obtained AP phone records and named Fox News reporter James Rosen as "co-conspirator" for publishing leaks. Violated 1st Amendment press freedoms and right to due process. <a href="https://www.washingtonpost.com/world/national-security/justice-department-obtains-wide-ap-phone-records-in-leak-investigation/2013/05/13/9e98bb78-bbf0-11e2-97d4-a479289a31f9_story.html" target="_blank">[AP Phone Records]</a></li>
+          <li><strong>Fast and Furious Gun Running</strong>: ATF gun-walking operation sold weapons to Mexican cartels leading to death of Border Patrol Agent Brian Terry. Attorney General Eric Holder held in contempt of Congress for refusing to provide documents. Executive privilege claimed to hide evidence.</li>
+          <li><strong>Affordable Care Act Individual Mandate</strong>: Required all Americans to purchase health insurance or pay penalty - unprecedented federal power to force private commercial transactions. Supreme Court narrowly upheld as "tax" in NFIB v. Sebelius despite Obama claiming it wasn't tax.</li>
+          <li><strong>Executive Amnesty/DACA</strong>: Granted work permits and protection from deportation to 800,000+ illegal immigrants through executive action after saying 22 times he lacked constitutional authority to do so. Circumvented Congressional authority over immigration law.</li>
+          <li><strong>Benghazi Cover-up</strong>: Administration blamed terrorist attack on US consulate in Libya on internet video, arrested filmmaker. Susan Rice made false statements on Sunday shows. Hillary Clinton told families it was about video while emailing daughter it was terrorist attack.</li>
+          <li><strong>EPA Power Plant Regulations</strong>: Clean Power Plan attempted to regulate CO2 emissions from power plants without clear congressional authorization. Supreme Court stayed implementation. Violated separation of powers by creating law through regulation rather than legislation.</li>
+          <li><strong>FISA Court Abuse</strong>: Expanded surveillance through secret FISA court rulings. Court approved 99.97% of warrant requests. Created parallel legal system with secret law and secret interpretations of Constitution outside normal judicial process.</li>
         </ul>
+        <div style="margin-top: 15px; padding: 10px; background: var(--danger); color: white; border-radius: 8px; font-size: 14px;">
+          <strong>Constitutional Analysis:</strong> Obama combined Bush's surveillance state with unprecedented targeted killing program and executive lawmaking. Despite constitutional law professor background, violated separation of powers, due process, equal protection, and war powers. "Pen and phone" presidency bypassed Congress through executive action.
+        </div>
       </div>
 
       <div class="card">
         <div class="card-title">Donald Trump (2017-2021)</div>
-        <div class="card-role">Executive Power & Constitutional Crisis</div>
+        <div class="card-role">Executive Power & Constitutional Crisis - "I Have an Article II Where I Can Do Anything"</div>
         <ul class="facts">
-          <li><strong>January 6th incitement</strong>: Encouraged mob assault on Congress during electoral count</li>
-          <li><strong>Ukraine pressure campaign</strong>: Leveraged foreign aid for personal political benefit</li>
-          <li><strong>Emoluments violations</strong>: Profited from presidency through business interests</li>
-          <li><strong>Pardoning allies</strong>: Used pardon power to obstruct investigations of associates</li>
+          <li><strong>January 6th Insurrection Incitement</strong>: Incited mob to storm Capitol on January 6, 2021 to prevent certification of electoral votes. "Fight like hell or you won't have a country anymore." First president to refuse peaceful transfer of power. Direct attack on constitutional process and separation of powers. <a href="https://www.congress.gov/congressional-record/2021/1/6" target="_blank">[Congressional Record Jan 6]</a></li>
+          <li><strong>Ukraine Pressure Campaign</strong>: Withheld Congressionally-authorized military aid to Ukraine to pressure investigation of political rival (Biden). Violated appropriations clause, abuse of power, and foreign policy authority. Led to first impeachment by House of Representatives. <a href="https://intelligence.house.gov/uploadedfiles/the_trump-ukraine_impeachment_inquiry_report.pdf" target="_blank">[House Impeachment Report]</a></li>
+          <li><strong>Emoluments Clause Violations</strong>: Continued ownership of Trump Organization businesses while president, receiving payments from foreign governments at Trump hotels. Vice President Pence stayed at Trump properties in Ireland forcing detours. Violated Foreign and Domestic Emoluments Clauses (Art. I, Sec. 9 and Art. II, Sec. 1).</li>
+          <li><strong>Pardon Power Abuse</strong>: Pardoned associates to obstruct investigations - Michael Flynn (lied to FBI), Paul Manafort (tax fraud/conspiracy), Roger Stone (witness tampering), Steve Bannon (fraud). Used pardons to reward loyalty and silence witnesses rather than correct injustice.</li>
+          <li><strong>Border Wall Emergency Declaration</strong>: Declared national emergency to fund border wall after Congress refused appropriation. Violated separation of powers and appropriations clause. Supreme Court allowed some transfers but constitutional violation clear. Circumvented Congressional spending authority.</li>
+          <li><strong>Travel Ban Based on Religion</strong>: Banned travel from Muslim-majority countries violating 1st Amendment Establishment Clause and Equal Protection. Campaign statements showed religious animus ("Muslim ban"). Supreme Court upheld revised version but constitutional violation evident from discriminatory intent.</li>
+          <li><strong>Family Separation Policy</strong>: Separated 5,400+ migrant children from parents as deterrent policy without system to reunite families. Violated due process rights of children and parents. Many children remain separated. Federal judge ruled policy cruel and unconstitutional.</li>
+          <li><strong>Obstruction of Mueller Investigation</strong>: Attempted to fire Special Counsel Robert Mueller, directed staff to create false records, encouraged witnesses not to cooperate. Mueller Report documented 10+ instances of obstruction of justice. Violated separation of powers and rule of law.</li>
+          <li><strong>Abuse of Security Clearances</strong>: Granted security clearances to family members (Jared Kushner) over intelligence community objections. Revoked clearances of critics (John Brennan). Used classified access for political purposes rather than national security.</li>
+          <li><strong>Violation of Records Preservation</strong>: Routinely tore up official documents requiring staff to tape them back together to comply with Presidential Records Act. Took classified documents to Mar-a-Lago after leaving office. Obstructed FBI attempts to recover classified materials.</li>
+          <li><strong>Targeting Political Opponents</strong>: Pressured DOJ to investigate Hillary Clinton, James Comey, others. Asked FBI to drop Flynn investigation. Demanded loyalty from law enforcement officials. Violated prosecutorial independence and equal justice under law.</li>
+          <li><strong>Press Freedom Attacks</strong>: Called press "enemy of the people," threatened broadcast licenses, banned reporters from White House. Violated 1st Amendment press freedoms. Created climate of hostility toward constitutional role of free press.</li>
+          <li><strong>Hatch Act Violations</strong>: Used White House for Republican National Convention, conducted campaign activities from federal property. Multiple administration officials violated Hatch Act prohibiting political activity by federal employees.</li>
+          <li><strong>Census Citizenship Question</strong>: Attempted to add citizenship question to 2020 census to reduce count in Democratic areas for congressional redistricting. Supreme Court blocked as pretextual. Violated equal representation principles.</li>
+          <li><strong>Federal Officers in Portland</strong>: Deployed federal agents in unmarked vehicles to arrest protesters in Portland without local consent. Violated 10th Amendment federalism principles and due process rights. Used federal force against state objections.</li>
+          <li><strong>Lafayette Square Clearing</strong>: Ordered violent clearing of peaceful protesters from Lafayette Square for photo op at St. John's Church. Violated 1st Amendment right to peaceful protest. Military leaders criticized use of troops against civilians.</li>
+          <li><strong>Election Fraud Claims & Pressure Campaigns</strong>: Made false claims of election fraud, pressured state officials to "find votes" (Georgia Secretary of State call), pressured DOJ to declare election corrupt. Undermined democratic process and rule of law without evidence.</li>
+          <li><strong>Attempted Firing of Inspector General</strong>: Fired multiple inspectors general investigating administration misconduct without required Congressional notification. Violated inspector general independence and Congressional oversight authority.</li>
         </ul>
+        <div style="margin-top: 15px; padding: 10px; background: var(--danger); color: white; border-radius: 8px; font-size: 14px;">
+          <strong>Constitutional Analysis:</strong> Trump's presidency represented direct assault on constitutional government itself. First president to refuse peaceful transfer of power, incite violence against Congress, and claim unlimited executive authority. Combined authoritarian tendencies with unprecedented corruption and obstruction of constitutional processes.
+        </div>
       </div>
 
       <div class="card">
         <div class="card-title">Joe Biden (2021-present)</div>
-        <div class="card-role">COVID Response & Administrative State</div>
+        <div class="card-role">COVID Response & Administrative State - "The Constitution is Not a Suicide Pact"</div>
         <ul class="facts">
-          <li><strong>Vaccine mandates</strong>: Federal workplace requirements without clear Congressional authorization</li>
-          <li><strong>Eviction moratorium</strong>: Extended CDC authority beyond statutory limits</li>
-          <li><strong>Student loan forgiveness</strong>: Executive cancellation of debt without Congressional approval</li>
-          <li><strong>Afghanistan withdrawal</strong>: Unilateral military withdrawal without Congressional consultation</li>
+          <li><strong>COVID Vaccine Mandates</strong>: Required all federal employees and contractors to be vaccinated, attempted to require private employers with 100+ employees to mandate vaccines. No clear Congressional authorization for federal workplace medical mandates. Supreme Court blocked OSHA mandate. Violated bodily autonomy and religious liberty. <a href="https://supreme.justia.com/cases/federal/us/595/21a244/" target="_blank">[NFIB v. OSHA]</a></li>
+          <li><strong>Eviction Moratorium Extension</strong>: Extended CDC eviction moratorium after Supreme Court indicated it was unconstitutional and Biden admitted he lacked authority. Direct defiance of judicial authority. "The CDC has imposed a nationwide moratorium on evictions in excess of its existing legal authority." <a href="https://supreme.justia.com/cases/federal/us/594/21a23/" target="_blank">[Alabama Realtors v. HHS]</a></li>
+          <li><strong>Student Loan Forgiveness Program</strong>: Cancelled $400+ billion in student debt through executive action without Congressional appropriation. Supreme Court blocked program as exceeding executive authority in Biden v. Nebraska (2023). Attempted to circumvent congressional spending power through executive fiat. <a href="https://supreme.justia.com/cases/federal/us/600/22-506/" target="_blank">[Biden v. Nebraska]</a></li>
+          <li><strong>Afghanistan Withdrawal Disaster</strong>: Unilateral withdrawal from Afghanistan without Congressional consultation, ignoring military advice. 13 US servicemembers killed, thousands of Americans abandoned, $80+ billion in military equipment left for Taliban. Violated war powers consultation requirements.</li>
+          <li><strong>Border Crisis & Refusal to Enforce Immigration Law</strong>: Ended "Remain in Mexico" policy, stopped border wall construction, ceased deportations, allowed 6+ million illegal border crossings. Constitutional duty to "take care that the laws be faithfully executed" violated. Congress appropriated border security funds, Biden refused to spend.</li>
+          <li><strong>Domestic Surveillance Expansion</strong>: Continued NSA mass surveillance programs, expanded FISA court authority. DHS "Disinformation Governance Board" attempted to create federal ministry of truth before public backlash shut it down. Violated 1st and 4th Amendment rights.</li>
+          <li><strong>Classified Documents Retention</strong>: Stored classified documents in garage next to Corvette, University of Pennsylvania office for 6+ years as Vice President and private citizen. Different standard applied than to Trump. Equal justice under law violated.</li>
+          <li><strong>Strategic Petroleum Reserve Political Use</strong>: Released oil from emergency Strategic Petroleum Reserve for political purposes during midterm elections rather than genuine emergency. Violated congressional intent for reserve and separation of powers.</li>
+          <li><strong>Regulatory State Expansion</strong>: Issued 4,000+ pages of new regulations in first year, most in US history. EPA climate regulations, labor regulations, financial regulations without clear congressional authorization. Administrative state lawmaking without legislative branch.</li>
+          <li><strong>J6 Prisoner Political Persecution</strong>: DOJ prosecuted 1,000+ January 6th protesters while ignoring BLM rioters who caused $2+ billion damage. Two-tier justice system based on political views. Many held in solitary confinement for misdemeanors, violating 8th Amendment.</li>
+          <li><strong>Social Media Censorship Coordination</strong>: Administration coordinated with social media companies to censor COVID dissent, election questioning, conservative viewpoints. "White House flagged posts" for removal by Facebook/Twitter. Violated 1st Amendment through state action doctrine.</li>
+          <li><strong>Election Law Violations & Family Corruption</strong>: Hunter Biden laptop story suppressed before 2020 election through FBI/social media coordination. Biden family received millions from China, Ukraine while Joe was Vice President. Bribery and corruption allegations covered up by DOJ.</li>
+          <li><strong>Weaponization of DOJ Against Political Opponents</strong>: Authorized FBI raid on Trump's home, indictments of leading Republican presidential candidate. Appointed special prosecutor to investigate political rival while protecting son Hunter. Destroyed equal justice and prosecutorial independence.</li>
+          <li><strong>Energy Policy Without Congressional Authorization</strong>: Cancelled Keystone Pipeline costing thousands of jobs, ended energy leases on federal land, regulatory war against fossil fuels. Economic warfare against American energy without congressional authorization.</li>
+          <li><strong>Federal Employee Loyalty Tests</strong>: Required "diversity, equity, inclusion" training for all federal employees, military. Compelled speech violating 1st Amendment. Political ideology tests for government employment reminiscent of Communist loyalty oaths.</li>
+          <li><strong>Parental Rights Violations</strong>: DOJ/FBI investigated parents at school board meetings as "domestic terrorists." Teachers unions coordinated with White House to target concerned parents. Violated 1st Amendment petitioning and parental rights.</li>
+          <li><strong>Medical Tyranny During COVID</strong>: Federal masking requirements, travel restrictions, business closures through agency action. Violated religious liberty, freedom of assembly, due process. Emergency powers used for non-emergency political control.</li>
         </ul>
+        <div style="margin-top: 15px; padding: 10px; background: var(--danger); color: white; border-radius: 8px; font-size: 14px;">
+          <strong>Constitutional Analysis:</strong> Biden administration represents culmination of administrative state tyranny - rule by unelected bureaucrats through regulation rather than elected representatives through legislation. COVID emergency powers normalized authoritarian government. Weaponized justice system against political opponents while protecting family corruption.
+        </div>
       </div>
     </div>
   </section>
@@ -2181,218 +2461,295 @@ document.addEventListener('DOMContentLoaded', () => {
 
   <section id="scotus" class="section">
     <h2>Supreme Court Constitutional Subversion</h2>
+    
+    <div class="card">
+      <div class="card-title">Individual Justice Accountability</div>
+      <p>The Supreme Court's constitutional violations cannot be understood without examining individual justices who authored or supported egregious decisions. These profiles document specific justices responsible for major constitutional subversions, with quotes from their opinions and analysis of original constitutional meaning violated.</p>
+    </div>
+
+    <h3>Historical Violators (1789-1970)</h3>
     <div class="grid">
       <div class="card">
-        <div class="card-title">Marbury v. Madison (1803)</div>
-        <div class="card-role">Judicial Supremacy</div>
+        <div class="card-title">Chief Justice Roger Taney (1836-1864)</div>
+        <div class="card-role">Dred Scott Author - Constitutional Crisis Creator</div>
         <ul class="facts">
-          <li><strong>Judicial review</strong>: Court claimed power not in Constitution</li>
-          <li><strong>Constitutional interpretation</strong>: Made Court final arbiter</li>
-          <li><strong>Power grab</strong>: Expanded judicial power over other branches</li>
+          <li><strong>Dred Scott v. Sandford (1857)</strong>: Declared African Americans "had no rights which the white man was bound to respect"</li>
+          <li><strong>Constitutional violation</strong>: Ignored precedent where blacks voted in founding states; violated Article IV privileges/immunities</li>
+          <li><strong>Original meaning</strong>: Curtis dissent showed blacks were citizens in NH, MA, NY, NJ, NC at founding</li>
+          <li><strong>Judicial activism</strong>: Struck down Missouri Compromise without constitutional authority</li>
+          <li><strong>Racist jurisprudence</strong>: "It is difficult at this day to realize the state of public opinion in relation to that unfortunate race"</li>
+          <li><strong>Legacy</strong>: Decision overturned by 13th and 14th Amendments; considered worst Supreme Court decision</li>
         </ul>
-        <div class="links"><a href="https://supreme.justia.com/cases/federal/us/5/137/" target="_blank">Marbury v. Madison</a></div>
+        <div class="links"><a href="https://supreme.justia.com/cases/federal/us/60/393/" target="_blank">Dred Scott Decision</a> • <a href="https://www.archives.gov/milestone-documents/dred-scott-v-sandford" target="_blank">National Archives</a></div>
       </div>
 
       <div class="card">
-        <div class="card-title">McCulloch v. Maryland (1819)</div>
-        <div class="card-role">Implied Powers Expansion</div>
+        <div class="card-title">Justice Oliver Wendell Holmes Jr. (1902-1932)</div>
+        <div class="card-role">Speech Suppression & Eugenics Advocate</div>
         <ul class="facts">
-          <li><strong>Necessary and Proper</strong>: Vastly expanded federal power through loose construction</li>
-          <li><strong>National bank</strong>: Upheld federal corporation despite no enumerated power</li>
-          <li><strong>State taxation</strong>: "Power to tax is power to destroy" - federal supremacy</li>
-          <li><strong>Precedent</strong>: Enabled unlimited federal power expansion</li>
+          <li><strong>Schenck v. US (1919)</strong>: Created "clear and present danger" exception to First Amendment</li>
+          <li><strong>Famous quote</strong>: "Fire in a crowded theater" - used to justify criminalizing anti-war speech</li>
+          <li><strong>Buck v. Bell (1927)</strong>: Upheld forced sterilization - "Three generations of imbeciles are enough"</li>
+          <li><strong>Constitutional violation</strong>: 14th Amendment Due Process - "better for all the world" to sterilize "unfit"</li>
+          <li><strong>Eugenics endorsement</strong>: "Society can prevent those who are manifestly unfit from continuing their kind"</li>
+          <li><strong>Nuremberg connection</strong>: Buck v. Bell cited by Nazi defendants at war crimes trials</li>
+          <li><strong>Never overturned</strong>: Buck v. Bell remains good law; enabled 60,000+ forced sterilizations</li>
         </ul>
-        <div class="links"><a href="https://supreme.justia.com/cases/federal/us/17/316/" target="_blank">McCulloch v. Maryland</a></div>
+        <div class="links"><a href="https://supreme.justia.com/cases/federal/us/249/47/" target="_blank">Schenck v. US</a> • <a href="https://education.blogs.archives.gov/2017/05/02/buck-v-bell/" target="_blank">Buck v. Bell Archives</a></div>
       </div>
 
       <div class="card">
-        <div class="card-title">Dred Scott v. Sandford (1857)</div>
-        <div class="card-role">Racist Jurisprudence</div>
+        <div class="card-title">Justice Hugo Black (1937-1971)</div>
+        <div class="card-role">Korematsu Author - Wartime Racism Enabler</div>
         <ul class="facts">
-          <li><strong>Black citizenship</strong>: Ruled African Americans cannot be citizens</li>
-          <li><strong>Property rights</strong>: Declared slaves as property, not persons</li>
-          <li><strong>Congressional power</strong>: Struck down Missouri Compromise</li>
+          <li><strong>Korematsu v. US (1944)</strong>: Upheld Japanese internment despite "rigid scrutiny" standard</li>
+          <li><strong>Contradictory reasoning</strong>: "All legal restrictions which curtail civil rights of a single racial group are immediately suspect"</li>
+          <li><strong>Then justified racism</strong>: "Pressing public necessity may sometimes justify" racial restrictions</li>
+          <li><strong>Constitutional violation</strong>: 14th Amendment Equal Protection - no evidence of military necessity</li>
+          <li><strong>Military deference</strong>: "We cannot reject as unfounded the judgment of the military authorities"</li>
+          <li><strong>Murphy dissent</strong>: Called decision "legalization of racism" falling into "ugly abyss"</li>
+          <li><strong>Later recognition</strong>: Roberts (2018): "Korematsu was gravely wrong the day it was decided"</li>
         </ul>
-        <div class="links"><a href="https://supreme.justia.com/cases/federal/us/60/393/" target="_blank">Dred Scott Decision</a></div>
+        <div class="links"><a href="https://supreme.justia.com/cases/federal/us/323/214/" target="_blank">Korematsu v. US</a> • <a href="https://constitutioncenter.org/the-constitution/supreme-court-case-library/korematsu-v-united-states" target="_blank">Constitution Center</a></div>
+      </div>
+    </div>
+    
+    <h3>Warren Court Revolutionaries (1953-1969)</h3>
+    <div class="grid">
+      <div class="card">
+        <div class="card-title">Chief Justice Earl Warren (1953-1969)</div>
+        <div class="card-role">Constitutional Revolution Leader</div>
+        <ul class="facts">
+          <li><strong>Warren Court legacy</strong>: "Most liberal Supreme Court in US history" - unprecedented judicial activism</li>
+          <li><strong>Miranda v. Arizona (1966)</strong>: Created police warning requirements not in Constitution</li>
+          <li><strong>Reynolds v. Sims (1964)</strong>: Imposed "one person, one vote" on states via 14th Amendment</li>
+          <li><strong>Constitutional violation</strong>: Article IV, Section 4 guarantees "Republican Form of Government" to states</li>
+          <li><strong>Judicial philosophy</strong>: "Duty of Court to rectify individual instances of injustice"</li>
+          <li><strong>Separation of powers</strong>: Court assumed legislative functions in criminal justice, voting rights</li>
+          <li><strong>Conservative criticism</strong>: Accused of "activist decisions that tested boundaries of judicial power"</li>
+        </ul>
+        <div class="links"><a href="https://supreme.justia.com/supreme-court-history/warren-court/" target="_blank">Warren Court History</a></div>
       </div>
 
       <div class="card">
-        <div class="card-title">Slaughter-House Cases (1873)</div>
-        <div class="card-role">14th Amendment Gutting</div>
+        <div class="card-title">Justice William Brennan (1956-1990)</div>
+        <div class="card-role">Liberal Activism Architect</div>
         <ul class="facts">
-          <li><strong>Privileges or Immunities</strong>: Rendered clause meaningless</li>
-          <li><strong>Corporate monopoly</strong>: Upheld state-granted monopoly power</li>
-          <li><strong>Individual rights</strong>: Limited federal protection of citizens</li>
+          <li><strong>New York Times v. Sullivan (1964)</strong>: Created "actual malice" standard from nowhere in Constitution</li>
+          <li><strong>Quote from opinion</strong>: "Debate on public issues should be uninhibited, robust and wide-open"</li>
+          <li><strong>Baker v. Carr (1962)</strong>: Made redistricting justiciable - judicial takeover of elections</li>
+          <li><strong>Establishment Clause extremism</strong>: Applied Lemon test to ban religious expression</li>
+          <li><strong>Constitutional violation</strong>: First Amendment meant to protect religion, not create hostility</li>
+          <li><strong>Behind-scenes manipulation</strong>: "Coaxed conservative colleagues" to join liberal decisions</li>
+          <li><strong>Judicial philosophy</strong>: Consistently emphasized "expanding individual rights" through broad interpretation</li>
         </ul>
-        <div class="links"><a href="https://supreme.justia.com/cases/federal/us/83/36/" target="_blank">Slaughter-House Cases</a></div>
+        <div class="links"><a href="https://supreme.justia.com/cases/federal/us/376/254/" target="_blank">NY Times v. Sullivan</a></div>
       </div>
+    </div>
 
+    <h3>Contemporary Violators (1970-Present)</h3>
+    <div class="grid">
       <div class="card">
-        <div class="card-title">Plessy v. Ferguson (1896)</div>
-        <div class="card-role">Separate but Equal</div>
+        <div class="card-title">Justice Harry Blackmun (1970-1994)</div>
+        <div class="card-role">Roe v. Wade Author - Privacy Right Fabricator</div>
         <ul class="facts">
-          <li><strong>Racial segregation</strong>: "Separate but equal" doctrine for 58 years</li>
-          <li><strong>Equal protection</strong>: Gutted 14th Amendment equal protection clause</li>
-          <li><strong>Jim Crow</strong>: Legal foundation for Southern apartheid system</li>
-        </ul>
-        <div class="links"><a href="https://supreme.justia.com/cases/federal/us/163/537/" target="_blank">Plessy v. Ferguson</a></div>
-      </div>
-
-      <div class="card">
-        <div class="card-title">Schenck v. US (1919)</div>
-        <div class="card-role">Speech Suppression</div>
-        <ul class="facts">
-          <li><strong>Clear and present danger</strong>: Created exception to First Amendment</li>
-          <li><strong>Anti-war speech</strong>: Criminalized opposition to WWI</li>
-          <li><strong>Wartime precedent</strong>: Established government power to censor</li>
-        </ul>
-        <div class="links"><a href="https://supreme.justia.com/cases/federal/us/249/47/" target="_blank">Schenck v. US</a></div>
-      </div>
-
-      <div class="card">
-        <div class="card-title">Wickard v. Filburn (1942)</div>
-        <div class="card-role">Commerce Clause Expansion</div>
-        <ul class="facts">
-          <li><strong>Growing wheat</strong>: Regulated farmer's personal consumption</li>
-          <li><strong>Interstate commerce</strong>: Expanded beyond recognition</li>
-          <li><strong>Federal power</strong>: Justified unlimited Congressional authority</li>
-        </ul>
-        <div class="links"><a href="https://supreme.justia.com/cases/federal/us/317/111/" target="_blank">Wickard v. Filburn</a></div>
-      </div>
-
-      <div class="card">
-        <div class="card-title">Korematsu v. US (1944)</div>
-        <div class="card-role">Wartime Racism</div>
-        <ul class="facts">
-          <li><strong>Japanese internment</strong>: Upheld racist detention program</li>
-          <li><strong>Military necessity</strong>: Deferred to executive without evidence</li>
-          <li><strong>Equal protection</strong>: Ignored 14th Amendment violations</li>
-        </ul>
-        <div class="links"><a href="https://supreme.justia.com/cases/federal/us/323/214/" target="_blank">Korematsu v. US</a></div>
-      </div>
-
-      <div class="card">
-        <div class="card-title">Youngstown v. Sawyer (1952)</div>
-        <div class="card-role">Rare Presidential Rejection</div>
-        <ul class="facts">
-          <li><strong>Steel seizure</strong>: Struck down Truman's steel industry takeover</li>
-          <li><strong>Executive limits</strong>: Rare case limiting presidential power</li>
-          <li><strong>War powers</strong>: Executive cannot seize private property without Congressional approval</li>
-        </ul>
-        <div class="links"><a href="https://supreme.justia.com/cases/federal/us/343/579/" target="_blank">Youngstown v. Sawyer</a></div>
-      </div>
-
-      <div class="card">
-        <div class="card-title">Heart of Atlanta Motel v. US (1964)</div>
-        <div class="card-role">Commerce Clause Abuse</div>
-        <ul class="facts">
-          <li><strong>Civil Rights Act</strong>: Used Commerce Clause rather than 14th Amendment</li>
-          <li><strong>Private business</strong>: Federal control over private property</li>
-          <li><strong>Good ends, bad means</strong>: Expanded federal power through constitutional distortion</li>
-        </ul>
-        <div class="links"><a href="https://supreme.justia.com/cases/federal/us/379/241/" target="_blank">Heart of Atlanta Motel v. US</a></div>
-      </div>
-
-      <div class="card">
-        <div class="card-title">Roe v. Wade (1973)</div>
-        <div class="card-role">Judicial Legislation</div>
-        <ul class="facts">
-          <li><strong>Privacy right</strong>: Created constitutional right from "penumbras"</li>
-          <li><strong>Legislative function</strong>: Court imposed detailed regulatory scheme</li>
-          <li><strong>State power</strong>: Struck down democratically-enacted laws</li>
-          <li><strong>Overturned 2022</strong>: Dobbs v. Jackson returned issue to states</li>
+          <li><strong>Roe v. Wade (1973)</strong>: Created abortion right from "penumbras" and "emanations"</li>
+          <li><strong>Constitutional violation</strong>: No privacy right in Constitution - invented from "roots" in various amendments</li>
+          <li><strong>Judicial legislation</strong>: Imposed detailed regulatory scheme on states</li>
+          <li><strong>Textual indifference</strong>: Blackmun's clerk: "borders on the indefensible... essentially no reasoning"</li>
+          <li><strong>Roberts critique</strong>: "No support in text, structure, or history of Constitution"</li>
+          <li><strong>William Saletan</strong>: "Blackmun's papers vindicate every indictment of Roe: invention, overreach, arbitrariness"</li>
+          <li><strong>Overturned 2022</strong>: Dobbs v. Jackson returned abortion to democratic process</li>
         </ul>
         <div class="links"><a href="https://supreme.justia.com/cases/federal/us/410/113/" target="_blank">Roe v. Wade</a></div>
       </div>
 
       <div class="card">
-        <div class="card-title">Kelo v. New London (2005)</div>
-        <div class="card-role">Property Rights Violation</div>
+        <div class="card-title">Justice Anthony Kennedy (1988-2018)</div>
+        <div class="card-role">Swing Vote Constitutional Violator</div>
         <ul class="facts">
-          <li><strong>Eminent domain</strong>: Expanded to private development</li>
-          <li><strong>Public use</strong>: Redefined as "public benefit"</li>
-          <li><strong>Corporate welfare</strong>: Enabled seizure for private profit</li>
+          <li><strong>Lawrence v. Texas (2003)</strong>: Struck down sodomy laws via substantive due process</li>
+          <li><strong>Obergefell v. Hodges (2015)</strong>: Redefined marriage via 14th Amendment</li>
+          <li><strong>Kennedy quote</strong>: Same-sex couples ask for "equal dignity in the eyes of the law. The Constitution grants them that right"</li>
+          <li><strong>Constitutional violation</strong>: No marriage definition in Constitution - reserved to states under 10th Amendment</li>
+          <li><strong>Judicial activism</strong>: "Right to marry is fundamental right inherent in liberty"</li>
+          <li><strong>Original meaning</strong>: Marriage understood as man-woman union at 14th Amendment ratification (1868)</li>
+          <li><strong>Democratic process</strong>: Overrode voter-approved marriage amendments in multiple states</li>
+        </ul>
+        <div class="links"><a href="https://supreme.justia.com/cases/federal/us/576/644/" target="_blank">Obergefell v. Hodges</a></div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Justice David Souter (1990-2009)</div>
+        <div class="card-role">Conservative Disappointment - Secret Liberal</div>
+        <ul class="facts">
+          <li><strong>Bush appointment failure</strong>: John Sununu assured Bush Souter would be "home run" for conservatism</li>
+          <li><strong>Liberal evolution</strong>: "By late 1990s began to align with liberal justices"</li>
+          <li><strong>Planned Parenthood v. Casey (1992)</strong>: Secretly worked with O'Connor and Kennedy to preserve Roe</li>
+          <li><strong>Joint opinion quote</strong>: "To overrule under fire... would subvert the Court's legitimacy"</li>
+          <li><strong>Constitutional areas</strong>: Reliable liberal vote on "affirmative action, gay rights, church-state, death penalty"</li>
+          <li><strong>Conservative mantra</strong>: "No more Souters" became rallying cry after liberal voting record</li>
+          <li><strong>Stealth justice</strong>: Minimal paper trail concealed true judicial philosophy from confirmation process</li>
+        </ul>
+        <div class="links"><a href="https://www.oyez.org/justices/david_h_souter" target="_blank">Souter Biography</a></div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Justice John Paul Stevens (1975-2010)</div>
+        <div class="card-role">Kelo Author - Property Rights Destroyer</div>
+        <ul class="facts">
+          <li><strong>Kelo v. New London (2005)</strong>: Expanded eminent domain to private development</li>
+          <li><strong>Stevens reasoning</strong>: "General benefits the community would enjoy from economic growth qualified as 'public use'"</li>
+          <li><strong>Constitutional violation</strong>: 5th Amendment requires "public use" - not private benefit</li>
+          <li><strong>Redefinition</strong>: Changed "public use" to "public purpose" - "broader and more natural interpretation"</li>
+          <li><strong>Later admission</strong>: Stevens called Kelo "most unpopular opinion" and use "unwise"</li>
+          <li><strong>State backlash</strong>: 47 states strengthened eminent domain laws, 12 amended constitutions</li>
+          <li><strong>Corporate welfare</strong>: Enabled seizure of homes for private profit - "government's 'right' to seize land for private use"</li>
         </ul>
         <div class="links"><a href="https://supreme.justia.com/cases/federal/us/545/469/" target="_blank">Kelo v. New London</a></div>
       </div>
 
       <div class="card">
-        <div class="card-title">NFIB v. Sebelius (2012)</div>
-        <div class="card-role">Obamacare Taxation Dodge</div>
+        <div class="card-title">Chief Justice John Roberts (2005-present)</div>
+        <div class="card-role">NFIB Author - Tax Power Expander</div>
         <ul class="facts">
-          <li><strong>Individual mandate</strong>: Ruled penalty is actually a "tax"</li>
-          <li><strong>Commerce Clause</strong>: Rejected commerce power but upheld via taxation</li>
-          <li><strong>Constitutional gymnastics</strong>: Rewrote law to save it</li>
+          <li><strong>NFIB v. Sebelius (2012)</strong>: Saved Obamacare by rewriting law as "tax"</li>
+          <li><strong>Commerce Clause rejection</strong>: "Cannot order individuals to engage in" commerce</li>
+          <li><strong>Tax power expansion</strong>: "Reasonable to construe what Congress has done as increasing taxes"</li>
+          <li><strong>Constitutional violation</strong>: Congress called it "penalty" - Roberts rewrote as "tax"</li>
+          <li><strong>Judicial rewriting</strong>: "Constitutional gymnastics" to save unconstitutional law</li>
+          <li><strong>Roberts quote</strong>: "Court does not express any opinion on the wisdom of the Affordable Care Act"</li>
+          <li><strong>Separation of powers</strong>: Court saved law Congress couldn't pass under Commerce Clause</li>
         </ul>
         <div class="links"><a href="https://supreme.justia.com/cases/federal/us/567/519/" target="_blank">NFIB v. Sebelius</a></div>
       </div>
+    </div>
 
+    <h3>Constitutional Defenders - Originalist Dissenters</h3>
+    <div class="grid">
       <div class="card">
-        <div class="card-title">Citizens United v. FEC (2010)</div>
-        <div class="card-role">Corporate Speech Rights</div>
+        <div class="card-title">Justice John Marshall Harlan I (1877-1911)</div>
+        <div class="card-role">The Great Dissenter - Constitutional Prophet</div>
         <ul class="facts">
-          <li><strong>Corporate personhood</strong>: Extended First Amendment to corporations</li>
-          <li><strong>Political spending</strong>: Unlimited corporate election spending</li>
-          <li><strong>Regulatory capture</strong>: Enhanced corporate political influence</li>
+          <li><strong>Plessy v. Ferguson (1896)</strong>: Lone dissenter against "separate but equal"</li>
+          <li><strong>Prophetic quote</strong>: "Our Constitution is color-blind and neither knows nor tolerates classes among citizens"</li>
+          <li><strong>Constitutional principle</strong>: "In respect of civil rights, all citizens are equal before the law"</li>
+          <li><strong>Later vindication</strong>: Brown v. Board (1954) adopted Harlan's reasoning</li>
+          <li><strong>Thomas admiration</strong>: "Content with frequently being a minority of one, he points to Justice Harlan's lone dissent as his model"</li>
+          <li><strong>Historical accuracy</strong>: Correctly understood 14th Amendment's original meaning</li>
+          <li><strong>Judicial courage</strong>: Willing to stand alone for constitutional principle</li>
         </ul>
-        <div class="links"><a href="https://supreme.justia.com/cases/federal/us/558/310/" target="_blank">Citizens United v. FEC</a></div>
+        <div class="links"><a href="https://thinkwy.org/columns/justice-harlans-imperishable-dissent-in-plessy-v-ferguson/" target="_blank">Harlan's Plessy Dissent</a></div>
       </div>
 
       <div class="card">
-        <div class="card-title">Department of Homeland Security v. Regents (2020)</div>
-        <div class="card-role">Administrative State Protection</div>
+        <div class="card-title">Justice Antonin Scalia (1986-2016)</div>
+        <div class="card-role">Textualist Constitutional Defender</div>
         <ul class="facts">
-          <li><strong>DACA</strong>: Protected Obama's unconstitutional executive amnesty</li>
-          <li><strong>Procedural grounds</strong>: Blocked Trump reversal on technical grounds</li>
-          <li><strong>Executive power</strong>: Presidents can create programs successors cannot easily end</li>
+          <li><strong>Judicial philosophy</strong>: "I'm an originalist and a textualist, not a nut"</li>
+          <li><strong>Constitutional interpretation</strong>: Text means what it meant when adopted</li>
+          <li><strong>Thomas relationship</strong>: Aligned with Thomas in 92% of cases during first 13 years</li>
+          <li><strong>Precedent skepticism</strong>: Called Thomas "bloodthirsty originalist" who "does not believe in stare decisis"</li>
+          <li><strong>Notable dissents</strong>: Consistently opposed judicial activism and living constitution</li>
+          <li><strong>Second Amendment</strong>: Authored Heller (2008) restoring individual right interpretation</li>
+          <li><strong>Legacy</strong>: Influenced generation of judges toward originalist interpretation</li>
         </ul>
-        <div class="links"><a href="https://supreme.justia.com/cases/federal/us/591/18-587/" target="_blank">DHS v. Regents</a></div>
+        <div class="links"><a href="https://supreme.justia.com/justices/antonin-scalia/" target="_blank">Scalia Biography</a></div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Justice Clarence Thomas (1991-present)</div>
+        <div class="card-role">Originalist Constitutional Excavator</div>
+        <ul class="facts">
+          <li><strong>Judicial philosophy</strong>: "Most unwavering originalist" - Constitution means what founders meant</li>
+          <li><strong>Thomas quote</strong>: "Something has gone seriously awry with this Court's interpretation of the Constitution"</li>
+          <li><strong>Commerce Clause</strong>: "Constitution does not contain a negative Commerce Clause"</li>
+          <li><strong>Wickard criticism</strong>: Dissent in Gonzales v. Raich hints at overturning Wickard v. Filburn</li>
+          <li><strong>Precedent hostility</strong>: "Most willing of all justices to overrule precedent"</li>
+          <li><strong>Harlan model</strong>: "Drawing a map for future justices" like Harlan's Plessy dissent</li>
+          <li><strong>Constitutional restoration</strong>: "Determined to right the record" and restore original meaning</li>
+        </ul>
+        <div class="links"><a href="https://justicethomas.com/jurisprudence/decisions/" target="_blank">Thomas Decisions</a></div>
       </div>
     </div>
-  </section>
 
+    <h3>Systematic Constitutional Violations by Area</h3>
+    <div class="grid">
       <div class="card">
-        <div class="card-title">Korematsu v. US (1944)</div>
-        <div class="card-role">Wartime Racism</div>
+        <div class="card-title">Commerce Clause Systematic Violations</div>
+        <div class="card-role">From Interstate Commerce to Unlimited Federal Power</div>
         <ul class="facts">
-          <li><strong>Japanese internment</strong>: Upheld racist detention program</li>
-          <li><strong>Military necessity</strong>: Deferred to executive without evidence</li>
-          <li><strong>Equal protection</strong>: Ignored 14th Amendment violations</li>
+          <li><strong>Gibbons v. Ogden (1824)</strong>: Marshall expanded commerce to "every species of commercial intercourse"</li>
+          <li><strong>Wickard v. Filburn (1942)</strong>: Regulated farmer growing wheat for own livestock</li>
+          <li><strong>"Substantial effect" test</strong>: "Cumulative actions of thousands of farmers" justifies regulation</li>
+          <li><strong>Heart of Atlanta Motel (1964)</strong>: Applied commerce power to private discrimination</li>
+          <li><strong>Constitutional violation</strong>: Original meaning limited to actual interstate trade</li>
+          <li><strong>Aggregation principle</strong>: Individual trivial effects become "substantial" in aggregate</li>
+          <li><strong>Lopez (1995) recognition</strong>: "Perhaps most far reaching example" of Commerce Clause authority</li>
+          <li><strong>Result</strong>: Commerce Clause became general police power - unlimited federal regulation</li>
         </ul>
-        <div class="links"><a href="https://supreme.justia.com/cases/federal/us/323/214/" target="_blank">Korematsu v. US</a></div>
+        <div class="links"><a href="https://supreme.justia.com/cases/federal/us/317/111/" target="_blank">Wickard v. Filburn</a> • <a href="https://www.law.cornell.edu/wex/commerce_clause" target="_blank">Commerce Clause Overview</a></div>
       </div>
 
       <div class="card">
-        <div class="card-title">Schenck v. US (1919)</div>
-        <div class="card-role">Speech Suppression</div>
+        <div class="card-title">Due Process & 14th Amendment Systematic Violations</div>
+        <div class="card-role">From Privileges/Immunities Destruction to Substantive Due Process Abuse</div>
         <ul class="facts">
-          <li><strong>Clear and present danger</strong>: Created exception to First Amendment</li>
-          <li><strong>Anti-war speech</strong>: Criminalized opposition to WWI</li>
-          <li><strong>Wartime precedent</strong>: Established government power to censor</li>
+          <li><strong>Slaughter-House Cases (1873)</strong>: "Gutted" Privileges or Immunities Clause</li>
+          <li><strong>Scholarly consensus</strong>: Akhil Amar - "virtually no serious modern scholar thinks plausible reading"</li>
+          <li><strong>Constitutional violation</strong>: 14th Amendment meant to protect substantive rights against states</li>
+          <li><strong>Lochner Era (1897-1937)</strong>: Overcompensated with economic substantive due process</li>
+          <li><strong>Lochner v. New York (1905)</strong>: "Freedom of contract" struck down worker protection laws</li>
+          <li><strong>Modern substantive due process</strong>: Created unenumerated rights (privacy, marriage, etc.)</li>
+          <li><strong>Result</strong>: Court assumes legislative function - creates rights not in Constitution</li>
         </ul>
-        <div class="links"><a href="https://supreme.justia.com/cases/federal/us/249/47/" target="_blank">Schenck v. US</a></div>
+        <div class="links"><a href="https://supreme.justia.com/cases/federal/us/83/36/" target="_blank">Slaughter-House Cases</a> • <a href="https://www.law.cornell.edu/constitution-conan/amendment-5/lochner-era-economic-substantive-due-process" target="_blank">Lochner Era</a></div>
       </div>
 
       <div class="card">
-        <div class="card-title">Wickard v. Filburn (1942)</div>
-        <div class="card-role">Commerce Clause Expansion</div>
+        <div class="card-title">Establishment Clause Systematic Violations</div>
+        <div class="card-role">From Religious Protection to Anti-Religious Hostility</div>
         <ul class="facts">
-          <li><strong>Growing wheat</strong>: Regulated farmer's personal consumption</li>
-          <li><strong>Interstate commerce</strong>: Expanded beyond recognition</li>
-          <li><strong>Federal power</strong>: Justified unlimited Congressional authority</li>
+          <li><strong>Everson v. Board (1947)</strong>: Hugo Black created "wall of separation" doctrine</li>
+          <li><strong>Constitutional violation</strong>: First Amendment meant to protect religion from government</li>
+          <li><strong>"No aid" doctrine</strong>: "No tax in any amount can be levied to support religious activities"</li>
+          <li><strong>Lemon v. Kurtzman (1971)</strong>: Three-part test created judicial hostility to religion</li>
+          <li><strong>Lemon test</strong>: Secular purpose, no religious effect, no excessive entanglement</li>
+          <li><strong>Original meaning</strong>: Amendment prohibited federal establishment, not state accommodation</li>
+          <li><strong>Kennedy v. Bremerton (2022)</strong>: Finally abandoned Lemon test for historical understanding</li>
+          <li><strong>Result</strong>: Decades of anti-religious bias violating original First Amendment meaning</li>
         </ul>
-        <div class="links"><a href="https://supreme.justia.com/cases/federal/us/317/111/" target="_blank">Wickard v. Filburn</a></div>
+        <div class="links"><a href="https://supreme.justia.com/cases/federal/us/330/1/" target="_blank">Everson v. Board</a> • <a href="https://supreme.justia.com/cases/federal/us/403/602/" target="_blank">Lemon v. Kurtzman</a></div>
       </div>
 
       <div class="card">
-        <div class="card-title">Kelo v. New London (2005)</div>
-        <div class="card-role">Property Rights Violation</div>
+        <div class="card-title">Property Rights Systematic Violations</div>
+        <div class="card-role">From Public Use to Private Benefit</div>
         <ul class="facts">
-          <li><strong>Eminent domain</strong>: Expanded to private development</li>
-          <li><strong>Public use</strong>: Redefined as "public benefit"</li>
-          <li><strong>Corporate welfare</strong>: Enabled seizure for private profit</li>
+          <li><strong>Kelo v. New London (2005)</strong>: Stevens expanded "public use" to "public benefit"</li>
+          <li><strong>Constitutional violation</strong>: 5th Amendment requires actual "public use" - not economic development</li>
+          <li><strong>Stevens reasoning</strong>: "Broader and more natural interpretation of public use as 'public purpose'"</li>
+          <li><strong>Corporate welfare</strong>: Enabled seizure of homes for private developers</li>
+          <li><strong>State backlash</strong>: 47 states strengthened eminent domain laws after public outrage</li>
+          <li><strong>Historical understanding</strong>: "Public use" meant government or public access (roads, schools)</li>
+          <li><strong>Result</strong>: Property rights subordinated to economic development schemes</li>
         </ul>
         <div class="links"><a href="https://supreme.justia.com/cases/federal/us/545/469/" target="_blank">Kelo v. New London</a></div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Separation of Powers Systematic Violations</div>
+        <div class="card-role">Judicial Supremacy Over Democratic Process</div>
+        <ul class="facts">
+          <li><strong>Marbury v. Madison (1803)</strong>: Marshall claimed judicial review power not in Constitution</li>
+          <li><strong>Baker v. Carr (1962)</strong>: Brennan made redistricting justiciable - judicial takeover of elections</li>
+          <li><strong>Roe v. Wade (1973)</strong>: Blackmun imposed detailed abortion regulations via court decree</li>
+          <li><strong>Obergefell v. Hodges (2015)</strong>: Kennedy redefined marriage despite voter-approved amendments</li>
+          <li><strong>Constitutional violation</strong>: Article III limits courts to "judicial Power" - not legislative</li>
+          <li><strong>Democratic process</strong>: Court routinely overrides popular votes and elected legislatures</li>
+          <li><strong>Result</strong>: Judicial oligarchy - 9 unelected lawyers make policy for 330 million Americans</li>
+        </ul>
+        <div class="links"><a href="https://supreme.justia.com/cases/federal/us/5/137/" target="_blank">Marbury v. Madison</a></div>
       </div>
     </div>
   </section>
@@ -2725,10 +3082,17 @@ document.addEventListener('DOMContentLoaded', () => {
     </div>
 
     <div class="card">
-      <div class="card-title">Judicial Complicity</div>
-      <p>The Supreme Court consistently defers to executive power during crises, often overturning protections decades later when damage is done. Court acts as legitimizer rather than check.</p>
-      <p><strong>Pattern</strong>: Wartime deference → Peacetime reversal → Next crisis deference</p>
-      <p><strong>Monetary Deference</strong>: Court refuses to address Fed's constitutional violations, treating monetary policy as "political question" beyond judicial review.</p>
+      <div class="card-title">Individual Justice Accountability for Constitutional Subversion</div>
+      <p>Constitutional violations cannot be understood without examining specific justices who authored egregious decisions. From Taney's Dred Scott racism to Blackmun's Roe fabrication to Roberts' Obamacare rewrite, individual justices bear direct responsibility for constitutional destruction.</p>
+      <p><strong>Pattern</strong>: Bad justices appointed → Constitution violated → Precedent entrenched → More violations follow</p>
+      <p><strong>Originalist Response</strong>: Thomas, Scalia, and Harlan show constitutional restoration possible through principled originalist interpretation and willingness to overturn bad precedent.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Judicial Supremacy and Democratic Destruction</div>
+      <p>The Supreme Court has transformed from a co-equal branch interpreting law into a judicial oligarchy imposing policy on the nation. Nine unelected lawyers routinely override popular votes, elected legislatures, and constitutional amendments.</p>
+      <p><strong>Examples</strong>: Roe imposed abortion policy → Obergefell redefined marriage → NFIB rewrote healthcare law</p>
+      <p><strong>Constitutional Solution</strong>: Return Court to Article III "judicial Power" - interpreting law, not making it</p>
     </div>
 
     <div class="card">
@@ -2791,6 +3155,8 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="card-title">Legal Sources</div>
         <ul class="facts">
           <li><a href="https://supreme.justia.com/" target="_blank">Supreme Court Cases</a> - Full text decisions</li>
+          <li><a href="https://justicethomas.com/jurisprudence/decisions/" target="_blank">Justice Thomas Decisions</a> - Originalist constitutional interpretation</li>
+          <li><a href="https://constitutioncenter.org/the-constitution/supreme-court-case-library/" target="_blank">Constitution Center Case Library</a> - Supreme Court case analysis</li>
           <li><a href="https://www.loc.gov/law/" target="_blank">Library of Congress Law</a> - Historical legal documents</li>
           <li><a href="https://avalon.law.yale.edu/" target="_blank">Avalon Project</a> - Historical documents</li>
           <li><a href="https://constitutioncenter.org/" target="_blank">Constitution Center</a> - Constitutional analysis</li>
