@@ -777,6 +777,10 @@ function filterTimeline() {
   if (val === 'all') {
     [...timelineItems, ...presidentCards, ...congressCards, ...scotusCards, ...programCards, ...federalReserveCards, ...corporatismCards, ...imperialismCards].forEach(el => {
       el.style.display = '';
+      // Reset any highlighting
+      el.style.border = '';
+      el.style.boxShadow = '';
+      el.style.backgroundColor = '';
     });
     return;
   }
@@ -795,46 +799,85 @@ function filterTimeline() {
     }
   });
   
-  // Filter president cards
+  // Filter president cards with highlighting
   presidentCards.forEach(el => {
     el.style.display = '';
+    el.style.border = ''; // Reset any previous highlighting
+    el.style.boxShadow = '';
+    el.style.backgroundColor = '';
+    
     const titleElement = el.querySelector('.card-title');
     if (!titleElement) return;
     const title = titleElement.textContent.toLowerCase();
-    if (!title.includes(filterName.toLowerCase()) && !doesCardMatchFilter(el, filterName)) {
+    
+    if (title.includes(filterName.toLowerCase()) || doesCardMatchFilter(el, filterName)) {
+      // Highlight the matching president's card
+      el.style.border = '3px solid #007bff';
+      el.style.boxShadow = '0 4px 12px rgba(0, 123, 255, 0.3)';
+      el.style.backgroundColor = 'rgba(0, 123, 255, 0.05)';
+    } else {
       el.style.display = 'none';
     }
   });
   
-  // Filter congress cards
+  // Filter congress cards with highlighting
   congressCards.forEach(el => {
     el.style.display = '';
+    el.style.border = ''; // Reset any previous highlighting
+    el.style.boxShadow = '';
+    el.style.backgroundColor = '';
+    
     const titleElement = el.querySelector('.card-title');
     if (!titleElement) return;
     const title = titleElement.textContent.toLowerCase();
-    if (!title.includes(filterName.toLowerCase()) && !doesCardMatchFilter(el, filterName)) {
+    
+    if (title.includes(filterName.toLowerCase()) || doesCardMatchFilter(el, filterName)) {
+      // Highlight the matching congress card
+      el.style.border = '3px solid #28a745';
+      el.style.boxShadow = '0 4px 12px rgba(40, 167, 69, 0.3)';
+      el.style.backgroundColor = 'rgba(40, 167, 69, 0.05)';
+    } else {
       el.style.display = 'none';
     }
   });
   
-  // Filter Supreme Court cards
+  // Filter Supreme Court cards with highlighting
   scotusCards.forEach(el => {
     el.style.display = '';
+    el.style.border = ''; // Reset any previous highlighting
+    el.style.boxShadow = '';
+    el.style.backgroundColor = '';
+    
     const titleElement = el.querySelector('.card-title');
     if (!titleElement) return;
     const title = titleElement.textContent.toLowerCase();
-    if (!title.includes(filterName.toLowerCase()) && !doesCardMatchFilter(el, filterName)) {
+    
+    if (title.includes(filterName.toLowerCase()) || doesCardMatchFilter(el, filterName)) {
+      // Highlight the matching Supreme Court card
+      el.style.border = '3px solid #dc3545';
+      el.style.boxShadow = '0 4px 12px rgba(220, 53, 69, 0.3)';
+      el.style.backgroundColor = 'rgba(220, 53, 69, 0.05)';
+    } else {
       el.style.display = 'none';
     }
   });
   
-  // Filter other sections
+  // Filter other sections with highlighting
   [...programCards, ...federalReserveCards, ...corporatismCards, ...imperialismCards].forEach(el => {
     el.style.display = '';
+    el.style.border = ''; // Reset any previous highlighting
+    el.style.boxShadow = '';
+    el.style.backgroundColor = '';
+    
     const titleElement = el.querySelector('.card-title');
     if (titleElement) {
       const title = titleElement.textContent.toLowerCase();
-      if (!title.includes(filterName.toLowerCase()) && !doesCardMatchFilter(el, filterName)) {
+      if (title.includes(filterName.toLowerCase()) || doesCardMatchFilter(el, filterName)) {
+        // Highlight the matching card with orange color for other sections
+        el.style.border = '3px solid #fd7e14';
+        el.style.boxShadow = '0 4px 12px rgba(253, 126, 20, 0.3)';
+        el.style.backgroundColor = 'rgba(253, 126, 20, 0.05)';
+      } else {
         el.style.display = 'none';
       }
     }
