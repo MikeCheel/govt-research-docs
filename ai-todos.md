@@ -243,6 +243,28 @@ When resuming work:
   - ✅ Connection to broader patterns of executive overreach established
   - ⏳ **CRITICAL**: Ensure ALL 46 presidents have minimum 3+ detailed constitutional violations with sources
 
+### ⏳ **PENDING**: Upgrade All HTML Pages with Advanced Filtering System (2025-09-01)
+- **Status**: Pending
+- **Description**: Upgrade all HTML pages in the repository to have the same advanced filtering system with highlighting that was implemented in US_Constitutional_Subversion.html
+- **Scope**:
+  - **Ratification_Counterrevolution.html**: Upgrade from basic timeline filtering to full advanced system with highlighting
+  - **Trump_Ideology_Analysis.html**: Add complete filtering system if content structure supports it
+  - **DUI_Prevention_Analysis.html**: Add complete filtering system if content structure supports it
+  - **index.html**: Add filtering for document navigation if applicable
+- **Requirements for Each Page**:
+  - Implement enhanced filterTimeline() function with color-coded highlighting
+  - Add section card filtering beyond just timeline items
+  - Implement visual highlighting system with appropriate colors for each page's content
+  - Add "Show All" reset functionality with highlighting cleanup
+  - Ensure responsive design and consistent user experience across all pages
+  - Adapt filtering logic to each page's specific content structure and sections
+- **Color Coding Considerations**:
+  - Use appropriate color themes that match each page's content and purpose
+  - Maintain consistent user experience while adapting to different document types
+  - Ensure accessibility and visual clarity across all implementations
+- **Priority**: High - User experience consistency across all repository documents
+- **Dependencies**: None - advanced filtering system already implemented and tested in Constitutional Subversion document
+
 ### ⏳ **PENDING**: Document Illegal and Immoral Government Programs (2025-08-26)
 - **Status**: Pending
 - **Description**: Comprehensive documentation of illegal and immoral government programs throughout US history with verifiable sources and constitutional violations

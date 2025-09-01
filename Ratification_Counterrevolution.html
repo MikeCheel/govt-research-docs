@@ -765,15 +765,74 @@ function gotoSection(id) {
 function filterTimeline() {
   const dd = document.getElementById('filter');
   const val = dd.value;
-  const items = Array.from(document.querySelectorAll('.tl-item'));
-  items.forEach(el => { el.style.display = ''; });
-  if (val === 'all') return;
-  items.forEach(el => {
+  
+  // Get all items to filter
+  const timelineItems = Array.from(document.querySelectorAll('.tl-item'));
+  const playerCards = Array.from(document.querySelectorAll('#players .card'));
+  
+  // Show all items if "all" is selected
+  if (val === 'all') {
+    [...timelineItems, ...playerCards].forEach(el => {
+      el.style.display = '';
+      // Reset any highlighting
+      el.style.border = '';
+      el.style.boxShadow = '';
+      el.style.backgroundColor = '';
+    });
+    return;
+  }
+  
+  // Filter timeline items
+  timelineItems.forEach(el => {
+    el.style.display = '';
     const whoElement = el.querySelector('.tl-who');
-    if (!whoElement) return; // Skip items without .tl-who element
+    if (!whoElement) return;
     const who = whoElement.textContent.toLowerCase();
-    if (!who.includes(val.toLowerCase())) el.style.display = 'none';
+    if (!who.includes(val.toLowerCase())) {
+      el.style.display = 'none';
+    }
   });
+  
+  // Filter and highlight player cards
+  playerCards.forEach(el => {
+    el.style.display = '';
+    el.style.border = ''; // Reset any previous highlighting
+    el.style.boxShadow = '';
+    el.style.backgroundColor = '';
+    
+    const titleElement = el.querySelector('.card-title');
+    if (!titleElement) return;
+    const title = titleElement.textContent.toLowerCase();
+    
+    if (title.includes(val.toLowerCase()) || doesCardMatchFilter(el, val)) {
+      // Highlight the matching player's card with historical theme colors
+      el.style.border = '3px solid #8B4513';
+      el.style.boxShadow = '0 4px 12px rgba(139, 69, 19, 0.3)';
+      el.style.backgroundColor = 'rgba(139, 69, 19, 0.05)';
+    } else {
+      el.style.display = 'none';
+    }
+  });
+}
+
+function doesCardMatchFilter(card, filterValue) {
+  // Check if the card content matches the filter
+  const content = card.textContent.toLowerCase();
+  const filter = filterValue.toLowerCase();
+  
+  // Special handling for key historical figures
+  if (filter.includes('hamilton')) return content.includes('hamilton');
+  if (filter.includes('madison')) return content.includes('madison');
+  if (filter.includes('wilson')) return content.includes('wilson');
+  if (filter.includes('morris')) return content.includes('morris');
+  if (filter.includes('jay')) return content.includes('jay');
+  if (filter.includes('washington')) return content.includes('washington');
+  if (filter.includes('franklin')) return content.includes('franklin');
+  if (filter.includes('randolph')) return content.includes('randolph');
+  if (filter.includes('pinckney')) return content.includes('pinckney');
+  
+  // For other filters, do basic name matching
+  return content.includes(filter);
 }
 
 // Theme and style functionality

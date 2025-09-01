@@ -763,6 +763,82 @@ function gotoSection(id) {
   document.getElementById(id).scrollIntoView({behavior:'smooth', block:'start'});
 }
 
+function filterContent() {
+  const dd = document.getElementById('filter');
+  const val = dd.value;
+  
+  // Get all cards to filter
+  const allCards = Array.from(document.querySelectorAll('.card'));
+  
+  // Show all items if "all" is selected
+  if (val === 'all') {
+    allCards.forEach(el => {
+      el.style.display = '';
+      // Reset any highlighting
+      el.style.border = '';
+      el.style.boxShadow = '';
+      el.style.backgroundColor = '';
+    });
+    return;
+  }
+  
+  // Filter and highlight cards based on topic
+  allCards.forEach(el => {
+    el.style.display = '';
+    el.style.border = ''; // Reset any previous highlighting
+    el.style.boxShadow = '';
+    el.style.backgroundColor = '';
+    
+    const titleElement = el.querySelector('.card-title');
+    if (!titleElement) return;
+    
+    const title = titleElement.textContent.toLowerCase();
+    const cardContent = el.textContent.toLowerCase();
+    
+    if (doesTopicMatch(title, cardContent, val)) {
+      // Highlight the matching card with DUI-themed colors (orange/warning)
+      el.style.border = '3px solid #FF8C00';
+      el.style.boxShadow = '0 4px 12px rgba(255, 140, 0, 0.3)';
+      el.style.backgroundColor = 'rgba(255, 140, 0, 0.05)';
+    } else {
+      el.style.display = 'none';
+    }
+  });
+}
+
+function doesTopicMatch(title, content, filterValue) {
+  const filter = filterValue.toLowerCase();
+  
+  // Match specific topics
+  if (filter === 'scenario') {
+    return title.includes('scenario') || content.includes('scenario');
+  }
+  if (filter === 'cost') {
+    return title.includes('cost') || content.includes('cost') || title.includes('price') || content.includes('price');
+  }
+  if (filter === 'enforcement') {
+    return title.includes('enforcement') || content.includes('enforcement') || title.includes('dui') || content.includes('police');
+  }
+  if (filter === 'government') {
+    return title.includes('government') || content.includes('government') || content.includes('federal') || content.includes('state');
+  }
+  if (filter === 'private') {
+    return title.includes('private') || content.includes('private') || content.includes('market');
+  }
+  if (filter === 'subsidies') {
+    return title.includes('subsidies') || content.includes('subsidies') || content.includes('subsidy');
+  }
+  if (filter === 'bar') {
+    return title.includes('bar') || content.includes('bar') || content.includes('restaurant');
+  }
+  if (filter === 'fairness') {
+    return title.includes('fair') || content.includes('fair') || title.includes('bac') || content.includes('0.08');
+  }
+  
+  // General content matching
+  return title.includes(filter) || content.includes(filter);
+}
+
 // Theme and style functionality
 document.addEventListener('DOMContentLoaded', () => {
   const mobileThemeToggle = document.getElementById('themeToggle');
@@ -897,6 +973,17 @@ document.addEventListener('DOMContentLoaded', () => {
       <button onclick="gotoSection('incentives')">Bar Incentives</button>
       <button onclick="gotoSection('conclusion')">Conclusion</button>
       <button onclick="gotoSection('references')">References</button>
+      <select id="filter" onchange="filterContent()">
+        <option value="all">Filter by topic...</option>
+        <option value="scenario">Scenarios</option>
+        <option value="cost">Cost Analysis</option>
+        <option value="enforcement">DUI Enforcement</option>
+        <option value="government">Government Programs</option>
+        <option value="private">Private Market</option>
+        <option value="subsidies">Subsidies</option>
+        <option value="bar">Bar Programs</option>
+        <option value="fairness">DUI Law Fairness</option>
+      </select>
       <div class="mobile-actions">
         <button onclick="window.print()">🖨️ Print</button>
       </div>

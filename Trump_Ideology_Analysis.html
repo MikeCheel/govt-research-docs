@@ -760,6 +760,82 @@ function gotoSection(id) {
   document.getElementById(id).scrollIntoView({behavior:'smooth', block:'start'});
 }
 
+function filterContent() {
+  const dd = document.getElementById('filter');
+  const val = dd.value;
+  
+  // Get all cards to filter
+  const allCards = Array.from(document.querySelectorAll('.card'));
+  
+  // Show all items if "all" is selected
+  if (val === 'all') {
+    allCards.forEach(el => {
+      el.style.display = '';
+      // Reset any highlighting
+      el.style.border = '';
+      el.style.boxShadow = '';
+      el.style.backgroundColor = '';
+    });
+    return;
+  }
+  
+  // Filter and highlight cards based on ideology
+  allCards.forEach(el => {
+    el.style.display = '';
+    el.style.border = ''; // Reset any previous highlighting
+    el.style.boxShadow = '';
+    el.style.backgroundColor = '';
+    
+    const titleElement = el.querySelector('.card-title');
+    if (!titleElement) return;
+    
+    const title = titleElement.textContent.toLowerCase();
+    const cardContent = el.textContent.toLowerCase();
+    
+    if (doesIdeologyMatch(title, cardContent, val)) {
+      // Highlight the matching card with Trump-themed colors (red/patriotic)
+      el.style.border = '3px solid #DC143C';
+      el.style.boxShadow = '0 4px 12px rgba(220, 20, 60, 0.3)';
+      el.style.backgroundColor = 'rgba(220, 20, 60, 0.05)';
+    } else {
+      el.style.display = 'none';
+    }
+  });
+}
+
+function doesIdeologyMatch(title, content, filterValue) {
+  const filter = filterValue.toLowerCase();
+  
+  // Match specific ideologies
+  if (filter === 'fascism') {
+    return title.includes('fascist') || content.includes('fascism') || content.includes('fascist');
+  }
+  if (filter === 'communism') {
+    return title.includes('communist') || content.includes('communism') || content.includes('communist');
+  }
+  if (filter === 'populism') {
+    return title.includes('populism') || content.includes('populist') || content.includes('populism');
+  }
+  if (filter === 'authoritarianism') {
+    return title.includes('authoritarianism') || content.includes('authoritarian') || content.includes('authoritarianism');
+  }
+  if (filter === 'nationalism') {
+    return title.includes('nationalism') || content.includes('nationalist') || content.includes('nationalism');
+  }
+  if (filter === 'conservatism') {
+    return title.includes('conservatism') || content.includes('conservative') || content.includes('conservatism');
+  }
+  if (filter === 'arguments for') {
+    return title.includes('arguments for') || title.includes('for trump as');
+  }
+  if (filter === 'arguments against') {
+    return title.includes('arguments against') || title.includes('against trump as');
+  }
+  
+  // General content matching
+  return title.includes(filter) || content.includes(filter);
+}
+
 // Theme and style functionality
 document.addEventListener('DOMContentLoaded', () => {
   const mobileThemeToggle = document.getElementById('themeToggle');
@@ -890,6 +966,17 @@ document.addEventListener('DOMContentLoaded', () => {
       <button onclick="gotoSection('other-labels')">Other Classifications</button>
       <button onclick="gotoSection('conclusion')">Conclusion</button>
       <button onclick="gotoSection('references')">References</button>
+      <select id="filter" onchange="filterContent()">
+        <option value="all">Filter by ideology...</option>
+        <option value="fascism">Fascism Analysis</option>
+        <option value="communism">Communism Analysis</option>
+        <option value="populism">Populism</option>
+        <option value="authoritarianism">Authoritarianism</option>
+        <option value="nationalism">Nationalism</option>
+        <option value="conservatism">Conservatism</option>
+        <option value="arguments for">Arguments For</option>
+        <option value="arguments against">Arguments Against</option>
+      </select>
       <div class="mobile-actions">
         <button onclick="window.print()">🖨️ Print</button>
       </div>
