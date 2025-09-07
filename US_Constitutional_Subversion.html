@@ -44,7 +44,7 @@
             --border: var(--card-border);
         }
 * { box-sizing: border-box; }
-html, body { margin:0; padding:0; background:var(--bg-color); color:var(--text-color); font:15.5px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; transition: background-color 0.3s ease, color 0.3s ease; }
+html, body { margin:0; padding:0; background:var(--bg-color); color:var(--text-color); font:15.5px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; transition: background-color 0.3s ease, color 0.3s ease; overflow-x: hidden; }
 a { color: var(--accent-color); text-decoration: none; }
 a:hover { text-decoration: underline; }
 .navbar {
@@ -79,6 +79,9 @@ a:hover { text-decoration: underline; }
   white-space: nowrap;
   min-width: fit-content;
 }
+/* Base brand variants */
+.brand .brand-short { display: none; }
+.brand .brand-full { display: inline; }
 .navbar button, .navbar select {
   background: var(--panel-bright); 
   color: var(--text-color);
@@ -232,17 +235,33 @@ a:hover { text-decoration: underline; }
 .brand {
   font-size: 0.95rem;
   font-weight: 500;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
   color: var(--accent-color);
-  flex: 1;
-  min-width: 0; /* allow shrinking with ellipsis */
+  flex: 1 1 auto;
+  min-width: 0; /* allow shrinking */
+  margin-right: 8px;
+  overflow: hidden;
+  /* Allow wrapping up to 2 lines with ellipsis */
+  white-space: normal;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  line-clamp: 2;
+  text-overflow: ellipsis;
 }
+
+/* Show short brand on mobile, hide full */
+.brand .brand-full { display: none; }
+.brand .brand-short { display: inline; }
 
 /* Override desktop specificity to allow brand to shrink on mobile */
 .navbar .brand {
-  min-width: 0;
+  min-width: 0 !important;
+  white-space: normal !important;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
   
   .navbar-right {
@@ -417,28 +436,37 @@ a:hover { text-decoration: underline; }
   
   .nav-buttons button:not(.theme-toggle) {
     min-height: 60px;
-    font-size: 1.1rem;
-    padding: 18px 20px;
+    font-size: 1.05rem;
+    padding: 16px 18px;
   }
   
   .nav-buttons select:not(.theme-toggle) {
-    min-height: 60px;
-    font-size: 1.1rem;
-    padding: 18px 20px;
+    min-height: 56px;
+    font-size: 1.05rem;
+    padding: 16px 18px;
   }
   
   .mobile-theme-controls .style-selector,
   .mobile-actions button,
   .mobile-theme-controls .theme-toggle {
-    min-height: 52px;
+    min-height: 48px;
   }
   
   .brand {
-    font-size: 1.2rem;
+    font-size: 0.95rem;
+    max-width: calc(100vw - 88px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    line-clamp: 2;
+    overflow-wrap: anywhere;
   }
   
   .navbar {
-    padding: 18px 20px;
+    padding: 12px 14px;
   }
 }
 
@@ -473,6 +501,22 @@ a:hover { text-decoration: underline; }
   
   .nav-buttons {
     padding: 12px;
+  }
+  .nav-buttons.show {
+    grid-template-columns: 1fr;
+  }
+  .nav-buttons button:not(.theme-toggle) {
+    min-height: 48px;
+    padding: 12px 14px;
+    font-size: 1rem;
+  }
+  .brand {
+    white-space: normal;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    line-clamp: 2;
+    overflow: hidden;
   }
 }
 .container { max-width: 1100px; margin: 0 auto; padding: 22px 16px 60px; }
@@ -956,6 +1000,14 @@ hr.sep { border:none; height:1px; background: var(--border); margin: 12px 0; }
             break-inside: auto;
           }
         }
+@media (max-width: 480px) {
+  .navbar { padding: 8px 10px; }
+  .hamburger-menu { min-width: 44px; min-height: 44px; }
+  .brand {
+    font-size: 13px;
+    max-width: calc(100vw - 72px); /* leave room for hamburger and padding */
+  }
+}
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
@@ -1892,7 +1944,7 @@ document.addEventListener('DOMContentLoaded', () => {
 <body data-theme="light" data-style="default">
 <nav class="navbar">
   <div class="navbar-left">
-    <div class="brand">The Constitution They Ignored: America's Real History</div>
+    <div class="brand"><span class="brand-full">The Constitution They Ignored: America's Real History</span><span class="brand-short">Constitutional Subversion</span></div>
     <div class="nav-buttons" id="navButtons">
       <button onclick="gotoSection('intro')">Introduction</button>
       <button onclick="gotoSection('timeline')">Timeline</button>
