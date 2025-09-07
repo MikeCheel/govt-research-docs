@@ -1084,6 +1084,10 @@ function filterTimeline() {
       filteredSourcesSection.style.display = 'none';
       if (filteredSourcesList) filteredSourcesList.innerHTML = '';
     }
+    // Remove any aggregated filtered sources appended to References
+    const refSec = document.getElementById('references');
+    const agg = refSec ? refSec.querySelector('#filtered-sources-in-refs') : null;
+    if (agg) agg.remove();
     return;
   }
   
@@ -1378,7 +1382,7 @@ function filterTimeline() {
           }
 
           // For general government and institutional actors, show relevant archives
-          if (shouldShow) {
+          if (shouldShow && checkActorMatch(itemText, filterName)) {
             hasRelevantReferences = true;
             item.style.display = '';
           } else {
@@ -1444,7 +1448,7 @@ function filterTimeline() {
     }
   });
 
-  // Build aggregated verifiable links for the filtered view
+  // Build aggregated verifiable links for the filtered view (append to References at bottom)
   if (filteredSourcesSection && filteredSourcesList) {
     const collected = new Map(); // href -> label
     const isVisible = (el) => window.getComputedStyle(el).display !== 'none';
@@ -1467,21 +1471,29 @@ function filterTimeline() {
       }
     });
 
-    // From visible references section (if shown)
-    const referencesSection = document.getElementById('references');
-    if (referencesSection && isVisible(referencesSection)) {
-      referencesSection.querySelectorAll('a').forEach(a => {
-        if (isVisible(a) && a.href) collected.set(a.href, a.textContent.trim() || a.href);
-      });
-    }
+    // Always hide the top-of-page filtered-sources box during filtering; we will append to References instead
+    filteredSourcesSection.style.display = 'none';
+    filteredSourcesList.innerHTML = '';
 
-    if (collected.size > 0) {
-      if (filteredActorNameEl) filteredActorNameEl.textContent = filterName;
-      filteredSourcesList.innerHTML = '<ul>' + Array.from(collected.entries()).map(([href, text]) => `<li><a href="${href}" target="_blank" rel="noopener noreferrer">${text}</a></li>`).join('') + '</ul>';
-      filteredSourcesSection.style.display = '';
-    } else {
-      filteredSourcesSection.style.display = 'none';
-      filteredSourcesList.innerHTML = '';
+    const referencesSection = document.getElementById('references');
+    if (referencesSection) {
+      // Remove any previously appended aggregated list
+      const prior = referencesSection.querySelector('#filtered-sources-in-refs');
+      if (prior) prior.remove();
+
+      if (collected.size > 0) {
+        const container = document.createElement('div');
+        container.id = 'filtered-sources-in-refs';
+        container.className = 'refs';
+        container.innerHTML = `<h3>Sources for ${filterName}</h3>` +
+          '<ul>' + Array.from(collected.entries()).map(([href, text]) => `<li><a href="${href}" target="_blank" rel="noopener noreferrer">${text}</a></li>`).join('') + '</ul>';
+        referencesSection.appendChild(container);
+        // Ensure References section is visible when we have collected sources
+        referencesSection.style.display = '';
+        if (!sectionsWithContent.includes('references')) {
+          sectionsWithContent.push('references');
+        }
+      }
     }
   }
 }
