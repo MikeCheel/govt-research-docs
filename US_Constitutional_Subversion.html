@@ -235,9 +235,14 @@ a:hover { text-decoration: underline; }
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 180px;
   color: var(--accent-color);
-  flex: 1; /* ensure title claims space and hamburger stays to the right */
+  flex: 1;
+  min-width: 0; /* allow shrinking with ellipsis */
+}
+
+/* Override desktop specificity to allow brand to shrink on mobile */
+.navbar .brand {
+  min-width: 0;
 }
   
   .navbar-right {
@@ -277,6 +282,13 @@ a:hover { text-decoration: underline; }
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 10px;
     animation: slideDown 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Make large controls span both columns for clarity */
+  .nav-buttons select:not(.theme-toggle),
+  .mobile-actions,
+  .mobile-theme-controls {
+    grid-column: 1 / -1;
   }
   
   @keyframes slideDown {
