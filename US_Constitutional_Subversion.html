@@ -96,6 +96,11 @@ a:hover { text-decoration: underline; }
   background: var(--panel-bright);
   color: var(--text-color);
 }
+.navbar select option.section-divider {
+  font-weight: bold !important;
+  font-style: italic !important;
+  text-decoration: underline !important;
+}
 .navbar-divider {
   width: 2px;
   height: 30px;
@@ -165,25 +170,67 @@ a:hover { text-decoration: underline; }
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 12px 14px;
+    padding: 16px 18px;
     height: auto;
     max-height: none;
     overflow: visible;
+    position: relative;
   }
   
-  /* Position hamburger menu on the right side on mobile */
+  /* Position hamburger menu on the right side on mobile - optimized for touch */
   .hamburger-menu {
     display: flex;
     order: 3;
     margin-left: auto;
+    background: var(--panel-bright);
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    min-height: 48px;
+    min-width: 48px;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  .hamburger-menu:hover,
+  .hamburger-menu:active {
+    background: var(--accent-color);
+    border-color: var(--accent-color);
+    transform: none;
+  }
+  
+  .hamburger-menu:hover .hamburger-line,
+  .hamburger-menu:active .hamburger-line {
+    background: white;
+  }
+  
+  .hamburger-line {
+    width: 22px;
+    height: 2px;
+    background: var(--text-color);
+    margin: 3px 0;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 2px;
   }
   
   .navbar-left {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 16px;
     flex: 1;
     order: 1;
+    min-width: 0;
+  }
+  
+  .brand {
+    font-size: 1.15rem;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: var(--accent-color);
   }
   
   .navbar-right {
@@ -203,59 +250,124 @@ a:hover { text-decoration: underline; }
     background: var(--panel);
     border: 1px solid var(--border);
     border-top: none;
-    border-radius: 0 0 var(--radius) var(--radius);
-    box-shadow: var(--shadow);
+    border-radius: 0 0 16px 16px;
+    box-shadow: 0 8px 32px var(--shadow-hover);
+    backdrop-filter: var(--blur);
     z-index: 1000;
     flex-direction: column;
-    gap: 8px;
-    padding: 16px;
+    gap: 6px;
+    padding: 20px;
+    margin-top: 1px;
+    max-height: 85vh;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
   }
   
   .nav-buttons.show {
     display: flex;
+    animation: slideDown 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   }
   
-  .nav-buttons button:not(.theme-toggle),
-  .nav-buttons select:not(.style-selector) {
+  @keyframes slideDown {
+    from { 
+      opacity: 0; 
+      transform: translateY(-12px); 
+    }
+    to { 
+      opacity: 1; 
+      transform: translateY(0); 
+    }
+  }
+  
+  .nav-buttons button:not(.theme-toggle) {
     width: 100%;
     text-align: left;
     justify-content: flex-start;
+    padding: 16px 18px;
+    margin: 0;
+    font-size: 1.05rem;
+    min-height: 56px;
+    border-radius: 12px;
+    font-weight: 500;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+    transition: all 0.2s ease;
+  }
+  
+  .nav-buttons button:not(.theme-toggle):active {
+    transform: scale(0.98);
+    background: var(--accent-color);
+    color: white;
+  }
+  
+  .nav-buttons select:not(.theme-toggle) {
+    width: 100%;
+    padding: 16px 18px;
+    margin: 0;
+    font-size: 1.05rem;
+    min-height: 56px;
+    border-radius: 12px;
+    font-weight: 500;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+    background-image: url("data:image/svg+xml;charset=US-ASCII,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'><path fill='%23666' d='M2,0L0,2h4L2,0z M2,5L0,3h4L2,5z'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 16px;
+    padding-right: 40px;
+    appearance: none;
+    cursor: pointer;
   }
   
   .mobile-actions {
     display: flex;
-    gap: 8px;
-    padding-top: 12px;
+    gap: 10px;
+    padding-top: 16px;
     border-top: 1px solid var(--border);
-    margin-top: 8px;
+    margin-top: 16px;
   }
   
   .mobile-actions button {
     flex: 1;
+    min-height: 48px;
+    border-radius: 12px;
+    font-weight: 500;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
   }
   
   .mobile-theme-controls {
     display: flex;
-    gap: 8px;
-    padding-top: 12px;
+    gap: 12px;
+    padding-top: 16px;
     border-top: 1px solid var(--border);
-    margin-top: 8px;
+    margin-top: 16px;
     justify-content: center;
     align-items: center;
   }
   
   .mobile-theme-controls .style-selector {
     flex: 1;
-    max-width: 150px;
-    width: auto !important;
+    max-width: 200px;
+    min-height: 48px;
     text-align: center;
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 12px;
   }
   
   .mobile-theme-controls .theme-toggle {
-    width: 60px !important;
-    height: 30px !important;
+    min-width: 64px !important;
+    min-height: 48px !important;
     flex: 0 0 auto;
-    padding: 2px !important;
+    padding: 10px !important;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
   }
   
   .desktop-actions {
@@ -266,6 +378,45 @@ a:hover { text-decoration: underline; }
     display: none;
   }
   
+}
+
+/* Pixel 7 Pro and similar high-res mobile devices */
+@media (max-width: 1024px) and (min-resolution: 2dppx) {
+  .hamburger-menu {
+    min-height: 52px;
+    min-width: 52px;
+  }
+  
+  .hamburger-line {
+    width: 24px;
+    height: 2.5px;
+  }
+  
+  .nav-buttons button:not(.theme-toggle) {
+    min-height: 60px;
+    font-size: 1.1rem;
+    padding: 18px 20px;
+  }
+  
+  .nav-buttons select:not(.theme-toggle) {
+    min-height: 60px;
+    font-size: 1.1rem;
+    padding: 18px 20px;
+  }
+  
+  .mobile-theme-controls .style-selector,
+  .mobile-actions button,
+  .mobile-theme-controls .theme-toggle {
+    min-height: 52px;
+  }
+  
+  .brand {
+    font-size: 1.2rem;
+  }
+  
+  .navbar {
+    padding: 18px 20px;
+  }
 }
 
 @media (max-width: 768px) {
@@ -344,28 +495,28 @@ hr.sep { border:none; height:1px; background: var(--border); margin: 12px 0; }
         }
 
         [data-style="glassmorphism"] .section {
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.4);
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.4);
             box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
         }
 
         [data-style="glassmorphism"][data-theme="dark"] .section {
-            background: rgba(30, 41, 59, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(45, 55, 72, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         [data-style="glassmorphism"] .card,
         [data-style="glassmorphism"] .tl-item {
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.3);
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
         }
 
         [data-style="glassmorphism"][data-theme="dark"] .card,
         [data-style="glassmorphism"][data-theme="dark"] .tl-item {
-            background: rgba(30, 41, 59, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(45, 55, 72, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.15);
         }
 
         [data-style="glassmorphism"] .navbar {
@@ -382,10 +533,12 @@ hr.sep { border:none; height:1px; background: var(--border); margin: 12px 0; }
         /* Neumorphism Style */
         [data-style="neumorphism"] {
             background: #e0e5ec;
+            color: #333333;
         }
 
         [data-style="neumorphism"][data-theme="dark"] {
             background: #2d3748;
+            color: #f7fafc;
         }
 
         [data-style="neumorphism"] .container {
@@ -405,11 +558,13 @@ hr.sep { border:none; height:1px; background: var(--border); margin: 12px 0; }
             box-shadow: inset 5px 5px 10px #bebebe, inset -5px -5px 10px #ffffff;
             border: none;
             border-radius: 15px;
+            color: #333333;
         }
 
         [data-style="neumorphism"][data-theme="dark"] .section {
             background: #2d3748;
             box-shadow: inset 5px 5px 10px #1a202c, inset -5px -5px 10px #404c5a;
+            color: #f7fafc;
         }
 
         [data-style="neumorphism"] .card,
@@ -418,12 +573,14 @@ hr.sep { border:none; height:1px; background: var(--border); margin: 12px 0; }
             box-shadow: inset 3px 3px 6px #bebebe, inset -3px -3px 6px #ffffff;
             border: none;
             border-radius: 12px;
+            color: #333333;
         }
 
         [data-style="neumorphism"][data-theme="dark"] .card,
         [data-style="neumorphism"][data-theme="dark"] .tl-item {
             background: #2d3748;
             box-shadow: inset 3px 3px 6px #1a202c, inset -3px -3px 6px #404c5a;
+            color: #f7fafc;
         }
 
         [data-style="neumorphism"] .navbar {
@@ -461,6 +618,18 @@ hr.sep { border:none; height:1px; background: var(--border); margin: 12px 0; }
             color: #e2e8f0;
         }
 
+        [data-style="glassmorphism"] .navbar select option.section-divider {
+            background: rgba(59, 130, 246, 0.8) !important;
+            backdrop-filter: blur(10px) !important;
+            border: 1px solid rgba(255, 255, 255, 0.3) !important;
+        }
+
+        [data-style="glassmorphism"][data-theme="dark"] .navbar select option.section-divider {
+            background: rgba(59, 130, 246, 0.8) !important;
+            backdrop-filter: blur(10px) !important;
+            border: 1px solid rgba(255, 255, 255, 0.2) !important;
+        }
+
         /* Neumorphism specific adjustments for controls */
         [data-style="neumorphism"] .navbar button,
         [data-style="neumorphism"] .navbar select {
@@ -483,6 +652,18 @@ hr.sep { border:none; height:1px; background: var(--border); margin: 12px 0; }
         [data-style="neumorphism"][data-theme="dark"] .navbar select option {
             background: #2d3748;
             color: #e2e8f0;
+        }
+
+        [data-style="neumorphism"] .navbar select option.section-divider {
+            background: #3b82f6 !important;
+            box-shadow: inset 2px 2px 4px #2563eb, inset -2px -2px 4px #60a5fa !important;
+            color: white !important;
+        }
+
+        [data-style="neumorphism"][data-theme="dark"] .navbar select option.section-divider {
+            background: #3b82f6 !important;
+            box-shadow: inset 2px 2px 4px #2563eb, inset -2px -2px 4px #60a5fa !important;
+            color: white !important;
         }
 
         /* Back to top button */
@@ -773,6 +954,9 @@ function filterTimeline() {
   const corporatismCards = Array.from(document.querySelectorAll('#corporatism .card'));
   const imperialismCards = Array.from(document.querySelectorAll('#imperialism .card'));
   
+  // Get all sections for show/hide logic
+  const allSections = Array.from(document.querySelectorAll('.section'));
+  
   // Show all items if "all" is selected
   if (val === 'all') {
     [...timelineItems, ...presidentCards, ...congressCards, ...scotusCards, ...programCards, ...federalReserveCards, ...corporatismCards, ...imperialismCards].forEach(el => {
@@ -781,6 +965,24 @@ function filterTimeline() {
       el.style.border = '';
       el.style.boxShadow = '';
       el.style.backgroundColor = '';
+      // Remove text highlighting
+      removeHighlighting(el);
+    });
+    // Show all sections
+    allSections.forEach(section => {
+      section.style.display = '';
+      // Reset any hidden items in references section
+      if (section.id === 'references') {
+        const referenceItems = Array.from(section.querySelectorAll('p, li, a, div'));
+        referenceItems.forEach(item => {
+          item.style.display = '';
+        });
+      }
+    });
+    // Show all navigation buttons
+    const navButtons = Array.from(document.querySelectorAll('.nav-buttons button'));
+    navButtons.forEach(button => {
+      button.style.display = '';
     });
     return;
   }
@@ -806,17 +1008,32 @@ function filterTimeline() {
     el.style.boxShadow = '';
     el.style.backgroundColor = '';
     
+    const content = el.textContent.toLowerCase();
     const titleElement = el.querySelector('.card-title');
-    if (!titleElement) return;
-    const title = titleElement.textContent.toLowerCase();
     
-    if (title.includes(filterName.toLowerCase()) || doesCardMatchFilter(el, filterName)) {
-      // Highlight the matching president's card
-      el.style.border = '3px solid #007bff';
-      el.style.boxShadow = '0 4px 12px rgba(0, 123, 255, 0.3)';
-      el.style.backgroundColor = 'rgba(0, 123, 255, 0.05)';
+    // Show card if actor name appears anywhere in the content using precise matching
+    const shouldShow = checkActorMatch(content, filterName);
+    
+    if (shouldShow) {
+      el.style.display = ''; // Show the card
+      // All cards get green border when filtering
+      el.style.border = '3px solid #28a745';
+      el.style.boxShadow = '0 4px 12px rgba(40, 167, 69, 0.3)';
+      el.style.backgroundColor = 'rgba(40, 167, 69, 0.05)';
+      
+      // Additional highlighting if this is actually the actor's main card (title match)
+      if (titleElement && doesCardMatchFilter(el, filterName)) {
+        el.style.border = '3px solid #007bff';
+        el.style.boxShadow = '0 4px 12px rgba(0, 123, 255, 0.3)';
+        el.style.backgroundColor = 'rgba(0, 123, 255, 0.05)';
+      } else {
+        // This is a mention card, highlight the actor's name in the text
+        removeHighlighting(el); // Remove any previous highlighting
+        highlightActorName(el, filterName);
+      }
     } else {
       el.style.display = 'none';
+      removeHighlighting(el); // Clean up highlighting
     }
   });
   
@@ -827,17 +1044,32 @@ function filterTimeline() {
     el.style.boxShadow = '';
     el.style.backgroundColor = '';
     
+    const content = el.textContent.toLowerCase();
     const titleElement = el.querySelector('.card-title');
-    if (!titleElement) return;
-    const title = titleElement.textContent.toLowerCase();
     
-    if (title.includes(filterName.toLowerCase()) || doesCardMatchFilter(el, filterName)) {
-      // Highlight the matching congress card
+    // Show card if actor name appears anywhere in the content using precise matching
+    const shouldShow = checkActorMatch(content, filterName);
+    
+    if (shouldShow) {
+      el.style.display = ''; // Show the card
+      // All cards get green border when filtering
       el.style.border = '3px solid #28a745';
       el.style.boxShadow = '0 4px 12px rgba(40, 167, 69, 0.3)';
       el.style.backgroundColor = 'rgba(40, 167, 69, 0.05)';
+      
+      // Additional highlighting if this is actually the actor's main card (title match)
+      if (titleElement && doesCardMatchFilter(el, filterName)) {
+        el.style.border = '3px solid #007bff';
+        el.style.boxShadow = '0 4px 12px rgba(0, 123, 255, 0.3)';
+        el.style.backgroundColor = 'rgba(0, 123, 255, 0.05)';
+      } else {
+        // This is a mention card, highlight the actor's name in the text
+        removeHighlighting(el);
+        highlightActorName(el, filterName);
+      }
     } else {
       el.style.display = 'none';
+      removeHighlighting(el);
     }
   });
   
@@ -848,15 +1080,21 @@ function filterTimeline() {
     el.style.boxShadow = '';
     el.style.backgroundColor = '';
     
+    const content = el.textContent.toLowerCase();
     const titleElement = el.querySelector('.card-title');
-    if (!titleElement) return;
-    const title = titleElement.textContent.toLowerCase();
     
-    if (title.includes(filterName.toLowerCase()) || doesCardMatchFilter(el, filterName)) {
-      // Highlight the matching Supreme Court card
-      el.style.border = '3px solid #dc3545';
-      el.style.boxShadow = '0 4px 12px rgba(220, 53, 69, 0.3)';
-      el.style.backgroundColor = 'rgba(220, 53, 69, 0.05)';
+    // Show card if actor name appears anywhere in the content using precise matching
+    const shouldShow = checkActorMatch(content, filterName);
+    
+    if (shouldShow) {
+      el.style.display = ''; // Show the card
+      // Highlight if this is actually the actor's main card (title match)
+      if (titleElement && doesCardMatchFilter(el, filterName)) {
+        el.style.border = '3px solid #dc3545';
+        el.style.boxShadow = '0 4px 12px rgba(220, 53, 69, 0.3)';
+        el.style.backgroundColor = 'rgba(220, 53, 69, 0.05)';
+      }
+      // Cards that just mention the actor are shown without highlighting
     } else {
       el.style.display = 'none';
     }
@@ -869,16 +1107,269 @@ function filterTimeline() {
     el.style.boxShadow = '';
     el.style.backgroundColor = '';
     
+    const content = el.textContent.toLowerCase();
     const titleElement = el.querySelector('.card-title');
-    if (titleElement) {
-      const title = titleElement.textContent.toLowerCase();
-      if (title.includes(filterName.toLowerCase()) || doesCardMatchFilter(el, filterName)) {
-        // Highlight the matching card with orange color for other sections
+    
+    // Show card if actor name appears anywhere in the content using precise matching
+    const shouldShow = checkActorMatch(content, filterName);
+    
+    if (shouldShow) {
+      el.style.display = ''; // Show the card
+      // Highlight if this is actually the actor's main card (title match)
+      if (titleElement && doesCardMatchFilter(el, filterName)) {
         el.style.border = '3px solid #fd7e14';
         el.style.boxShadow = '0 4px 12px rgba(253, 126, 20, 0.3)';
         el.style.backgroundColor = 'rgba(253, 126, 20, 0.05)';
+      }
+      // Cards that just mention the actor are shown without highlighting
+    } else {
+      el.style.display = 'none';
+    }
+  });
+  
+  // Hide sections that have no visible content after filtering
+  const sectionsWithContent = [];
+  allSections.forEach(section => {
+    // Always keep intro visible, but check references and analysis for relevant content
+    if (section.id === 'intro') {
+      section.style.display = '';
+      sectionsWithContent.push(section.id);
+      return;
+    }
+    
+    // For references section, show relevant references based on actor type and context
+    if (section.id === 'references') {
+      const referenceItems = Array.from(section.querySelectorAll('p, li, a, div, h2, h3'));
+      let hasRelevantReferences = false;
+
+      referenceItems.forEach(item => {
+        // Always show section headers
+        if (item.tagName && ['H2', 'H3'].includes(item.tagName.toUpperCase())) {
+          item.style.display = '';
+          return;
+        }
+
+        // Check if this reference item specifically mentions the actor or is relevant to them
+        const itemText = item.textContent.toLowerCase();
+        const itemHtml = item.innerHTML.toLowerCase();
+
+        // Show if the reference specifically mentions the actor
+        if (checkActorMatch(itemText, filterName)) {
+          hasRelevantReferences = true;
+          item.style.display = '';
+        }
+        // Enhanced logic for showing relevant references based on actor type
+        else {
+          let shouldShow = false;
+
+          // For presidents, show presidential and historical archives
+          if (filterName.toLowerCase().includes('washington') ||
+              filterName.toLowerCase().includes('jefferson') ||
+              filterName.toLowerCase().includes('madison') ||
+              filterName.toLowerCase().includes('monroe') ||
+              filterName.toLowerCase().includes('adams') ||
+              filterName.toLowerCase().includes('jackson') ||
+              filterName.toLowerCase().includes('van buren') ||
+              filterName.toLowerCase().includes('harrison') ||
+              filterName.toLowerCase().includes('tyler') ||
+              filterName.toLowerCase().includes('polk') ||
+              filterName.toLowerCase().includes('taylor') ||
+              filterName.toLowerCase().includes('pierce') ||
+              filterName.toLowerCase().includes('buchanan') ||
+              filterName.toLowerCase().includes('lincoln') ||
+              filterName.toLowerCase().includes('johnson') ||
+              filterName.toLowerCase().includes('grant') ||
+              filterName.toLowerCase().includes('hayes') ||
+              filterName.toLowerCase().includes('garfield') ||
+              filterName.toLowerCase().includes('arthur') ||
+              filterName.toLowerCase().includes('cleveland') ||
+              filterName.toLowerCase().includes('mckinley') ||
+              filterName.toLowerCase().includes('roosevelt') ||
+              filterName.toLowerCase().includes('taft') ||
+              filterName.toLowerCase().includes('wilson') ||
+              filterName.toLowerCase().includes('harding') ||
+              filterName.toLowerCase().includes('coolidge') ||
+              filterName.toLowerCase().includes('hoover') ||
+              filterName.toLowerCase().includes('truman') ||
+              filterName.toLowerCase().includes('eisenhower') ||
+              filterName.toLowerCase().includes('kennedy') ||
+              filterName.toLowerCase().includes('johnson') ||
+              filterName.toLowerCase().includes('nixon') ||
+              filterName.toLowerCase().includes('ford') ||
+              filterName.toLowerCase().includes('carter') ||
+              filterName.toLowerCase().includes('reagan') ||
+              filterName.toLowerCase().includes('bush') ||
+              filterName.toLowerCase().includes('clinton') ||
+              filterName.toLowerCase().includes('obama') ||
+              filterName.toLowerCase().includes('trump') ||
+              filterName.toLowerCase().includes('biden')) {
+            // Show presidential, historical, and government archives
+            if (itemText.includes('white house') ||
+                itemText.includes('presidential') ||
+                itemText.includes('national archives') ||
+                itemText.includes('library of congress') ||
+                itemText.includes('miller center') ||
+                itemText.includes('avalon project') ||
+                itemText.includes('constitution center') ||
+                itemText.includes('supreme court') ||
+                itemText.includes('federal reserve') ||
+                itemText.includes('archives.gov') ||
+                itemText.includes('history.house.gov') ||
+                itemText.includes('senate.gov') ||
+                itemText.includes('govinfo.gov') ||
+                itemText.includes('intelligence.senate.gov') ||
+                itemText.includes('cia.gov') ||
+                itemText.includes('vault.fbi.gov') ||
+                itemText.includes('nsarchive') ||
+                itemText.includes('supreme.justia.com') ||
+                itemText.includes('constitutioncenter.org') ||
+                itemText.includes('avalon.law.yale.edu') ||
+                itemText.includes('loc.gov')) {
+              shouldShow = true;
+            }
+          }
+
+          // For Supreme Court justices, show legal and court archives
+          if (filterName.toLowerCase().includes('taney') ||
+              filterName.toLowerCase().includes('holmes') ||
+              filterName.toLowerCase().includes('black') ||
+              filterName.toLowerCase().includes('warren') ||
+              filterName.toLowerCase().includes('brennan') ||
+              filterName.toLowerCase().includes('blackmun') ||
+              filterName.toLowerCase().includes('kennedy') ||
+              filterName.toLowerCase().includes('souter') ||
+              filterName.toLowerCase().includes('stevens') ||
+              filterName.toLowerCase().includes('roberts') ||
+              filterName.toLowerCase().includes('thomas') ||
+              filterName.toLowerCase().includes('harlan') ||
+              filterName.toLowerCase().includes('scal') ||
+              filterName.toLowerCase().includes('supreme court') ||
+              filterName.toLowerCase().includes('justice')) {
+            if (itemText.includes('supreme court') ||
+                itemText.includes('supreme.justia.com') ||
+                itemText.includes('constitutioncenter.org') ||
+                itemText.includes('avalon.law.yale.edu') ||
+                itemText.includes('loc.gov') ||
+                itemText.includes('national archives') ||
+                itemText.includes('justice thomas') ||
+                itemText.includes('federal judicial center') ||
+                itemText.includes('oyez.org')) {
+              shouldShow = true;
+            }
+          }
+
+          // For Congress members, show legislative archives
+          if (filterName.toLowerCase().includes('congress') ||
+              filterName.toLowerCase().includes('senate') ||
+              filterName.toLowerCase().includes('house') ||
+              filterName.toLowerCase().includes('stevens') ||
+              filterName.toLowerCase().includes('mccarthy') ||
+              filterName.toLowerCase().includes('reid') ||
+              filterName.toLowerCase().includes('pelosi') ||
+              filterName.toLowerCase().includes('schumer') ||
+              filterName.toLowerCase().includes('hamilton') ||
+              filterName.toLowerCase().includes('glass') ||
+              filterName.toLowerCase().includes('spaulding') ||
+              filterName.toLowerCase().includes('sumner') ||
+              filterName.toLowerCase().includes('bingham') ||
+              filterName.toLowerCase().includes('owen') ||
+              filterName.toLowerCase().includes('otis')) {
+            if (itemText.includes('congress') ||
+                itemText.includes('senate') ||
+                itemText.includes('house') ||
+                itemText.includes('history.house.gov') ||
+                itemText.includes('senate.gov') ||
+                itemText.includes('govinfo.gov') ||
+                itemText.includes('national archives') ||
+                itemText.includes('library of congress') ||
+                itemText.includes('constitutioncenter.org')) {
+              shouldShow = true;
+            }
+          }
+
+          // For institutions (Federal Reserve, Treasury), show economic and financial archives
+          if (filterName.toLowerCase().includes('federal reserve') ||
+              filterName.toLowerCase().includes('treasury') ||
+              filterName.toLowerCase().includes('fed')) {
+            if (itemText.includes('federal reserve') ||
+                itemText.includes('fraser.stlouisfed.org') ||
+                itemText.includes('gao.gov') ||
+                itemText.includes('federalreserve.gov') ||
+                itemText.includes('treasury') ||
+                itemText.includes('national archives') ||
+                itemText.includes('bls.gov') ||
+                itemText.includes('wtfhappenedin1971.com') ||
+                itemText.includes('shadowstats.com') ||
+                itemText.includes('schiffgold.com') ||
+                itemText.includes('cato.org') ||
+                itemText.includes('mises.org')) {
+              shouldShow = true;
+            }
+          }
+
+          // For general government and institutional actors, show relevant archives
+          if (shouldShow) {
+            hasRelevantReferences = true;
+            item.style.display = '';
+          } else {
+            item.style.display = 'none';
+          }
+        }
+      });
+
+      if (hasRelevantReferences) {
+        section.style.display = '';
+        sectionsWithContent.push(section.id);
       } else {
-        el.style.display = 'none';
+        section.style.display = 'none';
+      }
+      return;
+    }
+    
+    // For analysis section, check if it contains relevant content
+    if (section.id === 'analysis') {
+      const analysisContent = section.textContent || '';
+      if (checkActorMatch(analysisContent, filterName)) {
+        section.style.display = '';
+        sectionsWithContent.push(section.id);
+      } else {
+        section.style.display = 'none';
+      }
+      return;
+    }
+    
+    // For all other sections, check for any visible content
+    const sectionCards = Array.from(section.querySelectorAll('.card'));
+    const sectionTimelineItems = Array.from(section.querySelectorAll('.tl-item'));
+    const allSectionItems = [...sectionCards, ...sectionTimelineItems];
+    
+    // Check if any items in this section are visible
+    const hasVisibleItems = allSectionItems.some(item => {
+      const style = window.getComputedStyle(item);
+      return style.display !== 'none';
+    });
+    
+    // Hide section if no visible items
+    if (!hasVisibleItems) {
+      section.style.display = 'none';
+    } else {
+      section.style.display = '';
+      sectionsWithContent.push(section.id);
+    }
+  });
+  
+  // Hide navigation buttons for sections that are hidden
+  const navButtons = Array.from(document.querySelectorAll('.nav-buttons button'));
+  navButtons.forEach(button => {
+    const onclick = button.getAttribute('onclick');
+    if (onclick && onclick.includes('gotoSection')) {
+      const sectionId = onclick.match(/gotoSection\('([^']+)'\)/);
+      if (sectionId && sectionId[1]) {
+        if (sectionsWithContent.includes(sectionId[1])) {
+          button.style.display = '';
+        } else {
+          button.style.display = 'none';
+        }
       }
     }
   });
@@ -893,60 +1384,302 @@ function extractFilterName(filterValue) {
   return filterValue;
 }
 
+function checkActorMatch(content, actorName) {
+  // More precise matching to avoid false matches with places, buildings, etc.
+  const lowerContent = content.toLowerCase();
+  const lowerActor = actorName.toLowerCase();
+  
+  // Handle institutions first
+  if (lowerActor.includes('federal reserve')) {
+    return lowerContent.includes('federal reserve') || lowerContent.includes('fed ');
+  }
+  if (lowerActor.includes('treasury')) {
+    return lowerContent.includes('treasury department') || lowerContent.includes('u.s. treasury');
+  }
+  if (lowerActor.includes('congress (institution)')) {
+    return lowerContent.includes('congress') || lowerContent.includes('legislative');
+  }
+  if (lowerActor.includes('supreme court (institution)')) {
+    return lowerContent.includes('supreme court') || lowerContent.includes('scotus');
+  }
+  
+  // Handle specific problematic president cases
+  if (lowerActor.includes('george washington')) {
+    return lowerContent.includes('george washington') || 
+           lowerContent.includes('president washington') ||
+           lowerContent.includes('washington administration');
+  }
+  if (lowerActor.includes('john quincy adams')) {
+    return lowerContent.includes('john quincy adams');
+  }
+  if (lowerActor.includes('john adams') && !lowerActor.includes('quincy')) {
+    return lowerContent.includes('john adams') && !lowerContent.includes('john quincy adams');
+  }
+  if (lowerActor.includes('andrew jackson')) {
+    return lowerContent.includes('andrew jackson') && !lowerContent.includes('andrew johnson');
+  }
+  if (lowerActor.includes('andrew johnson')) {
+    return lowerContent.includes('andrew johnson');
+  }
+  if (lowerActor.includes('william henry harrison')) {
+    return lowerContent.includes('william henry harrison');
+  }
+  if (lowerActor.includes('benjamin harrison')) {
+    return lowerContent.includes('benjamin harrison');
+  }
+  if (lowerActor.includes('george herbert walker bush') || lowerActor.includes('george h.w. bush')) {
+    return lowerContent.includes('george h.w. bush') || lowerContent.includes('george herbert walker bush');
+  }
+  if (lowerActor.includes('george walker bush') && !lowerActor.includes('herbert')) {
+    return (lowerContent.includes('george w. bush') || lowerContent.includes('george walker bush')) && !lowerContent.includes('george h.w.');
+  }
+  if (lowerActor.includes('lyndon') && lowerActor.includes('johnson')) {
+    return lowerContent.includes('lyndon') && lowerContent.includes('johnson');
+  }
+  if (lowerActor.includes('franklin') && lowerActor.includes('roosevelt')) {
+    return lowerContent.includes('franklin') && lowerContent.includes('roosevelt');
+  }
+  if (lowerActor.includes('theodore roosevelt')) {
+    return lowerContent.includes('theodore roosevelt');
+  }
+  if (lowerActor.includes('abraham lincoln')) {
+    return lowerContent.includes('abraham lincoln') || lowerContent.includes('president lincoln');
+  }
+  if (lowerActor.includes('thomas jefferson')) {
+    return lowerContent.includes('thomas jefferson') || lowerContent.includes('president jefferson');
+  }
+  if (lowerActor.includes('james madison')) {
+    return lowerContent.includes('james madison') || lowerContent.includes('president madison');
+  }
+  
+  // Handle Supreme Court justices (avoid place name conflicts)
+  if (lowerActor.includes('john marshall harlan')) {
+    return lowerContent.includes('john marshall harlan') || lowerContent.includes('harlan i');
+  }
+  if (lowerActor.includes('earl warren')) {
+    return lowerContent.includes('earl warren') || lowerContent.includes('warren court');
+  }
+  if (lowerActor.includes('john roberts')) {
+    return lowerContent.includes('john roberts') || lowerContent.includes('chief justice roberts');
+  }
+  
+  // Handle Congress members (many have place-name surnames)
+  if (lowerActor.includes('alexander hamilton')) {
+    return lowerContent.includes('alexander hamilton') || lowerContent.includes('hamilton federalist');
+  }
+  if (lowerActor.includes('joe mccarthy')) {
+    return lowerContent.includes('joe mccarthy') || lowerContent.includes('joseph mccarthy') || lowerContent.includes('mccarthyism');
+  }
+  if (lowerActor.includes('nancy pelosi')) {
+    return lowerContent.includes('nancy pelosi');
+  }
+  if (lowerActor.includes('chuck schumer')) {
+    return lowerContent.includes('chuck schumer') || lowerContent.includes('charles schumer');
+  }
+  
+  // For full name matches first (most precise)
+  if (lowerContent.includes(lowerActor)) {
+    return true;
+  }
+  
+  // For surname matching, be very careful with common place names
+  const nameParts = lowerActor.split(' ');
+  if (nameParts.length > 1) {
+    const surname = nameParts[nameParts.length - 1];
+    // Surnames that are also place names - require more context
+    if (['washington', 'lincoln', 'jefferson', 'madison', 'jackson', 'adams', 'johnson', 'harrison', 'roosevelt', 'bush', 'cleveland', 'hamilton', 'warren', 'marshall', 'grant', 'pierce', 'polk', 'taylor', 'tyler'].includes(surname)) {
+      // For presidents, try "President [surname]" format
+      if (lowerContent.includes(`president ${surname}`) || lowerContent.includes(`${surname} administration`)) {
+        return true;
+      }
+      // For justices, try "Justice [surname]" format  
+      if (lowerContent.includes(`justice ${surname}`) || lowerContent.includes(`${surname} court`)) {
+        return true;
+      }
+      // For others, require full name match only
+      return false;
+    } else {
+      // For uncommon surnames, allow surname matching
+      return lowerContent.includes(surname);
+    }
+  }
+  
+  return false;
+}
+
+function highlightActorName(element, actorName) {
+  // Get all text nodes in the element
+  const walker = document.createTreeWalker(
+    element,
+    NodeFilter.SHOW_TEXT,
+    null,
+    false
+  );
+  
+  const textNodes = [];
+  let node;
+  while (node = walker.nextNode()) {
+    textNodes.push(node);
+  }
+  
+  // Use more precise highlighting based on the actor name
+  let searchTerms = [];
+  const lowerActor = actorName.toLowerCase();
+  
+  // Handle institutions
+  if (lowerActor.includes('federal reserve')) {
+    searchTerms = ['federal reserve', 'fed'];
+  } else if (lowerActor.includes('treasury')) {
+    searchTerms = ['treasury department', 'u.s. treasury'];
+  } else if (lowerActor.includes('congress (institution)')) {
+    searchTerms = ['congress', 'legislative'];
+  } else if (lowerActor.includes('supreme court (institution)')) {
+    searchTerms = ['supreme court', 'scotus'];
+  }
+  // Handle presidents  
+  else if (lowerActor.includes('george washington')) {
+    searchTerms = ['george washington', 'president washington', 'washington administration'];
+  } else if (lowerActor.includes('john quincy adams')) {
+    searchTerms = ['john quincy adams', 'quincy adams'];
+  } else if (lowerActor.includes('john adams')) {
+    searchTerms = ['john adams'];
+  } else if (lowerActor.includes('thomas jefferson')) {
+    searchTerms = ['thomas jefferson', 'president jefferson'];
+  } else if (lowerActor.includes('james madison')) {
+    searchTerms = ['james madison', 'president madison'];
+  } else if (lowerActor.includes('abraham lincoln')) {
+    searchTerms = ['abraham lincoln', 'president lincoln'];
+  } else if (lowerActor.includes('andrew jackson')) {
+    searchTerms = ['andrew jackson', 'president jackson'];
+  } else if (lowerActor.includes('andrew johnson')) {
+    searchTerms = ['andrew johnson'];
+  } else if (lowerActor.includes('franklin') && lowerActor.includes('roosevelt')) {
+    searchTerms = ['franklin roosevelt', 'franklin d. roosevelt', 'fdr'];
+  } else if (lowerActor.includes('theodore roosevelt')) {
+    searchTerms = ['theodore roosevelt'];
+  } else if (lowerActor.includes('george h.w. bush') || lowerActor.includes('george herbert walker bush')) {
+    searchTerms = ['george h.w. bush', 'george herbert walker bush'];
+  } else if (lowerActor.includes('george w. bush') || lowerActor.includes('george walker bush')) {
+    searchTerms = ['george w. bush', 'george walker bush'];
+  }
+  // Handle Supreme Court justices
+  else if (lowerActor.includes('earl warren')) {
+    searchTerms = ['earl warren', 'warren court'];
+  } else if (lowerActor.includes('john roberts')) {
+    searchTerms = ['john roberts', 'chief justice roberts'];
+  }
+  // Handle Congress members
+  else if (lowerActor.includes('alexander hamilton')) {
+    searchTerms = ['alexander hamilton', 'hamilton federalist'];
+  } else if (lowerActor.includes('joe mccarthy')) {
+    searchTerms = ['joe mccarthy', 'joseph mccarthy', 'mccarthyism'];
+  } else if (lowerActor.includes('nancy pelosi')) {
+    searchTerms = ['nancy pelosi'];
+  } else if (lowerActor.includes('chuck schumer')) {
+    searchTerms = ['chuck schumer', 'charles schumer'];
+  } else {
+    // Use full name primarily for all other actors
+    searchTerms = [lowerActor];
+    const nameParts = lowerActor.split(' ');
+    if (nameParts.length > 1) {
+      const surname = nameParts[nameParts.length - 1];
+      // Only add surname if it's not a common place name
+      if (!['washington', 'lincoln', 'jefferson', 'madison', 'jackson', 'adams', 'johnson', 'harrison', 'roosevelt', 'bush', 'cleveland', 'hamilton', 'warren', 'marshall', 'grant', 'pierce', 'polk', 'taylor', 'tyler'].includes(surname)) {
+        searchTerms.push(surname);
+      } else {
+        // For place-name surnames, add contextual formats
+        searchTerms.push(`president ${surname}`, `justice ${surname}`, `${surname} court`, `${surname} administration`);
+      }
+    }
+  }
+  
+  textNodes.forEach(textNode => {
+    let text = textNode.textContent;
+    let modified = false;
+    
+    searchTerms.forEach(term => {
+      const regex = new RegExp(`\\b${term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'gi');
+      if (regex.test(text)) {
+        text = text.replace(regex, '<mark style="background-color: yellow; padding: 1px 2px;">$&</mark>');
+        modified = true;
+      }
+    });
+    
+    if (modified) {
+      const wrapper = document.createElement('span');
+      wrapper.innerHTML = text;
+      textNode.parentNode.replaceChild(wrapper, textNode);
+    }
+  });
+}
+
+function removeHighlighting(element) {
+  // Remove all highlighting from the element
+  const marks = element.querySelectorAll('mark');
+  marks.forEach(mark => {
+    const parent = mark.parentNode;
+    parent.replaceChild(document.createTextNode(mark.textContent), mark);
+    parent.normalize();
+  });
+}
+
 function doesCardMatchFilter(card, filterName) {
-  // Check if the card content matches the filter
-  const content = card.textContent.toLowerCase();
+  // Check if the card title matches the filter to avoid false matches from historical references
+  const titleElement = card.querySelector('.card-title');
+  if (!titleElement) return false;
+  
+  const title = titleElement.textContent.toLowerCase();
   const filter = filterName.toLowerCase();
   
-  // Special handling for different filter types - use full names to avoid false matches
-  if (filter.includes('george washington')) return content.includes('george washington');
-  if (filter.includes('john adams')) return content.includes('john adams') && !content.includes('john quincy adams');
-  if (filter.includes('john quincy adams')) return content.includes('john quincy adams');
-  if (filter.includes('thomas jefferson')) return content.includes('thomas jefferson');
-  if (filter.includes('james madison')) return content.includes('james madison');
-  if (filter.includes('james monroe')) return content.includes('james monroe');
-  if (filter.includes('andrew jackson')) return content.includes('andrew jackson') && !content.includes('andrew johnson');
-  if (filter.includes('martin van buren')) return content.includes('martin van buren');
-  if (filter.includes('william henry harrison')) return content.includes('william henry harrison');
-  if (filter.includes('john tyler')) return content.includes('john tyler');
-  if (filter.includes('james knox polk') || filter.includes('james k. polk')) return content.includes('polk');
-  if (filter.includes('zachary taylor')) return content.includes('zachary taylor');
-  if (filter.includes('millard fillmore')) return content.includes('millard fillmore');
-  if (filter.includes('franklin pierce')) return content.includes('franklin pierce');
-  if (filter.includes('james buchanan')) return content.includes('james buchanan');
-  if (filter.includes('abraham lincoln')) return content.includes('lincoln');
-  if (filter.includes('andrew johnson')) return content.includes('andrew johnson');
-  if (filter.includes('ulysses') || filter.includes('grant')) return content.includes('grant');
-  if (filter.includes('rutherford') || filter.includes('hayes')) return content.includes('hayes');
-  if (filter.includes('james abram garfield') || filter.includes('garfield')) return content.includes('garfield');
-  if (filter.includes('chester') || filter.includes('arthur')) return content.includes('arthur');
-  if (filter.includes('grover cleveland') || filter.includes('cleveland')) return content.includes('cleveland');
-  if (filter.includes('benjamin harrison')) return content.includes('benjamin harrison');
-  if (filter.includes('william mckinley') || filter.includes('mckinley')) return content.includes('mckinley');
-  if (filter.includes('theodore roosevelt')) return content.includes('theodore roosevelt');
-  if (filter.includes('william howard taft') || filter.includes('taft')) return content.includes('taft');
-  if (filter.includes('woodrow wilson') || filter.includes('wilson')) return content.includes('wilson');
-  if (filter.includes('warren') || filter.includes('harding')) return content.includes('harding');
-  if (filter.includes('calvin coolidge') || filter.includes('coolidge')) return content.includes('coolidge');
-  if (filter.includes('herbert') || filter.includes('hoover')) return content.includes('hoover');
-  if (filter.includes('franklin') && filter.includes('roosevelt')) return content.includes('franklin') && content.includes('roosevelt');
-  if (filter.includes('harry') || filter.includes('truman')) return content.includes('truman');
-  if (filter.includes('dwight') || filter.includes('eisenhower')) return content.includes('eisenhower');
-  if (filter.includes('john') && filter.includes('kennedy')) return content.includes('kennedy');
-  if (filter.includes('lyndon') || filter.includes('johnson')) return content.includes('lyndon') || (content.includes('johnson') && !content.includes('andrew'));
-  if (filter.includes('richard') || filter.includes('nixon')) return content.includes('nixon');
-  if (filter.includes('gerald') || filter.includes('ford')) return content.includes('ford');
-  if (filter.includes('jimmy') || filter.includes('carter')) return content.includes('carter');
-  if (filter.includes('ronald') || filter.includes('reagan')) return content.includes('reagan');
-  if (filter.includes('george') && filter.includes('bush') && filter.includes('h.w.')) return content.includes('george h.w. bush') || content.includes('george herbert walker bush');
-  if (filter.includes('william') && filter.includes('clinton')) return content.includes('clinton');
-  if (filter.includes('george') && filter.includes('bush') && filter.includes('w.') && !filter.includes('h.w.')) return content.includes('george w. bush') || content.includes('george walker bush');
-  if (filter.includes('barack') || filter.includes('obama')) return content.includes('obama');
-  if (filter.includes('donald') || filter.includes('trump')) return content.includes('trump');
-  if (filter.includes('joe') || filter.includes('biden')) return content.includes('biden');
+  // Special handling for different filter types - match card titles specifically
+  if (filter.includes('george washington')) return title.includes('george washington');
+  if (filter.includes('john adams')) return title.includes('john adams') && !title.includes('john quincy adams');
+  if (filter.includes('john quincy adams')) return title.includes('john quincy adams');
+  if (filter.includes('thomas jefferson')) return title.includes('thomas jefferson');
+  if (filter.includes('james madison')) return title.includes('james madison');
+  if (filter.includes('james monroe')) return title.includes('james monroe');
+  if (filter.includes('andrew jackson')) return title.includes('andrew jackson') && !title.includes('andrew johnson');
+  if (filter.includes('martin van buren')) return title.includes('martin van buren');
+  if (filter.includes('william henry harrison')) return title.includes('william henry harrison');
+  if (filter.includes('john tyler')) return title.includes('john tyler');
+  if (filter.includes('james knox polk') || filter.includes('james k. polk')) return title.includes('polk');
+  if (filter.includes('zachary taylor')) return title.includes('zachary taylor');
+  if (filter.includes('millard fillmore')) return title.includes('millard fillmore');
+  if (filter.includes('franklin pierce')) return title.includes('franklin pierce');
+  if (filter.includes('james buchanan')) return title.includes('james buchanan');
+  if (filter.includes('abraham lincoln')) return title.includes('lincoln');
+  if (filter.includes('andrew johnson')) return title.includes('andrew johnson');
+  if (filter.includes('ulysses') || filter.includes('grant')) return title.includes('grant');
+  if (filter.includes('rutherford') || filter.includes('hayes')) return title.includes('hayes');
+  if (filter.includes('james abram garfield') || filter.includes('garfield')) return title.includes('garfield');
+  if (filter.includes('chester') || filter.includes('arthur')) return title.includes('arthur');
+  if (filter.includes('grover cleveland') || filter.includes('cleveland')) return title.includes('cleveland');
+  if (filter.includes('benjamin harrison')) return title.includes('benjamin harrison');
+  if (filter.includes('william mckinley') || filter.includes('mckinley')) return title.includes('mckinley');
+  if (filter.includes('theodore roosevelt')) return title.includes('theodore roosevelt');
+  if (filter.includes('william howard taft') || filter.includes('taft')) return title.includes('taft');
+  if (filter.includes('woodrow wilson') || filter.includes('wilson')) return title.includes('wilson');
+  if (filter.includes('warren') || filter.includes('harding')) return title.includes('harding');
+  if (filter.includes('calvin coolidge') || filter.includes('coolidge')) return title.includes('coolidge');
+  if (filter.includes('herbert') || filter.includes('hoover')) return title.includes('hoover');
+  if (filter.includes('franklin') && filter.includes('roosevelt')) return title.includes('franklin') && title.includes('roosevelt');
+  if (filter.includes('harry') || filter.includes('truman')) return title.includes('truman');
+  if (filter.includes('dwight') || filter.includes('eisenhower')) return title.includes('eisenhower');
+  if (filter.includes('john') && filter.includes('kennedy')) return title.includes('kennedy');
+  if (filter.includes('lyndon') || filter.includes('johnson')) return title.includes('lyndon') || (title.includes('johnson') && !title.includes('andrew'));
+  if (filter.includes('richard') || filter.includes('nixon')) return title.includes('nixon');
+  if (filter.includes('gerald') || filter.includes('ford')) return title.includes('ford');
+  if (filter.includes('jimmy') || filter.includes('carter')) return title.includes('carter');
+  if (filter.includes('ronald') || filter.includes('reagan')) return title.includes('ronald') && title.includes('reagan');
+  if (filter.includes('george') && filter.includes('bush') && filter.includes('h.w.')) return title.includes('george') && title.includes('bush') && title.includes('h.w.');
+  if (filter.includes('william') && filter.includes('clinton')) return title.includes('clinton');
+  if (filter.includes('george') && filter.includes('bush') && filter.includes('w.') && !filter.includes('h.w.')) return title.includes('george') && title.includes('bush') && title.includes('w.') && !title.includes('h.w.');
+  if (filter.includes('barack') || filter.includes('obama')) return title.includes('obama');
+  if (filter.includes('donald') || filter.includes('trump')) return title.includes('trump');
+  if (filter.includes('joe') || filter.includes('biden')) return title.includes('biden');
   
-  // For other filters, do basic name matching
-  return content.includes(filter);
+  // For other filters, match against the card title
+  return title.includes(filter);
 }
 
 // Theme and style functionality
@@ -1097,7 +1830,7 @@ document.addEventListener('DOMContentLoaded', () => {
       <button onclick="gotoSection('references')">References</button>
       <select id="filter" onchange="filterTimeline()">
         <option value="all">Filter by actor...</option>
-        <optgroup label="━━━ PRESIDENTS ━━━">
+        <option disabled class="section-divider">═══ PRESIDENTS ═══</option>
           <option>George Washington (1st President)</option>
           <option>John Adams (2nd President)</option>
           <option>Thomas Jefferson (3rd President)</option>
@@ -1144,8 +1877,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <option>Barack Hussein Obama (44th President)</option>
           <option>Donald John Trump (45th President)</option>
           <option>Joseph Robinette Biden Jr. (46th President)</option>
-        </optgroup>
-        <optgroup label="━━━ CONGRESS ━━━">
+        <option disabled class="section-divider">═══ CONGRESS ═══</option>
           <option>Thaddeus Stevens (Rep-PA)</option>
           <option>Joe McCarthy (Rep-WI)</option>
           <option>Harry Reid (Dem-NV)</option>
@@ -1163,8 +1895,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <option>John Bingham (Rep-OH)</option>
           <option>Robert Owen (Dem-OK)</option>
           <option>Harrison Gray Otis (Fed-MA)</option>
-        </optgroup>
-        <optgroup label="━━━ SUPREME COURT ━━━">
+        <option disabled class="section-divider">═══ SUPREME COURT ═══</option>
           <option>Roger Taney (Chief Justice 1836-1864)</option>
           <option>Oliver Wendell Holmes Jr. (1902-1932)</option>
           <option>Hugo Black (1937-1971)</option>
@@ -1178,13 +1909,11 @@ document.addEventListener('DOMContentLoaded', () => {
           <option>John Marshall Harlan I (1877-1911)</option>
           <option>Antonin Scalia (1986-2016)</option>
           <option>Clarence Thomas (1991-present)</option>
-        </optgroup>
-        <optgroup label="━━━ INSTITUTIONS ━━━">
+        <option disabled class="section-divider">═══ INSTITUTIONS ═══</option>
           <option>Federal Reserve</option>
           <option>Treasury</option>
           <option>Congress (Institution)</option>
           <option>Supreme Court (Institution)</option>
-        </optgroup>
       </select>
       <div class="mobile-actions">
         <button onclick="window.print()">🖨️ Print</button>
@@ -2144,7 +2873,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <li><strong>Income Tax Without Apportionment</strong>: Revenue Act (1861) created first federal income tax without apportionment among states as Constitution requires. Supreme Court would later rule similar taxes unconstitutional in Pollock v. Farmers' Loan (1895). <a href="https://supreme.justia.com/cases/federal/us/158/601/" target="_blank">[Pollock Decision]</a></li>
           <li><strong>Executive Legislation</strong>: Issued 48 executive orders and proclamations with force of law while Congress was not in session. Expanded army/navy, suspended habeas corpus, spent unappropriated funds, established draft - all without Congressional authorization. Set precedent for executive legislation.</li>
         </ul>
-        <div style="margin-top: 15px; padding: 10px; background: var(--danger); color: white; border-radius: 8px; font-size: 14px;">
+        <div style="margin-top: 15px; padding: 10px; border: 1px solid var(--border); border-radius: 8px; font-size: 14px; background: var(--card-bg);">
           <strong>Constitutional Analysis:</strong> Lincoln destroyed the limited constitutional republic established by founders and created precedents for all future executive tyranny. Suspended virtually every constitutional protection - free speech, press, habeas corpus, jury trial, property rights, state sovereignty. Transformed voluntary union of states into coercive nation-state enforced by military power.
         </div>
       </div>
@@ -2374,7 +3103,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <li><strong>Segregation of Federal Government</strong>: Segregated federal civil service that had been integrated since Reconstruction. Fired black federal employees, required photo identification for job applications to screen out blacks. Showed film "Birth of a Nation" at White House glorifying KKK.</li>
           <li><strong>Federal Farm Loan Act (1916)</strong>: Created federal farm credit system subsidizing agricultural loans. No constitutional authority for federal agricultural lending. Expanded federal government into private credit markets.</li>
         </ul>
-        <div style="margin-top: 15px; padding: 10px; background: var(--danger); color: white; border-radius: 8px; font-size: 14px;">
+        <div style="margin-top: 15px; padding: 10px; border: 1px solid var(--border); border-radius: 8px; font-size: 14px; background: var(--card-bg);">
           <strong>Constitutional Analysis:</strong> Wilson created the modern administrative state that founders explicitly rejected. Federal Reserve, income tax, direct election of senators, and wartime emergency powers fundamentally transformed limited constitutional republic into unlimited government. His "progressive" ideology viewed Constitution as "living document" to be reinterpreted rather than binding law.
         </div>
       </div>
@@ -2439,7 +3168,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <li><strong>Federal Drought Relief Programs (1930-1932)</strong>: Authorized federal spending for drought relief and crop assistance programs during Dust Bowl. While helping farmers had humanitarian merit, federal relief exceeded constitutional authority. Established precedent for federal disaster relief and agricultural welfare programs. Violated principle that charity and disaster relief should be local and voluntary rather than federal and mandatory. <a href="https://www.archives.gov/milestone-documents/drought-relief-programs" target="_blank">[National Archives - Drought Relief Programs]</a></li>
           <li><strong>White House Conference on Child Health and Protection (1930)</strong>: Federal government assumed role in child welfare and family policy through conferences and recommendations. Violated constitutional limits by expanding federal authority into areas traditionally controlled by families, communities, and states. Created precedent for federal involvement in child-rearing and family decisions. Established foundation for later federal education and social programs. <a href="https://www.whitehouse.gov/about-the-white-house/presidents/herbert-hoover/" target="_blank">[White House - Hoover Biography]</a></li>
         </ul>
-        <div style="margin-top: 15px; padding: 10px; background: var(--danger); color: white; border-radius: 8px; font-size: 14px;">
+        <div style="margin-top: 15px; padding: 10px; border: 1px solid var(--border); border-radius: 8px; font-size: 14px; background: var(--card-bg);">
           <strong>Constitutional Analysis:</strong> Hoover's "limited intervention" actually established most of the constitutional violations later expanded by FDR's New Deal. Federal bailouts, agricultural subsidies, public works spending, and economic planning all originated with Hoover. His interventions violated free market principles and constitutional limits, proving that "conservative" and "progressive" both lead to expanded government power.
         </div>
       </div>
@@ -2484,7 +3213,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <li><strong>Tax Reduction Act Deficit Spending (1975)</strong>: Signed temporary tax cuts during recession without corresponding spending reductions, increasing federal deficit to $53 billion. Violated fiscal responsibility principles by cutting revenue while maintaining spending. Used Keynesian economic policies requiring deficit spending rather than limited government approaches. <a href="https://millercenter.org/president/ford/domestic-affairs" target="_blank">[Miller Center - Ford Domestic Affairs]</a></li>
           <li><strong>Whip Inflation Now (WIN) Program Federal Economic Intervention (1974)</strong>: Launched federal anti-inflation campaign asking Americans to voluntarily reduce spending and control prices. While voluntary, represented federal government intervention in private economic decisions. Created federal bureaucracy to coordinate anti-inflation publicity campaigns. Violated free market principles by using federal resources to influence private consumer behavior. <a href="https://www.archives.gov/milestone-documents/whip-inflation-now" target="_blank">[National Archives - Whip Inflation Now Program]</a></li>
         </ul>
-        <div style="margin-top: 15px; padding: 10px; background: var(--danger); color: white; border-radius: 8px; font-size: 14px;">
+        <div style="margin-top: 15px; padding: 10px; border: 1px solid var(--border); border-radius: 8px; font-size: 14px; background: var(--card-bg);">
           <strong>Constitutional Analysis:</strong> Ford's unelected presidency established dangerous precedents for deep state protection and presidential immunity from criminal prosecution. His Nixon pardon destroyed equal justice under law while his intelligence community protection enabled continued illegal surveillance programs. Ford proved that "moderate" Republicans also expand unconstitutional government power.
         </div>
       </div>
@@ -2507,7 +3236,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <li><strong>Ethics in Government Act Independent Prosecutor (1978)</strong>: Created independent special prosecutors outside normal executive branch control. While ethics oversight had merit, violated separation of powers by creating prosecutors not accountable to elected officials. Led to politicized prosecutions and unaccountable special prosecutors. Enabled prosecutorial abuse and political persecution through independent counsels. <a href="https://www.archives.gov/milestone-documents/ethics-in-government-act" target="_blank">[National Archives - Ethics in Government Act]</a></li>
           <li><strong>Panama Canal Treaties Territorial Surrender (1977)</strong>: Signed treaties giving away Panama Canal to Panama without clear constitutional authority. Surrendered US-built strategic asset worth billions without receiving compensation. Violated national defense by giving away critical military transportation route. Senate ratified treaties despite majority American opposition. <a href="https://www.archives.gov/milestone-documents/panama-canal-treaties" target="_blank">[National Archives - Panama Canal Treaties]</a></li>
         </ul>
-        <div style="margin-top: 15px; padding: 10px; background: var(--danger); color: white; border-radius: 8px; font-size: 14px;">
+        <div style="margin-top: 15px; padding: 10px; border: 1px solid var(--border); border-radius: 8px; font-size: 14px; background: var(--card-bg);">
           <strong>Constitutional Analysis:</strong> Carter's presidency created the modern surveillance state through FISA courts while conducting massive covert operations that led to 9/11 and Taliban. His federal bureaucracy expansion (Energy, Education) and corporate bailouts (Chrysler) established precedents for unlimited federal control over private markets and local institutions.
         </div>
       </div>
@@ -2589,7 +3318,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <li><strong>Censorship & Press Control</strong>: Created Office of Censorship (1941) controlling all communications leaving US. Violated 1st Amendment press freedoms. Office of War Information created propaganda for domestic consumption. <a href="https://www.archives.gov/research/guide-fed-records/groups/216.html" target="_blank">[Archives - Censorship]</a></li>
           <li><strong>A.L.A. Schechter Poultry Corp. Defiance</strong>: After Court struck down NIRA, FDR created similar programs under different names (NLRA, AAA amendments) - openly defying Supreme Court constitutional rulings and separation of powers.</li>
         </ul>
-        <div style="margin-top: 15px; padding: 10px; background: var(--danger); color: white; border-radius: 8px; font-size: 14px;">
+        <div style="margin-top: 15px; padding: 10px; border: 1px solid var(--border); border-radius: 8px; font-size: 14px; background: var(--card-bg);">
           <strong>Constitutional Analysis:</strong> FDR fundamentally transformed the federal government from limited constitutional republic to administrative state. Violated virtually every constitutional principle: separation of powers, enumerated powers, individual rights, property rights, due process. His precedents enabled all subsequent presidential overreach.
         </div>
       </div>
@@ -2613,7 +3342,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <li><strong>Berlin Airlift Unauthorized Military Operation (1948-1949)</strong>: Committed US military to supply Berlin without Congressional authorization for potential war with Soviet Union. While humanitarian operation had merit, risked nuclear war without legislative approval. Used military aircraft in hostile territory without constitutional war declaration. Violated separation of powers in foreign policy decisions. <a href="https://millercenter.org/president/truman/foreign-affairs" target="_blank">[Miller Center - Berlin Airlift]</a></li>
           <li><strong>Internal Security Act Veto Override - McCarthyism Enablement (1950)</strong>: Congress overrode Truman's veto of McCarran Act requiring communist organizations to register with government. While Truman opposed bill, his administration's loyalty program and communist hysteria created political environment enabling McCarthyist persecution. Federal government gained power to investigate and persecute Americans for political beliefs. <a href="https://www.archives.gov/milestone-documents/internal-security-act" target="_blank">[National Archives - Internal Security Act]</a></li>
         </ul>
-        <div style="margin-top: 15px; padding: 10px; background: var(--danger); color: white; border-radius: 8px; font-size: 14px;">
+        <div style="margin-top: 15px; padding: 10px; border: 1px solid var(--border); border-radius: 8px; font-size: 14px; background: var(--card-bg);">
           <strong>Constitutional Analysis:</strong> Truman fundamentally transformed America from constitutional republic to global empire. CIA, NATO, undeclared wars, loyalty oaths, and permanent foreign aid programs destroyed constitutional limits on federal power. His "national security" justifications created precedent for unlimited executive authority that continues today.
         </div>
       </div>
@@ -2637,7 +3366,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <li><strong>Atoms for Peace Program Nuclear Proliferation (1953)</strong>: Created program sharing nuclear technology with foreign nations, spreading nuclear weapons capability worldwide. Violated national security by proliferating nuclear materials and technology. Led to nuclear weapons programs in multiple nations. Used federal funds to subsidize nuclear industry development globally. <a href="https://www.iaea.org/about/history/atoms-for-peace" target="_blank">[IAEA - Atoms for Peace History]</a></li>
           <li><strong>Federal Aviation Administration Creation (1958)</strong>: Created federal agency controlling all civilian aviation, expanding federal regulatory power beyond interstate commerce into local airports and private aircraft. Violated 10th Amendment by federalizing transportation traditionally regulated by states. Created federal bureaucracy controlling private aviation activities and local airport operations. <a href="https://www.archives.gov/milestone-documents/federal-aviation-act" target="_blank">[National Archives - Federal Aviation Act]</a></li>
         </ul>
-        <div style="margin-top: 15px; padding: 10px; background: var(--danger); color: white; border-radius: 8px; font-size: 14px;">
+        <div style="margin-top: 15px; padding: 10px; border: 1px solid var(--border); border-radius: 8px; font-size: 14px; background: var(--card-bg);">
           <strong>Constitutional Analysis:</strong> Eisenhower perfected the covert national security state while maintaining public image of constitutional conservatism. CIA coups, secret surveillance, military expansion, and federal spending programs violated constitutional limits while operating below public radar. His presidency normalized secret government operations beyond democratic accountability.
         </div>
       </div>
@@ -2661,7 +3390,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <li><strong>Fair Housing Act Private Property Control (1968)</strong>: While advancing racial justice, Act violated property rights and freedom of association by prohibiting private property owners from making rental/sales decisions. Federal government assumed control over private housing markets. Created federal housing bureaucracy with power to investigate and prosecute private property owners. Established precedent for federal control over private property transactions. <a href="https://www.archives.gov/milestone-documents/fair-housing-act" target="_blank">[National Archives - Fair Housing Act]</a></li>
           <li><strong>Gun Control Act Federal Firearms Registration (1968)</strong>: Established first comprehensive federal gun control law requiring firearms dealer licensing and prohibiting certain sales. Violated Second Amendment by creating federal barriers to firearms ownership. Established federal bureaucracy (ATF) to regulate private firearms ownership. Created foundation for expanded federal gun control and registration systems. <a href="https://www.archives.gov/milestone-documents/gun-control-act" target="_blank">[National Archives - Gun Control Act]</a></li>
         </ul>
-        <div style="margin-top: 15px; padding: 10px; background: var(--danger); color: white; border-radius: 8px; font-size: 14px;">
+        <div style="margin-top: 15px; padding: 10px; border: 1px solid var(--border); border-radius: 8px; font-size: 14px; background: var(--card-bg);">
           <strong>Constitutional Analysis:</strong> LBJ's Great Society created the modern welfare state that fundamentally transformed America from limited government to unlimited federal control over healthcare, education, housing, employment, and poverty. His programs violated constitutional enumerated powers and created permanent federal dependency while conducting secret wars abroad.
         </div>
       </div>
@@ -2685,7 +3414,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <li><strong>Supplemental Security Income Federal Welfare Expansion (1972)</strong>: Created federal welfare program for aged, blind, and disabled, federalizing programs traditionally handled by states. Established guaranteed minimum income violating constitutional principle that federal government should not provide welfare. Created permanent federal dependency and unlimited spending obligation. Expanded welfare state beyond constitutional enumerated powers. <a href="https://www.archives.gov/milestone-documents/supplemental-security-income" target="_blank">[National Archives - Supplemental Security Income]</a></li>
           <li><strong>Drug Enforcement Administration Federal Police Power (1973)</strong>: Created federal drug enforcement agency with police powers traditionally reserved to states. DEA assumed authority to investigate, arrest, and prosecute drug crimes within states. Violated 10th Amendment by federalizing criminal law enforcement. Led to massive federal prison expansion and police state tactics in drug enforcement. <a href="https://www.archives.gov/milestone-documents/drug-enforcement-administration" target="_blank">[National Archives - DEA Creation]</a></li>
         </ul>
-        <div style="margin-top: 15px; padding: 10px; background: var(--danger); color: white; border-radius: 8px; font-size: 14px;">
+        <div style="margin-top: 15px; padding: 10px; border: 1px solid var(--border); border-radius: 8px; font-size: 14px; background: var(--card-bg);">
           <strong>Constitutional Analysis:</strong> Nixon's presidency marked the complete abandonment of constitutional money (gold standard) and constitutional government (Watergate). His wage/price controls, environmental regulations, and federal police expansion destroyed free market principles while his criminal activities destroyed executive branch credibility and constitutional separation of powers.
         </div>
       </div>
@@ -2711,7 +3440,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <li><strong>State Secrets Privilege Abuse</strong>: Invoked "state secrets" privilege to dismiss lawsuits challenging torture, surveillance, and detention programs. Prevented judicial review of executive branch actions, undermining checks and balances.</li>
           <li><strong>TARP Bailouts Without Congressional Appropriation</strong>: Treasury Secretary Paulson initially claimed authority to spend $700 billion on bank bailouts with no oversight. Congress forced to grant retroactive approval under threat of economic collapse. Violated appropriations clause.</li>
         </ul>
-        <div style="margin-top: 15px; padding: 10px; background: var(--danger); color: white; border-radius: 8px; font-size: 14px;">
+        <div style="margin-top: 15px; padding: 10px; border: 1px solid var(--border); border-radius: 8px; font-size: 14px; background: var(--card-bg);">
           <strong>Constitutional Analysis:</strong> Bush administration's "unitary executive" theory claimed president has unlimited power during wartime, essentially making him dictator. Violated every amendment in Bill of Rights. Set precedents for surveillance state, torture, indefinite detention, and executive supremacy that subsequent presidents have continued and expanded.
         </div>
       </div>
@@ -2737,7 +3466,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <li><strong>EPA Power Plant Regulations</strong>: Clean Power Plan attempted to regulate CO2 emissions from power plants without clear congressional authorization. Supreme Court stayed implementation. Violated separation of powers by creating law through regulation rather than legislation.</li>
           <li><strong>FISA Court Abuse</strong>: Expanded surveillance through secret FISA court rulings. Court approved 99.97% of warrant requests. Created parallel legal system with secret law and secret interpretations of Constitution outside normal judicial process.</li>
         </ul>
-        <div style="margin-top: 15px; padding: 10px; background: var(--danger); color: white; border-radius: 8px; font-size: 14px;">
+        <div style="margin-top: 15px; padding: 10px; border: 1px solid var(--border); border-radius: 8px; font-size: 14px; background: var(--card-bg);">
           <strong>Constitutional Analysis:</strong> Obama combined Bush's surveillance state with unprecedented targeted killing program and executive lawmaking. Despite constitutional law professor background, violated separation of powers, due process, equal protection, and war powers. "Pen and phone" presidency bypassed Congress through executive action.
         </div>
       </div>
@@ -2765,7 +3494,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <li><strong>Election Fraud Claims & Pressure Campaigns</strong>: Made false claims of election fraud, pressured state officials to "find votes" (Georgia Secretary of State call), pressured DOJ to declare election corrupt. Undermined democratic process and rule of law without evidence.</li>
           <li><strong>Attempted Firing of Inspector General</strong>: Fired multiple inspectors general investigating administration misconduct without required Congressional notification. Violated inspector general independence and Congressional oversight authority.</li>
         </ul>
-        <div style="margin-top: 15px; padding: 10px; background: var(--danger); color: white; border-radius: 8px; font-size: 14px;">
+        <div style="margin-top: 15px; padding: 10px; border: 1px solid var(--border); border-radius: 8px; font-size: 14px; background: var(--card-bg);">
           <strong>Constitutional Analysis:</strong> Trump's presidency represented direct assault on constitutional government itself. First president to refuse peaceful transfer of power, incite violence against Congress, and claim unlimited executive authority. Combined authoritarian tendencies with unprecedented corruption and obstruction of constitutional processes.
         </div>
       </div>
@@ -2792,7 +3521,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <li><strong>Parental Rights Violations</strong>: DOJ/FBI investigated parents at school board meetings as "domestic terrorists." Teachers unions coordinated with White House to target concerned parents. Violated 1st Amendment petitioning and parental rights.</li>
           <li><strong>Medical Tyranny During COVID</strong>: Federal masking requirements, travel restrictions, business closures through agency action. Violated religious liberty, freedom of assembly, due process. Emergency powers used for non-emergency political control.</li>
         </ul>
-        <div style="margin-top: 15px; padding: 10px; background: var(--danger); color: white; border-radius: 8px; font-size: 14px;">
+        <div style="margin-top: 15px; padding: 10px; border: 1px solid var(--border); border-radius: 8px; font-size: 14px; background: var(--card-bg);">
           <strong>Constitutional Analysis:</strong> Biden administration represents culmination of administrative state tyranny - rule by unelected bureaucrats through regulation rather than elected representatives through legislation. COVID emergency powers normalized authoritarian government. Weaponized justice system against political opponents while protecting family corruption.
         </div>
       </div>
