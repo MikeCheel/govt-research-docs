@@ -1681,7 +1681,9 @@ function checkActorMatch(content, actorName) {
   return false;
 }
 
-function highlightActorName(element, actorName, color = '#ff9800') {
+function highlightActorName(element, actorName, color = '#ff9800') {}
+/* Temporarily disabled to stabilize scripts
+  return;
   // Get all text nodes in the element
   const walker = document.createTreeWalker(
     element,
@@ -1787,6 +1789,7 @@ function highlightActorName(element, actorName, color = '#ff9800') {
   });
 }
 
+*/
 function removeHighlighting(element) {
   // Remove all highlighting from the element
   const marks = element.querySelectorAll('mark');
