@@ -1776,7 +1776,7 @@ function highlightActorName(element, actorName, color = '#ff9800') {
     searchTerms.forEach(term => {
       const regex = new RegExp(`\\b${term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'gi');
       if (regex.test(text)) {
-        text = text.replace(regex, `<mark style="background-color: ${color}; padding: 1px 2px;">text = text.replace(regex, `<mark style="background-color: ${color}; padding: 1px 2px;">text = text.replace(regex, '<mark style="background-color: yellow; padding: 1px 2px;">$&</mark>');</mark>`);</mark>`);
+        text = text.replace(regex, `<mark style="background-color: ${color}; padding: 1px 2px;">text = text.replace(regex, `<mark style="background-color: ${color}; padding: 1px 2px;">text = text.replace(regex, `<mark style="background-color: ${color}; padding: 1px 2px;">text = text.replace(regex, '<mark style="background-color: yellow; padding: 1px 2px;">$&</mark>');</mark>`);</mark>`);</mark>`);
         modified = true;
       }
     });
