@@ -244,9 +244,10 @@ a:hover { text-decoration: underline; }
 /* Override desktop specificity to allow brand to shrink on mobile */
 .navbar .brand {
   min-width: 0 !important;
-  white-space: nowrap !important;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  white-space: normal !important;
+  overflow: visible;
+  text-overflow: clip;
+  overflow-wrap: anywhere;
 }
   
   .navbar-right {
@@ -276,6 +277,7 @@ a:hover { text-decoration: underline; }
     margin-top: 1px;
     max-height: 75vh;
     overflow-y: auto;
+    overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
     width: 100%;
     box-sizing: border-box;
@@ -319,6 +321,8 @@ a:hover { text-decoration: underline; }
     touch-action: manipulation;
     -webkit-tap-highlight-color: transparent;
     transition: all 0.2s ease;
+    white-space: normal; /* allow wrapping, prevent horizontal scroll */
+    line-height: 1.3;
   }
   
   .nav-buttons button:not(.theme-toggle):active {
@@ -440,9 +444,9 @@ a:hover { text-decoration: underline; }
   .brand {
     font-size: 0.95rem;
     max-width: calc(100vw - 88px);
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    overflow: visible;
   }
   
   .navbar {
@@ -491,9 +495,9 @@ a:hover { text-decoration: underline; }
     font-size: 1rem;
   }
   .brand {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    white-space: normal;
+    overflow: visible;
+    overflow-wrap: anywhere;
   }
 }
 .container { max-width: 1100px; margin: 0 auto; padding: 22px 16px 60px; }
