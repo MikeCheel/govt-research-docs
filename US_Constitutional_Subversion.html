@@ -173,7 +173,7 @@ a:hover { text-decoration: underline; }
     padding: 16px 18px;
     height: auto;
     max-height: none;
-    overflow: visible;
+    overflow: hidden;
     position: relative;
   }
 
@@ -218,23 +218,27 @@ a:hover { text-decoration: underline; }
     border-radius: 2px;
   }
   
-  .navbar-left {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    flex: 1;
-    order: 1;
-    min-width: 0;
-  }
-  
-  .brand {
-    font-size: 1.15rem;
-    font-weight: 600;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    color: var(--accent-color);
-  }
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+  order: 1;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.brand {
+  font-size: 0.95rem;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 180px;
+  color: var(--accent-color);
+  flex: 1; /* ensure title claims space and hamburger stays to the right */
+}
   
   .navbar-right {
     display: none;
@@ -269,7 +273,9 @@ a:hover { text-decoration: underline; }
   }
   
   .nav-buttons.show {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
     animation: slideDown 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   }
   
@@ -948,6 +954,10 @@ function gotoSection(id) {
 function filterTimeline() {
   const dd = document.getElementById('filter');
   const val = dd.value;
+  // Aggregated sources elements
+  const filteredSourcesSection = document.getElementById('filtered-sources');
+  const filteredActorNameEl = document.getElementById('filtered-actor-name');
+  const filteredSourcesList = document.getElementById('filtered-sources-list');
   
   // Reset all items to visible
   const timelineItems = Array.from(document.querySelectorAll('.tl-item'));
@@ -989,6 +999,12 @@ function filterTimeline() {
     navButtons.forEach(button => {
       button.style.display = '';
     });
+
+    // Hide aggregated sources section when showing all
+    if (filteredSourcesSection) {
+      filteredSourcesSection.style.display = 'none';
+      if (filteredSourcesList) filteredSourcesList.innerHTML = '';
+    }
     return;
   }
   
@@ -1003,6 +1019,9 @@ function filterTimeline() {
     const who = whoElement.textContent.toLowerCase();
     if (!who.includes(filterName.toLowerCase())) {
       el.style.display = 'none';
+    } else {
+      // Auto-expand matching timeline entries to expose their links
+      if (typeof el.open !== 'undefined') el.open = true;
     }
   });
   
@@ -1378,6 +1397,47 @@ function filterTimeline() {
       }
     }
   });
+
+  // Build aggregated verifiable links for the filtered view
+  if (filteredSourcesSection && filteredSourcesList) {
+    const collected = new Map(); // href -> label
+    const isVisible = (el) => window.getComputedStyle(el).display !== 'none';
+
+    // From visible timeline items
+    document.querySelectorAll('.tl-item').forEach(d => {
+      if (isVisible(d)) {
+        d.querySelectorAll('.tl-links a').forEach(a => {
+          if (a.href) collected.set(a.href, a.textContent.trim() || a.href);
+        });
+      }
+    });
+
+    // From visible cards across sections
+    document.querySelectorAll('.card').forEach(c => {
+      if (isVisible(c)) {
+        c.querySelectorAll('.links a').forEach(a => {
+          if (a.href) collected.set(a.href, a.textContent.trim() || a.href);
+        });
+      }
+    });
+
+    // From visible references section (if shown)
+    const referencesSection = document.getElementById('references');
+    if (referencesSection && isVisible(referencesSection)) {
+      referencesSection.querySelectorAll('a').forEach(a => {
+        if (isVisible(a) && a.href) collected.set(a.href, a.textContent.trim() || a.href);
+      });
+    }
+
+    if (collected.size > 0) {
+      if (filteredActorNameEl) filteredActorNameEl.textContent = filterName;
+      filteredSourcesList.innerHTML = '<ul>' + Array.from(collected.entries()).map(([href, text]) => `<li><a href="${href}" target="_blank" rel="noopener noreferrer">${text}</a></li>`).join('') + '</ul>';
+      filteredSourcesSection.style.display = '';
+    } else {
+      filteredSourcesSection.style.display = 'none';
+      filteredSourcesList.innerHTML = '';
+    }
+  }
 }
 
 function extractFilterName(filterValue) {
@@ -1962,6 +2022,11 @@ document.addEventListener('DOMContentLoaded', () => {
   <section id="intro" class="section">
     <h1>The Constitution They Ignored: America's Real History</h1>
     <p class="lede">The complete record of constitutional betrayal: presidential overreach, congressional corruption, Supreme Court subversion, and secret programs - all documented with primary sources.</p>
+  </section>
+
+  <section id="filtered-sources" class="section" style="display:none;">
+    <h2>Sources for <span id="filtered-actor-name"></span></h2>
+    <div id="filtered-sources-list" class="refs"></div>
   </section>
 
   <section id="timeline" class="section">

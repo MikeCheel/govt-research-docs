@@ -30,15 +30,22 @@
 - Test on various mobile devices and screen sizes
 
 **Implementation Steps**:
-- [ ] Analyze current mobile menu CSS and JavaScript functionality
-- [ ] Fix hamburger menu button positioning to avoid covering title
-- [ ] Redesign mobile menu layout to eliminate horizontal scrolling/swiping
-- [ ] Optimize mobile menu height and content spacing
-- [ ] Enhance actor filter to prominently show verifiable links when filtering
-- [ ] Ensure filtered content clearly displays source citations
+- [x] Analyze current mobile menu CSS and JavaScript functionality
+- [x] Fix hamburger menu button positioning to avoid covering title
+- [x] Redesign mobile menu layout to eliminate horizontal scrolling/swiping
+- [x] Optimize mobile menu height and content spacing
+- [x] Enhance actor filter to prominently show verifiable links when filtering
+- [x] Ensure filtered content clearly displays source citations
 - [ ] Test mobile menu on various screen sizes (iPhone, Android, tablets)
 - [ ] Test actor filtering functionality and link display
 - [ ] Verify all navigation elements work properly on mobile
+
+**Implementation Notes (2025-09-07)**:
+- Prevented hamburger overlap with the title on mobile.
+- Mobile menu opens as a two-column grid; no horizontal swiping is required; retains 75vh max-height with vertical scroll.
+- Filter auto-expands matching timeline entries to reveal their Sources links.
+- Added a new "Sources for [actor]" aggregated links section under the Introduction; it appears when filtering and hides when "All" is selected.
+- Navigation buttons continue to hide/show in sync with filtered sections.
 
 **Note**: This builds upon the existing navigation system in US_Constitutional_Subversion.html to improve mobile user experience.
 
