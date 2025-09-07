@@ -1,22 +1,12 @@
 # AI Task Management
 
-## Current Task: Resume Previous Work and Organize MD Files
+## Archived Tasks
 
-### Task Description
-- Resume the last task that was interrupted due to crash
-- Move all .md files in the project to a new ai-research folder
-- Create the ai-research folder if it doesn't exist
-- Ensure all files are properly moved and organized
-
-### Progress Checklist
-- [x] Create ai-todos.md file for task tracking
-- [x] Identify all .md files in the project directory
-- [x] Create ai-research folder
-- [x] Move all .md files to ai-research folder
-- [x] Verify all files moved successfully
-- [x] Update file paths if needed in any references
-
-### MD Files to Move
+### TASK 12: Resume Previous Work and Organize MD Files
+**Status**: COMPLETED
+**Description**: Resume interrupted task and move all .md files to ai-research folder for better organization
+**Completion Date**: 2025-09-07
+**Files Moved**: 
 - Congressional_Constitutional_Violations_Research.md
 - Constitutional_Violations_Integration_Analysis.md
 - Corporate_Cronyism_Constitutional_Commerce_Violations.md
@@ -24,11 +14,35 @@
 - Federal_Judiciary_Violations_Research.md
 - Presidential_Constitutional_Violations_Research.md
 - State_Government_Violations_Federal_System_Breakdown.md
+**Notes**: Task successfully resumed and completed after system crash interruption. All MD files have been organized into the ai-research folder.
 
-### Notes
-- This task was interrupted by a system crash
-- Need to ensure all files are moved without data loss
-- Check for any references to these files that might need updating
+## Current Task: Mobile Menu Optimization for Constitutional Research Document
+
+### TASK 14: Optimize Mobile Menu and Actor Filtering System
+**Status**: APPROVED - IN PROGRESS
+**Description**: Improve mobile menu usability and actor filtering functionality for US_Constitutional_Subversion.html
+**Requirements**:
+- Fix hamburger menu button covering the title
+- Prevent need for users to swipe to see full menu
+- Shorten mobile menu display to fit screen better
+- Ensure actor filtering shows only relevant content and verifiable links
+- Improve mobile user experience and discoverability
+- Test on various mobile devices and screen sizes
+
+**Implementation Steps**:
+- [ ] Analyze current mobile menu CSS and JavaScript functionality
+- [ ] Fix hamburger menu button positioning to avoid covering title
+- [ ] Redesign mobile menu layout to eliminate horizontal scrolling/swiping
+- [ ] Optimize mobile menu height and content spacing
+- [ ] Enhance actor filter to prominently show verifiable links when filtering
+- [ ] Ensure filtered content clearly displays source citations
+- [ ] Test mobile menu on various screen sizes (iPhone, Android, tablets)
+- [ ] Test actor filtering functionality and link display
+- [ ] Verify all navigation elements work properly on mobile
+
+**Note**: This builds upon the existing navigation system in US_Constitutional_Subversion.html to improve mobile user experience.
+
+**Note**: Task 12 (organizing MD files) has been successfully completed. All .md files have been moved to the ai-research folder as requested.
 
 ## Archived Tasks
 
