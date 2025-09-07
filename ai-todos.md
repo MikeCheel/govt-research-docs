@@ -37,6 +37,8 @@
 - [x] Enhance actor filter to prominently show verifiable links when filtering
 - [x] Ensure filtered content clearly displays source citations
 - [x] Add always-visible mobile quick-controls bar (actor filter + style selector + dark-mode toggle) on ≤1024px
+- [x] Improve glassmorphism title readability (text-shadow, color tweaks)
+- [x] Tighten actor filter matching to avoid nickname bleed (e.g., James ≠ Jimmy)
 - [ ] Test mobile menu on various screen sizes (iPhone, Android, tablets)
 - [ ] Test actor filtering functionality and link display
 - [ ] Verify all navigation elements work properly on mobile
@@ -46,7 +48,9 @@
 - Fixed overflow clipping on mobile navbar containers so the dropdown renders fully below the bar.
 - Mobile menu opens as a full-width vertical list; no horizontal swiping; retains max-height with vertical scroll.
 - Added an always-visible mobile quick-controls bar (≤1024px) under the navbar with: Actor filter, Style selector, and Dark-mode toggle. Controls are synced with the menu and persist via localStorage.
-- Filter auto-expands matching timeline entries and aggregates verifiable "Sources for [actor]" under the Introduction; section hides when "All" is selected.
+- Filter auto-expands matching timeline entries and aggregates verifiable "Sources for [actor]" at the bottom of the References section during filtering; the top intro aggregation is hidden while filtering.
+- Tightened actor filter matching: removed bare-surname matching and bare nickname aliases to avoid false positives (e.g., James Monroe no longer surfaces Jimmy Carter content).
+- Temporarily disabled in-text mention highlighting to stabilize scripts; will reintroduce a minimal, safe implementation after validation.
 - Navigation buttons hide/show based on visible sections after filtering.
 
 **Note**: This builds upon the existing navigation system in US_Constitutional_Subversion.html to improve mobile user experience.

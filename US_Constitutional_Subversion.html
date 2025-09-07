@@ -582,6 +582,17 @@ hr.sep { border:none; height:1px; background: var(--border); margin: 12px 0; }
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
+        /* Improve title readability on glassmorphism */
+        [data-style="glassmorphism"] .navbar .brand {
+            color: #ffffff !important;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+            -webkit-text-stroke: 0.15px rgba(0,0,0,0.2);
+        }
+        [data-style="glassmorphism"][data-theme="dark"] .navbar .brand {
+            color: #e2e8f0 !important;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.6);
+        }
+
         /* Neumorphism Style */
         [data-style="neumorphism"] {
             background: #e0e5ec;
@@ -1100,8 +1111,12 @@ function filterTimeline() {
     const whoElement = el.querySelector('.tl-who');
     if (!whoElement) return;
     const who = whoElement.textContent.toLowerCase();
-    const aliases = getActorAliases(filterName);
-    const isMatch = aliases.some(a => a && who.includes(a));
+    const parts = extractFilterName(filterName).toLowerCase().split(' ').filter(Boolean);
+    const first = parts[0] || '';
+    const last = parts[parts.length - 1] || '';
+    const fullNamePattern = (first && last) ? new RegExp(`\\b${first}\\b(?:[\\s\\w\\.]*)\\b${last}\\b`, 'i') : null;
+    const titlePattern = last ? new RegExp(`\\bpresident\\s+${last}\\b`, 'i') : null;
+    const isMatch = (fullNamePattern && fullNamePattern.test(who)) || (titlePattern && titlePattern.test(who));
     if (!isMatch) {
       el.style.display = 'none';
     } else {
@@ -1519,7 +1534,7 @@ function getActorAliases(name) {
   const last = parts[parts.length - 1] || '';
 
   if (first && last) aliases.add(`${first} ${last}`);
-  if (last) aliases.add(last);
+  // removed bare last-name alias to prevent false positives
 
   // Common nickname mappings
   const nickMap = {
@@ -1534,7 +1549,7 @@ function getActorAliases(name) {
   if (nickMap[first]) {
     nickMap[first].forEach(nk => {
       if (last) aliases.add(`${nk} ${last}`);
-      aliases.add(nk);
+      // do not add bare nickname aliases to avoid false positives (e.g., "James" -> "Jimmy Carter")
     });
   }
 
