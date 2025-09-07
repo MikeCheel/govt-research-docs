@@ -36,16 +36,18 @@
 - [x] Optimize mobile menu height and content spacing
 - [x] Enhance actor filter to prominently show verifiable links when filtering
 - [x] Ensure filtered content clearly displays source citations
+- [x] Add always-visible mobile quick-controls bar (actor filter + style selector + dark-mode toggle) on ≤1024px
 - [ ] Test mobile menu on various screen sizes (iPhone, Android, tablets)
 - [ ] Test actor filtering functionality and link display
 - [ ] Verify all navigation elements work properly on mobile
 
 **Implementation Notes (2025-09-07)**:
-- Prevented hamburger overlap with the title on mobile.
-- Mobile menu opens as a two-column grid; no horizontal swiping is required; retains 75vh max-height with vertical scroll.
-- Filter auto-expands matching timeline entries to reveal their Sources links.
-- Added a new "Sources for [actor]" aggregated links section under the Introduction; it appears when filtering and hides when "All" is selected.
-- Navigation buttons continue to hide/show in sync with filtered sections.
+- Prevented hamburger overlap with the title on mobile; title now wraps on small screens (no ellipsis), avoiding overlap and truncation.
+- Fixed overflow clipping on mobile navbar containers so the dropdown renders fully below the bar.
+- Mobile menu opens as a full-width vertical list; no horizontal swiping; retains max-height with vertical scroll.
+- Added an always-visible mobile quick-controls bar (≤1024px) under the navbar with: Actor filter, Style selector, and Dark-mode toggle. Controls are synced with the menu and persist via localStorage.
+- Filter auto-expands matching timeline entries and aggregates verifiable "Sources for [actor]" under the Introduction; section hides when "All" is selected.
+- Navigation buttons hide/show based on visible sections after filtering.
 
 **Note**: This builds upon the existing navigation system in US_Constitutional_Subversion.html to improve mobile user experience.
 

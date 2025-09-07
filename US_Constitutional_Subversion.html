@@ -993,6 +993,34 @@ hr.sep { border:none; height:1px; background: var(--border); margin: 12px 0; }
     max-width: calc(100vw - 72px); /* leave room for hamburger and padding */
   }
 }
+/* Always-visible mobile quick controls under navbar */
+.mobile-quick-controls { display: none; }
+@media (max-width: 1024px) {
+  .mobile-quick-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 12px 14px;
+    background: var(--panel);
+    border-bottom: 1px solid var(--border);
+  }
+  .mobile-quick-controls .controls {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+  .mobile-quick-controls .style-selector,
+  .mobile-quick-controls select {
+    min-height: 48px;
+  }
+  .mobile-quick-controls .controls .style-selector {
+    flex: 1 1 auto;
+  }
+  .mobile-quick-controls .controls .theme-toggle {
+    flex: 0 0 64px;
+    min-height: 48px;
+  }
+}
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
@@ -1002,7 +1030,9 @@ function gotoSection(id) {
 }
 function filterTimeline() {
   const dd = document.getElementById('filter');
-  const val = dd.value;
+  const quick = document.getElementById('filterQuick');
+  const activeSelect = quick && window.getComputedStyle(quick).display !== 'none' ? quick : dd;
+  const val = activeSelect ? activeSelect.value : (dd ? dd.value : 'all');
   // Aggregated sources elements
   const filteredSourcesSection = document.getElementById('filtered-sources');
   const filteredActorNameEl = document.getElementById('filtered-actor-name');
@@ -1802,10 +1832,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const desktopThemeToggle = document.getElementById('desktopThemeToggle');
   const mobileStyleSelector = document.getElementById('styleSelector');
   const desktopStyleSelector = document.getElementById('desktopStyleSelector');
+  const quickThemeToggle = document.getElementById('quickThemeToggle');
+  const quickStyleSelector = document.getElementById('quickStyleSelector');
   const body = document.body;
   
   const mobileSlider = mobileThemeToggle?.querySelector('.theme-toggle-slider');
   const desktopSlider = desktopThemeToggle?.querySelector('.theme-toggle-slider');
+  const quickSlider = quickThemeToggle?.querySelector('.theme-toggle-slider');
 
   // Load saved preferences or default values
   const savedTheme = localStorage.getItem('theme') || 'light';
@@ -1823,6 +1856,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const icon = theme === 'light' ? '☀️' : '🌙';
     if (mobileSlider) mobileSlider.textContent = icon;
     if (desktopSlider) desktopSlider.textContent = icon;
+    if (quickSlider) quickSlider.textContent = icon;
   }
 
   function toggleTheme() {
@@ -1857,6 +1891,14 @@ document.addEventListener('DOMContentLoaded', () => {
   if (desktopStyleSelector) {
     desktopStyleSelector.addEventListener('change', (e) => changeStyle(e.target.value));
   }
+  // Quick controls
+  if (quickThemeToggle) {
+    quickThemeToggle.addEventListener('click', toggleTheme);
+  }
+  if (quickStyleSelector) {
+    quickStyleSelector.value = savedStyle;
+    quickStyleSelector.addEventListener('change', (e) => changeStyle(e.target.value));
+  }
 
   // Hamburger menu functionality
   const hamburgerMenu = document.getElementById('hamburgerMenu');
@@ -1878,14 +1920,35 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Close menu only on timeline filter change
+  // Filter controls (menu + quick bar)
   const timelineFilter = navButtons.querySelector('select#filter');
+  const quickFilter = document.getElementById('filterQuick');
+
+  function syncFilterValue(fromEl) {
+    const v = fromEl.value;
+    if (timelineFilter) timelineFilter.value = v;
+    if (quickFilter) quickFilter.value = v;
+  }
+
   if (timelineFilter) {
     timelineFilter.addEventListener('change', () => {
+      syncFilterValue(timelineFilter);
+      filterTimeline();
       if (window.innerWidth <= 1024) {
         hamburgerMenu.classList.remove('active');
         navButtons.classList.remove('show');
       }
+    });
+  }
+  if (quickFilter) {
+    // clone options from main filter if needed
+    if (timelineFilter && quickFilter.options.length === 0) {
+      quickFilter.innerHTML = timelineFilter.innerHTML;
+      quickFilter.value = timelineFilter.value || 'all';
+    }
+    quickFilter.addEventListener('change', () => {
+      syncFilterValue(quickFilter);
+      filterTimeline();
     });
   }
 
@@ -2066,6 +2129,20 @@ document.addEventListener('DOMContentLoaded', () => {
     </div>
   </div>
 </nav>
+
+<div class="mobile-quick-controls" id="quickControls">
+  <select id="filterQuick" class="style-selector" aria-label="Filter by actor"></select>
+  <div class="controls">
+    <select class="style-selector" id="quickStyleSelector" aria-label="Select style">
+      <option value="default">Default</option>
+      <option value="glassmorphism">Glassmorphism</option>
+      <option value="neumorphism">Neumorphism</option>
+    </select>
+    <button class="theme-toggle" id="quickThemeToggle" aria-label="Toggle theme">
+      <div class="theme-toggle-slider">☀️</div>
+    </button>
+  </div>
+</div>
 
 <div class="container">
   <section id="intro" class="section">
