@@ -1096,108 +1096,73 @@ function filterTimeline() {
     const whoElement = el.querySelector('.tl-who');
     if (!whoElement) return;
     const who = whoElement.textContent.toLowerCase();
-    if (!who.includes(filterName.toLowerCase())) {
+    const aliases = getActorAliases(filterName);
+    const isMatch = aliases.some(a => a && who.includes(a));
+    if (!isMatch) {
       el.style.display = 'none';
     } else {
       // Auto-expand matching timeline entries to expose their links
       if (typeof el.open !== 'undefined') el.open = true;
+      removeHighlighting(el);
+      highlightActorName(el, filterName);
     }
   });
   
-  // Filter president cards with highlighting
+  // Filter president cards: show ONLY the selected actor's own card(s)
   presidentCards.forEach(el => {
     el.style.display = '';
-    el.style.border = ''; // Reset any previous highlighting
+    el.style.border = '';
     el.style.boxShadow = '';
     el.style.backgroundColor = '';
-    
-    const content = el.textContent.toLowerCase();
+
     const titleElement = el.querySelector('.card-title');
-    
-    // Show card if actor name appears anywhere in the content using precise matching
-    const shouldShow = checkActorMatch(content, filterName);
-    
-    if (shouldShow) {
-      el.style.display = ''; // Show the card
-      // All cards get green border when filtering
-      el.style.border = '3px solid #28a745';
-      el.style.boxShadow = '0 4px 12px rgba(40, 167, 69, 0.3)';
-      el.style.backgroundColor = 'rgba(40, 167, 69, 0.05)';
-      
-      // Additional highlighting if this is actually the actor's main card (title match)
-      if (titleElement && doesCardMatchFilter(el, filterName)) {
-        el.style.border = '3px solid #007bff';
-        el.style.boxShadow = '0 4px 12px rgba(0, 123, 255, 0.3)';
-        el.style.backgroundColor = 'rgba(0, 123, 255, 0.05)';
-      } else {
-        // This is a mention card, highlight the actor's name in the text
-        removeHighlighting(el); // Remove any previous highlighting
-        highlightActorName(el, filterName);
-      }
-    } else {
-      el.style.display = 'none';
-      removeHighlighting(el); // Clean up highlighting
-    }
-  });
-  
-  // Filter congress cards with highlighting
-  congressCards.forEach(el => {
-    el.style.display = '';
-    el.style.border = ''; // Reset any previous highlighting
-    el.style.boxShadow = '';
-    el.style.backgroundColor = '';
-    
-    const content = el.textContent.toLowerCase();
-    const titleElement = el.querySelector('.card-title');
-    
-    // Show card if actor name appears anywhere in the content using precise matching
-    const shouldShow = checkActorMatch(content, filterName);
-    
-    if (shouldShow) {
-      el.style.display = ''; // Show the card
-      // All cards get green border when filtering
-      el.style.border = '3px solid #28a745';
-      el.style.boxShadow = '0 4px 12px rgba(40, 167, 69, 0.3)';
-      el.style.backgroundColor = 'rgba(40, 167, 69, 0.05)';
-      
-      // Additional highlighting if this is actually the actor's main card (title match)
-      if (titleElement && doesCardMatchFilter(el, filterName)) {
-        el.style.border = '3px solid #007bff';
-        el.style.boxShadow = '0 4px 12px rgba(0, 123, 255, 0.3)';
-        el.style.backgroundColor = 'rgba(0, 123, 255, 0.05)';
-      } else {
-        // This is a mention card, highlight the actor's name in the text
-        removeHighlighting(el);
-        highlightActorName(el, filterName);
-      }
+    const isMain = doesCardMatchFilter(el, filterName);
+
+    if (isMain) {
+      // Highlight the actor's main card
+      el.style.display = '';
+      el.style.border = '3px solid #007bff';
+      el.style.boxShadow = '0 4px 12px rgba(0, 123, 255, 0.3)';
+      el.style.backgroundColor = 'rgba(0, 123, 255, 0.05)';
     } else {
       el.style.display = 'none';
       removeHighlighting(el);
     }
   });
   
-  // Filter Supreme Court cards with highlighting
-  scotusCards.forEach(el => {
+  // Filter congress cards: show ONLY the selected actor's own card(s)
+  congressCards.forEach(el => {
     el.style.display = '';
-    el.style.border = ''; // Reset any previous highlighting
+    el.style.border = '';
     el.style.boxShadow = '';
     el.style.backgroundColor = '';
-    
-    const content = el.textContent.toLowerCase();
-    const titleElement = el.querySelector('.card-title');
-    
-    // Show card if actor name appears anywhere in the content using precise matching
-    const shouldShow = checkActorMatch(content, filterName);
-    
-    if (shouldShow) {
-      el.style.display = ''; // Show the card
-      // Highlight if this is actually the actor's main card (title match)
-      if (titleElement && doesCardMatchFilter(el, filterName)) {
-        el.style.border = '3px solid #dc3545';
-        el.style.boxShadow = '0 4px 12px rgba(220, 53, 69, 0.3)';
-        el.style.backgroundColor = 'rgba(220, 53, 69, 0.05)';
-      }
-      // Cards that just mention the actor are shown without highlighting
+
+    const isMain = doesCardMatchFilter(el, filterName);
+
+    if (isMain) {
+      el.style.display = '';
+      el.style.border = '3px solid #007bff';
+      el.style.boxShadow = '0 4px 12px rgba(0, 123, 255, 0.3)';
+      el.style.backgroundColor = 'rgba(0, 123, 255, 0.05)';
+    } else {
+      el.style.display = 'none';
+      removeHighlighting(el);
+    }
+  });
+  
+  // Filter Supreme Court cards: show ONLY the selected actor's own card(s)
+  scotusCards.forEach(el => {
+    el.style.display = '';
+    el.style.border = '';
+    el.style.boxShadow = '';
+    el.style.backgroundColor = '';
+
+    const isMain = doesCardMatchFilter(el, filterName);
+    if (isMain) {
+      el.style.display = '';
+      el.style.border = '3px solid #dc3545';
+      el.style.boxShadow = '0 4px 12px rgba(220, 53, 69, 0.3)';
+      el.style.backgroundColor = 'rgba(220, 53, 69, 0.05)';
     } else {
       el.style.display = 'none';
     }
@@ -1223,8 +1188,10 @@ function filterTimeline() {
         el.style.border = '3px solid #fd7e14';
         el.style.boxShadow = '0 4px 12px rgba(253, 126, 20, 0.3)';
         el.style.backgroundColor = 'rgba(253, 126, 20, 0.05)';
+      } else {
+        removeHighlighting(el);
+        highlightActorName(el, filterName);
       }
-      // Cards that just mention the actor are shown without highlighting
     } else {
       el.style.display = 'none';
     }
@@ -1528,6 +1495,59 @@ function extractFilterName(filterValue) {
   return filterValue;
 }
 
+// Generate robust aliases for matching actor names in timeline and content
+function getActorAliases(name) {
+  const n = (name || '').toLowerCase().trim();
+  const aliases = new Set();
+  if (!n) return [];
+  aliases.add(n);
+
+  // Strip excess whitespace
+  const clean = n.replace(/\s+/g, ' ').trim();
+  const parts = clean.split(' ').filter(Boolean);
+  const first = parts[0] || '';
+  const last = parts[parts.length - 1] || '';
+
+  if (first && last) aliases.add(`${first} ${last}`);
+  if (last) aliases.add(last);
+
+  // Common nickname mappings
+  const nickMap = {
+    'joseph': ['joe'],
+    'william': ['bill', 'will'],
+    'james': ['jim', 'jimmy'],
+    'robert': ['bob'],
+    'richard': ['dick'],
+    'edward': ['ted'],
+    'john': ['john'],
+  };
+  if (nickMap[first]) {
+    nickMap[first].forEach(nk => {
+      if (last) aliases.add(`${nk} ${last}`);
+      aliases.add(nk);
+    });
+  }
+
+  // Special-case common presidential aliases
+  if (first.startsWith('john') && last === 'kennedy') {
+    aliases.add('john f. kennedy');
+    aliases.add('jfk');
+  }
+  if (first === 'george' && last === 'bush') {
+    // disambiguate via middle initials handled elsewhere; still include generic last
+    aliases.add('george w. bush');
+    aliases.add('george h.w. bush');
+  }
+
+  // Contextual forms
+  if (last) {
+    aliases.add(`president ${last}`);
+    if (first) aliases.add(`president ${first} ${last}`);
+  }
+
+  return Array.from(aliases);
+}
+
 function checkActorMatch(content, actorName) {
   // More precise matching to avoid false matches with places, buildings, etc.
   const lowerContent = content.toLowerCase();
@@ -1651,7 +1671,7 @@ function checkActorMatch(content, actorName) {
   return false;
 }
 
-function highlightActorName(element, actorName) {
+function highlightActorName(element, actorName, color = '#ff9800') {
   // Get all text nodes in the element
   const walker = document.createTreeWalker(
     element,
@@ -1744,7 +1764,7 @@ function highlightActorName(element, actorName) {
     searchTerms.forEach(term => {
       const regex = new RegExp(`\\b${term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'gi');
       if (regex.test(text)) {
-        text = text.replace(regex, '<mark style="background-color: yellow; padding: 1px 2px;">$&</mark>');
+        text = text.replace(regex, `<mark style="background-color: ${color}; padding: 1px 2px;">text = text.replace(regex, `<mark style="background-color: ${color}; padding: 1px 2px;">text = text.replace(regex, '<mark style="background-color: yellow; padding: 1px 2px;">$&</mark>');</mark>`);</mark>`);
         modified = true;
       }
     });
