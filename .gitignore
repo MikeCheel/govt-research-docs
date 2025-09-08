@@ -87,3 +87,5 @@ coverage/
 
 # AI Tools and Related
 .claude/
+.qodo/
+best_practices.md
