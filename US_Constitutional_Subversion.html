@@ -1478,11 +1478,6 @@ function filterTimeline() {
       collected.set(href, text);
     };
     const urlRegex = /(https?:\/\/[\w\-._~:/?#\[\]@!$&'()*+,;=%]+)/gi;
-  
-  // Build aggregated verifiable links for the filtered view (append to References at bottom)
-  if (filteredSourcesSection && filteredSourcesList) {
-    const collected = new Map(); // href -> label
-    const isVisible = (el) => window.getComputedStyle(el).display !== 'none';
 
     // From visible timeline items
     document.querySelectorAll('.tl-item').forEach(d => {
@@ -1526,54 +1521,6 @@ function filterTimeline() {
         }
       }
     }
-  }'()*+,;=%]+|www\.[\w\-._~:/?#@!// Build aggregated verifiable links for the filtered view (append to References at bottom)
-  if (filteredSourcesSection && filteredSourcesList) {
-    const collected = new Map(); // href -> label
-    const isVisible = (el) => window.getComputedStyle(el).display !== 'none';
-
-    // From visible timeline items
-    document.querySelectorAll('.tl-item').forEach(d => {
-      if (isVisible(d)) {
-        d.querySelectorAll('.tl-links a').forEach(a => {
-          if (a.href) collected.set(a.href, a.textContent.trim() || a.href);
-        });
-      }
-    });
-
-    // From visible cards across sections
-    document.querySelectorAll('.card').forEach(c => {
-      if (isVisible(c)) {
-        c.querySelectorAll('.links a').forEach(a => {
-          if (a.href) collected.set(a.href, a.textContent.trim() || a.href);
-        });
-      }
-    });
-
-    // Always hide the top-of-page filtered-sources box during filtering; we will append to References instead
-    filteredSourcesSection.style.display = 'none';
-    filteredSourcesList.innerHTML = '';
-
-    const referencesSection = document.getElementById('references');
-    if (referencesSection) {
-      // Remove any previously appended aggregated list
-      const prior = referencesSection.querySelector('#filtered-sources-in-refs');
-      if (prior) prior.remove();
-
-      if (collected.size > 0) {
-        const container = document.createElement('div');
-        container.id = 'filtered-sources-in-refs';
-        container.className = 'refs';
-        container.innerHTML = `<h3>Sources for ${filterName}</h3>` +
-          '<ul>' + Array.from(collected.entries()).map(([href, text]) => `<li><a href="${href}" target="_blank" rel="noopener noreferrer">${text}</a></li>`).join('') + '</ul>';
-        referencesSection.appendChild(container);
-        // Ensure References section is visible when we have collected sources
-        referencesSection.style.display = '';
-        if (!sectionsWithContent.includes('references')) {
-          sectionsWithContent.push('references');
-        }
-      }
-    }
-  }'()*+,;=%]+)/gi;
 
     // From visible timeline items (anchors + plain-text URLs)
     document.querySelectorAll('.tl-item').forEach(d => {
@@ -1594,7 +1541,7 @@ function filterTimeline() {
     });
 
     // From visible references section (anchors + plain-text URLs)
-    const referencesSection = document.getElementById('references');
+    // reuse the referencesSection variable already declared above
     if (referencesSection) {
       Array.from(referencesSection.querySelectorAll('p, li, a, div')).forEach(el => {
         if (isVisible(el)) {
@@ -1926,7 +1873,7 @@ function highlightActorName(element, actorName, color = '#ff9800') {}
     searchTerms.forEach(term => {
       const regex = new RegExp(`\\b${term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'gi');
       if (regex.test(text)) {
-        text = text.replace(regex, `<mark style="background-color: ${color}; padding: 1px 2px;">text = text.replace(regex, `<mark style="background-color: ${color}; padding: 1px 2px;">text = text.replace(regex, `<mark style="background-color: ${color}; padding: 1px 2px;">text = text.replace(regex, `<mark style="background-color: ${color}; padding: 1px 2px;">text = text.replace(regex, '<mark style="background-color: yellow; padding: 1px 2px;">$&</mark>');</mark>`);</mark>`);</mark>`);</mark>`);
+        text = text.replace(regex, `<mark style="background-color: ${color}; padding: 1px 2px;">$&</mark>`);
         modified = true;
       }
     });
@@ -5043,7 +4990,7 @@ document.addEventListener('DOMContentLoaded', () => {
   </section>
 
   <footer style="text-align: center; color: var(--muted); font-size: 14px; margin-top: 40px; padding: 20px; border-top: 1px solid var(--border);">
-    Last updated: August 24, 2025
+    Last updated: September 7, 2025
   </footer>
 </div>
 
