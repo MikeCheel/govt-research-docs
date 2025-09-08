@@ -491,7 +491,9 @@ a:hover { text-decoration: underline; }
     padding: 12px;
   }
   .nav-buttons.show {
-    grid-template-columns: 1fr;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px;
   }
   .nav-buttons button:not(.theme-toggle) {
     min-height: 48px;
@@ -1044,6 +1046,8 @@ function filterTimeline() {
   const quick = document.getElementById('filterQuick');
   const activeSelect = quick && window.getComputedStyle(quick).display !== 'none' ? quick : dd;
   const val = activeSelect ? activeSelect.value : (dd ? dd.value : 'all');
+  
+  console.log(`Filtering timeline with value: ${val}`);
   // Aggregated sources elements
   const filteredSourcesSection = document.getElementById('filtered-sources');
   const filteredActorNameEl = document.getElementById('filtered-actor-name');
@@ -1473,7 +1477,9 @@ function filterTimeline() {
       const text = (label || href).trim();
       collected.set(href, text);
     };
-    const urlRegex = /(https?:\/\/[\w\-._~:/?#\[\]@!// Build aggregated verifiable links for the filtered view (append to References at bottom)
+    const urlRegex = /(https?:\/\/[\w\-._~:/?#\[\]@!$&'()*+,;=%]+)/gi;
+  
+  // Build aggregated verifiable links for the filtered view (append to References at bottom)
   if (filteredSourcesSection && filteredSourcesList) {
     const collected = new Map(); // href -> label
     const isVisible = (el) => window.getComputedStyle(el).display !== 'none';
@@ -2005,6 +2011,7 @@ function doesCardMatchFilter(card, filterName) {
 
 // Theme and style functionality
 document.addEventListener('DOMContentLoaded', () => {
+  console.log('DOM Content Loaded - Initializing functionality');
   const mobileThemeToggle = document.getElementById('themeToggle');
   const desktopThemeToggle = document.getElementById('desktopThemeToggle');
   const mobileStyleSelector = document.getElementById('styleSelector');
@@ -2012,6 +2019,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const quickThemeToggle = document.getElementById('quickThemeToggle');
   const quickStyleSelector = document.getElementById('quickStyleSelector');
   const body = document.body;
+  
+  console.log('Theme toggles found:', {
+    mobile: !!mobileThemeToggle,
+    desktop: !!desktopThemeToggle,
+    quick: !!quickThemeToggle
+  });
   
   const mobileSlider = mobileThemeToggle?.querySelector('.theme-toggle-slider');
   const desktopSlider = desktopThemeToggle?.querySelector('.theme-toggle-slider');
@@ -2040,9 +2053,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const currentTheme = body.getAttribute('data-theme');
     const newTheme = currentTheme === 'light' ? 'dark' : 'light';
     
+    console.log(`Toggling theme from ${currentTheme} to ${newTheme}`);
     body.setAttribute('data-theme', newTheme);
     localStorage.setItem('theme', newTheme);
     updateToggleIcon(newTheme);
+    
+    // Verify the change was applied
+    console.log(`Theme after change: ${body.getAttribute('data-theme')}`);
   }
 
   function changeStyle(newStyle) {
@@ -2081,24 +2098,39 @@ document.addEventListener('DOMContentLoaded', () => {
   const hamburgerMenu = document.getElementById('hamburgerMenu');
   const navButtons = document.getElementById('navButtons');
   
-  hamburgerMenu.addEventListener('click', () => {
-    hamburgerMenu.classList.toggle('active');
-    navButtons.classList.toggle('show');
+  console.log('Hamburger menu elements found:', {
+    hamburger: !!hamburgerMenu,
+    navButtons: !!navButtons
   });
+  
+  if (hamburgerMenu && navButtons) {
+    console.log('Adding hamburger menu event listener');
+    hamburgerMenu.addEventListener('click', () => {
+      console.log('Hamburger menu clicked');
+      hamburgerMenu.classList.toggle('active');
+      navButtons.classList.toggle('show');
+      console.log('Classes after toggle:', {
+        hamburgerActive: hamburgerMenu.classList.contains('active'),
+        navButtonsShow: navButtons.classList.contains('show')
+      });
+    });
+  }
 
   // Close mobile menu when clicking on a navigation item
-  const navItems = navButtons.querySelectorAll('button[onclick]');
-  navItems.forEach(item => {
-    item.addEventListener('click', () => {
-      if (window.innerWidth <= 1024) {
-        hamburgerMenu.classList.remove('active');
-        navButtons.classList.remove('show');
-      }
+  if (navButtons) {
+    const navItems = navButtons.querySelectorAll('button[onclick]');
+    navItems.forEach(item => {
+      item.addEventListener('click', () => {
+        if (window.innerWidth <= 1024) {
+          hamburgerMenu.classList.remove('active');
+          navButtons.classList.remove('show');
+        }
+      });
     });
-  });
+  }
 
   // Filter controls (menu + quick bar)
-  const timelineFilter = navButtons.querySelector('select#filter');
+  const timelineFilter = navButtons ? navButtons.querySelector('select#filter') : null;
   const quickFilter = document.getElementById('filterQuick');
 
   function syncFilterValue(fromEl) {
@@ -2108,7 +2140,9 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   if (timelineFilter) {
+    console.log('Adding event listener to timeline filter');
     timelineFilter.addEventListener('change', () => {
+      console.log('Timeline filter changed to:', timelineFilter.value);
       syncFilterValue(timelineFilter);
       filterTimeline();
       if (window.innerWidth <= 1024) {
@@ -2118,12 +2152,14 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
   if (quickFilter) {
+    console.log('Adding event listener to quick filter');
     // clone options from main filter if needed
     if (timelineFilter && quickFilter.options.length === 0) {
       quickFilter.innerHTML = timelineFilter.innerHTML;
       quickFilter.value = timelineFilter.value || 'all';
     }
     quickFilter.addEventListener('change', () => {
+      console.log('Quick filter changed to:', quickFilter.value);
       syncFilterValue(quickFilter);
       filterTimeline();
     });
@@ -2132,6 +2168,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Close mobile menu when clicking outside
   document.addEventListener('click', (e) => {
     if (window.innerWidth <= 1024 && 
+        hamburgerMenu && navButtons &&
         !hamburgerMenu.contains(e.target) && 
         !navButtons.contains(e.target) && 
         navButtons.classList.contains('show')) {
@@ -2142,7 +2179,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Close mobile menu on window resize
   window.addEventListener('resize', () => {
-    if (window.innerWidth > 1024) {
+    if (window.innerWidth > 1024 && hamburgerMenu && navButtons) {
       hamburgerMenu.classList.remove('active');
       navButtons.classList.remove('show');
     }
@@ -2182,7 +2219,7 @@ document.addEventListener('DOMContentLoaded', () => {
       <button onclick="gotoSection('corporatism')">Corporatism</button>
       <button onclick="gotoSection('analysis')">Analysis</button>
       <button onclick="gotoSection('references')">References</button>
-      <select id="filter" onchange="filterTimeline()">
+      <select id="filter">
         <option value="all">Filter by actor...</option>
         <option disabled class="section-divider">═══ PRESIDENTS ═══</option>
           <option>George Washington (1st President)</option>
@@ -2707,20 +2744,6 @@ document.addEventListener('DOMContentLoaded', () => {
       </div>
     </details>
 
-    <details class="tl-item" open>
-      <summary>
-        <span class="tl-date">💰 1913</span>
-        <span class="tl-who">— <strong>Wilson/Congress</strong></span>
-        <span class="tl-where">(Federal Reserve Act)</span>
-      </summary>
-      <div class="tl-body">
-        <div class="tl-row"><span class="lbl bad">Constitutional violation</span><div class="val">Delegated Congress's constitutional power to "coin money and regulate value" to private banking cartel without constitutional amendment.</div></div>
-        <div class="tl-row"><span class="lbl">What happened</span><div class="val">Created Federal Reserve System giving private banks control over money supply, interest rates, and credit creation.</div></div>
-        <div class="tl-row"><span class="lbl">Deception</span><div class="val">Passed during Christmas recess when opponents were absent; marketed as "Federal" when privately owned.</div></div>
-        <div class="tl-row"><span class="lbl neutral">Immediate impact</span><div class="val">Enabled massive WWI financing through money printing rather than direct taxation.</div></div>
-        <div class="tl-links">Sources: <a href="https://www.federalreserve.gov/aboutthefed/fract.htm" target="_blank">Federal Reserve Act</a> • <a href="https://www.congress.gov/bill/63rd-congress/house-bill/7837" target="_blank">H.R. 7837 (1913)</a></div>
-      </div>
-    </details>
 
     <details class="tl-item" open>
       <summary>
@@ -2795,19 +2818,6 @@ document.addEventListener('DOMContentLoaded', () => {
       </div>
     </details>
 
-    <details class="tl-item" open>
-      <summary>
-        <span class="tl-date">⚖️ 1950s-1970s</span>
-        <span class="tl-who">— <strong>CIA/FBI</strong></span>
-        <span class="tl-where">(COINTELPRO/MKUltra)</span>
-      </summary>
-      <div class="tl-body">
-        <div class="tl-row"><span class="lbl bad">Constitutional violations</span><div class="val">Systematic surveillance, infiltration, and disruption of domestic groups; illegal human experimentation without consent.</div></div>
-        <div class="tl-row"><span class="lbl">COINTELPRO operations</span><div class="val">FBI infiltrated civil rights groups, antiwar activists, and political organizations; conducted "black bag jobs" and character assassination.</div></div>
-        <div class="tl-row"><span class="lbl">MKUltra program</span><div class="val">CIA conducted 149+ sub-projects involving mind control experiments on unwitting subjects using LSD, electroshock, sensory deprivation, and torture techniques across 80+ institutions including universities and hospitals.</div></div>
-        <div class="tl-links">Sources: <a href="https://vault.fbi.gov/cointel-pro" target="_blank">FBI Vault - COINTELPRO</a> • <a href="https://www.cia.gov/readingroom/collection/family-jewels" target="_blank">CIA Family Jewels</a></div>
-      </div>
-    </details>
 
     <details class="tl-item" open>
       <summary>
@@ -2911,20 +2921,6 @@ document.addEventListener('DOMContentLoaded', () => {
       </div>
     </details>
 
-    <details class="tl-item" open>
-      <summary>
-        <span class="tl-date">💰 2008-Present</span>
-        <span class="tl-who">— <strong>Federal Reserve/Treasury</strong></span>
-        <span class="tl-where">(Financial Crisis Bailouts & QE)</span>
-      </summary>
-      <div class="tl-body">
-        <div class="tl-row"><span class="lbl bad">Constitutional violation</span><div class="val">Created trillions in new money without Congressional appropriation; bailed out private companies violating equal protection and property rights.</div></div>
-        <div class="tl-row"><span class="lbl">What happened</span><div class="val">$16+ trillion in secret bailouts to banks (2008); $4+ trillion in QE money printing (2008-2014, 2020-2022); purchased corporate bonds and mortgages.</div></div>
-        <div class="tl-row"><span class="lbl">Cronyism</span><div class="val">"Too big to fail" banks received bailouts while homeowners faced foreclosure; Fed Chair Ben Bernanke joined hedge fund after tenure.</div></div>
-        <div class="tl-row"><span class="lbl neutral">Economic impact</span><div class="val">Wealth inequality soared; asset bubbles created; savers punished with zero interest rates for over a decade.</div></div>
-        <div class="tl-links">Sources: <a href="https://www.gao.gov/assets/gao-11-696.pdf" target="_blank">GAO Audit of Fed</a> • <a href="https://www.federalreserve.gov/monetarypolicy/bst_recenttrends.htm" target="_blank">Fed Balance Sheet</a></div>
-      </div>
-    </details>
 
     <details class="tl-item" open>
       <summary>
