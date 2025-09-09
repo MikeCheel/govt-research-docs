@@ -57,6 +57,8 @@
 
 **Note**: Task 12 (organizing MD files) has been successfully completed. All .md files have been moved to the ai-research folder as requested.
 
+**IMPORTANT NOTE FOR AI**: All research documents have been moved to the ai-research folder. For any future research work, document creation, updates, or references related to constitutional violations research (Tasks 8-11 and any future research tasks), work from and save documents to the ai-research folder. This is the designated location for all research materials.
+
 ## Archived Tasks
 
 ### TASK 1: Presidential Constitutional Violations Research and Documentation
