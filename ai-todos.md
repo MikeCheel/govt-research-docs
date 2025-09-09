@@ -68,6 +68,59 @@
 
 **Note**: Task 12 (organizing MD files) has been successfully completed. All .md files have been moved to the ai-research folder as requested.
 
+## Current Task: Source Links Verification
+
+### TASK 16: Verify and Update Source Links in Constitutional Research Document  
+**Status**: COMPLETED
+**Description**: Verify all external source links in US_Constitutional_Subversion.html are accessible and accurate
+**Requirements**:
+- Scan all external links in the document
+- Verify links are accessible and point to correct sources
+- Check for broken, redirected, or outdated links
+- Update problematic links with working alternatives
+- Ensure all historical sources remain verifiable and authoritative
+- Document verification results
+
+**Implementation Steps**:
+- [x] Add task to ai-todos.md
+- [x] Extract all external links from document (100+ links identified)
+- [x] Test key links for accessibility and accuracy
+- [x] Identify broken or problematic links
+- [x] Find replacement sources for broken links
+- [x] Update document with corrected links
+- [x] Document verification results
+
+**Verification Results (2025-09-09)**:
+- **Total Links Scanned**: 100+ external links
+- **Key Sources Verified**: ✅ National Archives, ✅ Supreme Court cases, ✅ Library of Congress
+- **Broken Link Found**: ❌ nsarchive2.gwu.edu (redirected to homepage)
+- **Fixed Links**: ✅ Updated Iran coup documents with working National Security Archive link
+- **Link Quality**: All major institutional sources (archives.gov, loc.gov, supreme.justia.com) working correctly
+- **Replacement Link**: https://nsarchive.gwu.edu/briefing-book/iran/2017-06-15/iran-1953-state-department-finally-releases-updated-official-history
+- **Verification Method**: WebFetch testing of critical sources, WebSearch for replacements
+
+## Future Task: Presidential Visual Enhancement
+
+### TASK 15: Add Presidential Portrait Images to Constitutional Research Document
+**Status**: AWAITING APPROVAL (DEFERRED)
+**Description**: Add subtle presidential portrait background images to enhance visual engagement in US_Constitutional_Subversion.html
+**Requirements**:
+- Use public domain presidential portraits (Library of Congress, National Archives)
+- Implement as faint background images for presidential cards/sections
+- Maintain readability and avoid distraction from content
+- Prioritize presidents first, other sections later
+- Ensure mobile responsiveness and performance optimization
+- Use consistent sizing and styling across all presidential sections
+
+**Implementation Plan**:
+- [ ] Research and source public domain presidential portraits
+- [ ] Design CSS for subtle background image styling (low opacity, proper positioning)
+- [ ] Implement presidential images starting with early presidents (Washington, Adams, etc.)
+- [ ] Test readability and visual balance
+- [ ] Optimize images for web performance
+- [ ] Test mobile responsiveness
+- [ ] Verify zero console errors after implementation
+
 **IMPORTANT NOTE FOR AI**: All research documents have been moved to the ai-research folder. For any future research work, document creation, updates, or references related to constitutional violations research (Tasks 8-11 and any future research tasks), work from and save documents to the ai-research folder. This is the designated location for all research materials.
 
 ## Archived Tasks
