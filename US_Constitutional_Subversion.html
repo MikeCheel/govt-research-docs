@@ -1005,6 +1005,11 @@ hr.sep { border:none; height:1px; background: var(--border); margin: 12px 0; }
     font-size: 13px;
     max-width: calc(100vw - 72px); /* leave room for hamburger and padding */
   }
+  /* Hide print button on phones only - tablets and desktop keep it */
+  .mobile-actions button[onclick*="print"],
+  .desktop-actions button[onclick*="print"] {
+    display: none;
+  }
 }
 /* Always-visible mobile quick controls under navbar */
 .mobile-quick-controls { display: none; }
